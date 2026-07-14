@@ -11,6 +11,7 @@ patients et professionnels de santé disponibles.
 - **Infrastructure** : Docker Compose
 
 ## Structure du projet
+```
 pulsaride-medical-dispatch-engine/
 ├── backend/        # Spring Boot API / Dispatch Engine
 ├── simulator/      # Python: génération de données et scénarios
@@ -20,6 +21,7 @@ pulsaride-medical-dispatch-engine/
 ├── postman/        # Collection API de démo
 ├── docker-compose.yml
 └── README.md
+```
 
 ## Démarrage rapide
 # Lancer PostgreSQL + Redis
