@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg15
+    container_name: pulsaride-postgres
+    environment:
+      POSTGRES_DB: pulsaride
+      POSTGRES_USER: pulsaride
+      POSTGRES_PASSWORD: pulsaride123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: pulsaride-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
