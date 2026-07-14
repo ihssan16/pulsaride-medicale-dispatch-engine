@@ -29,8 +29,8 @@ docker-compose up -d
 docker-compose ps
 
 ## Équipe
-- Salmane Sossey — Backend / Dispatch Engine
-- Ihssan Ben Labsir — Simulation / Évaluation
+- Salmane Sossey 
+- Ihssan Ben Labsir 
 
 ## Encadrant
 M. Lyazid Salihi — Pulsaride Solutions
