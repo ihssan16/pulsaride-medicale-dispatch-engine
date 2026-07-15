@@ -1,0 +1,222 @@
+[
+  {
+    "id": "pro_001",
+    "name": "Dr. Karim Laurent",
+    "specialty_tag": "pediatrie",
+    "experience_years": 3,
+    "profile_text": "Pédiatre avec 3 ans d'expérience. Suivi nourrissons, enfants et adolescents (0-18 ans). Maladies infantiles, vaccinations et urgences pédiatriques.",
+    "quota_max_per_hour": 5,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_002",
+    "name": "Dr. Karim Bernard",
+    "specialty_tag": "dermatologie",
+    "experience_years": 7,
+    "profile_text": "Dermatologue avec 7 ans d'expérience. Maladies de la peau, allergies cutanées, dermatoses. Téléconsultation adaptée aux diagnostics visuels.",
+    "quota_max_per_hour": 9,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_003",
+    "name": "Dr. Claire Martin",
+    "specialty_tag": "pediatrie",
+    "experience_years": 21,
+    "profile_text": "Pédiatre avec 21 ans d'expérience. Suivi nourrissons, enfants et adolescents (0-18 ans). Maladies infantiles, vaccinations et urgences pédiatriques.",
+    "quota_max_per_hour": 4,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_004",
+    "name": "Dr. Jean Garcia",
+    "specialty_tag": "pediatrie",
+    "experience_years": 9,
+    "profile_text": "Pédiatre avec 9 ans d'expérience. Suivi nourrissons, enfants et adolescents (0-18 ans). Maladies infantiles, vaccinations et urgences pédiatriques.",
+    "quota_max_per_hour": 8,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_005",
+    "name": "Dr. Jean Khalil",
+    "specialty_tag": "generaliste",
+    "experience_years": 20,
+    "profile_text": "Médecin généraliste avec 20 ans d'expérience. Suivi polyvalent adultes et enfants. Spécialisé en médecine préventive et maladies courantes.",
+    "quota_max_per_hour": 9,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_006",
+    "name": "Dr. Nicolas Durand",
+    "specialty_tag": "ophtalmologie",
+    "experience_years": 10,
+    "profile_text": "Ophtalmologue avec 10 ans d'expérience. Troubles visuels, irritations oculaires, urgences oeil. Téléconseil pour orientation et premiers soins.",
+    "quota_max_per_hour": 6,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_007",
+    "name": "Dr. Karim Michel",
+    "specialty_tag": "generaliste",
+    "experience_years": 8,
+    "profile_text": "Médecin généraliste avec 8 ans d'expérience. Suivi polyvalent adultes et enfants. Spécialisé en médecine préventive et maladies courantes.",
+    "quota_max_per_hour": 6,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_008",
+    "name": "Dr. Jean Rousseau",
+    "specialty_tag": "psychiatrie",
+    "experience_years": 7,
+    "profile_text": "Psychiatre avec 7 ans d'expérience. Troubles anxieux, dépression, stress chronique. Suivi thérapeutique et téléconseil de soutien.",
+    "quota_max_per_hour": 6,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_009",
+    "name": "Dr. Claire Bernard",
+    "specialty_tag": "pediatrie",
+    "experience_years": 5,
+    "profile_text": "Pédiatre avec 5 ans d'expérience. Suivi nourrissons, enfants et adolescents (0-18 ans). Maladies infantiles, vaccinations et urgences pédiatriques.",
+    "quota_max_per_hour": 6,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_010",
+    "name": "Dr. Isabelle Rousseau",
+    "specialty_tag": "gynecologie",
+    "experience_years": 22,
+    "profile_text": "Gynécologue avec 22 ans d'expérience. Santé féminine, contraception, suivi grossesse. Téléconseil adapté aux consultations non techniques.",
+    "quota_max_per_hour": 4,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_011",
+    "name": "Dr. Pierre Roux",
+    "specialty_tag": "orl",
+    "experience_years": 20,
+    "profile_text": "ORL avec 20 ans d'expérience. Oreilles, nez, gorge, sinusites, angines, otites. Téléconseil adapté aux pathologies courantes ORL.",
+    "quota_max_per_hour": 7,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_012",
+    "name": "Dr. Isabelle Petit",
+    "specialty_tag": "pediatrie",
+    "experience_years": 20,
+    "profile_text": "Pédiatre avec 20 ans d'expérience. Suivi nourrissons, enfants et adolescents (0-18 ans). Maladies infantiles, vaccinations et urgences pédiatriques.",
+    "quota_max_per_hour": 9,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_013",
+    "name": "Dr. Jean Khalil",
+    "specialty_tag": "gynecologie",
+    "experience_years": 21,
+    "profile_text": "Gynécologue avec 21 ans d'expérience. Santé féminine, contraception, suivi grossesse. Téléconseil adapté aux consultations non techniques.",
+    "quota_max_per_hour": 4,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_014",
+    "name": "Dr. Jean Rousseau",
+    "specialty_tag": "generaliste",
+    "experience_years": 24,
+    "profile_text": "Médecin généraliste avec 24 ans d'expérience. Suivi polyvalent adultes et enfants. Spécialisé en médecine préventive et maladies courantes.",
+    "quota_max_per_hour": 6,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_015",
+    "name": "Dr. Youssef Bernard",
+    "specialty_tag": "pediatrie",
+    "experience_years": 10,
+    "profile_text": "Pédiatre avec 10 ans d'expérience. Suivi nourrissons, enfants et adolescents (0-18 ans). Maladies infantiles, vaccinations et urgences pédiatriques.",
+    "quota_max_per_hour": 7,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_016",
+    "name": "Dr. Fatima Petit",
+    "specialty_tag": "psychiatrie",
+    "experience_years": 17,
+    "profile_text": "Psychiatre avec 17 ans d'expérience. Troubles anxieux, dépression, stress chronique. Suivi thérapeutique et téléconseil de soutien.",
+    "quota_max_per_hour": 6,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_017",
+    "name": "Dr. Thomas Moreau",
+    "specialty_tag": "cardiologie",
+    "experience_years": 14,
+    "profile_text": "Cardiologue avec 14 ans d'expérience. Maladies cardiovasculaires, hypertension, arythmies. Téléconseil pour suivi post-opératoire.",
+    "quota_max_per_hour": 9,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_018",
+    "name": "Dr. Leila Benali",
+    "specialty_tag": "psychiatrie",
+    "experience_years": 25,
+    "profile_text": "Psychiatre avec 25 ans d'expérience. Troubles anxieux, dépression, stress chronique. Suivi thérapeutique et téléconseil de soutien.",
+    "quota_max_per_hour": 9,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_019",
+    "name": "Dr. Fatima Dupont",
+    "specialty_tag": "pediatrie",
+    "experience_years": 22,
+    "profile_text": "Pédiatre avec 22 ans d'expérience. Suivi nourrissons, enfants et adolescents (0-18 ans). Maladies infantiles, vaccinations et urgences pédiatriques.",
+    "quota_max_per_hour": 8,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  },
+  {
+    "id": "pro_020",
+    "name": "Dr. Nicolas Michel",
+    "specialty_tag": "dermatologie",
+    "experience_years": 8,
+    "profile_text": "Dermatologue avec 8 ans d'expérience. Maladies de la peau, allergies cutanées, dermatoses. Téléconsultation adaptée aux diagnostics visuels.",
+    "quota_max_per_hour": 6,
+    "status": "AVAILABLE",
+    "consultations_today": 0,
+    "load": 0.0
+  }
+]
