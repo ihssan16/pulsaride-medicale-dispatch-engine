@@ -1,0 +1,13 @@
+{
+  "scenario_id": "load_ramp",
+  "scenario_name": "Montée en Charge",
+  "total_requests": 50,
+  "accepted": 8,
+  "refused": 1,
+  "failed": 41,
+  "service_rate_pct": 16.0,
+  "refusal_rate_pct": 2.0,
+  "failure_rate_pct": 82.0,
+  "avg_ttfa_ms": 1688.2,
+  "avg_ttr_ms": 25834.38
+}

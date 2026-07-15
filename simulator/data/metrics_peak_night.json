@@ -1,0 +1,13 @@
+{
+  "scenario_id": "peak_night",
+  "scenario_name": "Pic de Nuit",
+  "total_requests": 50,
+  "accepted": 2,
+  "refused": 0,
+  "failed": 48,
+  "service_rate_pct": 4.0,
+  "refusal_rate_pct": 0.0,
+  "failure_rate_pct": 96.0,
+  "avg_ttfa_ms": 1387.5,
+  "avg_ttr_ms": 29090.74
+}

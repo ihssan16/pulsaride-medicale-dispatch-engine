@@ -1,0 +1,80 @@
+[
+  {
+    "scenario_id": "nominal",
+    "scenario_name": "Scénario Nominal",
+    "total_requests": 20,
+    "accepted": 6,
+    "refused": 3,
+    "failed": 11,
+    "service_rate_pct": 30.0,
+    "refusal_rate_pct": 15.0,
+    "failure_rate_pct": 55.0,
+    "avg_ttfa_ms": 1693.4,
+    "avg_ttr_ms": 19237.1
+  },
+  {
+    "scenario_id": "peak_night",
+    "scenario_name": "Pic de Nuit",
+    "total_requests": 50,
+    "accepted": 2,
+    "refused": 0,
+    "failed": 48,
+    "service_rate_pct": 4.0,
+    "refusal_rate_pct": 0.0,
+    "failure_rate_pct": 96.0,
+    "avg_ttfa_ms": 1387.5,
+    "avg_ttr_ms": 29090.74
+  },
+  {
+    "scenario_id": "refusal_cascade",
+    "scenario_name": "Refus en Cascade",
+    "total_requests": 30,
+    "accepted": 4,
+    "refused": 4,
+    "failed": 22,
+    "service_rate_pct": 13.33,
+    "refusal_rate_pct": 13.33,
+    "failure_rate_pct": 73.33,
+    "avg_ttfa_ms": 1566.5,
+    "avg_ttr_ms": 25105.97
+  },
+  {
+    "scenario_id": "no_availability",
+    "scenario_name": "Aucune Disponibilité",
+    "total_requests": 10,
+    "accepted": 0,
+    "refused": 0,
+    "failed": 10,
+    "service_rate_pct": 0.0,
+    "refusal_rate_pct": 0.0,
+    "failure_rate_pct": 100.0,
+    "avg_ttfa_ms": 1009.8,
+    "avg_ttr_ms": 18004.9
+  },
+  {
+    "scenario_id": "load_ramp",
+    "scenario_name": "Montée en Charge",
+    "total_requests": 50,
+    "accepted": 8,
+    "refused": 1,
+    "failed": 41,
+    "service_rate_pct": 16.0,
+    "refusal_rate_pct": 2.0,
+    "failure_rate_pct": 82.0,
+    "avg_ttfa_ms": 1688.2,
+    "avg_ttr_ms": 25834.38
+  },
+  {
+    "scenario_id": "semantic_affinity",
+    "scenario_name": "Affinité Sémantique",
+    "total_requests": 20,
+    "accepted": 9,
+    "refused": 0,
+    "failed": 11,
+    "service_rate_pct": 45.0,
+    "refusal_rate_pct": 0.0,
+    "failure_rate_pct": 55.0,
+    "avg_ttfa_ms": 1575.6,
+    "avg_ttr_ms": 20158.3
+  }
+]

@@ -1,0 +1,391 @@
+{
+  "scenario_id": "nominal",
+  "scenario_name": "Scénario Nominal",
+  "seed": 42,
+  "run_at": "2026-07-15T10:18:56.420539",
+  "nb_requests": 20,
+  "results": [
+    {
+      "id": "8d5f6981-1209-4414-8cb2-75c449fb88ff",
+      "patient_id": "patient_001",
+      "patient_text": "Mon enfant de 5 ans a de la fièvre à 38.1°C depuis 6 jours.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "REFUSED",
+      "created_at": "2026-07-15T10:18:56.419570",
+      "proposed_at": "2026-07-15T10:18:58.518137",
+      "ttfa_ms": 2098,
+      "assigned_professional_id": "pro_001",
+      "failure_reason": "Professional refused",
+      "closed_at": "2026-07-15T10:19:02.718372",
+      "ttr_ms": 6298
+    },
+    {
+      "id": "8d09a7ba-2f96-44e3-9cf9-539acc6359a6",
+      "patient_id": "patient_002",
+      "patient_text": "Mon enfant de 10 ans se plaint d'une douleur à l'oreille depuis ce matin.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "CLOSED",
+      "created_at": "2026-07-15T10:18:59.419570",
+      "proposed_at": "2026-07-15T10:19:00.477597",
+      "ttfa_ms": 1058,
+      "assigned_professional_id": "pro_002",
+      "accepted_at": "2026-07-15T10:19:11.274690",
+      "closed_at": "2026-07-15T10:37:34.236301",
+      "ttr_ms": 11855
+    },
+    {
+      "id": "bca40148-d7f8-4b39-95bc-2715b76655de",
+      "patient_id": "patient_003",
+      "patient_text": "Mon bébé de 9 mois pleure beaucoup, il a le nez qui coule et tousse.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "CLOSED",
+      "created_at": "2026-07-15T10:19:02.419570",
+      "proposed_at": "2026-07-15T10:19:03.136917",
+      "ttfa_ms": 717,
+      "assigned_professional_id": "pro_003",
+      "accepted_at": "2026-07-15T10:19:05.524281",
+      "closed_at": "2026-07-15T10:27:22.298458",
+      "ttr_ms": 3104
+    },
+    {
+      "id": "37e082ce-c79c-401c-b8aa-04de73d1bbf6",
+      "patient_id": "patient_004",
+      "patient_text": "J'ai de l'eczéma qui s'aggrave depuis 2 semaines malgré la crème.",
+      "specialty_hint": "dermatologie",
+      "expected_symptoms": [
+        "plaques rouges",
+        "éruption cutanée",
+        "démangeaisons"
+      ],
+      "urgency_score": 0,
+      "status": "REFUSED",
+      "created_at": "2026-07-15T10:19:05.419570",
+      "proposed_at": "2026-07-15T10:19:07.182958",
+      "ttfa_ms": 1763,
+      "assigned_professional_id": "pro_004",
+      "failure_reason": "Professional refused",
+      "closed_at": "2026-07-15T10:19:10.773659",
+      "ttr_ms": 5354
+    },
+    {
+      "id": "799dd794-0bd4-4998-a25c-2b5ac41bc663",
+      "patient_id": "patient_005",
+      "patient_text": "J'ai des essoufflements à l'effort depuis 3 semaines.",
+      "specialty_hint": "cardiologie",
+      "expected_symptoms": [
+        "palpitations",
+        "douleur poitrine",
+        "essoufflement"
+      ],
+      "urgency_score": 3,
+      "status": "CLOSED",
+      "created_at": "2026-07-15T10:19:08.419570",
+      "proposed_at": "2026-07-15T10:19:10.544281",
+      "ttfa_ms": 2124,
+      "assigned_professional_id": "pro_005",
+      "accepted_at": "2026-07-15T10:19:15.410009",
+      "closed_at": "2026-07-15T10:33:05.749124",
+      "ttr_ms": 6990
+    },
+    {
+      "id": "4b0105cc-4b23-4e17-838a-57865118d1f9",
+      "patient_id": "patient_006",
+      "patient_text": "Mon enfant de 2 ans a de la fièvre à 38.4°C depuis 4 jours.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "REFUSED",
+      "created_at": "2026-07-15T10:19:11.419570",
+      "proposed_at": "2026-07-15T10:19:13.943146",
+      "ttfa_ms": 2523,
+      "assigned_professional_id": "pro_006",
+      "failure_reason": "Professional refused",
+      "closed_at": "2026-07-15T10:19:22.389700",
+      "ttr_ms": 10970
+    },
+    {
+      "id": "24630700-f14a-4455-bed7-d0501477eb2d",
+      "patient_id": "patient_007",
+      "patient_text": "Je me sens très anxieux depuis 6 semaines, j'ai du mal à dormir.",
+      "specialty_hint": "psychiatrie",
+      "expected_symptoms": [
+        "anxiété",
+        "dépression",
+        "insomnie",
+        "stress"
+      ],
+      "urgency_score": 2,
+      "status": "CLOSED",
+      "created_at": "2026-07-15T10:19:14.419570",
+      "proposed_at": "2026-07-15T10:19:16.664918",
+      "ttfa_ms": 2245,
+      "assigned_professional_id": "pro_007",
+      "accepted_at": "2026-07-15T10:19:20.686151",
+      "closed_at": "2026-07-15T10:38:42.177916",
+      "ttr_ms": 6266
+    },
+    {
+      "id": "e6865cf8-cb9a-472f-87a5-47d57b59ead0",
+      "patient_id": "patient_008",
+      "patient_text": "Mon enfant de 14 ans se plaint d'une douleur à l'oreille depuis ce matin.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:17.419570",
+      "proposed_at": "2026-07-15T10:19:18.761056",
+      "ttfa_ms": 1341,
+      "assigned_professional_id": "pro_008",
+      "failure_reason": "Professional disconnected",
+      "closed_at": "2026-07-15T10:19:23.761056",
+      "ttr_ms": 6341
+    },
+    {
+      "id": "6d984df5-7a8f-4e48-8e03-6fb0bdd37072",
+      "patient_id": "patient_009",
+      "patient_text": "J'ai des plaques rouges qui démangent sur les bras depuis 1 jours.",
+      "specialty_hint": "dermatologie",
+      "expected_symptoms": [
+        "plaques rouges",
+        "éruption cutanée",
+        "démangeaisons"
+      ],
+      "urgency_score": 0,
+      "status": "CLOSED",
+      "created_at": "2026-07-15T10:19:20.419570",
+      "proposed_at": "2026-07-15T10:19:21.161361",
+      "ttfa_ms": 741,
+      "assigned_professional_id": "pro_009",
+      "accepted_at": "2026-07-15T10:19:31.009799",
+      "closed_at": "2026-07-15T10:36:37.425245",
+      "ttr_ms": 10590
+    },
+    {
+      "id": "6afe30a5-f2a6-4c5d-8c26-aecf3ed369bd",
+      "patient_id": "patient_010",
+      "patient_text": "Mon bébé de 2 mois pleure beaucoup, il a le nez qui coule et tousse.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "CLOSED",
+      "created_at": "2026-07-15T10:19:23.419570",
+      "proposed_at": "2026-07-15T10:19:25.743899",
+      "ttfa_ms": 2324,
+      "assigned_professional_id": "pro_010",
+      "accepted_at": "2026-07-15T10:19:40.394404",
+      "closed_at": "2026-07-15T10:30:21.075343",
+      "ttr_ms": 16974
+    },
+    {
+      "id": "dba17f15-fd79-47c2-80a5-88862e1c3416",
+      "patient_id": "patient_011",
+      "patient_text": "J'ai des saignements inhabituels, je voudrais un avis médical.",
+      "specialty_hint": "gynecologie",
+      "expected_symptoms": [
+        "douleurs abdominales",
+        "saignements"
+      ],
+      "urgency_score": 1,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:26.419570",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:19:56.419570",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "a92c7cfd-1a72-4bed-937f-24a202204f63",
+      "patient_id": "patient_012",
+      "patient_text": "Mon enfant de 3 ans se plaint d'une douleur à l'oreille depuis ce matin.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:29.419570",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:19:59.419570",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "20a2f099-9364-4d09-963a-bbfef7f51879",
+      "patient_id": "patient_013",
+      "patient_text": "J'ai des essoufflements à l'effort depuis 4 semaines.",
+      "specialty_hint": "cardiologie",
+      "expected_symptoms": [
+        "palpitations",
+        "douleur poitrine",
+        "essoufflement"
+      ],
+      "urgency_score": 3,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:32.419570",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:20:02.419570",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "b8c8fae8-cdad-43f2-a6bc-65f8756f1af9",
+      "patient_id": "patient_014",
+      "patient_text": "J'ai un grain de beauté qui a changé de forme et de couleur récemment.",
+      "specialty_hint": "dermatologie",
+      "expected_symptoms": [
+        "plaques rouges",
+        "éruption cutanée",
+        "démangeaisons"
+      ],
+      "urgency_score": 0,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:35.419570",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:20:05.419570",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "d73ba77b-37de-4459-8544-0719243f2da0",
+      "patient_id": "patient_015",
+      "patient_text": "J'ai des maux de tête intenses depuis 4 jours, je me sens épuisé.",
+      "specialty_hint": "generaliste",
+      "expected_symptoms": [
+        "fièvre",
+        "toux",
+        "fatigue",
+        "maux de tête"
+      ],
+      "urgency_score": 1,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:38.419570",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:20:08.419570",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "ed72f3d9-6691-45df-a6d9-b9eba56d8b86",
+      "patient_id": "patient_016",
+      "patient_text": "J'ai de l'eczéma qui s'aggrave depuis 4 semaines malgré la crème.",
+      "specialty_hint": "dermatologie",
+      "expected_symptoms": [
+        "plaques rouges",
+        "éruption cutanée",
+        "démangeaisons"
+      ],
+      "urgency_score": 0,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:41.419570",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:20:11.419570",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "ff835ec5-9b73-482b-8f1e-b88a17b4d824",
+      "patient_id": "patient_017",
+      "patient_text": "J'ai une tension artérielle élevée, je prends des médicaments mais je me sens mal.",
+      "specialty_hint": "cardiologie",
+      "expected_symptoms": [
+        "palpitations",
+        "douleur poitrine",
+        "essoufflement"
+      ],
+      "urgency_score": 3,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:44.419570",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:20:14.419570",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "11617ef2-6511-4e68-8ab8-a6e3470d3244",
+      "patient_id": "patient_018",
+      "patient_text": "Je me sens très stressé, j'ai besoin d'aide pour gérer mon anxiété.",
+      "specialty_hint": "psychiatrie",
+      "expected_symptoms": [
+        "anxiété",
+        "dépression",
+        "insomnie",
+        "stress"
+      ],
+      "urgency_score": 2,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:47.419570",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:20:17.419570",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "33e1155d-9efb-42d1-93d1-7702a9be54b3",
+      "patient_id": "patient_019",
+      "patient_text": "J'ai les yeux rouges et irrités depuis 7 jours avec des sécrétions.",
+      "specialty_hint": "ophtalmologie",
+      "expected_symptoms": [
+        "yeux rouges",
+        "douleur oeil",
+        "vision floue"
+      ],
+      "urgency_score": 1,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:50.419570",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:20:20.419570",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "875ece6a-8f84-43aa-bce6-d13382a7e3d1",
+      "patient_id": "patient_020",
+      "patient_text": "J'ai des essoufflements à l'effort depuis 5 semaines.",
+      "specialty_hint": "cardiologie",
+      "expected_symptoms": [
+        "palpitations",
+        "douleur poitrine",
+        "essoufflement"
+      ],
+      "urgency_score": 3,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:53.419570",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:20:23.419570",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "scenario_id": "refusal_cascade",
+  "scenario_name": "Refus en Cascade",
+  "total_requests": 30,
+  "accepted": 4,
+  "refused": 4,
+  "failed": 22,
+  "service_rate_pct": 13.33,
+  "refusal_rate_pct": 13.33,
+  "failure_rate_pct": 73.33,
+  "avg_ttfa_ms": 1566.5,
+  "avg_ttr_ms": 25105.97
+}

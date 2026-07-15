@@ -1,0 +1,200 @@
+{
+  "scenario_id": "no_availability",
+  "scenario_name": "Aucune Disponibilité",
+  "seed": 45,
+  "run_at": "2026-07-15T10:18:56.442655",
+  "nb_requests": 10,
+  "results": [
+    {
+      "id": "8d5f6981-1209-4414-8cb2-75c449fb88ff",
+      "patient_id": "patient_001",
+      "patient_text": "Mon enfant de 5 ans a de la fièvre à 38.1°C depuis 6 jours.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:18:56.442258",
+      "proposed_at": "2026-07-15T10:18:57.621947",
+      "ttfa_ms": 1179,
+      "assigned_professional_id": "pro_001",
+      "failure_reason": "Professional disconnected",
+      "closed_at": "2026-07-15T10:19:02.621947",
+      "ttr_ms": 6179
+    },
+    {
+      "id": "8d09a7ba-2f96-44e3-9cf9-539acc6359a6",
+      "patient_id": "patient_002",
+      "patient_text": "Mon enfant de 10 ans se plaint d'une douleur à l'oreille depuis ce matin.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:18:59.442258",
+      "proposed_at": "2026-07-15T10:19:00.146956",
+      "ttfa_ms": 704,
+      "assigned_professional_id": "pro_002",
+      "failure_reason": "Professional disconnected",
+      "closed_at": "2026-07-15T10:19:05.146956",
+      "ttr_ms": 5704
+    },
+    {
+      "id": "bca40148-d7f8-4b39-95bc-2715b76655de",
+      "patient_id": "patient_003",
+      "patient_text": "Mon bébé de 9 mois pleure beaucoup, il a le nez qui coule et tousse.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:02.442258",
+      "proposed_at": "2026-07-15T10:19:03.123092",
+      "ttfa_ms": 680,
+      "assigned_professional_id": "pro_003",
+      "failure_reason": "Professional disconnected",
+      "closed_at": "2026-07-15T10:19:08.123092",
+      "ttr_ms": 5680
+    },
+    {
+      "id": "37e082ce-c79c-401c-b8aa-04de73d1bbf6",
+      "patient_id": "patient_004",
+      "patient_text": "J'ai de l'eczéma qui s'aggrave depuis 2 semaines malgré la crème.",
+      "specialty_hint": "dermatologie",
+      "expected_symptoms": [
+        "plaques rouges",
+        "éruption cutanée",
+        "démangeaisons"
+      ],
+      "urgency_score": 0,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:05.442258",
+      "proposed_at": "2026-07-15T10:19:06.651884",
+      "ttfa_ms": 1209,
+      "assigned_professional_id": "pro_004",
+      "failure_reason": "Professional disconnected",
+      "closed_at": "2026-07-15T10:19:11.651884",
+      "ttr_ms": 6209
+    },
+    {
+      "id": "799dd794-0bd4-4998-a25c-2b5ac41bc663",
+      "patient_id": "patient_005",
+      "patient_text": "J'ai des essoufflements à l'effort depuis 3 semaines.",
+      "specialty_hint": "cardiologie",
+      "expected_symptoms": [
+        "palpitations",
+        "douleur poitrine",
+        "essoufflement"
+      ],
+      "urgency_score": 3,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:08.442258",
+      "proposed_at": "2026-07-15T10:19:09.719854",
+      "ttfa_ms": 1277,
+      "assigned_professional_id": "pro_005",
+      "failure_reason": "Professional disconnected",
+      "closed_at": "2026-07-15T10:19:14.719854",
+      "ttr_ms": 6277
+    },
+    {
+      "id": "4b0105cc-4b23-4e17-838a-57865118d1f9",
+      "patient_id": "patient_006",
+      "patient_text": "Mon enfant de 2 ans a de la fièvre à 38.4°C depuis 4 jours.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:11.442258",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:19:41.442258",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "24630700-f14a-4455-bed7-d0501477eb2d",
+      "patient_id": "patient_007",
+      "patient_text": "Je me sens très anxieux depuis 6 semaines, j'ai du mal à dormir.",
+      "specialty_hint": "psychiatrie",
+      "expected_symptoms": [
+        "anxiété",
+        "dépression",
+        "insomnie",
+        "stress"
+      ],
+      "urgency_score": 2,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:14.442258",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:19:44.442258",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "e6865cf8-cb9a-472f-87a5-47d57b59ead0",
+      "patient_id": "patient_008",
+      "patient_text": "Mon enfant de 14 ans se plaint d'une douleur à l'oreille depuis ce matin.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:17.442258",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:19:47.442258",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "6d984df5-7a8f-4e48-8e03-6fb0bdd37072",
+      "patient_id": "patient_009",
+      "patient_text": "J'ai des plaques rouges qui démangent sur les bras depuis 1 jours.",
+      "specialty_hint": "dermatologie",
+      "expected_symptoms": [
+        "plaques rouges",
+        "éruption cutanée",
+        "démangeaisons"
+      ],
+      "urgency_score": 0,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:20.442258",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:19:50.442258",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    },
+    {
+      "id": "6afe30a5-f2a6-4c5d-8c26-aecf3ed369bd",
+      "patient_id": "patient_010",
+      "patient_text": "Mon bébé de 2 mois pleure beaucoup, il a le nez qui coule et tousse.",
+      "specialty_hint": "pediatrie",
+      "expected_symptoms": [
+        "fièvre enfant",
+        "toux enfant",
+        "éruption cutanée enfant"
+      ],
+      "urgency_score": 2,
+      "status": "FAILED",
+      "created_at": "2026-07-15T10:19:23.442258",
+      "failure_reason": "No professional available",
+      "closed_at": "2026-07-15T10:19:53.442258",
+      "ttfa_ms": null,
+      "ttr_ms": 30000
+    }
+  ]
+}

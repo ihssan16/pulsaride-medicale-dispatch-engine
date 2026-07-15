@@ -1,0 +1,13 @@
+{
+  "scenario_id": "nominal",
+  "scenario_name": "Scénario Nominal",
+  "total_requests": 20,
+  "accepted": 6,
+  "refused": 3,
+  "failed": 11,
+  "service_rate_pct": 30.0,
+  "refusal_rate_pct": 15.0,
+  "failure_rate_pct": 55.0,
+  "avg_ttfa_ms": 1693.4,
+  "avg_ttr_ms": 19237.1
+}

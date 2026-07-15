@@ -1,0 +1,13 @@
+{
+  "scenario_id": "semantic_affinity",
+  "scenario_name": "Affinité Sémantique",
+  "total_requests": 20,
+  "accepted": 9,
+  "refused": 0,
+  "failed": 11,
+  "service_rate_pct": 45.0,
+  "refusal_rate_pct": 0.0,
+  "failure_rate_pct": 55.0,
+  "avg_ttfa_ms": 1575.6,
+  "avg_ttr_ms": 20158.3
+}

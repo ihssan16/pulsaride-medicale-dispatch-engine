@@ -1,0 +1,13 @@
+{
+  "scenario_id": "no_availability",
+  "scenario_name": "Aucune Disponibilité",
+  "total_requests": 10,
+  "accepted": 0,
+  "refused": 0,
+  "failed": 10,
+  "service_rate_pct": 0.0,
+  "refusal_rate_pct": 0.0,
+  "failure_rate_pct": 100.0,
+  "avg_ttfa_ms": 1009.8,
+  "avg_ttr_ms": 18004.9
+}
