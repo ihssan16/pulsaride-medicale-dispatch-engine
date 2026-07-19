@@ -92,6 +92,8 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 - `POST /professionals`
 - `GET /professionals`
 - `PUT /professionals/{id}/status`
+- `GET /availability` — synthèse temps réel des professionnels par statut et spécialité
+- `GET /availability/specialties/{specialtyTag}` — disponibilité filtrée pour une spécialité
 - `POST /dispatch/next?strategy=S1` — dispatche la prochaine demande `PENDING` par priorité (`urgencyScore` décroissant, puis ancienneté)
 - `POST /dispatch/{requestId}?strategy=S1`
 - `POST /dispatch/{requestId}?strategy=S2`
@@ -107,6 +109,27 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 - `POST /ai/triage`
 
 Les chemins historiques `/api/dispatch-requests` et `/api/professionals` restent aussi disponibles.
+Les chemins `/api/availability` et `/api/availability/specialties/{specialtyTag}` sont également exposés pour rester cohérents avec les anciens endpoints préfixés.
+
+## Service de disponibilité
+
+Le service de disponibilité expose l'état du pool de professionnels utilisé par le moteur de dispatch :
+- `AVAILABLE` : peut recevoir une proposition.
+- `PROPOSED` : une demande est proposée, en attente d'acceptation/refus/timeout.
+- `BUSY` : la demande est acceptée, consultation en cours.
+- `BREAK` : indisponible après refus ou timeout.
+- `OFFLINE` : indisponible manuellement.
+
+Exemples rapides :
+```bash
+curl http://localhost:8080/availability
+curl http://localhost:8080/availability/specialties/cardiologie
+curl -X PUT http://localhost:8080/professionals/pro_demo/status \
+  -H "Content-Type: application/json" \
+  -d '{ "status": "OFFLINE" }'
+```
+
+Le dispatch ne sélectionne que les professionnels `AVAILABLE`. Après `accept`, le professionnel passe `BUSY`; après `close`, il redevient `AVAILABLE`. Après `refuse` ou `timeout`, il passe `BREAK` et la demande revient en file `PENDING`.
 
 ## Démo cycle de vie V1
 ```bash
@@ -140,26 +163,29 @@ curl -X POST "http://localhost:8080/dispatch/next?strategy=S3"
 
 ## Évaluation — Comparaison des stratégies de dispatch
 
-Le simulateur Python connecté à l'API a permis de comparer les 4 stratégies
-sur 20 demandes réelles avec 20 professionnels simulés (seed fixe = 42).
+Le simulateur Python connecté à l'API compare les 4 stratégies sur 20 demandes
+avec 20 professionnels simulés (seed fixe = 42). Les chiffres ci-dessous viennent
+du cycle V1 actuel : file prioritaire, refus remis en file, et métriques lues
+depuis l'API Spring Boot.
 
 | Stratégie | Service rate | TTFA (ms) | TTR (ms) | Gini |
 |-----------|-------------|-----------|----------|------|
-| S1 — First Available | 34.15% | 13 944 | 9 919 | 0.25 |
-| S2 — Tag Exact | 41.30% | 11 394 | 8 230 | 0.33 |
-| S3 — Score Composite | 26.39% | 18 771 | 12 937 | **0.10** ✅ |
-| S4 — Lexical IA | **46.08%** | **9 842** | **7 350** | 0.25 |
+| S1 — First Available | **100.0%** | **2 341** | **2 409** | **0.18** |
+| S2 — Tag Exact | 90.0% | 2 355 | 2 422 | 0.43 |
+| S3 — Score Composite | **100.0%** | 2 366 | 2 434 | 0.27 |
+| S4 — Lexical IA | **100.0%** | 2 408 | 2 480 | 0.26 |
 
-- **S4 recommandée** pour la performance globale (+12% service rate vs S1)
-- **S3 recommandée** pour l'équité de charge (Gini 0.10 < cible 0.15 ✅)
+- **S1, S3 et S4** atteignent 100% de service rate sur le scénario nominal V1.
+- **S2** expose volontairement la limite du matching exact : si la spécialité demandée n'a plus de professionnel `AVAILABLE`, certaines demandes échouent même si le pool global a encore de la capacité.
 
 Graphiques et rapport complet disponibles dans `docs/evaluation/`.
 
 Scripts d'évaluation :
 ```bash
 cd evaluator
-python3 comparison_report.py   # rapport textuel comparatif
-python3 generate_charts.py     # graphiques bar chart + radar chart
+python3 run_priority_api_evaluation.py  # métriques live API + bar chart + radar chart
+python3 comparison_report.py            # rapport textuel historique
+python3 generate_charts.py              # graphiques historiques
 ```
 
 ## Équipe

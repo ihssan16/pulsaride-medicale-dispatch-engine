@@ -41,6 +41,49 @@ Request body:
 { "status": "AVAILABLE" }
 ```
 
+## Availability
+
+`GET /availability`
+
+Returns a live read model of the professional pool used by dispatch.
+
+Response shape:
+```json
+{
+  "totalProfessionals": 3,
+  "availableProfessionals": 2,
+  "proposedProfessionals": 0,
+  "busyProfessionals": 1,
+  "breakProfessionals": 0,
+  "offlineProfessionals": 0,
+  "availabilityRatePct": 66.67,
+  "availableCapacity": 12,
+  "specialties": [
+    {
+      "specialtyTag": "cardiologie",
+      "totalProfessionals": 2,
+      "availableProfessionals": 1,
+      "proposedProfessionals": 0,
+      "busyProfessionals": 1,
+      "breakProfessionals": 0,
+      "offlineProfessionals": 0,
+      "availabilityRatePct": 50.0,
+      "availableCapacity": 6,
+      "averageLoad": 0.08,
+      "availableProfessionalIds": ["pro_cardio_2"]
+    }
+  ]
+}
+```
+
+`GET /availability/specialties/{specialtyTag}`
+
+Returns the same availability counters for one specialty tag. The endpoint is case-insensitive for lookup and keeps the requested tag in the response when no professionals exist.
+
+Historical aliases:
+- `GET /api/availability`
+- `GET /api/availability/specialties/{specialtyTag}`
+
 ## Dispatch Requests
 
 `POST /requests`

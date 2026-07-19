@@ -6,6 +6,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.reset;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -169,6 +170,66 @@ class DispatchApiIntegrationTests {
                 .andExpect(jsonPath("$.urgencyScore").value(3))
                 .andExpect(jsonPath("$.status").value("PROPOSED"))
                 .andExpect(jsonPath("$.assignedProfessionalId").value("api_pro_priority"));
+    }
+
+    @Test
+    void availabilityEndpointsReflectProfessionalLifecycle() throws Exception {
+        createProfessional("api_pro_cardio_1", "cardiologie");
+        createProfessional("api_pro_cardio_2", "cardiologie");
+        createProfessional("api_pro_er", "urgence");
+        String requestId = createRequest("api_patient_availability", "cardiologie");
+
+        mockMvc.perform(get("/availability"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalProfessionals").value(3))
+                .andExpect(jsonPath("$.availableProfessionals").value(3))
+                .andExpect(jsonPath("$.availableCapacity").value(18))
+                .andExpect(jsonPath("$.specialties[0].specialtyTag").value("cardiologie"))
+                .andExpect(jsonPath("$.specialties[0].availableProfessionals").value(2));
+
+        mockMvc.perform(put("/professionals/{id}/status", "api_pro_er")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                { "status": "OFFLINE" }
+                                """))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("OFFLINE"));
+
+        mockMvc.perform(get("/api/availability/specialties/urgence"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalProfessionals").value(1))
+                .andExpect(jsonPath("$.offlineProfessionals").value(1))
+                .andExpect(jsonPath("$.availableCapacity").value(0));
+
+        mockMvc.perform(post("/dispatch/{requestId}", requestId)
+                        .queryParam("strategy", "S2"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("PROPOSED"));
+
+        mockMvc.perform(get("/availability/specialties/cardiologie"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalProfessionals").value(2))
+                .andExpect(jsonPath("$.availableProfessionals").value(1))
+                .andExpect(jsonPath("$.proposedProfessionals").value(1))
+                .andExpect(jsonPath("$.availableProfessionalIds", hasSize(1)));
+
+        mockMvc.perform(post("/dispatch/{requestId}/accept", requestId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("ACCEPTED"));
+
+        mockMvc.perform(get("/availability/specialties/cardiologie"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.availableProfessionals").value(1))
+                .andExpect(jsonPath("$.busyProfessionals").value(1));
+
+        mockMvc.perform(post("/dispatch/{requestId}/close", requestId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("CLOSED"));
+
+        mockMvc.perform(get("/availability/specialties/cardiologie"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.availableProfessionals").value(2))
+                .andExpect(jsonPath("$.busyProfessionals").value(0));
     }
 
     @Test

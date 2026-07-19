@@ -2,7 +2,7 @@
 
 ## Components
 
-- Spring Boot API: exposes dispatch endpoints and persistence-backed state.
+- Spring Boot API: exposes dispatch, availability, and persistence-backed state endpoints.
 - PostgreSQL: stores professionals and dispatch requests.
 - Redis: available for real-time coordination and future queue/session features.
 - Python simulator: generates professionals, patient requests, scenarios, run traces, and metrics.
