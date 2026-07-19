@@ -24,6 +24,7 @@ pulsaride-medical-dispatch-engine/
 ```
 
 ## Démarrage rapide
+
 ### Prérequis
 - Java 21
 - Maven 3.9+
@@ -57,8 +58,8 @@ cd ..
 docker compose up --build
 ```
 
-# Vérifier les conteneurs
 ```bash
+# Vérifier les conteneurs
 docker compose ps
 ```
 
@@ -91,6 +92,7 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 - `POST /professionals`
 - `GET /professionals`
 - `PUT /professionals/{id}/status`
+- `POST /dispatch/next?strategy=S1` — dispatche la prochaine demande `PENDING` par priorité (`urgencyScore` décroissant, puis ancienneté)
 - `POST /dispatch/{requestId}?strategy=S1`
 - `POST /dispatch/{requestId}?strategy=S2`
 - `POST /dispatch/{requestId}?strategy=S3`
@@ -131,9 +133,38 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}/refuse"
 curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}/timeout"
 ```
 
+Pour traiter la file par priorité au lieu de choisir manuellement un ID :
+```bash
+curl -X POST "http://localhost:8080/dispatch/next?strategy=S3"
+```
+
+## Évaluation — Comparaison des stratégies de dispatch
+
+Le simulateur Python connecté à l'API a permis de comparer les 4 stratégies
+sur 20 demandes réelles avec 20 professionnels simulés (seed fixe = 42).
+
+| Stratégie | Service rate | TTFA (ms) | TTR (ms) | Gini |
+|-----------|-------------|-----------|----------|------|
+| S1 — First Available | 34.15% | 13 944 | 9 919 | 0.25 |
+| S2 — Tag Exact | 41.30% | 11 394 | 8 230 | 0.33 |
+| S3 — Score Composite | 26.39% | 18 771 | 12 937 | **0.10** ✅ |
+| S4 — Lexical IA | **46.08%** | **9 842** | **7 350** | 0.25 |
+
+- **S4 recommandée** pour la performance globale (+12% service rate vs S1)
+- **S3 recommandée** pour l'équité de charge (Gini 0.10 < cible 0.15 ✅)
+
+Graphiques et rapport complet disponibles dans `docs/evaluation/`.
+
+Scripts d'évaluation :
+```bash
+cd evaluator
+python3 comparison_report.py   # rapport textuel comparatif
+python3 generate_charts.py     # graphiques bar chart + radar chart
+```
+
 ## Équipe
-- Salmane Sossey 
-- Ihssan Ben Labsir 
+- Salmane Sossey
+- Ihssan Ben Labsir
 
 ## Encadrant
 M. Lyazid Salihi — Pulsaride Solutions

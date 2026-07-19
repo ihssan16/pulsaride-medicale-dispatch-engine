@@ -1,0 +1,43 @@
+
+=======================================================
+PULSARIDE — RAPPORT COMPARATIF DES STRATÉGIES
+=======================================================
+
+Stratégie          | Service% | TTFA(ms)  | TTR(ms)   | Gini
+-------------------|----------|-----------|-----------|------
+S1 First Available | 34.15%   | 13944 ms  | 9919 ms   | 0.25
+S2 Tag Exact       | 41.30%   | 11394 ms  | 8230 ms   | 0.33
+S3 Score Composite | 26.39%   | 18771 ms  | 12937 ms  | 0.10
+S4 Lexical IA      | 46.08%   |  9842 ms  | 7350 ms   | 0.25
+
+=======================================================
+ANALYSE
+=======================================================
+
+1. MEILLEURE PERFORMANCE GLOBALE : S4 - Lexical IA
+   - Service rate le plus élevé : 46.08%
+   - TTFA le plus rapide : 9842 ms
+   - TTR le plus rapide : 7350 ms
+   - Le matching lexical améliore significativement la qualité
+
+2. MEILLEURE ÉQUITÉ : S3 - Score Composite
+   - Gini le plus bas : 0.10 (excellent < 0.15)
+   - Meilleure répartition de charge entre professionnels
+   - Mais service rate plus faible car plus sélectif
+
+3. S2 vs S1 :
+   - S2 améliore S1 de +7% en service rate
+   - Le tag exact apporte une valeur réelle
+   - Mais Gini dégradé (0.33) = charge déséquilibrée
+
+4. RECOMMANDATION :
+   - Production : S4 pour la performance
+   - Équité prioritaire : S3
+   - MVP simple : S1 ou S2
+
+=======================================================
+CONCLUSION
+=======================================================
+S4 est la meilleure stratégie globale.
+S3 est la meilleure pour l'équité de charge.
+La couche lexicale (S4) apporte +12% vs S1 simple.

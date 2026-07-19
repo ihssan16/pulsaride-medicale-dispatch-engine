@@ -1,0 +1,17 @@
+{
+  "totalRequests": 92,
+  "pendingRequests": 54,
+  "proposedRequests": 0,
+  "acceptedRequests": 0,
+  "closedRequests": 38,
+  "failedRequests": 0,
+  "totalAssignments": 42,
+  "refusedAssignments": 3,
+  "timedOutAssignments": 1,
+  "serviceRatePct": 41.3,
+  "refusalRatePct": 7.14,
+  "timeoutRatePct": 2.38,
+  "avgTtfaMs": 11394.88,
+  "avgTtrMs": 8230.61,
+  "giniFairness": 0.33
+}

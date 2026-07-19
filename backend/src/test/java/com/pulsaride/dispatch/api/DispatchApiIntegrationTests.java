@@ -156,6 +156,22 @@ class DispatchApiIntegrationTests {
     }
 
     @Test
+    void dispatchNextEndpointUsesUrgencyPriority() throws Exception {
+        createProfessional("api_pro_priority", "cardiologie");
+        createRequest("api_patient_low_priority", "cardiologie", 0);
+        String highPriorityRequestId = createRequest("api_patient_high_priority", "cardiologie", 3);
+
+        mockMvc.perform(post("/dispatch/next")
+                        .queryParam("strategy", "S2"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(highPriorityRequestId))
+                .andExpect(jsonPath("$.patientId").value("api_patient_high_priority"))
+                .andExpect(jsonPath("$.urgencyScore").value(3))
+                .andExpect(jsonPath("$.status").value("PROPOSED"))
+                .andExpect(jsonPath("$.assignedProfessionalId").value("api_pro_priority"));
+    }
+
+    @Test
     void invalidRequestPayloadReturnsBadRequest() throws Exception {
         mockMvc.perform(post("/requests")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -190,13 +206,17 @@ class DispatchApiIntegrationTests {
     }
 
     private String createRequest(String patientId, String specialtyHint) throws Exception {
+        return createRequest(patientId, specialtyHint, 2);
+    }
+
+    private String createRequest(String patientId, String specialtyHint, int urgencyScore) throws Exception {
         String response = mockMvc.perform(post("/requests")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(new CreateDispatchRequest(
                                 patientId,
                                 "Patient avec symptomes " + specialtyHint,
                                 specialtyHint,
-                                2
+                                urgencyScore
                         ))))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.status").value("PENDING"))

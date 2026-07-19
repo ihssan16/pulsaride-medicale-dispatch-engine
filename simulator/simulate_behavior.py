@@ -1,6 +1,6 @@
 """
 Simulator: Behavior Simulation (refusals, timeouts, disconnections)
-Epic 2 — Story 2.2
+Epic 2 — Story 2.4
 """
 
 import json

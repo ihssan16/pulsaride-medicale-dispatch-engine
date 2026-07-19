@@ -80,6 +80,13 @@ public class DispatchService {
     }
 
     @Transactional
+    public DispatchRequest dispatchNext(DispatchStrategy strategy) {
+        DispatchRequest next = requestRepository.findFirstByStatusOrderByUrgencyScoreDescCreatedAtAsc(RequestStatus.PENDING)
+                .orElseThrow(() -> new EntityNotFoundException("No pending request available"));
+        return dispatch(next.getId(), strategy);
+    }
+
+    @Transactional
     public DispatchRequest dispatch(String requestId, DispatchStrategy strategy) {
         DispatchRequest request = requestRepository.findById(requestId)
                 .orElseThrow(() -> new EntityNotFoundException("Request not found: " + requestId));

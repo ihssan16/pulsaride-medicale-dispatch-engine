@@ -17,6 +17,11 @@ public class BriefDispatchController {
         this.service = service;
     }
 
+    @PostMapping("/next")
+    public DispatchRequestResponse dispatchNext(@RequestParam(defaultValue = "S1") DispatchStrategy strategy) {
+        return DispatchRequestResponse.from(service.dispatchNext(strategy));
+    }
+
     @PostMapping("/{requestId}")
     public DispatchRequestResponse dispatch(
             @PathVariable String requestId,

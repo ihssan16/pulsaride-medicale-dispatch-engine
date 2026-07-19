@@ -39,6 +39,11 @@ public class DispatchController {
         return DispatchRequestResponse.from(service.createAndDispatch(command));
     }
 
+    @PostMapping("/next")
+    public DispatchRequestResponse dispatchNext(@RequestParam(defaultValue = "S3") DispatchStrategy strategy) {
+        return DispatchRequestResponse.from(service.dispatchNext(strategy));
+    }
+
     @PostMapping("/{id}/dispatch")
     public DispatchRequestResponse dispatch(
             @PathVariable String id,

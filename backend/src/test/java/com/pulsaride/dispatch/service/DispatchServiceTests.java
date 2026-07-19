@@ -187,6 +187,23 @@ class DispatchServiceTests {
     }
 
     @Test
+    void dispatchNextChoosesHighestUrgencyBeforeOlderLowPriorityRequests() {
+        professionalRepository.save(professional("pro_priority", "cardiologie", ProfessionalStatus.AVAILABLE));
+        var lowPriority = dispatchService.create(command("patient_low_priority", "cardiologie", 0));
+        var highPriority = dispatchService.create(command("patient_high_priority", "cardiologie", 3));
+
+        var dispatched = dispatchService.dispatchNext(DispatchStrategy.S2);
+
+        assertThat(dispatched.getId()).isEqualTo(highPriority.getId());
+        assertThat(dispatched.getStatus()).isEqualTo(RequestStatus.PROPOSED);
+        assertThat(dispatched.getAssignedProfessional().getId()).isEqualTo("pro_priority");
+        assertThat(assignmentRepository.findByRequestIdOrderByProposedAtDesc(dispatched.getId()))
+                .singleElement()
+                .satisfies(assignment -> assertThat(assignment.getOutcome()).isEqualTo(AssignmentOutcome.PROPOSED));
+        assertThat(assignmentRepository.findByRequestIdOrderByProposedAtDesc(lowPriority.getId())).isEmpty();
+    }
+
+    @Test
     void metricsSummarizeServiceRefusalTimeoutAndFairness() {
         professionalRepository.saveAll(List.of(
                 professional("pro_closed", "urgence", ProfessionalStatus.AVAILABLE),
@@ -222,11 +239,15 @@ class DispatchServiceTests {
     }
 
     private CreateDispatchRequest command(String patientId, String specialtyHint) {
+        return command(patientId, specialtyHint, 2);
+    }
+
+    private CreateDispatchRequest command(String patientId, String specialtyHint, int urgencyScore) {
         return new CreateDispatchRequest(
                 patientId,
                 "Patient avec symptomes compatibles " + specialtyHint,
                 specialtyHint,
-                2
+                urgencyScore
         );
     }
 

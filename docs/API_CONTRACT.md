@@ -61,6 +61,16 @@ Creates a pending request and writes it to the Redis priority queue when Redis i
 
 Returns one request.
 
+`POST /dispatch/next?strategy=S1`
+
+Dispatches the highest-priority pending request.
+
+Priority order:
+- higher `urgencyScore`
+- older `createdAt` when urgency is tied
+
+This is the queue-driven path used by API simulations so urgency changes processing order.
+
 `POST /dispatch/{id}?strategy=S1`
 
 Attempts dispatch for an existing pending request.
