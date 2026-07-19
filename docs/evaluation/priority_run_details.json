@@ -1,0 +1,782 @@
+{
+  "S1": {
+    "strategy": "S1",
+    "created": 20,
+    "attempts": 23,
+    "proposals": 23,
+    "accepted": 20,
+    "refused": 3,
+    "failedDispatchCalls": 0,
+    "noProfessional": 0,
+    "events": [
+      {
+        "attempt": 1,
+        "requestId": "be6948c3-6687-4670-a3cb-4126bac9f2b1",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_018",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 2,
+        "requestId": "42f3c4b3-7d2c-487d-a772-eb139dfb96b1",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_014",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 3,
+        "requestId": "ed4a3bc4-173d-4b1e-8da0-aef4d9aa80d0",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_010",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 4,
+        "requestId": "c85fec55-8c21-4632-8ec6-e8fa836ee693",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_019",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 5,
+        "requestId": "c85fec55-8c21-4632-8ec6-e8fa836ee693",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_003",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 6,
+        "requestId": "2c9c2094-1fd6-49d0-9c17-14ce6aaa097d",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_013",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 7,
+        "requestId": "82a26064-d038-4812-84a5-2966015dcc91",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_011",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 8,
+        "requestId": "d5c03290-913c-4094-8bec-0c76705bb16a",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_005",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 9,
+        "requestId": "04ba29f5-3e4d-4a75-b809-5ed8bb8b30cc",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_012",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 10,
+        "requestId": "43b9e6ea-0c2c-4774-936d-b76132df1341",
+        "urgencyScore": 2,
+        "specialtyHint": "psychiatrie",
+        "professionalId": "pro_016",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 11,
+        "requestId": "979c1c5a-eefd-437c-95d1-cd0972baa88b",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_017",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 12,
+        "requestId": "eebbc8c4-94dc-4c6b-908d-144b75c26be4",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_006",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 13,
+        "requestId": "65e9571a-532d-4571-baa4-3bec56cc3721",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_015",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 14,
+        "requestId": "5af3b5fb-bfa2-4009-8b86-1bdd58f10f50",
+        "urgencyScore": 2,
+        "specialtyHint": "psychiatrie",
+        "professionalId": "pro_004",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 15,
+        "requestId": "2b77b6c1-805d-41ee-8714-69e205f1d6c1",
+        "urgencyScore": 1,
+        "specialtyHint": "gynecologie",
+        "professionalId": "pro_007",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 16,
+        "requestId": "8af031fd-472f-4e18-9c70-0a0ee589a500",
+        "urgencyScore": 1,
+        "specialtyHint": "generaliste",
+        "professionalId": "pro_020",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 17,
+        "requestId": "83370580-2acb-4161-a950-9419fd724f14",
+        "urgencyScore": 1,
+        "specialtyHint": "ophtalmologie",
+        "professionalId": "pro_002",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 18,
+        "requestId": "cc5a0807-6991-49e8-af80-91062660aaa2",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_008",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 19,
+        "requestId": "cc5a0807-6991-49e8-af80-91062660aaa2",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_009",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 20,
+        "requestId": "a12699a4-dfa0-4fe5-ab96-f758afc85943",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_001",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 21,
+        "requestId": "807f444b-4e95-4e1f-ae66-2ed25bbeb8fe",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_018",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 22,
+        "requestId": "807f444b-4e95-4e1f-ae66-2ed25bbeb8fe",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_012",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 23,
+        "requestId": "bd2a921f-0a75-4d48-877d-0070ad737c9e",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_005",
+        "outcome": "ACCEPTED_CLOSED"
+      }
+    ]
+  },
+  "S2": {
+    "strategy": "S2",
+    "created": 20,
+    "attempts": 23,
+    "proposals": 21,
+    "accepted": 18,
+    "refused": 3,
+    "failedDispatchCalls": 0,
+    "noProfessional": 2,
+    "events": [
+      {
+        "attempt": 1,
+        "requestId": "aaaba75d-9b05-40d2-b399-a5adc6bc9422",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_017",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 2,
+        "requestId": "7424e933-ed82-4be5-b424-768170beb582",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_017",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 3,
+        "requestId": "1a6e46ae-6454-4216-b816-93130ddf891b",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_017",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 4,
+        "requestId": "52926a9f-d11a-4194-8acd-a165ae87538f",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_017",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 5,
+        "requestId": "52926a9f-d11a-4194-8acd-a165ae87538f",
+        "status": "FAILED",
+        "professionalId": null
+      },
+      {
+        "attempt": 6,
+        "requestId": "93ef4586-be0f-4f57-bdc1-fe1a48e65294",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_019",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 7,
+        "requestId": "75d9659d-0118-4c47-a395-79b87d29779a",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_003",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 8,
+        "requestId": "8a15fb45-55cf-4e66-bc3f-7af77d2e1e15",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_012",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 9,
+        "requestId": "144bef2a-6fe9-4952-911b-732c229c9bef",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_015",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 10,
+        "requestId": "9f307f0b-e6f7-414f-b82e-1ad01a0fe344",
+        "urgencyScore": 2,
+        "specialtyHint": "psychiatrie",
+        "professionalId": "pro_018",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 11,
+        "requestId": "ff8d7c3b-ead6-428c-8239-88a28b57d12e",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_004",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 12,
+        "requestId": "39db619f-fcc2-4987-bb4b-3be5c8cf86df",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_009",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 13,
+        "requestId": "037d8372-6dab-4e4f-99f0-ff55263ad234",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_001",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 14,
+        "requestId": "bfd3b3bc-f311-4b59-a124-0094b1a71118",
+        "urgencyScore": 2,
+        "specialtyHint": "psychiatrie",
+        "professionalId": "pro_016",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 15,
+        "requestId": "d33bc75f-f4c4-4a90-80a8-e9361427c75a",
+        "urgencyScore": 1,
+        "specialtyHint": "gynecologie",
+        "professionalId": "pro_010",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 16,
+        "requestId": "e2469f58-d16d-4cff-a483-443d31ce3a3a",
+        "urgencyScore": 1,
+        "specialtyHint": "generaliste",
+        "professionalId": "pro_014",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 17,
+        "requestId": "25880d99-c6a2-4a7b-9cf8-eb417ccba7b0",
+        "urgencyScore": 1,
+        "specialtyHint": "ophtalmologie",
+        "professionalId": "pro_006",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 18,
+        "requestId": "9fb71dea-2dcf-45aa-bd1e-fc3e570c0ac1",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_020",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 19,
+        "requestId": "30a1394a-3130-44bb-a507-c2d807e9f896",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_002",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 20,
+        "requestId": "30a1394a-3130-44bb-a507-c2d807e9f896",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_020",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 21,
+        "requestId": "04dc65d0-a1c4-4dea-9645-5388718e55e7",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_020",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 22,
+        "requestId": "f37005c4-1100-47b5-9803-c3f79ce3010d",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_020",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 23,
+        "requestId": "f37005c4-1100-47b5-9803-c3f79ce3010d",
+        "status": "FAILED",
+        "professionalId": null
+      }
+    ]
+  },
+  "S3": {
+    "strategy": "S3",
+    "created": 20,
+    "attempts": 23,
+    "proposals": 23,
+    "accepted": 20,
+    "refused": 3,
+    "failedDispatchCalls": 0,
+    "noProfessional": 0,
+    "events": [
+      {
+        "attempt": 1,
+        "requestId": "0f7b4a37-8c30-4bc8-b589-dd22af983c51",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_017",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 2,
+        "requestId": "018df5dd-f767-48a4-a0e2-8bf792b19e83",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_017",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 3,
+        "requestId": "3b136dbf-34f4-49d3-a9ae-57740f0ee6db",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_017",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 4,
+        "requestId": "69143333-3828-4647-9b6f-25732d02237f",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_017",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 5,
+        "requestId": "69143333-3828-4647-9b6f-25732d02237f",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_018",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 6,
+        "requestId": "99007f60-e30e-4978-a854-16383259b278",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_019",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 7,
+        "requestId": "9f971237-ce22-4504-be16-4033ac601382",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_003",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 8,
+        "requestId": "15a1f44c-9241-4078-97c9-76e192ae9847",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_012",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 9,
+        "requestId": "8f00c2bf-3540-403d-8216-a0585a318def",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_015",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 10,
+        "requestId": "42851e80-df57-43b2-8086-b1034fc7b5cc",
+        "urgencyScore": 2,
+        "specialtyHint": "psychiatrie",
+        "professionalId": "pro_016",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 11,
+        "requestId": "2c9b4e78-9fc2-422d-81f0-9f8f2c3462bd",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_004",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 12,
+        "requestId": "fb292652-08cd-4d1a-b0c3-b21981e43be7",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_009",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 13,
+        "requestId": "8e59d6ae-a7b3-44cb-ba0d-82a05b2ee552",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_001",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 14,
+        "requestId": "cbe6c949-b530-4cda-9d3e-3b76c4b095b5",
+        "urgencyScore": 2,
+        "specialtyHint": "psychiatrie",
+        "professionalId": "pro_008",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 15,
+        "requestId": "289e70e0-e9cd-4f9b-a178-4fed803eb3a0",
+        "urgencyScore": 1,
+        "specialtyHint": "gynecologie",
+        "professionalId": "pro_010",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 16,
+        "requestId": "b64e1902-5550-4310-ad95-0d4d9eb8990e",
+        "urgencyScore": 1,
+        "specialtyHint": "generaliste",
+        "professionalId": "pro_014",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 17,
+        "requestId": "d0377e10-4b30-4c31-a170-1d1ff9515744",
+        "urgencyScore": 1,
+        "specialtyHint": "ophtalmologie",
+        "professionalId": "pro_006",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 18,
+        "requestId": "8caf0deb-24c3-453e-8cc8-31c0e938e0af",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_020",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 19,
+        "requestId": "8caf0deb-24c3-453e-8cc8-31c0e938e0af",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_002",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 20,
+        "requestId": "ccebf24f-afb1-4ead-b672-4943323f9591",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_002",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 21,
+        "requestId": "10575848-6c05-448a-b29f-60f75b3b0fa0",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_002",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 22,
+        "requestId": "10575848-6c05-448a-b29f-60f75b3b0fa0",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_013",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 23,
+        "requestId": "3093f496-b150-4540-be2f-2f3b5e2e546e",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_011",
+        "outcome": "ACCEPTED_CLOSED"
+      }
+    ]
+  },
+  "S4": {
+    "strategy": "S4",
+    "created": 20,
+    "attempts": 23,
+    "proposals": 23,
+    "accepted": 20,
+    "refused": 3,
+    "failedDispatchCalls": 0,
+    "noProfessional": 0,
+    "events": [
+      {
+        "attempt": 1,
+        "requestId": "6a2a3a2c-243b-47cd-88bf-993bde37503e",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_018",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 2,
+        "requestId": "21936378-4cf3-4891-94d4-53d721c4e4cc",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_014",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 3,
+        "requestId": "dcc0c2da-3aad-4f52-bbdc-f2aa1fef1657",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_010",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 4,
+        "requestId": "b9ebf2cd-3dfe-4729-8d67-5ddd4b9d2c36",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_019",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 5,
+        "requestId": "b9ebf2cd-3dfe-4729-8d67-5ddd4b9d2c36",
+        "urgencyScore": 3,
+        "specialtyHint": "cardiologie",
+        "professionalId": "pro_003",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 6,
+        "requestId": "9ea00f7a-4309-4ea5-9644-b516587849e8",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_017",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 7,
+        "requestId": "b81ef996-e5de-4327-aa68-14d7da384afd",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_012",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 8,
+        "requestId": "7fac6785-4a80-4036-80e3-f42424df4c17",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_011",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 9,
+        "requestId": "ac5bee3e-4eb9-426f-b74c-1f2066544044",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_016",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 10,
+        "requestId": "8b2d3132-57b2-4c34-9f38-d18e1f988931",
+        "urgencyScore": 2,
+        "specialtyHint": "psychiatrie",
+        "professionalId": "pro_008",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 11,
+        "requestId": "630a6977-e5f2-4eff-8677-c5b02daf7848",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_015",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 12,
+        "requestId": "50a4411b-34ca-445b-b34b-5feb256c7c4b",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_011",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 13,
+        "requestId": "5c5b3295-46b2-4ba4-a710-748252421e89",
+        "urgencyScore": 2,
+        "specialtyHint": "pediatrie",
+        "professionalId": "pro_004",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 14,
+        "requestId": "53de915f-d30d-4e36-b638-c96d65c22038",
+        "urgencyScore": 2,
+        "specialtyHint": "psychiatrie",
+        "professionalId": "pro_013",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 15,
+        "requestId": "9d7f8489-2c2c-48e0-b50e-541ee960b31f",
+        "urgencyScore": 1,
+        "specialtyHint": "gynecologie",
+        "professionalId": "pro_005",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 16,
+        "requestId": "38f92911-0783-4e88-b1de-858ec5773096",
+        "urgencyScore": 1,
+        "specialtyHint": "generaliste",
+        "professionalId": "pro_006",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 17,
+        "requestId": "467d5e65-1162-4325-8e73-db4091e9cc2c",
+        "urgencyScore": 1,
+        "specialtyHint": "ophtalmologie",
+        "professionalId": "pro_020",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 18,
+        "requestId": "55d806f6-967a-4728-837a-1c168b08bdd4",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_007",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 19,
+        "requestId": "55d806f6-967a-4728-837a-1c168b08bdd4",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_002",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 20,
+        "requestId": "88c31c90-46a6-449c-a988-1221a82dc6b8",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_009",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 21,
+        "requestId": "fb20877c-acd2-4578-8869-cf31901d99c2",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_001",
+        "outcome": "REFUSED_REQUEUED"
+      },
+      {
+        "attempt": 22,
+        "requestId": "fb20877c-acd2-4578-8869-cf31901d99c2",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_018",
+        "outcome": "ACCEPTED_CLOSED"
+      },
+      {
+        "attempt": 23,
+        "requestId": "662fc9bc-2d32-41eb-97d5-20e11802c6be",
+        "urgencyScore": 0,
+        "specialtyHint": "dermatologie",
+        "professionalId": "pro_012",
+        "outcome": "ACCEPTED_CLOSED"
+      }
+    ]
+  }
+}
