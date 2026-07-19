@@ -9,7 +9,7 @@
 
 ## Contexte
 
-Stage de 1 mois et demi pour implémenter un moteur de dispatch médical
+Stage de 2 mois pour implémenter un moteur de dispatch médical
 en temps réel pour Pulsaride Solutions. L'offre de stage prévoyait 4 mois
 et une couche IA (NLP, embeddings, matching sémantique). Le périmètre
 doit être borné pour livrer un MVP fonctionnel et évaluable.
