@@ -106,6 +106,7 @@ public class DispatchService {
             request.setClosedAt(OffsetDateTime.now());
             request.setTtrMs(Duration.between(request.getCreatedAt(), request.getClosedAt()).toMillis());
             redisService.removeFromQueue(request.getId());
+            redisService.releaseAssignmentLock(requestId);
             return request;
         }
 
@@ -151,6 +152,7 @@ public class DispatchService {
             assignmentRepository.save(assignment);
         });
         redisService.syncProfessional(pro);
+        redisService.releaseAssignmentLock(requestId);
         return request;
     }
 
@@ -173,6 +175,7 @@ public class DispatchService {
             assignment.setOutcome(AssignmentOutcome.CLOSED);
             assignmentRepository.save(assignment);
         });
+        redisService.releaseAssignmentLock(requestId);
         return request;
     }
 
@@ -237,6 +240,7 @@ public class DispatchService {
         request.setAssignedProfessional(null);
         request.setProposedAt(null);
         transition(request, RequestStatus.PENDING, reason + "; returned to queue");
+        redisService.releaseAssignmentLock(request.getId());
         redisService.enqueue(request);
         return request;
     }

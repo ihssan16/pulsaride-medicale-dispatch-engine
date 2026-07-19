@@ -47,6 +47,10 @@ public class DispatchRedisService {
         }
     }
 
+    public void releaseAssignmentLock(String requestId) {
+        runRedis("release assignment lock", () -> redisTemplate.delete("dispatch:lock:" + requestId));
+    }
+
     public void syncProfessional(Professional professional) {
         runRedis("sync professional", () -> redisTemplate.opsForHash().putAll(
                 PROFESSIONAL_REGISTRY + ":" + professional.getId(),
