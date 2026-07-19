@@ -1,0 +1,309 @@
+{
+  "info": {
+    "name": "Pulsaride — Medical Dispatch Engine V1",
+    "description": "Collection API de démo — Pulsaride Dispatch Engine\nÉquipe : Ihssan Ben Labsir · Salmane Sossey\nEncadrant : M. Lyazid Salihi",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "requestId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 — Health",
+      "item": [
+        {
+          "name": "GET /health",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/health",
+            "description": "Vérifie que l'API est active"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 — Professionals",
+      "item": [
+        {
+          "name": "POST /professionals — Créer un professionnel",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/professionals",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"pro_demo\",\n  \"name\": \"Dr. Demo Pédiatre\",\n  \"specialtyTag\": \"pediatrie\",\n  \"experienceYears\": 10,\n  \"profileText\": \"Pédiatre avec 10 ans d'expérience. Suivi nourrissons et enfants.\",\n  \"quotaMaxPerHour\": 6,\n  \"status\": \"AVAILABLE\"\n}"
+            },
+            "description": "Crée un professionnel de santé simulé"
+          }
+        },
+        {
+          "name": "GET /professionals — Lister tous les pros",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/professionals",
+            "description": "Liste tous les professionnels avec leur statut et charge"
+          }
+        },
+        {
+          "name": "GET /professionals?status=AVAILABLE — Filtrer par statut",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/professionals?status=AVAILABLE",
+              "query": [{ "key": "status", "value": "AVAILABLE" }]
+            },
+            "description": "Filtre les professionnels disponibles"
+          }
+        },
+        {
+          "name": "PUT /professionals/{id}/status — Changer statut",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/professionals/pro_demo/status",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"AVAILABLE\"\n}"
+            },
+            "description": "Met à jour le statut d'un professionnel"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 — Requests",
+      "item": [
+        {
+          "name": "POST /requests — Créer une demande patient",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "pm.collectionVariables.set('requestId', json.id);",
+                  "console.log('Request ID saved:', json.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/requests",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": \"patient_demo\",\n  \"patientText\": \"Mon enfant a de la fièvre depuis 3 jours, 38.5°C, mal à la gorge.\",\n  \"specialtyHint\": \"pediatrie\",\n  \"urgencyScore\": 2\n}"
+            },
+            "description": "Crée une demande patient — statut PENDING\n⚡ Sauvegarde automatiquement l'ID dans {{requestId}}"
+          }
+        },
+        {
+          "name": "GET /requests/{id} — Consulter une demande",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/requests/{{requestId}}",
+            "description": "Retourne le statut et les détails d'une demande"
+          }
+        },
+        {
+          "name": "GET /requests/{id}/assignments — Historique attributions",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/requests/{{requestId}}/assignments",
+            "description": "Retourne toutes les tentatives d'attribution pour cette demande"
+          }
+        },
+        {
+          "name": "GET /requests/{id}/transitions — Historique FSM",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/requests/{{requestId}}/transitions",
+            "description": "Retourne l'historique complet des transitions d'état FSM"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 — Dispatch (FSM)",
+      "item": [
+        {
+          "name": "POST /dispatch/{id} — Dispatcher S4 (recommandé)",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/dispatch/{{requestId}}?strategy=S4",
+              "query": [{ "key": "strategy", "value": "S4" }]
+            },
+            "description": "Dispatch avec stratégie S4 (meilleure performance)\nPENDING → PROPOSED\n⏱ Timeout 30s — accepter vite !"
+          }
+        },
+        {
+          "name": "POST /dispatch/{id} — Dispatcher S1",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/dispatch/{{requestId}}?strategy=S1",
+              "query": [{ "key": "strategy", "value": "S1" }]
+            },
+            "description": "S1 : Premier professionnel disponible"
+          }
+        },
+        {
+          "name": "POST /dispatch/{id} — Dispatcher S2",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/dispatch/{{requestId}}?strategy=S2",
+              "query": [{ "key": "strategy", "value": "S2" }]
+            },
+            "description": "S2 : Matching par tag de spécialité exact"
+          }
+        },
+        {
+          "name": "POST /dispatch/{id} — Dispatcher S3",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/dispatch/{{requestId}}?strategy=S3",
+              "query": [{ "key": "strategy", "value": "S3" }]
+            },
+            "description": "S3 : Score composite classique (meilleure équité Gini)"
+          }
+        },
+        {
+          "name": "POST /dispatch/{id}/accept — Accepter",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dispatch/{{requestId}}/accept",
+            "description": "Pro accepte la demande\nPROPOSED → ACCEPTED\n⚠ Dans les 30s après dispatch !"
+          }
+        },
+        {
+          "name": "POST /dispatch/{id}/refuse — Refuser",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dispatch/{{requestId}}/refuse",
+            "description": "Pro refuse la demande\nPROPOSED → REFUSED → PENDING (ré-attribution automatique)"
+          }
+        },
+        {
+          "name": "POST /dispatch/{id}/timeout — Timeout",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dispatch/{{requestId}}/timeout",
+            "description": "Timeout 30s dépassé\nPROPOSED → REFUSED → PENDING"
+          }
+        },
+        {
+          "name": "POST /dispatch/{id}/close — Clôturer",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dispatch/{{requestId}}/close",
+            "description": "Clôture la session\nACCEPTED → CLOSED\nPro repasse AVAILABLE"
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 — Metrics",
+      "item": [
+        {
+          "name": "GET /metrics/summary — Métriques live",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/metrics/summary",
+            "description": "Métriques temps réel : TTFA, TTR, service rate, Gini fairness"
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 — AI Triage (Mock)",
+      "item": [
+        {
+          "name": "POST /ai/triage — Triage IA",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ai/triage",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Mon enfant a de la fièvre depuis 3 jours, 38.5°C, mal à la gorge.\"\n}"
+            },
+            "description": "Triage IA mock — extrait symptômes, urgence et spécialité du texte libre"
+          }
+        }
+      ]
+    },
+    {
+      "name": "07 — Demo Flux Complet",
+      "item": [
+        {
+          "name": "STEP 1 — Créer demande",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "pm.collectionVariables.set('requestId', json.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/requests",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": \"patient_lifecycle\",\n  \"patientText\": \"Douleur thoracique depuis 2 jours, essoufflement.\",\n  \"specialtyHint\": \"cardiologie\",\n  \"urgencyScore\": 3\n}"
+            }
+          }
+        },
+        {
+          "name": "STEP 2 — Dispatcher S4",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/dispatch/{{requestId}}?strategy=S4",
+              "query": [{ "key": "strategy", "value": "S4" }]
+            }
+          }
+        },
+        {
+          "name": "STEP 3 — Accepter (dans les 30s !)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dispatch/{{requestId}}/accept"
+          }
+        },
+        {
+          "name": "STEP 4 — Clôturer",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dispatch/{{requestId}}/close"
+          }
+        },
+        {
+          "name": "STEP 5 — Voir métriques finales",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/metrics/summary"
+          }
+        }
+      ]
+    }
+  ]
+}
