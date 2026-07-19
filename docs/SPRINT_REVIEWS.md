@@ -94,5 +94,5 @@
 
 ### Planned
 - P4 Tests de robustesse : peak_night et load_ramp via l'API
-- Service disponibilités (Salmane)
+- Service disponibilités 
 - Merger les branches + rapport final
