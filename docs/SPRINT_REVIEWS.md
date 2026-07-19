@@ -7,13 +7,12 @@
 ## W1–W2 — Cadrage & Architecture ✅
 
 **Période :** Semaine 1–2
-**Responsable :** Ihssan Ben Labsir
+**Responsable :** Ihssan Ben Labsir · Salmane Sossey
 
 ### Done
 - Réunions de cadrage avec M. Salihi (x2)
-- Fiche descriptive de stage remplie et signée
 - Jira configuré : 7 Epics, 13 User Stories, toutes les tâches réparties
-- Dossier de conception complet :
+- Dossier de conception complet (responsabilité partagée) :
   - Diagramme Use Case (draw.io)
   - FSM cycle de vie d'une demande
   - Diagramme de séquence flux complet
@@ -28,8 +27,7 @@
 - Stack : Spring Boot + Redis + PostgreSQL + Python simulateur
 
 ### Risques identifiés
-- Stage 1 mois et demi vs offre 4 mois → périmètre borné au MVP
-- Coéquipier absent aux 2 premières réunions → communication à améliorer
+- Stage 2 mois → périmètre borné au MVP pour garantir un livrable complet
 
 ---
 
@@ -65,14 +63,12 @@
 
 ---
 
-## W4 — Intégration & Évaluation ✅
+## W4 (en cours) — Intégration & Évaluation 🔄
 
 **Période :** Semaine 4
 **Responsable :** Ihssan Ben Labsir
 
 ### Done
-- Clone repo sur VM Ubuntu (VirtualBox + Docker)
-- Compilation Spring Boot sur Ubuntu (`mvn clean package`)
 - Lancement Docker Compose : PostgreSQL ✅ Redis ✅ API ✅
 - Tests API manuels (curl) : flux complet PENDING → CLOSED validé
 - `simulator/api_client.py` → simulateur connecté à l'API en temps réel
@@ -80,6 +76,8 @@
 - `evaluator/comparison_report.py` → rapport textuel comparatif
 - `evaluator/generate_charts.py` → graphiques bar chart + radar chart
 - `docs/evaluation/` → graphiques pushés sur GitHub
+- Documentation complète : SPRINT_REVIEWS, EVALUATION_PROTOCOL, DEMO_SCRIPT, ADR-001, ADR-002
+- Collection Postman complète avec flux de démo
 
 ### Métriques API réelles
 | Stratégie | Service rate | TTFA (ms) | TTR (ms) | Gini |
@@ -94,13 +92,7 @@
 - S3 meilleure équité (Gini 0.10 < cible 0.15 ✅)
 - Flux complet validé de bout en bout
 
----
-
-## W5 — À venir 🔲
-
 ### Planned
 - P4 Tests de robustesse : peak_night et load_ramp via l'API
-- Mesurer le point de rupture du moteur
-- Collection Postman
-- Rapport final de stage
-
+- Service disponibilités (Salmane)
+- Merger les branches + rapport final
