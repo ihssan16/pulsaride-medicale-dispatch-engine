@@ -86,7 +86,8 @@ def reset_state() -> None:
             "-d",
             "pulsaride",
             "-c",
-            "TRUNCATE TABLE assignments, state_transitions, dispatch_requests, professionals RESTART IDENTITY CASCADE;",
+            "TRUNCATE TABLE assignments, state_transitions, dispatch_requests, availability_slots, professionals "
+            "RESTART IDENTITY CASCADE;",
         ]
     )
     run_command(["docker", "compose", "exec", "-T", "redis", "redis-cli", "FLUSHALL"])

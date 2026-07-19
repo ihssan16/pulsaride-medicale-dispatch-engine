@@ -45,31 +45,32 @@ Request body:
 
 `GET /availability`
 
-Returns a live read model of the professional pool used by dispatch.
+Returns a live read model of the availability slot pool used by dispatch.
 
 Response shape:
 ```json
 {
-  "totalProfessionals": 3,
-  "availableProfessionals": 2,
-  "proposedProfessionals": 0,
-  "busyProfessionals": 1,
-  "breakProfessionals": 0,
-  "offlineProfessionals": 0,
+  "totalSlots": 3,
+  "availableSlots": 2,
+  "reservedSlots": 0,
+  "busySlots": 1,
+  "breakSlots": 0,
+  "offlineSlots": 0,
   "availabilityRatePct": 66.67,
   "availableCapacity": 12,
   "specialties": [
     {
       "specialtyTag": "cardiologie",
-      "totalProfessionals": 2,
-      "availableProfessionals": 1,
-      "proposedProfessionals": 0,
-      "busyProfessionals": 1,
-      "breakProfessionals": 0,
-      "offlineProfessionals": 0,
+      "totalSlots": 2,
+      "availableSlots": 1,
+      "reservedSlots": 0,
+      "busySlots": 1,
+      "breakSlots": 0,
+      "offlineSlots": 0,
       "availabilityRatePct": 50.0,
       "availableCapacity": 6,
       "averageLoad": 0.08,
+      "availableSlotIds": ["slot_pro_cardio_2"],
       "availableProfessionalIds": ["pro_cardio_2"]
     }
   ]
@@ -78,7 +79,7 @@ Response shape:
 
 `GET /availability/specialties/{specialtyTag}`
 
-Returns the same availability counters for one specialty tag. The endpoint is case-insensitive for lookup and keeps the requested tag in the response when no professionals exist.
+Returns the same availability counters for one specialty tag. The endpoint is case-insensitive for lookup and keeps the requested tag in the response when no slots exist.
 
 Historical aliases:
 - `GET /api/availability`
@@ -117,6 +118,9 @@ This is the queue-driven path used by API simulations so urgency changes process
 `POST /dispatch/{id}?strategy=S1`
 
 Attempts dispatch for an existing pending request.
+Dispatch now reserves a separate availability slot first, records a `RESERVED`
+state transition, then proposes the request to the linked professional. The final
+response status remains `PROPOSED` while the response also includes `assignedSlotId`.
 
 Strategies:
 - `S1`: first available
@@ -126,19 +130,19 @@ Strategies:
 
 `POST /dispatch/{id}/accept`
 
-Marks the current proposal as accepted, updates the assignment attempt, moves the professional to `BUSY`, and records a state transition.
+Marks the current proposal as accepted, updates the assignment attempt, moves the reserved slot to `BUSY`, mirrors the professional to `BUSY`, and records a state transition.
 
 `POST /dispatch/{id}/refuse`
 
-Marks the current proposal as refused, puts the professional in `BREAK`, returns the request to `PENDING`, and re-enqueues the request.
+Marks the current proposal as refused, puts the slot/professional in `BREAK`, returns the request to `PENDING`, and re-enqueues the request.
 
 `POST /dispatch/{id}/timeout`
 
-Marks the current proposal as timed out, puts the professional in `BREAK`, returns the request to `PENDING`, and re-enqueues the request.
+Marks the current proposal as timed out, puts the slot/professional in `BREAK`, returns the request to `PENDING`, and re-enqueues the request.
 
 `POST /dispatch/{id}/close`
 
-Closes an accepted request and releases the assigned professional to `AVAILABLE`.
+Closes an accepted request and releases the assigned slot/professional to `AVAILABLE`.
 
 `GET /requests/{id}/assignments`
 

@@ -48,6 +48,7 @@ class DispatchServiceTests {
     void setUp() {
         reset(redisService);
         given(redisService.acquireAssignmentLock(anyString())).willReturn(true);
+        given(redisService.acquireSlotLock(anyString(), anyString())).willReturn(true);
     }
 
     @Test
@@ -63,6 +64,7 @@ class DispatchServiceTests {
 
         assertThat(result.getStatus()).isEqualTo(RequestStatus.PROPOSED);
         assertThat(result.getAssignedProfessional().getId()).isEqualTo("pro_cardio");
+        assertThat(result.getAssignedSlot().getId()).isEqualTo("slot_pro_cardio");
         assertThat(result.getTtfaMs()).isNotNegative();
 
         var assignments = assignmentRepository.findByRequestIdOrderByProposedAtDesc(result.getId());
@@ -72,7 +74,7 @@ class DispatchServiceTests {
 
         var transitions = transitionRepository.findByRequestIdOrderByOccurredAtAsc(result.getId());
         assertThat(transitions).extracting("toStatus")
-                .containsExactly(RequestStatus.PENDING, RequestStatus.PROPOSED);
+                .containsExactly(RequestStatus.PENDING, RequestStatus.RESERVED, RequestStatus.PROPOSED);
     }
 
     @Test
@@ -106,6 +108,7 @@ class DispatchServiceTests {
         assertThat(transitions).extracting("toStatus")
                 .containsExactly(
                         RequestStatus.PENDING,
+                        RequestStatus.RESERVED,
                         RequestStatus.PROPOSED,
                         RequestStatus.ACCEPTED,
                         RequestStatus.CLOSED
@@ -164,6 +167,7 @@ class DispatchServiceTests {
                 .extracting("toStatus")
                 .containsExactly(
                         RequestStatus.PENDING,
+                        RequestStatus.RESERVED,
                         RequestStatus.PROPOSED,
                         RequestStatus.FAILED,
                         RequestStatus.PENDING

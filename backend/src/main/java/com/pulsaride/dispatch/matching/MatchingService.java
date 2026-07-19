@@ -1,8 +1,10 @@
 package com.pulsaride.dispatch.matching;
 
+import com.pulsaride.dispatch.domain.AvailabilitySlot;
+import com.pulsaride.dispatch.domain.AvailabilitySlotStatus;
 import com.pulsaride.dispatch.domain.DispatchRequest;
 import com.pulsaride.dispatch.domain.Professional;
-import com.pulsaride.dispatch.domain.ProfessionalStatus;
+import com.pulsaride.dispatch.repository.AvailabilitySlotRepository;
 import com.pulsaride.dispatch.repository.ProfessionalRepository;
 import java.text.Normalizer;
 import java.util.Arrays;
@@ -16,23 +18,32 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MatchingService {
+    private final AvailabilitySlotRepository slotRepository;
     private final ProfessionalRepository professionalRepository;
 
-    public MatchingService(ProfessionalRepository professionalRepository) {
+    public MatchingService(AvailabilitySlotRepository slotRepository, ProfessionalRepository professionalRepository) {
+        this.slotRepository = slotRepository;
         this.professionalRepository = professionalRepository;
     }
 
     public Optional<Professional> select(DispatchRequest request, DispatchStrategy strategy) {
-        List<Professional> available = professionalRepository
-                .findByStatusOrderByLoadAscExperienceYearsDesc(ProfessionalStatus.AVAILABLE);
+        return selectSlot(request, strategy).map(AvailabilitySlot::getProfessional);
+    }
+
+    public Optional<AvailabilitySlot> selectSlot(DispatchRequest request, DispatchStrategy strategy) {
+        ensureSlotsForExistingProfessionals();
+        List<AvailabilitySlot> available = slotRepository
+                .findByStatusOrderByProfessionalLoadAscProfessionalExperienceYearsDesc(AvailabilitySlotStatus.AVAILABLE);
 
         return switch (strategy) {
             case S1 -> available.stream().findFirst();
             case S2 -> available.stream()
-                    .filter(pro -> pro.getSpecialtyTag().equalsIgnoreCase(request.getSpecialtyHint()))
+                    .filter(slot -> slot.getSpecialtyTag().equalsIgnoreCase(request.getSpecialtyHint()))
                     .findFirst();
-            case S3 -> available.stream().max(Comparator.comparingDouble(pro -> classicScore(request, pro)));
-            case S4 -> available.stream().max(Comparator.comparingDouble(pro -> aiScore(request, pro)));
+            case S3 -> available.stream()
+                    .max(Comparator.comparingDouble(slot -> classicScore(request, slot.getProfessional())));
+            case S4 -> available.stream()
+                    .max(Comparator.comparingDouble(slot -> aiScore(request, slot.getProfessional())));
         };
     }
 
@@ -68,5 +79,24 @@ public class MatchingService {
                 .filter(term -> !ignored.contains(term))
                 .forEach(result::add);
         return result;
+    }
+
+    private void ensureSlotsForExistingProfessionals() {
+        professionalRepository.findAll().stream()
+                .filter(professional -> slotRepository.findByProfessionalId(professional.getId()).isEmpty())
+                .forEach(professional -> {
+                    AvailabilitySlot slot = new AvailabilitySlot();
+                    slot.setId("slot_" + professional.getId());
+                    slot.setProfessional(professional);
+                    slot.setSpecialtyTag(professional.getSpecialtyTag());
+                    slot.setStatus(switch (professional.getStatus()) {
+                        case AVAILABLE -> AvailabilitySlotStatus.AVAILABLE;
+                        case PROPOSED -> AvailabilitySlotStatus.RESERVED;
+                        case BUSY -> AvailabilitySlotStatus.BUSY;
+                        case BREAK -> AvailabilitySlotStatus.BREAK;
+                        case OFFLINE -> AvailabilitySlotStatus.OFFLINE;
+                    });
+                    slotRepository.save(slot);
+                });
     }
 }

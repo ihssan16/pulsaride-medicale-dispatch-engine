@@ -26,6 +26,9 @@ public class DispatchRequest {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assigned_professional_id")
     private Professional assignedProfessional;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "assigned_slot_id")
+    private AvailabilitySlot assignedSlot;
     private OffsetDateTime createdAt;
     private OffsetDateTime proposedAt;
     private OffsetDateTime acceptedAt;
@@ -48,6 +51,8 @@ public class DispatchRequest {
     public void setStatus(RequestStatus status) { this.status = status; }
     public Professional getAssignedProfessional() { return assignedProfessional; }
     public void setAssignedProfessional(Professional assignedProfessional) { this.assignedProfessional = assignedProfessional; }
+    public AvailabilitySlot getAssignedSlot() { return assignedSlot; }
+    public void setAssignedSlot(AvailabilitySlot assignedSlot) { this.assignedSlot = assignedSlot; }
     public OffsetDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(OffsetDateTime createdAt) { this.createdAt = createdAt; }
     public OffsetDateTime getProposedAt() { return proposedAt; }

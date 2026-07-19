@@ -113,9 +113,9 @@ Les chemins `/api/availability` et `/api/availability/specialties/{specialtyTag}
 
 ## Service de disponibilité
 
-Le service de disponibilité expose l'état du pool de professionnels utilisé par le moteur de dispatch :
-- `AVAILABLE` : peut recevoir une proposition.
-- `PROPOSED` : une demande est proposée, en attente d'acceptation/refus/timeout.
+Le service de disponibilité expose l'état des slots séparés du profil professionnel :
+- `AVAILABLE` : le slot peut recevoir une proposition.
+- `RESERVED` : le slot est réservé pour une demande, juste avant la proposition.
 - `BUSY` : la demande est acceptée, consultation en cours.
 - `BREAK` : indisponible après refus ou timeout.
 - `OFFLINE` : indisponible manuellement.
@@ -129,7 +129,7 @@ curl -X PUT http://localhost:8080/professionals/pro_demo/status \
   -d '{ "status": "OFFLINE" }'
 ```
 
-Le dispatch ne sélectionne que les professionnels `AVAILABLE`. Après `accept`, le professionnel passe `BUSY`; après `close`, il redevient `AVAILABLE`. Après `refuse` ou `timeout`, il passe `BREAK` et la demande revient en file `PENDING`.
+Le dispatch ne sélectionne que les slots `AVAILABLE`. Quand un slot est choisi, il est verrouillé dans Redis, sauvegardé sur la demande (`assignedSlotId`), puis la demande passe par une transition `RESERVED` avant `PROPOSED`. Après `accept`, le slot passe `BUSY`; après `close`, il redevient `AVAILABLE`. Après `refuse` ou `timeout`, il passe `BREAK` et la demande revient en file `PENDING`.
 
 ## Démo cycle de vie V1
 ```bash

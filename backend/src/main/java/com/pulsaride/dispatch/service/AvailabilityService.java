@@ -2,8 +2,10 @@ package com.pulsaride.dispatch.service;
 
 import com.pulsaride.dispatch.api.AvailabilitySummaryResponse;
 import com.pulsaride.dispatch.api.SpecialtyAvailabilityResponse;
+import com.pulsaride.dispatch.domain.AvailabilitySlot;
+import com.pulsaride.dispatch.domain.AvailabilitySlotStatus;
 import com.pulsaride.dispatch.domain.Professional;
-import com.pulsaride.dispatch.domain.ProfessionalStatus;
+import com.pulsaride.dispatch.repository.AvailabilitySlotRepository;
 import com.pulsaride.dispatch.repository.ProfessionalRepository;
 import java.util.Comparator;
 import java.util.List;
@@ -14,17 +16,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AvailabilityService {
+    private final AvailabilitySlotRepository slotRepository;
     private final ProfessionalRepository repository;
 
-    public AvailabilityService(ProfessionalRepository repository) {
+    public AvailabilityService(AvailabilitySlotRepository slotRepository, ProfessionalRepository repository) {
+        this.slotRepository = slotRepository;
         this.repository = repository;
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public AvailabilitySummaryResponse summary() {
-        List<Professional> professionals = repository.findAll();
-        List<SpecialtyAvailabilityResponse> specialties = professionals.stream()
-                .collect(Collectors.groupingBy(Professional::getSpecialtyTag))
+        ensureSlotsForExistingProfessionals();
+        List<AvailabilitySlot> slots = slotRepository.findAll();
+        List<SpecialtyAvailabilityResponse> specialties = slots.stream()
+                .collect(Collectors.groupingBy(AvailabilitySlot::getSpecialtyTag))
                 .entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByKey())
@@ -32,71 +37,75 @@ public class AvailabilityService {
                 .toList();
 
         return new AvailabilitySummaryResponse(
-                professionals.size(),
-                count(professionals, ProfessionalStatus.AVAILABLE),
-                count(professionals, ProfessionalStatus.PROPOSED),
-                count(professionals, ProfessionalStatus.BUSY),
-                count(professionals, ProfessionalStatus.BREAK),
-                count(professionals, ProfessionalStatus.OFFLINE),
-                availabilityRate(professionals),
-                availableCapacity(professionals),
+                slots.size(),
+                count(slots, AvailabilitySlotStatus.AVAILABLE),
+                count(slots, AvailabilitySlotStatus.RESERVED),
+                count(slots, AvailabilitySlotStatus.BUSY),
+                count(slots, AvailabilitySlotStatus.BREAK),
+                count(slots, AvailabilitySlotStatus.OFFLINE),
+                availabilityRate(slots),
+                availableCapacity(slots),
                 specialties
         );
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public SpecialtyAvailabilityResponse specialty(String specialtyTag) {
-        List<Professional> professionals = repository.findAll()
+        ensureSlotsForExistingProfessionals();
+        List<AvailabilitySlot> slots = slotRepository.findAll()
                 .stream()
-                .filter(professional -> professional.getSpecialtyTag().equalsIgnoreCase(specialtyTag))
+                .filter(slot -> slot.getSpecialtyTag().equalsIgnoreCase(specialtyTag))
                 .toList();
-        return summarizeSpecialty(specialtyTag, professionals);
+        return summarizeSpecialty(specialtyTag, slots);
     }
 
     private SpecialtyAvailabilityResponse summarizeSpecialty(
             String specialtyTag,
-            List<Professional> professionals
+            List<AvailabilitySlot> slots
     ) {
-        List<String> availableIds = professionals.stream()
-                .filter(professional -> professional.getStatus() == ProfessionalStatus.AVAILABLE)
+        List<AvailabilitySlot> availableSlots = slots.stream()
+                .filter(slot -> slot.getStatus() == AvailabilitySlotStatus.AVAILABLE)
                 .sorted(Comparator
-                        .comparingDouble(Professional::getLoad)
-                        .thenComparing(Comparator.comparingInt(Professional::getExperienceYears).reversed())
-                        .thenComparing(Professional::getId))
-                .map(Professional::getId)
+                        .comparingDouble((AvailabilitySlot slot) -> slot.getProfessional().getLoad())
+                        .thenComparing(Comparator.comparingInt(
+                                (AvailabilitySlot slot) -> slot.getProfessional().getExperienceYears()
+                        ).reversed())
+                        .thenComparing(AvailabilitySlot::getId))
                 .toList();
 
         return new SpecialtyAvailabilityResponse(
                 specialtyTag,
-                professionals.size(),
-                count(professionals, ProfessionalStatus.AVAILABLE),
-                count(professionals, ProfessionalStatus.PROPOSED),
-                count(professionals, ProfessionalStatus.BUSY),
-                count(professionals, ProfessionalStatus.BREAK),
-                count(professionals, ProfessionalStatus.OFFLINE),
-                availabilityRate(professionals),
-                availableCapacity(professionals),
-                averageLoad(professionals),
-                availableIds
+                slots.size(),
+                count(slots, AvailabilitySlotStatus.AVAILABLE),
+                count(slots, AvailabilitySlotStatus.RESERVED),
+                count(slots, AvailabilitySlotStatus.BUSY),
+                count(slots, AvailabilitySlotStatus.BREAK),
+                count(slots, AvailabilitySlotStatus.OFFLINE),
+                availabilityRate(slots),
+                availableCapacity(slots),
+                averageLoad(slots),
+                availableSlots.stream().map(AvailabilitySlot::getId).toList(),
+                availableSlots.stream().map(slot -> slot.getProfessional().getId()).toList()
         );
     }
 
-    private long count(List<Professional> professionals, ProfessionalStatus status) {
-        return professionals.stream()
-                .filter(professional -> professional.getStatus() == status)
+    private long count(List<AvailabilitySlot> slots, AvailabilitySlotStatus status) {
+        return slots.stream()
+                .filter(slot -> slot.getStatus() == status)
                 .count();
     }
 
-    private double availabilityRate(List<Professional> professionals) {
-        if (professionals.isEmpty()) {
+    private double availabilityRate(List<AvailabilitySlot> slots) {
+        if (slots.isEmpty()) {
             return 0.0;
         }
-        return round2(count(professionals, ProfessionalStatus.AVAILABLE) * 100.0 / professionals.size());
+        return round2(count(slots, AvailabilitySlotStatus.AVAILABLE) * 100.0 / slots.size());
     }
 
-    private int availableCapacity(List<Professional> professionals) {
-        return professionals.stream()
-                .filter(professional -> professional.getStatus() == ProfessionalStatus.AVAILABLE)
+    private int availableCapacity(List<AvailabilitySlot> slots) {
+        return slots.stream()
+                .filter(slot -> slot.getStatus() == AvailabilitySlotStatus.AVAILABLE)
+                .map(AvailabilitySlot::getProfessional)
                 .mapToInt(professional -> Math.max(
                         0,
                         professional.getQuotaMaxPerHour() - professional.getConsultationsToday()
@@ -104,14 +113,39 @@ public class AvailabilityService {
                 .sum();
     }
 
-    private double averageLoad(List<Professional> professionals) {
-        return professionals.stream()
+    private double averageLoad(List<AvailabilitySlot> slots) {
+        return slots.stream()
+                .map(AvailabilitySlot::getProfessional)
                 .mapToDouble(Professional::getLoad)
                 .average()
                 .stream()
                 .map(this::round2)
                 .findFirst()
                 .orElse(0.0);
+    }
+
+    private void ensureSlotsForExistingProfessionals() {
+        List<Professional> missing = repository.findAll().stream()
+                .filter(professional -> slotRepository.findByProfessionalId(professional.getId()).isEmpty())
+                .toList();
+        missing.forEach(professional -> {
+            AvailabilitySlot slot = new AvailabilitySlot();
+            slot.setId("slot_" + professional.getId());
+            slot.setProfessional(professional);
+            slot.setSpecialtyTag(professional.getSpecialtyTag());
+            slot.setStatus(toSlotStatus(professional.getStatus()));
+            slotRepository.save(slot);
+        });
+    }
+
+    private AvailabilitySlotStatus toSlotStatus(com.pulsaride.dispatch.domain.ProfessionalStatus status) {
+        return switch (status) {
+            case AVAILABLE -> AvailabilitySlotStatus.AVAILABLE;
+            case PROPOSED -> AvailabilitySlotStatus.RESERVED;
+            case BUSY -> AvailabilitySlotStatus.BUSY;
+            case BREAK -> AvailabilitySlotStatus.BREAK;
+            case OFFLINE -> AvailabilitySlotStatus.OFFLINE;
+        };
     }
 
     private double round2(double value) {

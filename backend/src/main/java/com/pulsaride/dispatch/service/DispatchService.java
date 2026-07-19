@@ -1,6 +1,8 @@
 package com.pulsaride.dispatch.service;
 
 import com.pulsaride.dispatch.api.CreateDispatchRequest;
+import com.pulsaride.dispatch.domain.AvailabilitySlot;
+import com.pulsaride.dispatch.domain.AvailabilitySlotStatus;
 import com.pulsaride.dispatch.domain.Assignment;
 import com.pulsaride.dispatch.domain.AssignmentOutcome;
 import com.pulsaride.dispatch.domain.DispatchRequest;
@@ -12,6 +14,7 @@ import com.pulsaride.dispatch.matching.DispatchStrategy;
 import com.pulsaride.dispatch.matching.MatchingService;
 import com.pulsaride.dispatch.redis.DispatchRedisService;
 import com.pulsaride.dispatch.repository.AssignmentRepository;
+import com.pulsaride.dispatch.repository.AvailabilitySlotRepository;
 import com.pulsaride.dispatch.repository.DispatchRequestRepository;
 import com.pulsaride.dispatch.repository.ProfessionalRepository;
 import com.pulsaride.dispatch.repository.StateTransitionRepository;
@@ -29,6 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class DispatchService {
     private final DispatchRequestRepository requestRepository;
     private final ProfessionalRepository professionalRepository;
+    private final AvailabilitySlotRepository slotRepository;
     private final AssignmentRepository assignmentRepository;
     private final StateTransitionRepository transitionRepository;
     private final MatchingService matchingService;
@@ -38,6 +42,7 @@ public class DispatchService {
     public DispatchService(
             DispatchRequestRepository requestRepository,
             ProfessionalRepository professionalRepository,
+            AvailabilitySlotRepository slotRepository,
             AssignmentRepository assignmentRepository,
             StateTransitionRepository transitionRepository,
             MatchingService matchingService,
@@ -46,6 +51,7 @@ public class DispatchService {
     ) {
         this.requestRepository = requestRepository;
         this.professionalRepository = professionalRepository;
+        this.slotRepository = slotRepository;
         this.assignmentRepository = assignmentRepository;
         this.transitionRepository = transitionRepository;
         this.matchingService = matchingService;
@@ -99,8 +105,8 @@ public class DispatchService {
             return request;
         }
 
-        Professional selected = matchingService.select(request, strategy).orElse(null);
-        if (selected == null) {
+        AvailabilitySlot selectedSlot = matchingService.selectSlot(request, strategy).orElse(null);
+        if (selectedSlot == null) {
             transition(request, RequestStatus.FAILED, "No professional available");
             request.setFailureReason("No professional available");
             request.setClosedAt(OffsetDateTime.now());
@@ -109,18 +115,29 @@ public class DispatchService {
             redisService.releaseAssignmentLock(requestId);
             return request;
         }
+        if (!redisService.acquireSlotLock(selectedSlot.getId(), requestId)) {
+            redisService.releaseAssignmentLock(requestId);
+            return request;
+        }
 
+        Professional selected = selectedSlot.getProfessional();
         OffsetDateTime proposedAt = OffsetDateTime.now();
+        transition(request, RequestStatus.RESERVED, "Reserved slot " + selectedSlot.getId());
         transition(request, RequestStatus.PROPOSED, "Proposed to " + selected.getId() + " using " + strategy);
         request.setAssignedProfessional(selected);
+        request.setAssignedSlot(selectedSlot);
         request.setProposedAt(proposedAt);
         if (request.getTtfaMs() == null) {
             request.setTtfaMs(Duration.between(request.getCreatedAt(), proposedAt).toMillis());
         }
 
+        selectedSlot.setStatus(AvailabilitySlotStatus.RESERVED);
+        selectedSlot.setReservedRequestId(request.getId());
+        slotRepository.save(selectedSlot);
         selected.setStatus(ProfessionalStatus.PROPOSED);
         professionalRepository.save(selected);
         assignmentRepository.save(assignment(request, selected, strategy, proposedAt));
+        redisService.syncAvailabilitySlot(selectedSlot);
         redisService.syncProfessional(selected);
         redisService.removeFromQueue(requestId);
         return request;
@@ -143,6 +160,14 @@ public class DispatchService {
         pro.setConsultationsToday(pro.getConsultationsToday() + 1);
         pro.setLoad((double) pro.getConsultationsToday() / pro.getQuotaMaxPerHour());
         professionalRepository.save(pro);
+        AvailabilitySlot slot = request.getAssignedSlot();
+        if (slot != null) {
+            slot.setStatus(AvailabilitySlotStatus.BUSY);
+            slot.setReservedRequestId(request.getId());
+            slotRepository.save(slot);
+            redisService.syncAvailabilitySlot(slot);
+            redisService.releaseSlotLock(slot.getId());
+        }
         assignmentRepository.findFirstByRequestIdAndOutcomeOrderByProposedAtDesc(
                 requestId,
                 AssignmentOutcome.PROPOSED
@@ -167,6 +192,15 @@ public class DispatchService {
             pro.setStatus(ProfessionalStatus.AVAILABLE);
             professionalRepository.save(pro);
             redisService.syncProfessional(pro);
+        }
+        AvailabilitySlot slot = request.getAssignedSlot();
+        if (slot != null) {
+            slot.setStatus(AvailabilitySlotStatus.AVAILABLE);
+            slot.setReservedRequestId(null);
+            slotRepository.save(slot);
+            request.setAssignedSlot(null);
+            redisService.syncAvailabilitySlot(slot);
+            redisService.releaseSlotLock(slot.getId());
         }
         assignmentRepository.findFirstByRequestIdAndOutcomeOrderByProposedAtDesc(
                 requestId,
@@ -213,6 +247,7 @@ public class DispatchService {
             return request;
         }
         Professional pro = request.getAssignedProfessional();
+        AvailabilitySlot slot = request.getAssignedSlot();
         OffsetDateTime now = OffsetDateTime.now();
 
         transition(request, outcome == AssignmentOutcome.REFUSED ? RequestStatus.REFUSED : RequestStatus.FAILED, reason);
@@ -222,6 +257,13 @@ public class DispatchService {
             pro.setStatus(ProfessionalStatus.BREAK);
             professionalRepository.save(pro);
             redisService.syncProfessional(pro);
+        }
+        if (slot != null) {
+            slot.setStatus(AvailabilitySlotStatus.BREAK);
+            slot.setReservedRequestId(null);
+            slotRepository.save(slot);
+            redisService.syncAvailabilitySlot(slot);
+            redisService.releaseSlotLock(slot.getId());
         }
 
         assignmentRepository.findFirstByRequestIdAndOutcomeOrderByProposedAtDesc(
@@ -238,6 +280,7 @@ public class DispatchService {
         });
 
         request.setAssignedProfessional(null);
+        request.setAssignedSlot(null);
         request.setProposedAt(null);
         transition(request, RequestStatus.PENDING, reason + "; returned to queue");
         redisService.releaseAssignmentLock(request.getId());

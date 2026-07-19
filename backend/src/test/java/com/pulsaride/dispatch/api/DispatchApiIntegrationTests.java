@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pulsaride.dispatch.domain.ProfessionalStatus;
 import com.pulsaride.dispatch.redis.DispatchRedisService;
 import com.pulsaride.dispatch.repository.AssignmentRepository;
+import com.pulsaride.dispatch.repository.AvailabilitySlotRepository;
 import com.pulsaride.dispatch.repository.DispatchRequestRepository;
 import com.pulsaride.dispatch.repository.ProfessionalRepository;
 import com.pulsaride.dispatch.repository.StateTransitionRepository;
@@ -48,6 +49,9 @@ class DispatchApiIntegrationTests {
     @Autowired
     private ProfessionalRepository professionalRepository;
 
+    @Autowired
+    private AvailabilitySlotRepository slotRepository;
+
     @MockBean
     private DispatchRedisService redisService;
 
@@ -56,10 +60,12 @@ class DispatchApiIntegrationTests {
         assignmentRepository.deleteAll();
         transitionRepository.deleteAll();
         requestRepository.deleteAll();
+        slotRepository.deleteAll();
         professionalRepository.deleteAll();
 
         reset(redisService);
         given(redisService.acquireAssignmentLock(anyString())).willReturn(true);
+        given(redisService.acquireSlotLock(anyString(), anyString())).willReturn(true);
     }
 
     @Test
@@ -71,7 +77,8 @@ class DispatchApiIntegrationTests {
                         .queryParam("strategy", "S2"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("PROPOSED"))
-                .andExpect(jsonPath("$.assignedProfessionalId").value("api_pro_er"));
+                .andExpect(jsonPath("$.assignedProfessionalId").value("api_pro_er"))
+                .andExpect(jsonPath("$.assignedSlotId").value("slot_api_pro_er"));
 
         mockMvc.perform(post("/dispatch/{requestId}/accept", requestId))
                 .andExpect(status().isOk())
@@ -91,11 +98,12 @@ class DispatchApiIntegrationTests {
 
         mockMvc.perform(get("/requests/{requestId}/transitions", requestId))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(4)))
+                .andExpect(jsonPath("$", hasSize(5)))
                 .andExpect(jsonPath("$[0].toStatus").value("PENDING"))
-                .andExpect(jsonPath("$[1].toStatus").value("PROPOSED"))
-                .andExpect(jsonPath("$[2].toStatus").value("ACCEPTED"))
-                .andExpect(jsonPath("$[3].toStatus").value("CLOSED"));
+                .andExpect(jsonPath("$[1].toStatus").value("RESERVED"))
+                .andExpect(jsonPath("$[2].toStatus").value("PROPOSED"))
+                .andExpect(jsonPath("$[3].toStatus").value("ACCEPTED"))
+                .andExpect(jsonPath("$[4].toStatus").value("CLOSED"));
 
         mockMvc.perform(get("/metrics/summary"))
                 .andExpect(status().isOk())
@@ -181,11 +189,11 @@ class DispatchApiIntegrationTests {
 
         mockMvc.perform(get("/availability"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.totalProfessionals").value(3))
-                .andExpect(jsonPath("$.availableProfessionals").value(3))
+                .andExpect(jsonPath("$.totalSlots").value(3))
+                .andExpect(jsonPath("$.availableSlots").value(3))
                 .andExpect(jsonPath("$.availableCapacity").value(18))
                 .andExpect(jsonPath("$.specialties[0].specialtyTag").value("cardiologie"))
-                .andExpect(jsonPath("$.specialties[0].availableProfessionals").value(2));
+                .andExpect(jsonPath("$.specialties[0].availableSlots").value(2));
 
         mockMvc.perform(put("/professionals/{id}/status", "api_pro_er")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -197,8 +205,8 @@ class DispatchApiIntegrationTests {
 
         mockMvc.perform(get("/api/availability/specialties/urgence"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.totalProfessionals").value(1))
-                .andExpect(jsonPath("$.offlineProfessionals").value(1))
+                .andExpect(jsonPath("$.totalSlots").value(1))
+                .andExpect(jsonPath("$.offlineSlots").value(1))
                 .andExpect(jsonPath("$.availableCapacity").value(0));
 
         mockMvc.perform(post("/dispatch/{requestId}", requestId)
@@ -208,9 +216,10 @@ class DispatchApiIntegrationTests {
 
         mockMvc.perform(get("/availability/specialties/cardiologie"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.totalProfessionals").value(2))
-                .andExpect(jsonPath("$.availableProfessionals").value(1))
-                .andExpect(jsonPath("$.proposedProfessionals").value(1))
+                .andExpect(jsonPath("$.totalSlots").value(2))
+                .andExpect(jsonPath("$.availableSlots").value(1))
+                .andExpect(jsonPath("$.reservedSlots").value(1))
+                .andExpect(jsonPath("$.availableSlotIds", hasSize(1)))
                 .andExpect(jsonPath("$.availableProfessionalIds", hasSize(1)));
 
         mockMvc.perform(post("/dispatch/{requestId}/accept", requestId))
@@ -219,8 +228,8 @@ class DispatchApiIntegrationTests {
 
         mockMvc.perform(get("/availability/specialties/cardiologie"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.availableProfessionals").value(1))
-                .andExpect(jsonPath("$.busyProfessionals").value(1));
+                .andExpect(jsonPath("$.availableSlots").value(1))
+                .andExpect(jsonPath("$.busySlots").value(1));
 
         mockMvc.perform(post("/dispatch/{requestId}/close", requestId))
                 .andExpect(status().isOk())
@@ -228,8 +237,8 @@ class DispatchApiIntegrationTests {
 
         mockMvc.perform(get("/availability/specialties/cardiologie"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.availableProfessionals").value(2))
-                .andExpect(jsonPath("$.busyProfessionals").value(0));
+                .andExpect(jsonPath("$.availableSlots").value(2))
+                .andExpect(jsonPath("$.busySlots").value(0));
     }
 
     @Test

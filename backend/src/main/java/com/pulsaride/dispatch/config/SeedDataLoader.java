@@ -2,10 +2,14 @@ package com.pulsaride.dispatch.config;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pulsaride.dispatch.domain.AvailabilitySlot;
+import com.pulsaride.dispatch.domain.AvailabilitySlotStatus;
 import com.pulsaride.dispatch.domain.DispatchRequest;
 import com.pulsaride.dispatch.domain.Professional;
 import com.pulsaride.dispatch.domain.ProfessionalStatus;
 import com.pulsaride.dispatch.domain.RequestStatus;
+import com.pulsaride.dispatch.redis.DispatchRedisService;
+import com.pulsaride.dispatch.repository.AvailabilitySlotRepository;
 import com.pulsaride.dispatch.repository.DispatchRequestRepository;
 import com.pulsaride.dispatch.repository.ProfessionalRepository;
 import java.nio.file.Files;
@@ -29,18 +33,24 @@ public class SeedDataLoader implements ApplicationRunner {
     private final SeedDataProperties properties;
     private final ObjectMapper objectMapper;
     private final ProfessionalRepository professionalRepository;
+    private final AvailabilitySlotRepository slotRepository;
     private final DispatchRequestRepository requestRepository;
+    private final DispatchRedisService redisService;
 
     public SeedDataLoader(
             SeedDataProperties properties,
             ObjectMapper objectMapper,
             ProfessionalRepository professionalRepository,
-            DispatchRequestRepository requestRepository
+            AvailabilitySlotRepository slotRepository,
+            DispatchRequestRepository requestRepository,
+            DispatchRedisService redisService
     ) {
         this.properties = properties;
         this.objectMapper = objectMapper;
         this.professionalRepository = professionalRepository;
+        this.slotRepository = slotRepository;
         this.requestRepository = requestRepository;
+        this.redisService = redisService;
     }
 
     @Override
@@ -70,7 +80,15 @@ public class SeedDataLoader implements ApplicationRunner {
             professional.setStatus(ProfessionalStatus.valueOf(node.get("status").asText()));
             professional.setConsultationsToday(node.get("consultations_today").asInt());
             professional.setLoad(node.get("load").asDouble());
-            professionalRepository.save(professional);
+            Professional saved = professionalRepository.save(professional);
+            AvailabilitySlot slot = new AvailabilitySlot();
+            slot.setId("slot_" + saved.getId());
+            slot.setProfessional(saved);
+            slot.setSpecialtyTag(saved.getSpecialtyTag());
+            slot.setStatus(toSlotStatus(saved.getStatus()));
+            AvailabilitySlot savedSlot = slotRepository.save(slot);
+            redisService.syncProfessional(saved);
+            redisService.syncAvailabilitySlot(savedSlot);
         }
 
         for (JsonNode node : objectMapper.readTree(requestsPath.toFile())) {
@@ -97,5 +115,15 @@ public class SeedDataLoader implements ApplicationRunner {
         } catch (RuntimeException ignored) {
             return LocalDateTime.parse(value).atOffset(ZoneOffset.UTC);
         }
+    }
+
+    private AvailabilitySlotStatus toSlotStatus(ProfessionalStatus status) {
+        return switch (status) {
+            case AVAILABLE -> AvailabilitySlotStatus.AVAILABLE;
+            case PROPOSED -> AvailabilitySlotStatus.RESERVED;
+            case BUSY -> AvailabilitySlotStatus.BUSY;
+            case BREAK -> AvailabilitySlotStatus.BREAK;
+            case OFFLINE -> AvailabilitySlotStatus.OFFLINE;
+        };
     }
 }
