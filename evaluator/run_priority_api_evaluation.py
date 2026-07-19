@@ -294,6 +294,96 @@ def generate_radar(metrics_by_strategy: dict[str, dict[str, Any]], scenario: dic
     plt.close(fig)
 
 
+def generate_comparison_charts(metrics_by_strategy: dict[str, dict[str, Any]], scenario: dict[str, Any]) -> None:
+    strategy_labels = ["S1\nFirst\nAvailable", "S2\nTag\nExact", "S3\nScore\nComposite", "S4\nLexical\nIA"]
+    colors = [COLORS[strategy] for strategy in STRATEGIES]
+    service_rates = [metrics_by_strategy[strategy].get("serviceRatePct") or 0 for strategy in STRATEGIES]
+    ttfa_ms = [metrics_by_strategy[strategy].get("avgTtfaMs") or 0 for strategy in STRATEGIES]
+    ttr_ms = [metrics_by_strategy[strategy].get("avgTtrMs") or 0 for strategy in STRATEGIES]
+    gini = [metrics_by_strategy[strategy].get("giniFairness") or 0 for strategy in STRATEGIES]
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+    fig.suptitle(
+        "Pulsaride V1 - Comparaison live des stratégies de dispatch\n"
+        "Priority lifecycle: refusals return to queue",
+        fontsize=16,
+        fontweight="bold",
+        y=1.02,
+    )
+
+    def annotate_bars(ax: plt.Axes, bars: Any, suffix: str = "", decimals: int = 0) -> None:
+        for bar in bars:
+            value = bar.get_height()
+            if decimals:
+                label = f"{value:.{decimals}f}{suffix}"
+            else:
+                label = f"{value:,.0f}{suffix}"
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                value + max(value * 0.02, 0.04),
+                label,
+                ha="center",
+                va="bottom",
+                fontweight="bold",
+                fontsize=10,
+            )
+
+    ax1 = axes[0, 0]
+    bars = ax1.bar(strategy_labels, service_rates, color=colors, edgecolor="white", linewidth=1.5)
+    ax1.axhline(y=95, color="red", linestyle="--", linewidth=1.5, label="Cible 95%")
+    ax1.set_title("Service Rate (%)", fontweight="bold", fontsize=13)
+    ax1.set_ylabel("Pourcentage (%)")
+    ax1.set_ylim(0, 115)
+    ax1.legend(fontsize=10, loc="lower right")
+    annotate_bars(ax1, bars, "%", 1)
+    ax1.grid(axis="y", alpha=0.3)
+
+    ax2 = axes[0, 1]
+    bars = ax2.bar(strategy_labels, ttfa_ms, color=colors, edgecolor="white", linewidth=1.5)
+    ax2.axhline(y=5000, color="red", linestyle="--", linewidth=1.5, label="Cible 5000ms")
+    ax2.set_title("TTFA - Time To First Assignment (ms)", fontweight="bold", fontsize=13)
+    ax2.set_ylabel("Millisecondes (ms)")
+    ax2.set_ylim(0, max(5500, max(ttfa_ms) * 1.18))
+    ax2.legend(fontsize=10)
+    annotate_bars(ax2, bars, "ms")
+    ax2.grid(axis="y", alpha=0.3)
+
+    ax3 = axes[1, 0]
+    bars = ax3.bar(strategy_labels, ttr_ms, color=colors, edgecolor="white", linewidth=1.5)
+    ax3.axhline(y=30000, color="red", linestyle="--", linewidth=1.5, label="Cible 30000ms")
+    ax3.set_title("TTR - Time To Resolution (ms)", fontweight="bold", fontsize=13)
+    ax3.set_ylabel("Millisecondes (ms)")
+    ax3.set_ylim(0, 32000)
+    ax3.legend(fontsize=10)
+    annotate_bars(ax3, bars, "ms")
+    ax3.grid(axis="y", alpha=0.3)
+
+    ax4 = axes[1, 1]
+    bars = ax4.bar(strategy_labels, gini, color=colors, edgecolor="white", linewidth=1.5)
+    ax4.axhline(y=0.15, color="red", linestyle="--", linewidth=1.5, label="Cible < 0.15")
+    ax4.set_title("Gini Fairness (équité de charge)", fontweight="bold", fontsize=13)
+    ax4.set_ylabel("Coefficient de Gini")
+    ax4.set_ylim(0, max(0.5, max(gini) * 1.18))
+    ax4.legend(fontsize=10)
+    annotate_bars(ax4, bars, decimals=2)
+    ax4.grid(axis="y", alpha=0.3)
+
+    note = (
+        f"Live API run: {scenario['requests']} requests, refusal retry enabled, "
+        f"accept rate {scenario['acceptRate']}, seed {scenario['seed']}."
+    )
+    fig.text(0.5, 0.02, note, ha="center", fontsize=9, color="#374151")
+    fig.tight_layout(rect=[0, 0.04, 1, 1])
+
+    for output_path in [
+        ROOT / "evaluator/reports/comparison_charts.png",
+        ROOT / "docs/evaluation/comparison_charts.png",
+    ]:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(output_path, dpi=150, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
 def write_results(
     metrics_by_strategy: dict[str, dict[str, Any]],
     details_by_strategy: dict[str, dict[str, Any]],
@@ -355,6 +445,7 @@ def main() -> None:
         details_by_strategy[strategy] = details
 
     write_results(metrics_by_strategy, details_by_strategy, scenario)
+    generate_comparison_charts(metrics_by_strategy, scenario)
     generate_radar(metrics_by_strategy, scenario)
     print(json.dumps(metrics_by_strategy, indent=2, ensure_ascii=False))
 

@@ -11,8 +11,8 @@
   "serviceRatePct": 100.0,
   "refusalRatePct": 13.04,
   "timeoutRatePct": 0.0,
-  "avgTtfaMs": 2586.95,
-  "avgTtrMs": 2661.65,
+  "avgTtfaMs": 2407.85,
+  "avgTtrMs": 2479.85,
   "giniFairness": 0.26,
   "strategy": "S4"
 }
