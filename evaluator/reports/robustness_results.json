@@ -1,0 +1,142 @@
+[
+  {
+    "scenario": "nominal",
+    "nb_requests": 20,
+    "nb_pros": 20,
+    "accept_rate": 0.85,
+    "created": 20,
+    "creation_errors": 0,
+    "dispatch_results": {
+      "closed": 0,
+      "refused": 0,
+      "no_pro": 0,
+      "error": 0,
+      "no_dispatch": 20
+    },
+    "total_time_s": 8.03,
+    "throughput_req_per_s": 2.49,
+    "api_metrics": {
+      "totalRequests": 122,
+      "pendingRequests": 75,
+      "proposedRequests": 0,
+      "acceptedRequests": 0,
+      "closedRequests": 47,
+      "failedRequests": 0,
+      "totalAssignments": 52,
+      "refusedAssignments": 4,
+      "timedOutAssignments": 1,
+      "serviceRatePct": 38.52,
+      "refusalRatePct": 7.69,
+      "timeoutRatePct": 1.92,
+      "avgTtfaMs": 9842.65,
+      "avgTtrMs": 7350.28,
+      "giniFairness": 0.25
+    },
+    "run_at": "2026-07-23T07:52:38.886734"
+  },
+  {
+    "scenario": "peak_night",
+    "nb_requests": 40,
+    "nb_pros": 20,
+    "accept_rate": 0.5,
+    "created": 40,
+    "creation_errors": 0,
+    "dispatch_results": {
+      "closed": 0,
+      "refused": 0,
+      "no_pro": 0,
+      "error": 0,
+      "no_dispatch": 40
+    },
+    "total_time_s": 7.47,
+    "throughput_req_per_s": 5.35,
+    "api_metrics": {
+      "totalRequests": 162,
+      "pendingRequests": 115,
+      "proposedRequests": 0,
+      "acceptedRequests": 0,
+      "closedRequests": 47,
+      "failedRequests": 0,
+      "totalAssignments": 52,
+      "refusedAssignments": 4,
+      "timedOutAssignments": 1,
+      "serviceRatePct": 29.01,
+      "refusalRatePct": 7.69,
+      "timeoutRatePct": 1.92,
+      "avgTtfaMs": 9842.65,
+      "avgTtrMs": 7350.28,
+      "giniFairness": 0.25
+    },
+    "run_at": "2026-07-23T07:52:46.415945"
+  },
+  {
+    "scenario": "refusal_cascade",
+    "nb_requests": 30,
+    "nb_pros": 20,
+    "accept_rate": 0.2,
+    "created": 30,
+    "creation_errors": 0,
+    "dispatch_results": {
+      "closed": 0,
+      "refused": 0,
+      "no_pro": 0,
+      "error": 0,
+      "no_dispatch": 30
+    },
+    "total_time_s": 10.65,
+    "throughput_req_per_s": 2.82,
+    "api_metrics": {
+      "totalRequests": 192,
+      "pendingRequests": 145,
+      "proposedRequests": 0,
+      "acceptedRequests": 0,
+      "closedRequests": 47,
+      "failedRequests": 0,
+      "totalAssignments": 52,
+      "refusedAssignments": 4,
+      "timedOutAssignments": 1,
+      "serviceRatePct": 24.48,
+      "refusalRatePct": 7.69,
+      "timeoutRatePct": 1.92,
+      "avgTtfaMs": 9842.65,
+      "avgTtrMs": 7350.28,
+      "giniFairness": 0.25
+    },
+    "run_at": "2026-07-23T07:52:57.118986"
+  },
+  {
+    "scenario": "load_ramp",
+    "nb_requests": 80,
+    "nb_pros": 20,
+    "accept_rate": 0.75,
+    "created": 80,
+    "creation_errors": 0,
+    "dispatch_results": {
+      "closed": 0,
+      "refused": 0,
+      "no_pro": 0,
+      "error": 0,
+      "no_dispatch": 80
+    },
+    "total_time_s": 5.94,
+    "throughput_req_per_s": 13.48,
+    "api_metrics": {
+      "totalRequests": 272,
+      "pendingRequests": 225,
+      "proposedRequests": 0,
+      "acceptedRequests": 0,
+      "closedRequests": 47,
+      "failedRequests": 0,
+      "totalAssignments": 52,
+      "refusedAssignments": 4,
+      "timedOutAssignments": 1,
+      "serviceRatePct": 17.28,
+      "refusalRatePct": 7.69,
+      "timeoutRatePct": 1.92,
+      "avgTtfaMs": 9842.65,
+      "avgTtrMs": 7350.28,
+      "giniFairness": 0.25
+    },
+    "run_at": "2026-07-23T07:53:03.118798"
+  }
+]
