@@ -110,7 +110,14 @@ class DispatchApiIntegrationTests {
                 .andExpect(jsonPath("$.totalRequests").value(1))
                 .andExpect(jsonPath("$.closedRequests").value(1))
                 .andExpect(jsonPath("$.totalAssignments").value(1))
-                .andExpect(jsonPath("$.serviceRatePct").value(100.0));
+                .andExpect(jsonPath("$.serviceRatePct").value(100.0))
+                .andExpect(jsonPath("$.failureRatePct").value(0.0))
+                .andExpect(jsonPath("$.avgTtfaMs").isNumber())
+                .andExpect(jsonPath("$.p95TtfaMs").isNumber())
+                .andExpect(jsonPath("$.avgTtrMs").isNumber())
+                .andExpect(jsonPath("$.p95TtrMs").isNumber())
+                .andExpect(jsonPath("$.avgDegradedReassignmentMs").doesNotExist())
+                .andExpect(jsonPath("$.p95DegradedReassignmentMs").doesNotExist());
     }
 
     @Test

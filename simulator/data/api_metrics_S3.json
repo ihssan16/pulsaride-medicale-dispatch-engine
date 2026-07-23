@@ -11,8 +11,13 @@
   "serviceRatePct": 100.0,
   "refusalRatePct": 13.04,
   "timeoutRatePct": 0.0,
-  "avgTtfaMs": 2366.15,
-  "avgTtrMs": 2434.5,
+  "failureRatePct": 0.0,
+  "avgTtfaMs": 2394.85,
+  "p95TtfaMs": 4107.0,
+  "avgTtrMs": 2465.85,
+  "p95TtrMs": 4255.0,
+  "avgDegradedReassignmentMs": 44.0,
+  "p95DegradedReassignmentMs": 49.0,
   "giniFairness": 0.27,
   "strategy": "S3"
 }

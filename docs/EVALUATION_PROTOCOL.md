@@ -1,116 +1,115 @@
-# Evaluation Protocol — Pulsaride Dispatch Engine V1
+# Evaluation Protocol - Pulsaride Dispatch Engine V1
 
-**Version :** 1.0  
-**Auteurs :** Ihssan Ben Labsir · Salmane Sossey  
-**Encadrant :** M. Lyazid Salihi — Pulsaride Solutions
+**Version:** 1.1
 
----
+**Auteurs:** Ihssan Ben Labsir et Salmane Sossey
+
+**Encadrant:** M. Lyazid Salihi - Pulsaride Solutions
 
 ## 1. Objectif
 
-Évaluer et comparer les 4 stratégies de matching (S1/S2/S3/S4) du moteur de dispatch médical sur des scénarios reproductibles, et mesurer la robustesse du système sous charge.
+Comparer les stratégies S1/S2/S3/S4 et mesurer la robustesse du moteur Spring
+Boot avec des données reproductibles. Les résultats publiés doivent provenir de
+l'API réelle et chaque scénario de robustesse doit commencer avec PostgreSQL et
+Redis vides.
 
----
-
-## 2. Stratégies évaluées
+## 2. Stratégies
 
 | ID | Nom | Description |
-|----|-----|-------------|
-| S1 | First Available | Premier professionnel AVAILABLE sans critère de qualité |
-| S2 | Tag Exact | Matching par `specialty_tag` exact uniquement |
-| S3 | Score Composite | Disponibilité (0.5) + charge (0.3) + tag (0.2) |
-| S4 | Lexical IA | S3 + similarité lexicale profil/texte patient |
+|---|---|---|
+| S1 | First Available | Premier slot disponible |
+| S2 | Tag Exact | Spécialité exacte uniquement |
+| S3 | Score Composite | Disponibilité (0,5), charge (0,3), spécialité (0,2) |
+| S4 | Lexical | S3 avec affinité lexicale profil/texte patient |
 
----
+## 3. Métriques V1
 
-## 3. Métriques
+| Métrique | Définition | Cible | Source |
+|---|---|---:|---|
+| TTFA P95 | Soumission vers première proposition | < 5 000 ms | PostgreSQL `ttfa_ms` |
+| TTR P95 | Soumission vers acceptation ou résolution terminale | < 30 000 ms | PostgreSQL `ttr_ms` |
+| Service rate | Demandes acceptées/closes sur demandes soumises | >= 95% nominal | `/metrics/summary` |
+| Failure rate | Demandes `FAILED` sur demandes soumises | < 5% nominal | `/metrics/summary` |
+| Refusal rate | Assignments refusés sur toutes les propositions | < 10% nominal | `/metrics/summary` |
+| Gini | Inégalité de charge, 0 = répartition égale | < 0,15 indicatif | `/metrics/summary` |
+| MTTR dégradé P95 | Refus/timeout vers proposition suivante | < 10 000 ms | Historique `assignments` |
+| Débit | Demandes closes par seconde de traitement | À mesurer | Evaluateur Python |
 
-| Métrique | Définition | Cible V1 |
-|----------|-----------|----------|
-| TTFA | Time To First Assignment (ms) | < 5 000 ms |
-| TTR | Time To Resolution (ms) | < 30 000 ms |
-| Service Rate | % demandes CLOSED / total | > 95% nominal |
-| Refusal Rate | % REFUSED / propositions | < 10% |
-| Failure Rate | % FAILED / total | < 5% |
-| Gini Fairness | Équité de charge entre pros (0=équitable) | < 0.15 |
-| Débit | Requêtes traitées par seconde | À mesurer |
+L'API fournit également les moyennes TTFA, TTR et MTTR. Le P95 utilise la
+méthode nearest-rank sur les valeurs persistées.
 
----
+## 4. Isolation et reproductibilité
 
-## 4. Scénarios de test
+`evaluator/robustness_test.py` applique les règles suivantes :
 
-### 4.1 Comparaison des stratégies
+1. Vérifier `/actuator/health`.
+2. Tronquer les tables métier et vider Redis avant chaque scénario.
+3. Recharger exactement 20 professionnels depuis le dataset versionné.
+4. Soumettre les demandes avec plusieurs workers.
+5. Dispatcher avec `/dispatch/next?strategy=S3` et utiliser l'ID retourné.
+6. Vérifier les réponses de création, dispatch, acceptation, refus et clôture.
+7. Attendre que toutes les demandes soient `CLOSED` ou `FAILED`.
+8. Sauvegarder les métriques live et générer rapport et graphiques depuis le JSON.
 
-| ID | Nom | Seed | Pros | Demandes | Objectif |
-|----|-----|------|------|----------|----------|
-| nominal | Scénario Nominal | 42 | 20 | 20 | Valider le cas de base |
-| peak_night | Pic de Nuit | 43 | 20 | 40 | Dégradation sous-capacité |
-| refusal_cascade | Refus en Cascade | 44 | 20 | 30 | Robustesse ré-attribution |
-| no_availability | Aucune Disponibilité | 45 | 20 | 10 | Cas limite |
-| load_ramp | Montée en Charge | 46 | 20 | 80 | Point de rupture |
-| semantic_affinity | Affinité Sémantique | 47 | 20 | 20 | Gain S4 vs S2 |
+Commandes :
 
-### 4.2 Tests de robustesse (P4)
+```bash
+python3 -m pip install -r evaluator/requirements.txt
+python3 evaluator/robustness_test.py --strategy S3
+python3 evaluator/generate_robustness_charts.py
+```
 
-| Scénario | Req | Accept rate | Objectif |
-|----------|-----|-------------|----------|
-| Nominal | 20 | 85% | Référence |
-| Pic de nuit | 40 | 50% | Forte charge + refus |
-| Refus cascade | 30 | 20% | 80% de refus simulés |
-| Montée en charge | 80 | 75% | Point de rupture |
+## 5. Comparaison S1-S4
 
----
+Run live prioritaire : 20 demandes, 20 professionnels, seed 42, taux
+d'acceptation simulé 85%.
 
-## 5. Résultats — Comparaison S1/S2/S3/S4
+| Stratégie | Service | TTFA moyen | TTR moyen | Gini |
+|---|---:|---:|---:|---:|
+| S1 | 100% | 2 502 ms | 2 573 ms | 0,18 |
+| S2 | 90% | 2 442 ms | 2 510 ms | 0,43 |
+| S3 | 100% | 2 395 ms | 2 466 ms | 0,27 |
+| S4 | 100% | 2 539 ms | 2 611 ms | 0,26 |
 
-*(Run nominal · 20 demandes · 20 professionnels · seed=42)*
+S2 expose la limite attendue du matching strict lorsqu'une spécialité n'a plus
+de slot disponible. S1, S3 et S4 terminent les 20 demandes. Ce run compare les
+stratégies; le run P4 ci-dessous mesure séparément les P95 et la charge.
 
-| Stratégie | Service rate | TTFA (ms) | TTR (ms) | Gini | Verdict |
-|-----------|-------------|-----------|----------|------|---------|
-| S1 First Available | 34.15% | 13 944 | 9 919 | 0.25 | Baseline |
-| S2 Tag Exact | 41.30% | 11 394 | 8 230 | 0.33 | Charge déséquilibrée |
-| S3 Score Composite | 26.39% | 18 771 | 12 937 | **0.10** ✅ | Meilleure équité |
-| S4 Lexical IA | **46.08%** | **9 842** | **7 350** | 0.25 | **Meilleure perf** |
+## 6. Robustesse et charge P4
 
-**Analyse :**
-- S4 recommandée pour la production : +12% service rate vs S1, TTFA et TTR les plus rapides
-- S3 recommandée si équité prioritaire : Gini 0.10 < cible 0.15 ✅
-- S2 déconseillée seule : Gini 0.33 = charge très déséquilibrée
+Run du 23 juillet 2026, API Spring Boot + PostgreSQL + Redis, stratégie S3.
 
----
+| Scénario | Demandes | Service | Closes/s | TTFA P95 | TTR P95 | MTTR P95 |
+|---|---:|---:|---:|---:|---:|---:|
+| Nominal | 20 | 100% | 28,45 | 656 ms | 668 ms | n/a |
+| Pic de nuit | 40 | 100% | 25,14 | 1 379 ms | 1 391 ms | 101 ms |
+| Refus en cascade | 30 | 36,67% | 10,82 | 704 ms | 1 072 ms | 37 ms |
+| Charge 20 | 20 | 100% | 25,43 | 650 ms | 665 ms | n/a |
+| Charge 40 | 40 | 100% | 28,96 | 1 213 ms | 1 241 ms | n/a |
+| Charge 80 | 80 | 100% | 28,30 | 2 633 ms | 2 661 ms | 32 ms |
+| Charge 160 | 160 | 100% | 28,77 | 5 131 ms | 5 194 ms | 135 ms |
 
-## 6. Résultats — Tests de robustesse P4
+Résultat de capacité :
 
-*(API réelle · Spring Boot + Redis + PostgreSQL)*
+- 80 demandes est la plus grande charge testée respectant service, TTFA et TTR.
+- 28,96 demandes closes/s est le débit durable maximal observé.
+- 160 demandes est le premier niveau dégradé : service 100%, mais TTFA P95
+  dépasse la cible de 131 ms.
+- Aucun appel HTTP n'a échoué pendant le run publié.
+- Le scénario de refus en cascade est volontairement dégradé : 80% de refus
+  simulés placent les professionnels en `BREAK`, ce qui réduit le service.
 
-| Scénario | Req | Débit | Service rate | Dégradation |
-|----------|-----|-------|-------------|-------------|
-| Nominal | 20 | 2.49 req/s | 38.52% | Référence |
-| Pic de nuit | 40 | 5.35 req/s | 29.01% | -9.51% |
-| Refus cascade | 30 | 2.82 req/s | 24.48% | -14.04% |
-| Montée en charge | 80 | 13.48 req/s | 17.28% | -21.24% |
+## 7. Limites honnêtes de la V1
 
-**Point de rupture :** 80 requêtes simultanées  
-**Débit max mesuré :** 13.48 req/s  
-**Dégradation maximale :** -21.24% (montée en charge)
+- Le Gini reste entre 0,18 et 0,26 sur les charges nominales, au-dessus de la
+  cible indicative de 0,15. La spécialisation des professionnels limite une
+  répartition parfaitement uniforme.
+- La contention augmente avec le nombre de workers car plusieurs dispatchers
+  peuvent lire la même tête de file avant que le verrou Redis soit acquis.
+  Aucun doublon d'affectation n'a été observé, mais ces retries coûtent du débit.
+- Le refus met le slot en `BREAK`; la V1 ne contient pas encore de minuterie de
+  retour automatique à `AVAILABLE`.
+- S4 est lexical et déterministe. Les embeddings restent une évolution V2.
 
----
-
-## 7. Limites V1 identifiées
-
-- Service rate < 95% dès le scénario nominal — cause : accumulation de demandes PENDING des sessions précédentes
-- TTFA moyen > 5 000 ms — cause : délais de traitement HTTP + Redis accumulés
-- Gini > 0.15 pour S1, S2, S4 — seul S3 atteint la cible
-
-**Améliorations V2 :**
-- Mécanisme de purge automatique des demandes PENDING orphelines
-- TTL sur les demandes en attente
-- Embeddings pgvector pour matching sémantique réel (S4 améliorée)
-
----
-
-## 8. Règle d'or
-
-> Un moteur fiable et bien compris prime sur un moteur impressionnant mais opaque.
-> L'analyse honnête des limites fait partie du livrable.
-> — M. Lyazid Salihi, document technique V1
+Les fichiers de preuve sont versionnés sous `evaluator/reports/` et les livrables
+visuels sous `docs/evaluation/`.

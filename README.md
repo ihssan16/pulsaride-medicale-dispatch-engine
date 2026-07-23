@@ -31,6 +31,11 @@ pulsaride-medical-dispatch-engine/
 - Python 3.10+
 - Docker + Docker Compose
 
+Installer les dépendances Python d'évaluation une seule fois :
+```bash
+python3 -m pip install -r evaluator/requirements.txt
+```
+
 ### Tout exécuter
 ```bash
 ./scripts/run-all.sh
@@ -170,10 +175,10 @@ depuis l'API Spring Boot.
 
 | Stratégie | Service rate | TTFA (ms) | TTR (ms) | Gini |
 |-----------|-------------|-----------|----------|------|
-| S1 — First Available | **100.0%** | **2 341** | **2 409** | **0.18** |
-| S2 — Tag Exact | 90.0% | 2 355 | 2 422 | 0.43 |
-| S3 — Score Composite | **100.0%** | 2 366 | 2 434 | 0.27 |
-| S4 — Lexical IA | **100.0%** | 2 408 | 2 480 | 0.26 |
+| S1 — First Available | **100.0%** | 2 502 | 2 573 | **0.18** |
+| S2 — Tag Exact | 90.0% | 2 442 | 2 510 | 0.43 |
+| S3 — Score Composite | **100.0%** | **2 395** | **2 466** | 0.27 |
+| S4 — Lexical IA | **100.0%** | 2 539 | 2 611 | 0.26 |
 
 - **S1, S3 et S4** atteignent 100% de service rate sur le scénario nominal V1.
 - **S2** expose volontairement la limite du matching exact : si la spécialité demandée n'a plus de professionnel `AVAILABLE`, certaines demandes échouent même si le pool global a encore de la capacité.
@@ -182,11 +187,18 @@ Graphiques et rapport complet disponibles dans `docs/evaluation/`.
 
 Scripts d'évaluation :
 ```bash
-cd evaluator
-python3 run_priority_api_evaluation.py  # métriques live API + bar chart + radar chart
-python3 comparison_report.py            # rapport textuel historique
-python3 generate_charts.py              # graphiques historiques
+python3 evaluator/run_priority_api_evaluation.py
+python3 evaluator/robustness_test.py --strategy S3
+python3 evaluator/generate_robustness_charts.py
 ```
+
+Le test de robustesse remet PostgreSQL et Redis à zéro avant chaque scénario,
+charge 20 professionnels, vérifie toutes les réponses HTTP et utilise toujours
+l'identifiant réellement retourné par `/dispatch/next`. Le dernier run isolé a
+mesuré 100% de service jusqu'à 160 demandes soumises. La charge de 80 demandes
+respecte toutes les cibles de service et latence; à 160 demandes, le P95 TTFA
+atteint 5 131 ms et dépasse légèrement la cible de 5 secondes. Le débit durable
+maximal observé est de 28,96 demandes closes par seconde.
 
 ## Équipe
 - Salmane Sossey

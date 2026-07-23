@@ -20,4 +20,18 @@ echo "Building Spring Boot backend..."
 
 echo "Starting PostgreSQL, Redis, and API..."
 cd "$ROOT_DIR"
-docker compose up --build
+docker compose up --build -d
+
+echo "Waiting for the API health check..."
+for attempt in $(seq 1 60); do
+  if curl --fail --silent http://localhost:8080/actuator/health >/dev/null; then
+    echo "Pulsaride is ready at http://localhost:8080"
+    docker compose ps
+    exit 0
+  fi
+  sleep 1
+done
+
+echo "The API did not become healthy within 60 seconds." >&2
+docker compose logs --tail=120 api >&2
+exit 1

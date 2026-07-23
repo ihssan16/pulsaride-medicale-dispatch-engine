@@ -156,7 +156,12 @@ Returns request FSM transition history.
 
 `GET /metrics/summary`
 
-Returns live V1 metrics: request counts by state, service rate, refusal/timeout rates, average TTFA/TTR, and Gini fairness.
+Returns live V1 metrics: request counts by state, service rate, refusal/timeout/failure rates,
+average and P95 TTFA/TTR, average and P95 degraded reassignment delay, and Gini fairness.
+
+`avgDegradedReassignmentMs` and `p95DegradedReassignmentMs` measure the delay between a
+persisted refusal/timeout timestamp and the next proposal for the same request. They are
+`null` until at least one failed proposal has subsequently been reassigned.
 
 ## AI Mock Triage
 

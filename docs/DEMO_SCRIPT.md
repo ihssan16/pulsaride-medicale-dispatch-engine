@@ -94,22 +94,21 @@ puis collecte les métriques via GET /metrics/summary."*
 Montrer les graphiques générés :
 
 ```bash
-cd evaluator
-python3 generate_charts.py
+python3 evaluator/run_priority_api_evaluation.py
 ```
 
 Ouvrir `docs/evaluation/comparison_charts.png` et `radar_chart.png`.
 
 | Stratégie | Service rate | TTFA | Gini |
 |-----------|-------------|------|------|
-| S1 First Available | 34.15% | 13 944 ms | 0.25 |
-| S2 Tag Exact | 41.30% | 11 394 ms | 0.33 |
-| S3 Score Composite | 26.39% | 18 771 ms | **0.10** ✅ |
-| **S4 Lexical IA** | **46.08%** | **9 842 ms** | 0.25 |
+| S1 First Available | 100% | 2 502 ms | **0.18** |
+| S2 Tag Exact | 90% | 2 442 ms | 0.43 |
+| S3 Score Composite | 100% | **2 395 ms** | 0.27 |
+| S4 Lexical IA | 100% | 2 539 ms | 0.26 |
 
-**Message clé :** *"S4 est la meilleure stratégie globale.
-S3 est la plus équitable (Gini 0.10 < cible 0.15).
-La couche lexicale apporte +12% de service rate vs S1 simple."*
+**Message clé :** *"S1, S3 et S4 ferment les 20 demandes du run live.
+S2 montre la limite volontaire du matching strict et échoue deux demandes
+lorsque leur spécialité n'a plus de slot disponible."*
 
 ---
 
@@ -119,8 +118,9 @@ La couche lexicale apporte +12% de service rate vs S1 simple."*
 curl http://localhost:8080/metrics/summary
 ```
 
-**Message clé :** *"Les métriques sont calculées en temps réel
-depuis PostgreSQL : TTFA, TTR, service rate, Gini fairness."*
+**Message clé :** *"Les métriques sont calculées en temps réel depuis
+PostgreSQL : moyennes et P95 TTFA/TTR, service/failure/refusal rates,
+MTTR après refus ou timeout, et Gini fairness."*
 
 ---
 
@@ -137,4 +137,3 @@ depuis PostgreSQL : TTFA, TTR, service rate, Gini fairness."*
 **"Quelle est la limite du V1 ?"**
 > Service rate < 95% car la base de données se remplit de demandes PENDING
 > des sessions précédentes. En production, un reset entre runs serait ajouté.
-
