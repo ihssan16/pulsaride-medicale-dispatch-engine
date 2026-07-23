@@ -69,6 +69,19 @@ CREATE TABLE state_transitions (
 );
 ```
 
+V2 adds the availability table used by dispatch matching:
+
+```sql
+CREATE TABLE availability_slots (
+    id VARCHAR(64) PRIMARY KEY,
+    professional_id VARCHAR(64) NOT NULL UNIQUE REFERENCES professionals(id),
+    specialty_tag VARCHAR(80) NOT NULL,
+    status VARCHAR(32) NOT NULL,
+    reserved_request_id VARCHAR(64),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL
+);
+```
+
 ---
 
 ### Redis 7+ — Contrat d'interface
@@ -78,6 +91,9 @@ CREATE TABLE state_transitions (
 | `dispatch:queue` | Sorted Set | member=request_id · score=timestamp-(urgency×3600) | Aucun | File d'attente priorisée |
 | `pro:registry:{id}` | Hash | `{status, specialtyTag, load, updatedAt}` | 120s | État temps réel du pro · TTL détecte déconnexion |
 | `dispatch:lock:{request_id}` | String | `"1"` · verrou atomique | 5s | Évite la double attribution |
+| `availability:slots:{specialty}` | Sorted Set | member=slot_id · score=load | Aucun | Slots actifs par spécialité |
+| `availability:slot:{slot_id}` | Hash | `{professionalId, specialtyTag, status, reservedRequestId, load}` | Aucun | Snapshot Redis d'un slot |
+| `availability:slot:lock:{slot_id}` | String | request_id · TTL 30s | 30s | Verrou de réservation du slot |
 | `dispatch:events` | Pub/Sub | JSON `{type, requestId, proId, status, timestamp}` | — | Canal événements WebSocket |
 
 ---
@@ -87,4 +103,3 @@ CREATE TABLE state_transitions (
 - **PostgreSQL** → auditabilité complète, requêtes analytiques pour métriques, compatible pgvector pour V2
 - **Redis** → sub-milliseconde pour file d'attente et états pros, TTL automatique pour détecter déconnexions
 - **Séparation des rôles** : Redis = temps réel, PostgreSQL = persistance et analyse (instruction M. Salihi)
-

@@ -1,130 +1,146 @@
-"""
-Pulsaride — P4 Robustness Charts
-"""
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+"""Generate robustness charts and a text report from the latest live run."""
+
+from __future__ import annotations
+
 import json
+import shutil
 from pathlib import Path
+from typing import Any
 
-Path("reports").mkdir(exist_ok=True)
+import matplotlib
 
-with open("reports/robustness_results.json") as f:
-    results = json.load(f)
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 
-scenarios = [r["scenario"] for r in results]
-nb_requests = [r["nb_requests"] for r in results]
-throughput = [r["throughput_req_per_s"] for r in results]
-service_rates = [float(r["api_metrics"].get("serviceRatePct", 0)) for r in results]
-colors = ["#4CAF50", "#F59E0B", "#EF4444", "#A855F7"]
 
-fig, axes = plt.subplots(1, 3, figsize=(16, 6))
-fig.suptitle("Pulsaride V1 — P4 Tests de Robustesse & Charge",
-             fontsize=15, fontweight='bold')
+ROOT = Path(__file__).resolve().parents[1]
+REPORTS = ROOT / "evaluator/reports"
+DOCS = ROOT / "docs/evaluation"
 
-labels = ["Nominal\n(20 req)", "Pic de nuit\n(40 req)",
-          "Refus cascade\n(30 req)", "Montée charge\n(80 req)"]
 
-# Graphique 1 — Service Rate
-ax1 = axes[0]
-bars = ax1.bar(labels, service_rates, color=colors, edgecolor='white')
-ax1.axhline(y=95, color='red', linestyle='--', linewidth=1.5, label='Cible 95%')
-ax1.set_title("Service Rate (%)", fontweight='bold')
-ax1.set_ylabel("%")
-ax1.set_ylim(0, 100)
-ax1.legend()
-for bar, val in zip(bars, service_rates):
-    ax1.text(bar.get_x() + bar.get_width()/2., bar.get_height() + 0.5,
-             f'{val:.1f}%', ha='center', va='bottom', fontweight='bold', fontsize=10)
-ax1.grid(axis='y', alpha=0.3)
+def metric(result: dict[str, Any], name: str, default: float = 0.0) -> float:
+    value = result["apiMetrics"].get(name)
+    return default if value is None else float(value)
 
-# Graphique 2 — Débit (req/s)
-ax2 = axes[1]
-bars2 = ax2.bar(labels, throughput, color=colors, edgecolor='white')
-ax2.set_title("Débit mesuré (req/s)", fontweight='bold')
-ax2.set_ylabel("Requêtes / seconde")
-for bar, val in zip(bars2, throughput):
-    ax2.text(bar.get_x() + bar.get_width()/2., bar.get_height() + 0.1,
-             f'{val:.2f}', ha='center', va='bottom', fontweight='bold', fontsize=10)
-ax2.grid(axis='y', alpha=0.3)
 
-# Graphique 3 — Dégradation service rate vs charge
-ax3 = axes[2]
-ax3.plot(nb_requests, service_rates, 'o-', color='#4A8FE7',
-         linewidth=2.5, markersize=10, markerfacecolor='white',
-         markeredgewidth=2.5, label='Service rate')
-ax3.axhline(y=95, color='red', linestyle='--', linewidth=1.5, label='Cible 95%')
-ax3.fill_between(nb_requests, service_rates, 95,
-                 where=[s < 95 for s in service_rates],
-                 alpha=0.2, color='red', label='Zone dégradée')
-ax3.set_title("Dégradation sous charge", fontweight='bold')
-ax3.set_xlabel("Nombre de requêtes")
-ax3.set_ylabel("Service rate (%)")
-ax3.set_ylim(0, 100)
-ax3.legend()
-ax3.grid(alpha=0.3)
+def format_value(value: Any, suffix: str = "") -> str:
+    return "n/a" if value is None else f"{value}{suffix}"
 
-# Annoter le point de rupture
-max_load_idx = nb_requests.index(max(nb_requests))
-ax3.annotate(f'Point de rupture\n{max(nb_requests)} req\n{service_rates[max_load_idx]:.1f}%',
-             xy=(nb_requests[max_load_idx], service_rates[max_load_idx]),
-             xytext=(nb_requests[max_load_idx] - 30, service_rates[max_load_idx] + 20),
-             arrowprops=dict(arrowstyle='->', color='red'),
-             fontsize=9, color='red', fontweight='bold')
 
-plt.tight_layout()
-plt.savefig("reports/robustness_charts.png", dpi=150, bbox_inches='tight',
-            facecolor='white')
-print("✅ Graphiques → reports/robustness_charts.png")
+def generate_chart(payload: dict[str, Any]) -> Path:
+    results = payload["scenarios"]
+    labels = [result["name"].replace("_", "\n") for result in results]
+    service_rates = [metric(result, "serviceRatePct") for result in results]
+    throughputs = [float(result["successfulThroughputRps"]) for result in results]
+    colors = ["#15803D" if result["kind"] in {"nominal", "load"} else "#C2410C" for result in results]
 
-# Rapport texte P4
-report = f"""
-=======================================================
-PULSARIDE — RAPPORT P4 — TESTS DE ROBUSTESSE & CHARGE
-=======================================================
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+    fig.suptitle("Pulsaride V1 - Isolated Robustness and Load Evaluation", fontsize=15, fontweight="bold")
 
-Scénario         | Req  | Débit    | Service% | Dégradation
------------------|------|----------|----------|------------
-Nominal          |  20  | 2.49/s   | 38.52%   | Référence
-Pic de nuit      |  40  | 5.35/s   | 29.01%   | -9.51%
-Refus en cascade |  30  | 2.82/s   | 24.48%   | -14.04%
-Montée en charge |  80  | 13.48/s  | 17.28%   | -21.24%
+    bars = axes[0].bar(labels, service_rates, color=colors)
+    axes[0].axhline(95, color="#B91C1C", linestyle="--", label="V1 target 95%")
+    axes[0].set_title("Service rate")
+    axes[0].set_ylabel("Percent")
+    axes[0].set_ylim(0, 110)
+    axes[0].tick_params(axis="x", labelsize=8)
+    axes[0].legend(loc="lower left")
+    for bar, value in zip(bars, service_rates):
+        axes[0].text(bar.get_x() + bar.get_width() / 2, value + 1, f"{value:.1f}%", ha="center", fontsize=8)
 
-=======================================================
-ANALYSE
-=======================================================
+    bars = axes[1].bar(labels, throughputs, color="#2563EB")
+    axes[1].set_title("Successful processing throughput")
+    axes[1].set_ylabel("Closed requests / second")
+    axes[1].tick_params(axis="x", labelsize=8)
+    for bar, value in zip(bars, throughputs):
+        axes[1].text(bar.get_x() + bar.get_width() / 2, value + 0.1, f"{value:.2f}", ha="center", fontsize=8)
 
-1. POINT DE RUPTURE IDENTIFIÉ : 80 requêtes simultanées
-   - Service rate chute à 17.28% (cible > 95%)
-   - Dégradation totale : -21.24% vs nominal
-   - Débit max mesuré : 13.48 req/s
+    load_results = sorted(
+        (result for result in results if result["kind"] == "load"),
+        key=lambda result: result["requests"],
+    )
+    loads = [result["requests"] for result in load_results]
+    load_ttfa = [metric(result, "p95TtfaMs") for result in load_results]
+    axes[2].plot(loads, load_ttfa, "o-", color="#0F766E", linewidth=2.5, label="P95 TTFA")
+    axes[2].axhline(5_000, color="#B91C1C", linestyle="--", label="V1 target 5,000 ms")
+    breakpoint = payload["loadAnalysis"].get("firstDegradedLoadRequests")
+    if breakpoint is not None:
+        result = next(item for item in load_results if item["requests"] == breakpoint)
+        axes[2].annotate(
+            f"First degraded load: {breakpoint}",
+            xy=(breakpoint, metric(result, "p95TtfaMs")),
+            xytext=(breakpoint - 55, metric(result, "p95TtfaMs") + 500),
+            arrowprops={"arrowstyle": "->", "color": "#B91C1C"},
+            color="#B91C1C",
+        )
+    axes[2].set_title("Load ramp latency")
+    axes[2].set_xlabel("Submitted requests")
+    axes[2].set_ylabel("P95 TTFA (ms)")
+    axes[2].set_ylim(0, max(6_000, max(load_ttfa, default=0) * 1.2))
+    axes[2].legend(loc="upper left")
 
-2. CAS DÉGRADÉ — PIC DE NUIT (40 req, accept 50%)
-   - Service rate : 29.01% → dégradation de -9.51%
-   - Cause : forte accumulation de demandes PENDING
-   - Le moteur continue à traiter mais accumulation visible
+    for axis in axes:
+        axis.grid(axis="y", alpha=0.25)
+    fig.tight_layout()
+    output = REPORTS / "robustness_charts.png"
+    fig.savefig(output, dpi=150, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+    return output
 
-3. CAS DÉGRADÉ — REFUS EN CASCADE (30 req, accept 20%)
-   - Service rate : 24.48% → dégradation de -14.04%
-   - Cause : 80% de refus → ré-attributions multiples
-   - TTR augmenté significativement
 
-4. LIMITES V1 IDENTIFIÉES
-   - Service rate < 95% dès le scénario nominal
-   - Cause principale : accumulation de demandes PENDING
-     des sessions précédentes en base de données
-   - En production : reset ou TTL sur les demandes PENDING
+def generate_report(payload: dict[str, Any]) -> Path:
+    rows = []
+    for result in payload["scenarios"]:
+        metrics = result["apiMetrics"]
+        rows.append(
+            f"{result['name']:<18} | {result['created']:>3} | "
+            f"{result['successfulThroughputRps']:>8.2f} | {metrics.get('serviceRatePct', 0):>7.2f}% | "
+            f"{format_value(metrics.get('p95TtfaMs')):>9} | {format_value(metrics.get('p95TtrMs')):>9} | "
+            f"{format_value(metrics.get('p95DegradedReassignmentMs')):>9}"
+        )
 
-5. CONCLUSION
-   - Le moteur est fonctionnel et stable jusqu'à 80 req
-   - Débit max : ~13 req/s avant dégradation notable
-   - Robustesse suffisante pour un MVP V1
-   - Amélioration V2 : mécanisme de purge automatique
-=======================================================
-"""
+    load = payload["loadAnalysis"]
+    report = "\n".join(
+        [
+            "PULSARIDE V1 - ROBUSTNESS AND LOAD REPORT",
+            "=" * 78,
+            f"Run: {payload['runAt']}",
+            f"Strategy: {payload['strategy']}",
+            f"Scenarios isolated with PostgreSQL/Redis reset: {payload['isolatedScenarios']}",
+            "",
+            "Scenario           | Req | Closed/s | Service  | P95 TTFA  | P95 TTR   | P95 MTTR",
+            "-" * 92,
+            *rows,
+            "",
+            "LOAD ANALYSIS",
+            "-" * 78,
+            f"Maximum sustainable submitted load: {format_value(load.get('maxSustainableRequests'), ' requests')}",
+            f"Maximum sustainable throughput: {format_value(load.get('maxSustainableThroughputRps'), ' closed/s')}",
+            f"Maximum observed throughput: {format_value(load.get('maxObservedThroughputRps'), ' closed/s')}",
+            f"First degraded load: {format_value(load.get('firstDegradedLoadRequests'), ' requests')}",
+            "",
+            "A load is sustainable only when all requests become terminal, service rate is at",
+            "least 95%, P95 TTFA is below 5 seconds, and P95 TTR is below 30 seconds.",
+            "Degraded scenarios are intentional stress cases and are not used as nominal targets.",
+            "",
+        ]
+    )
+    output = REPORTS / "robustness_report.txt"
+    output.write_text(report, encoding="utf-8")
+    return output
 
-with open("reports/robustness_report.txt", "w") as f:
-    f.write(report)
-print(report)
-print("✅ Rapport → reports/robustness_report.txt")
 
+def main() -> None:
+    input_path = REPORTS / "robustness_results.json"
+    with input_path.open(encoding="utf-8") as file:
+        payload = json.load(file)
+    DOCS.mkdir(parents=True, exist_ok=True)
+    chart = generate_chart(payload)
+    report = generate_report(payload)
+    shutil.copy2(chart, DOCS / chart.name)
+    shutil.copy2(report, DOCS / report.name)
+    print(f"Chart written to {chart}")
+    print(f"Report written to {report}")
+
+
+if __name__ == "__main__":
+    main()

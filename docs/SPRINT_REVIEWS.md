@@ -66,7 +66,7 @@
 - 4 stratégies de matching : S1, S2, S3, S4
 - Redis connecté (file d'attente + registry + lock atomique)
 - PostgreSQL avec Flyway migrations V1, V2, V3
-- 12 tests unitaires et d'intégration passants
+- 13 tests unitaires et d'intégration passants
 
 **Partagé — Infrastructure (Epic 6)**
 - Structure GitHub créée (main + feature branch)
@@ -104,9 +104,7 @@
 **Ihssan — Intégration & Évaluation (Epic 5, 7)**
 - `api_client.py` → simulateur connecté à l'API (POST /requests, dispatch, accept, close)
 - Comparaison S1/S2/S3/S4 avec vraies données API
-- `comparison_report.py` → rapport textuel comparatif
-- `generate_charts.py` → bar charts + radar chart
-- `run_priority_api_evaluation.py` → évaluation dispatch prioritaire
+- `run_priority_api_evaluation.py` → métriques live, rapport JSON, bar charts et radar chart
 - Graphiques pushés dans `docs/evaluation/`
 
 **Salmane — Backend (Epic 3, 4)**
@@ -124,12 +122,12 @@
 ### Metrics (API réelle — 20 demandes, seed=42)
 | Stratégie | Service rate | TTFA (ms) | TTR (ms) | Gini |
 |-----------|-------------|-----------|----------|------|
-| S1 First Available | 34.15% | 13 944 | 9 919 | 0.25 |
-| S2 Tag Exact | 41.30% | 11 394 | 8 230 | 0.33 |
-| S3 Score Composite | 26.39% | 18 771 | 12 937 | **0.10** ✅ |
-| S4 Lexical IA | **46.08%** | **9 842** | **7 350** | 0.25 |
+| S1 First Available | 100% | 2 502 | 2 573 | 0.18 |
+| S2 Tag Exact | 90% | 2 442 | 2 510 | 0.43 |
+| S3 Score Composite | 100% | 2 395 | 2 466 | 0.27 |
+| S4 Lexical IA | 100% | 2 539 | 2 611 | 0.26 |
 
-**Conclusion :** S4 meilleure performance globale · S3 meilleure équité (Gini 0.10 ✅)
+**Conclusion :** S1, S3 et S4 servent les 20 demandes; S2 expose la limite du matching exact.
 
 ### Demo
 - Flux complet PENDING → PROPOSED → ACCEPTED → CLOSED démontré via curl
@@ -154,20 +152,26 @@
 ### Done ✅
 
 **Ihssan — Tests de robustesse (P4)**
-- `robustness_test.py` → 4 scénarios via l'API réelle
-- `generate_robustness_charts.py` → graphiques dégradation + point de rupture
-- Rapport P4 complet avec analyse
+- Première version des scénarios P4 et des graphiques de robustesse
+
+**Salmane — Durcissement et métriques P4**
+- Isolation PostgreSQL/Redis entre scénarios et vérification de toutes les réponses HTTP
+- Charge concurrente 20/40/80/160 et résolution par l'ID réellement dispatché
+- P95 TTFA/TTR, failure rate et MTTR dégradé ajoutés à l'API
+- Rapport et graphiques générés directement depuis les résultats JSON
 
 ### Metrics P4 (API réelle)
-| Scénario | Req | Débit | Service rate | Dégradation |
-|----------|-----|-------|-------------|-------------|
-| Nominal | 20 | 2.49/s | 38.52% | Référence |
-| Pic de nuit | 40 | 5.35/s | 29.01% | -9.51% |
-| Refus cascade | 30 | 2.82/s | 24.48% | -14.04% |
-| Montée en charge | 80 | 13.48/s | 17.28% | -21.24% |
+| Scénario | Req | Closes/s | Service | TTFA P95 | TTR P95 |
+|----------|-----|----------|---------|----------|---------|
+| Nominal | 20 | 28,45 | 100% | 656 ms | 668 ms |
+| Pic de nuit | 40 | 25,14 | 100% | 1 379 ms | 1 391 ms |
+| Refus cascade | 30 | 10,82 | 36,67% | 704 ms | 1 072 ms |
+| Charge 80 | 80 | 28,30 | 100% | 2 633 ms | 2 661 ms |
+| Charge 160 | 160 | 28,77 | 100% | 5 131 ms | 5 194 ms |
 
-**Point de rupture :** 80 requêtes · Débit max : 13.48 req/s  
-**Limite V1 identifiée :** accumulation de demandes PENDING → amélioration V2 : purge automatique
+**Charge durable validée :** 80 demandes · **Débit max durable :** 28,96 closes/s
+
+**Premier niveau dégradé :** 160 demandes, car TTFA P95 dépasse 5 secondes.
 
 ### Demo
 - Graphiques de dégradation sous charge présentés
