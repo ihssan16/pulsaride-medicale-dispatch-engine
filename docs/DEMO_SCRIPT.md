@@ -101,14 +101,15 @@ Ouvrir `docs/evaluation/comparison_charts.png` et `radar_chart.png`.
 
 | Stratégie | Service rate | TTFA | Gini |
 |-----------|-------------|------|------|
-| S1 First Available | 100% | 2 502 ms | **0.18** |
-| S2 Tag Exact | 90% | 2 442 ms | 0.43 |
-| S3 Score Composite | 100% | **2 395 ms** | 0.27 |
-| S4 Lexical IA | 100% | 2 539 ms | 0.26 |
+| S1 Round Robin | 100% | 4 924 ms | 0.54 |
+| S2 Tag Exact | 90% | 3 184 ms | 0.43 |
+| S3 Score Composite | 100% | 3 188 ms | 0.27 |
+| S4 Lexical IA | 100% | **3 044 ms** | **0.26** |
 
 **Message clé :** *"S1, S3 et S4 ferment les 20 demandes du run live.
-S2 montre la limite volontaire du matching strict et échoue deux demandes
-lorsque leur spécialité n'a plus de slot disponible."*
+S1 prouve la rotation round-robin, mais S4 garde la meilleure latence et le
+meilleur Gini. S2 montre la limite volontaire du matching strict et échoue deux
+demandes lorsque leur spécialité n'a plus de slot disponible."*
 
 ---
 

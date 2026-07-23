@@ -12,12 +12,12 @@
   "refusalRatePct": 13.04,
   "timeoutRatePct": 0.0,
   "failureRatePct": 0.0,
-  "avgTtfaMs": 2538.9,
-  "p95TtfaMs": 4299.0,
-  "avgTtrMs": 2610.55,
-  "p95TtrMs": 4452.0,
-  "avgDegradedReassignmentMs": 51.0,
-  "p95DegradedReassignmentMs": 57.0,
+  "avgTtfaMs": 3043.6,
+  "p95TtfaMs": 5167.0,
+  "avgTtrMs": 3128.55,
+  "p95TtrMs": 5362.0,
+  "avgDegradedReassignmentMs": 81.67,
+  "p95DegradedReassignmentMs": 94.0,
   "giniFairness": 0.26,
   "strategy": "S4"
 }

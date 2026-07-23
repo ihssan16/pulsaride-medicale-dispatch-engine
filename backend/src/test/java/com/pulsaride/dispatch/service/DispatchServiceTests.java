@@ -213,6 +213,27 @@ class DispatchServiceTests {
     }
 
     @Test
+    void s1RotatesAvailableProfessionalsRoundRobin() {
+        professionalRepository.save(professional("pro_alpha", "cardiologie", ProfessionalStatus.AVAILABLE));
+        professionalRepository.save(professional("pro_beta", "cardiologie", ProfessionalStatus.AVAILABLE));
+        professionalRepository.save(professional("pro_gamma", "cardiologie", ProfessionalStatus.AVAILABLE));
+
+        var first = dispatchAndClose("patient_round_robin_1");
+        var second = dispatchAndClose("patient_round_robin_2");
+        var third = dispatchAndClose("patient_round_robin_3");
+
+        assertThat(List.of(
+                first.getAssignedProfessional().getId(),
+                second.getAssignedProfessional().getId(),
+                third.getAssignedProfessional().getId()
+        )).containsExactly("pro_alpha", "pro_beta", "pro_gamma");
+        assertThat(assignmentRepository.findAll().stream()
+                .filter(assignment -> assignment.getStrategy() == DispatchStrategy.S1)
+                .map(assignment -> assignment.getProfessional().getId())
+                .toList()).containsExactly("pro_alpha", "pro_beta", "pro_gamma");
+    }
+
+    @Test
     void metricsSummarizeLatencyReassignmentRatesAndFairness() {
         professionalRepository.saveAll(List.of(
                 professional("pro_closed", "urgence", ProfessionalStatus.AVAILABLE),
@@ -288,6 +309,14 @@ class DispatchServiceTests {
                 specialtyHint,
                 urgencyScore
         );
+    }
+
+    private com.pulsaride.dispatch.domain.DispatchRequest dispatchAndClose(String patientId) {
+        var request = dispatchService.create(command(patientId, "cardiologie"));
+        var proposed = dispatchService.dispatch(request.getId(), DispatchStrategy.S1);
+        dispatchService.accept(proposed.getId());
+        dispatchService.close(proposed.getId());
+        return proposed;
     }
 
     private Professional professional(String id, String specialtyTag, ProfessionalStatus status) {

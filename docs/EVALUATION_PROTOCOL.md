@@ -17,7 +17,7 @@ Redis vides.
 
 | ID | Nom | Description |
 |---|---|---|
-| S1 | First Available | Premier slot disponible |
+| S1 | Round Robin | Rotation stable entre slots disponibles |
 | S2 | Tag Exact | Spécialité exacte uniquement |
 | S3 | Score Composite | Disponibilité (0,5), charge (0,3), spécialité (0,2) |
 | S4 | Lexical | S3 avec affinité lexicale profil/texte patient |
@@ -66,14 +66,16 @@ d'acceptation simulé 85%.
 
 | Stratégie | Service | TTFA moyen | TTR moyen | Gini |
 |---|---:|---:|---:|---:|
-| S1 | 100% | 2 502 ms | 2 573 ms | 0,18 |
-| S2 | 90% | 2 442 ms | 2 510 ms | 0,43 |
-| S3 | 100% | 2 395 ms | 2 466 ms | 0,27 |
-| S4 | 100% | 2 539 ms | 2 611 ms | 0,26 |
+| S1 | 100% | 4 924 ms | 5 037 ms | 0,54 |
+| S2 | 90% | 3 184 ms | 3 265 ms | 0,43 |
+| S3 | 100% | 3 188 ms | 3 282 ms | 0,27 |
+| S4 | 100% | 3 044 ms | 3 129 ms | 0,26 |
 
 S2 expose la limite attendue du matching strict lorsqu'une spécialité n'a plus
-de slot disponible. S1, S3 et S4 terminent les 20 demandes. Ce run compare les
-stratégies; le run P4 ci-dessous mesure séparément les P95 et la charge.
+de slot disponible. S1, S3 et S4 terminent les 20 demandes. S1 prouve la
+rotation round-robin, mais S3/S4 restent meilleurs pour la latence et la
+répartition sur ce dataset. Ce run compare les stratégies; le run P4 ci-dessous
+mesure séparément les P95 et la charge.
 
 ## 6. Robustesse et charge P4
 
@@ -94,7 +96,7 @@ Résultat de capacité :
 - 80 demandes est la plus grande charge testée respectant service, TTFA et TTR.
 - 28,96 demandes closes/s est le débit durable maximal observé.
 - 160 demandes est le premier niveau dégradé : service 100%, mais TTFA P95
-  dépasse la cible de 131 ms.
+  atteint 5 131 ms, soit 131 ms au-dessus de la cible de 5 secondes.
 - Aucun appel HTTP n'a échoué pendant le run publié.
 - Le scénario de refus en cascade est volontairement dégradé : 80% de refus
   simulés placent les professionnels en `BREAK`, ce qui réduit le service.

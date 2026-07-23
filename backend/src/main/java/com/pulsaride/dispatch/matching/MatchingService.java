@@ -4,6 +4,7 @@ import com.pulsaride.dispatch.domain.AvailabilitySlot;
 import com.pulsaride.dispatch.domain.AvailabilitySlotStatus;
 import com.pulsaride.dispatch.domain.DispatchRequest;
 import com.pulsaride.dispatch.domain.Professional;
+import com.pulsaride.dispatch.repository.AssignmentRepository;
 import com.pulsaride.dispatch.repository.AvailabilitySlotRepository;
 import com.pulsaride.dispatch.repository.ProfessionalRepository;
 import java.text.Normalizer;
@@ -20,10 +21,16 @@ import org.springframework.stereotype.Service;
 public class MatchingService {
     private final AvailabilitySlotRepository slotRepository;
     private final ProfessionalRepository professionalRepository;
+    private final AssignmentRepository assignmentRepository;
 
-    public MatchingService(AvailabilitySlotRepository slotRepository, ProfessionalRepository professionalRepository) {
+    public MatchingService(
+            AvailabilitySlotRepository slotRepository,
+            ProfessionalRepository professionalRepository,
+            AssignmentRepository assignmentRepository
+    ) {
         this.slotRepository = slotRepository;
         this.professionalRepository = professionalRepository;
+        this.assignmentRepository = assignmentRepository;
     }
 
     public Optional<Professional> select(DispatchRequest request, DispatchStrategy strategy) {
@@ -36,7 +43,7 @@ public class MatchingService {
                 .findByStatusOrderByProfessionalLoadAscProfessionalExperienceYearsDesc(AvailabilitySlotStatus.AVAILABLE);
 
         return switch (strategy) {
-            case S1 -> available.stream().findFirst();
+            case S1 -> roundRobin(available);
             case S2 -> available.stream()
                     .filter(slot -> slot.getSpecialtyTag().equalsIgnoreCase(request.getSpecialtyHint()))
                     .findFirst();
@@ -45,6 +52,29 @@ public class MatchingService {
             case S4 -> available.stream()
                     .max(Comparator.comparingDouble(slot -> aiScore(request, slot.getProfessional())));
         };
+    }
+
+    private Optional<AvailabilitySlot> roundRobin(List<AvailabilitySlot> available) {
+        List<AvailabilitySlot> ordered = available.stream()
+                .sorted(Comparator.comparing(slot -> slot.getProfessional().getId()))
+                .toList();
+        if (ordered.isEmpty()) {
+            return Optional.empty();
+        }
+
+        Optional<String> lastProfessionalId = assignmentRepository
+                .findFirstByStrategyOrderByProposedAtDescIdDesc(DispatchStrategy.S1)
+                .map(assignment -> assignment.getProfessional().getId());
+        if (lastProfessionalId.isEmpty()) {
+            return Optional.of(ordered.getFirst());
+        }
+
+        for (int index = 0; index < ordered.size(); index++) {
+            if (ordered.get(index).getProfessional().getId().equals(lastProfessionalId.get())) {
+                return Optional.of(ordered.get((index + 1) % ordered.size()));
+            }
+        }
+        return Optional.of(ordered.getFirst());
     }
 
     private double classicScore(DispatchRequest request, Professional professional) {

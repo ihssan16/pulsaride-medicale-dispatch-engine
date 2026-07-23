@@ -2,6 +2,7 @@ package com.pulsaride.dispatch.repository;
 
 import com.pulsaride.dispatch.domain.Assignment;
 import com.pulsaride.dispatch.domain.AssignmentOutcome;
+import com.pulsaride.dispatch.matching.DispatchStrategy;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -16,6 +17,9 @@ public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
 
     @EntityGraph(attributePaths = {"request", "professional"})
     List<Assignment> findByRequestIdOrderByProposedAtDesc(String requestId);
+
+    @EntityGraph(attributePaths = {"professional"})
+    Optional<Assignment> findFirstByStrategyOrderByProposedAtDescIdDesc(DispatchStrategy strategy);
 
     @Query("select a from Assignment a join fetch a.request order by a.request.id, a.proposedAt")
     List<Assignment> findAllForMetrics();

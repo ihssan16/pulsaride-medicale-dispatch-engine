@@ -122,12 +122,12 @@
 ### Metrics (API réelle — 20 demandes, seed=42)
 | Stratégie | Service rate | TTFA (ms) | TTR (ms) | Gini |
 |-----------|-------------|-----------|----------|------|
-| S1 First Available | 100% | 2 502 | 2 573 | 0.18 |
-| S2 Tag Exact | 90% | 2 442 | 2 510 | 0.43 |
-| S3 Score Composite | 100% | 2 395 | 2 466 | 0.27 |
-| S4 Lexical IA | 100% | 2 539 | 2 611 | 0.26 |
+| S1 Round Robin | 100% | 4 924 | 5 037 | 0.54 |
+| S2 Tag Exact | 90% | 3 184 | 3 265 | 0.43 |
+| S3 Score Composite | 100% | 3 188 | 3 282 | 0.27 |
+| S4 Lexical IA | 100% | 3 044 | 3 129 | 0.26 |
 
-**Conclusion :** S1, S3 et S4 servent les 20 demandes; S2 expose la limite du matching exact.
+**Conclusion :** S1, S3 et S4 servent les 20 demandes; S2 expose la limite du matching exact. Le nouveau S1 round-robin valide la rotation, mais S4 obtient la meilleure latence moyenne et le meilleur Gini sur ce run.
 
 ### Demo
 - Flux complet PENDING → PROPOSED → ACCEPTED → CLOSED démontré via curl
@@ -189,4 +189,16 @@
 |------|----------|-------------|
 | Rapport final de stage | 🔴 High | Sprint 5 |
 | Préparation soutenance | 🔴 High | Sprint 5 |
-| Dashboard temps réel (P5) | 🟡 Medium | Si temps le permet |
+
+## Sprint 5 — Dashboard temps réel (P5) ✅
+
+**Goal :** Donner une lecture non-technique des KPIs V1 pendant la démo.
+
+### Done ✅
+
+- Dashboard Spring Boot statique à `/dashboard.html`
+- Rafraîchissement automatique toutes les 5 secondes
+- KPIs temps réel : service rate, TTFA/TTR P95, Gini, volumes de demandes
+- Flux des demandes par statut
+- Disponibilité par spécialité
+- Charge et statut par professionnel

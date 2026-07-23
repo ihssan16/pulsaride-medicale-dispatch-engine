@@ -27,7 +27,7 @@ import requests
 ROOT = Path(__file__).resolve().parents[1]
 STRATEGIES = ["S1", "S2", "S3", "S4"]
 LABELS = {
-    "S1": "S1 First Available",
+    "S1": "S1 Round Robin",
     "S2": "S2 Tag Exact",
     "S3": "S3 Score Composite",
     "S4": "S4 Lexical IA",
@@ -296,7 +296,7 @@ def generate_radar(metrics_by_strategy: dict[str, dict[str, Any]], scenario: dic
 
 
 def generate_comparison_charts(metrics_by_strategy: dict[str, dict[str, Any]], scenario: dict[str, Any]) -> None:
-    strategy_labels = ["S1\nFirst\nAvailable", "S2\nTag\nExact", "S3\nScore\nComposite", "S4\nLexical\nIA"]
+    strategy_labels = ["S1\nRound\nRobin", "S2\nTag\nExact", "S3\nScore\nComposite", "S4\nLexical\nIA"]
     colors = [COLORS[strategy] for strategy in STRATEGIES]
     service_rates = [metrics_by_strategy[strategy].get("serviceRatePct") or 0 for strategy in STRATEGIES]
     ttfa_ms = [metrics_by_strategy[strategy].get("avgTtfaMs") or 0 for strategy in STRATEGIES]

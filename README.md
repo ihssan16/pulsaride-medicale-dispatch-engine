@@ -112,6 +112,7 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 - `GET /requests/{requestId}/transitions`
 - `GET /metrics/summary`
 - `POST /ai/triage`
+- `GET /dashboard.html`
 
 Les chemins historiques `/api/dispatch-requests` et `/api/professionals` restent aussi disponibles.
 Les chemins `/api/availability` et `/api/availability/specialties/{specialtyTag}` sont également exposés pour rester cohérents avec les anciens endpoints préfixés.
@@ -175,15 +176,23 @@ depuis l'API Spring Boot.
 
 | Stratégie | Service rate | TTFA (ms) | TTR (ms) | Gini |
 |-----------|-------------|-----------|----------|------|
-| S1 — First Available | **100.0%** | 2 502 | 2 573 | **0.18** |
-| S2 — Tag Exact | 90.0% | 2 442 | 2 510 | 0.43 |
-| S3 — Score Composite | **100.0%** | **2 395** | **2 466** | 0.27 |
-| S4 — Lexical IA | **100.0%** | 2 539 | 2 611 | 0.26 |
+| S1 — Round Robin | **100.0%** | 4 924 | 5 037 | 0.54 |
+| S2 — Tag Exact | 90.0% | 3 184 | 3 265 | 0.43 |
+| S3 — Score Composite | **100.0%** | 3 188 | 3 282 | 0.27 |
+| S4 — Lexical IA | **100.0%** | **3 044** | **3 129** | **0.26** |
 
 - **S1, S3 et S4** atteignent 100% de service rate sur le scénario nominal V1.
 - **S2** expose volontairement la limite du matching exact : si la spécialité demandée n'a plus de professionnel `AVAILABLE`, certaines demandes échouent même si le pool global a encore de la capacité.
+- **S1 Round Robin** valide la rotation entre professionnels, mais il est moins performant sur ce dataset que S3/S4 car il ne tient pas compte de l'affinité métier dans son choix.
 
 Graphiques et rapport complet disponibles dans `docs/evaluation/`.
+
+Le dashboard V1 est disponible dans le navigateur :
+```bash
+xdg-open http://localhost:8080/dashboard.html
+```
+Il rafraîchit automatiquement les KPIs, le flux des demandes, la disponibilité
+par spécialité et la charge par professionnel.
 
 Scripts d'évaluation :
 ```bash

@@ -123,7 +123,7 @@ state transition, then proposes the request to the linked professional. The fina
 response status remains `PROPOSED` while the response also includes `assignedSlotId`.
 
 Strategies:
-- `S1`: first available
+- `S1`: round-robin over currently available slots, rotating from the last S1 proposal
 - `S2`: exact specialty tag
 - `S3`: classic composite score
 - `S4`: mock AI semantic composite score
@@ -162,6 +162,14 @@ average and P95 TTFA/TTR, average and P95 degraded reassignment delay, and Gini 
 `avgDegradedReassignmentMs` and `p95DegradedReassignmentMs` measure the delay between a
 persisted refusal/timeout timestamp and the next proposal for the same request. They are
 `null` until at least one failed proposal has subsequently been reassigned.
+
+## Dashboard
+
+`GET /dashboard.html`
+
+Returns the lightweight V1 dashboard served by Spring Boot. It polls `/metrics/summary`,
+`/availability`, and `/professionals` every 5 seconds to show KPIs, request flow,
+availability by specialty, and load per professional.
 
 ## AI Mock Triage
 
