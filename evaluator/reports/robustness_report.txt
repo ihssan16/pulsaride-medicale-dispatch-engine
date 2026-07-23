@@ -1,25 +1,25 @@
 PULSARIDE V1 - ROBUSTNESS AND LOAD REPORT
 ==============================================================================
-Run: 2026-07-23T22:12:32.034671+00:00
+Run: 2026-07-23T23:35:14.077165+00:00
 Strategy: S3
 Scenarios isolated with PostgreSQL/Redis reset: True
 
 Scenario           | Req | Closed/s | Service  | P95 TTFA  | P95 TTR   | P95 MTTR
 --------------------------------------------------------------------------------------------
-nominal            |  20 |    28.45 |  100.00% |     656.0 |     668.0 |       n/a
-peak_night         |  40 |    25.14 |  100.00% |    1379.0 |    1391.0 |     101.0
-refusal_cascade    |  30 |    10.82 |   36.67% |     704.0 |    1072.0 |      37.0
-load_20            |  20 |    25.43 |  100.00% |     650.0 |     665.0 |       n/a
-load_40            |  40 |    28.96 |  100.00% |    1213.0 |    1241.0 |       n/a
-load_80            |  80 |    28.30 |  100.00% |    2633.0 |    2661.0 |      32.0
-load_160           | 160 |    28.77 |  100.00% |    5131.0 |    5194.0 |     135.0
+nominal            |  20 |     9.79 |  100.00% |    1850.0 |    1874.0 |       n/a
+peak_night         |  40 |     8.49 |   82.50% |    3718.0 |    3817.0 |     206.0
+refusal_cascade    |  30 |     3.84 |   36.67% |    2026.0 |    2900.0 |     243.0
+load_20            |  20 |    18.45 |  100.00% |     996.0 |    1025.0 |       n/a
+load_40            |  40 |    12.74 |   90.00% |    2801.0 |    2904.0 |      74.0
+load_80            |  80 |    13.81 |   73.75% |    4275.0 |    4304.0 |      94.0
+load_160           | 160 |     9.80 |   72.50% |   11287.0 |   11339.0 |     122.0
 
 LOAD ANALYSIS
 ------------------------------------------------------------------------------
-Maximum sustainable submitted load: 80 requests
-Maximum sustainable throughput: 28.96 closed/s
-Maximum observed throughput: 28.96 closed/s
-First degraded load: 160 requests
+Maximum sustainable submitted load: 20 requests
+Maximum sustainable throughput: 18.45 closed/s
+Maximum observed throughput: 18.45 closed/s
+First degraded load: 40 requests
 
 A load is sustainable only when all requests become terminal, service rate is at
 least 95%, P95 TTFA is below 5 seconds, and P95 TTR is below 30 seconds.

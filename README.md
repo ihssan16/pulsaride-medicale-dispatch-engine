@@ -204,10 +204,11 @@ python3 evaluator/generate_robustness_charts.py
 Le test de robustesse remet PostgreSQL et Redis à zéro avant chaque scénario,
 charge 20 professionnels, vérifie toutes les réponses HTTP et utilise toujours
 l'identifiant réellement retourné par `/dispatch/next`. Le dernier run isolé a
-mesuré 100% de service jusqu'à 160 demandes soumises. La charge de 80 demandes
-respecte toutes les cibles de service et latence; à 160 demandes, le P95 TTFA
-atteint 5 131 ms et dépasse légèrement la cible de 5 secondes. Le débit durable
-maximal observé est de 28,96 demandes closes par seconde.
+mesuré 100% de service jusqu'à 20 demandes soumises. La charge de 40 demandes
+est le premier niveau dégradé : service rate à 90% avec des demandes restées
+`PENDING` dans la fenêtre de timeout du test. À 160 demandes, le P95 TTFA atteint
+11 287 ms et dépasse la cible de 5 secondes. Le débit durable maximal observé
+est de 18,45 demandes closes par seconde.
 
 ## Équipe
 - Salmane Sossey

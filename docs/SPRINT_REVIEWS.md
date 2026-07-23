@@ -163,15 +163,17 @@
 ### Metrics P4 (API réelle)
 | Scénario | Req | Closes/s | Service | TTFA P95 | TTR P95 |
 |----------|-----|----------|---------|----------|---------|
-| Nominal | 20 | 28,45 | 100% | 656 ms | 668 ms |
-| Pic de nuit | 40 | 25,14 | 100% | 1 379 ms | 1 391 ms |
-| Refus cascade | 30 | 10,82 | 36,67% | 704 ms | 1 072 ms |
-| Charge 80 | 80 | 28,30 | 100% | 2 633 ms | 2 661 ms |
-| Charge 160 | 160 | 28,77 | 100% | 5 131 ms | 5 194 ms |
+| Nominal | 20 | 9,79 | 100% | 1 850 ms | 1 874 ms |
+| Pic de nuit | 40 | 8,49 | 82,50% | 3 718 ms | 3 817 ms |
+| Refus cascade | 30 | 3,84 | 36,67% | 2 026 ms | 2 900 ms |
+| Charge 20 | 20 | 18,45 | 100% | 996 ms | 1 025 ms |
+| Charge 40 | 40 | 12,74 | 90% | 2 801 ms | 2 904 ms |
+| Charge 80 | 80 | 13,81 | 73,75% | 4 275 ms | 4 304 ms |
+| Charge 160 | 160 | 9,80 | 72,50% | 11 287 ms | 11 339 ms |
 
-**Charge durable validée :** 80 demandes · **Débit max durable :** 28,96 closes/s
+**Charge durable validée :** 20 demandes · **Débit max durable :** 18,45 closes/s
 
-**Premier niveau dégradé :** 160 demandes, car TTFA P95 dépasse 5 secondes.
+**Premier niveau dégradé :** 40 demandes, car le service rate passe à 90% et des demandes restent `PENDING` dans la fenêtre de timeout du test.
 
 ### Demo
 - Graphiques de dégradation sous charge présentés

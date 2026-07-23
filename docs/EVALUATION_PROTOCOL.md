@@ -79,33 +79,36 @@ mesure séparément les P95 et la charge.
 
 ## 6. Robustesse et charge P4
 
-Run du 23 juillet 2026, API Spring Boot + PostgreSQL + Redis, stratégie S3.
+Run du 24 juillet 2026, API Spring Boot + PostgreSQL + Redis, stratégie S3.
 
 | Scénario | Demandes | Service | Closes/s | TTFA P95 | TTR P95 | MTTR P95 |
 |---|---:|---:|---:|---:|---:|---:|
-| Nominal | 20 | 100% | 28,45 | 656 ms | 668 ms | n/a |
-| Pic de nuit | 40 | 100% | 25,14 | 1 379 ms | 1 391 ms | 101 ms |
-| Refus en cascade | 30 | 36,67% | 10,82 | 704 ms | 1 072 ms | 37 ms |
-| Charge 20 | 20 | 100% | 25,43 | 650 ms | 665 ms | n/a |
-| Charge 40 | 40 | 100% | 28,96 | 1 213 ms | 1 241 ms | n/a |
-| Charge 80 | 80 | 100% | 28,30 | 2 633 ms | 2 661 ms | 32 ms |
-| Charge 160 | 160 | 100% | 28,77 | 5 131 ms | 5 194 ms | 135 ms |
+| Nominal | 20 | 100% | 9,79 | 1 850 ms | 1 874 ms | n/a |
+| Pic de nuit | 40 | 82,50% | 8,49 | 3 718 ms | 3 817 ms | 206 ms |
+| Refus en cascade | 30 | 36,67% | 3,84 | 2 026 ms | 2 900 ms | 243 ms |
+| Charge 20 | 20 | 100% | 18,45 | 996 ms | 1 025 ms | n/a |
+| Charge 40 | 40 | 90% | 12,74 | 2 801 ms | 2 904 ms | 74 ms |
+| Charge 80 | 80 | 73,75% | 13,81 | 4 275 ms | 4 304 ms | 94 ms |
+| Charge 160 | 160 | 72,50% | 9,80 | 11 287 ms | 11 339 ms | 122 ms |
 
 Résultat de capacité :
 
-- 80 demandes est la plus grande charge testée respectant service, TTFA et TTR.
-- 28,96 demandes closes/s est le débit durable maximal observé.
-- 160 demandes est le premier niveau dégradé : service 100%, mais TTFA P95
-  atteint 5 131 ms, soit 131 ms au-dessus de la cible de 5 secondes.
-- Aucun appel HTTP n'a échoué pendant le run publié.
+- 20 demandes est la plus grande charge testée respectant service, TTFA et TTR.
+- 18,45 demandes closes/s est le débit durable maximal observé.
+- 40 demandes est le premier niveau dégradé : service 90%, sous la cible de
+  95%, même si TTFA et TTR restent sous les seuils de latence.
+- À 160 demandes, le P95 TTFA atteint 11 287 ms et dépasse la cible de
+  5 secondes.
+- Aucun appel HTTP n'a échoué pendant le run publié; la dégradation vient de
+  demandes restées `PENDING` dans la fenêtre de timeout du test.
 - Le scénario de refus en cascade est volontairement dégradé : 80% de refus
   simulés placent les professionnels en `BREAK`, ce qui réduit le service.
 
 ## 7. Limites honnêtes de la V1
 
-- Le Gini reste entre 0,18 et 0,26 sur les charges nominales, au-dessus de la
-  cible indicative de 0,15. La spécialisation des professionnels limite une
-  répartition parfaitement uniforme.
+- Le Gini reste entre 0,26 et 0,54 sur la comparaison S1-S4, au-dessus de la
+  cible indicative de 0,15. La spécialisation des professionnels et les refus
+  limitent une répartition parfaitement uniforme.
 - La contention augmente avec le nombre de workers car plusieurs dispatchers
   peuvent lire la même tête de file avant que le verrou Redis soit acquis.
   Aucun doublon d'affectation n'a été observé, mais ces retries coûtent du débit.
