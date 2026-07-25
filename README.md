@@ -31,6 +31,11 @@ pulsaride-medical-dispatch-engine/
 - Python 3.10+
 - Docker + Docker Compose
 
+Installer les dépendances Python d'évaluation une seule fois :
+```bash
+python3 -m pip install -r evaluator/requirements.txt
+```
+
 ### Tout exécuter
 ```bash
 ./scripts/run-all.sh
@@ -92,6 +97,9 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 - `POST /professionals`
 - `GET /professionals`
 - `PUT /professionals/{id}/status`
+- `GET /availability` — synthèse temps réel des professionnels par statut et spécialité
+- `GET /availability/specialties/{specialtyTag}` — disponibilité filtrée pour une spécialité
+- `POST /dispatch/next?strategy=S1` — dispatche la prochaine demande `PENDING` par priorité (`urgencyScore` décroissant, puis ancienneté)
 - `POST /dispatch/{requestId}?strategy=S1`
 - `POST /dispatch/{requestId}?strategy=S2`
 - `POST /dispatch/{requestId}?strategy=S3`
@@ -104,8 +112,30 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 - `GET /requests/{requestId}/transitions`
 - `GET /metrics/summary`
 - `POST /ai/triage`
+- `GET /dashboard.html`
 
 Les chemins historiques `/api/dispatch-requests` et `/api/professionals` restent aussi disponibles.
+Les chemins `/api/availability` et `/api/availability/specialties/{specialtyTag}` sont également exposés pour rester cohérents avec les anciens endpoints préfixés.
+
+## Service de disponibilité
+
+Le service de disponibilité expose l'état des slots séparés du profil professionnel :
+- `AVAILABLE` : le slot peut recevoir une proposition.
+- `RESERVED` : le slot est réservé pour une demande, juste avant la proposition.
+- `BUSY` : la demande est acceptée, consultation en cours.
+- `BREAK` : indisponible après refus ou timeout.
+- `OFFLINE` : indisponible manuellement.
+
+Exemples rapides :
+```bash
+curl http://localhost:8080/availability
+curl http://localhost:8080/availability/specialties/cardiologie
+curl -X PUT http://localhost:8080/professionals/pro_demo/status \
+  -H "Content-Type: application/json" \
+  -d '{ "status": "OFFLINE" }'
+```
+
+Le dispatch ne sélectionne que les slots `AVAILABLE`. Quand un slot est choisi, il est verrouillé dans Redis, sauvegardé sur la demande (`assignedSlotId`), puis la demande passe par une transition `RESERVED` avant `PROPOSED`. Après `accept`, le slot passe `BUSY`; après `close`, il redevient `AVAILABLE`. Après `refuse` ou `timeout`, il passe `BREAK` et la demande revient en file `PENDING`.
 
 ## Démo cycle de vie V1
 ```bash
@@ -132,29 +162,53 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}/refuse"
 curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}/timeout"
 ```
 
+Pour traiter la file par priorité au lieu de choisir manuellement un ID :
+```bash
+curl -X POST "http://localhost:8080/dispatch/next?strategy=S3"
+```
+
 ## Évaluation — Comparaison des stratégies de dispatch
 
-Le simulateur Python connecté à l'API a permis de comparer les 4 stratégies
-sur 20 demandes réelles avec 20 professionnels simulés (seed fixe = 42).
+Le simulateur Python connecté à l'API compare les 4 stratégies sur 20 demandes
+avec 20 professionnels simulés (seed fixe = 42). Les chiffres ci-dessous viennent
+du cycle V1 actuel : file prioritaire, refus remis en file, et métriques lues
+depuis l'API Spring Boot.
 
 | Stratégie | Service rate | TTFA (ms) | TTR (ms) | Gini |
 |-----------|-------------|-----------|----------|------|
-| S1 — First Available | 34.15% | 13 944 | 9 919 | 0.25 |
-| S2 — Tag Exact | 41.30% | 11 394 | 8 230 | 0.33 |
-| S3 — Score Composite | 26.39% | 18 771 | 12 937 | **0.10** ✅ |
-| S4 — Lexical IA | **46.08%** | **9 842** | **7 350** | 0.25 |
+| S1 — Round Robin | **100.0%** | 4 924 | 5 037 | 0.54 |
+| S2 — Tag Exact | 90.0% | 3 184 | 3 265 | 0.43 |
+| S3 — Score Composite | **100.0%** | 3 188 | 3 282 | 0.27 |
+| S4 — Lexical IA | **100.0%** | **3 044** | **3 129** | **0.26** |
 
-- **S4 recommandée** pour la performance globale (+12% service rate vs S1)
-- **S3 recommandée** pour l'équité de charge (Gini 0.10 < cible 0.15 ✅)
+- **S1, S3 et S4** atteignent 100% de service rate sur le scénario nominal V1.
+- **S2** expose volontairement la limite du matching exact : si la spécialité demandée n'a plus de professionnel `AVAILABLE`, certaines demandes échouent même si le pool global a encore de la capacité.
+- **S1 Round Robin** valide la rotation entre professionnels, mais il est moins performant sur ce dataset que S3/S4 car il ne tient pas compte de l'affinité métier dans son choix.
 
 Graphiques et rapport complet disponibles dans `docs/evaluation/`.
 
+Le dashboard V1 est disponible dans le navigateur :
+```bash
+xdg-open http://localhost:8080/dashboard.html
+```
+Il rafraîchit automatiquement les KPIs, le flux des demandes, la disponibilité
+par spécialité et la charge par professionnel.
+
 Scripts d'évaluation :
 ```bash
-cd evaluator
-python3 comparison_report.py   # rapport textuel comparatif
-python3 generate_charts.py     # graphiques bar chart + radar chart
+python3 evaluator/run_priority_api_evaluation.py
+python3 evaluator/robustness_test.py --strategy S3
+python3 evaluator/generate_robustness_charts.py
 ```
+
+Le test de robustesse remet PostgreSQL et Redis à zéro avant chaque scénario,
+charge 20 professionnels, vérifie toutes les réponses HTTP et utilise toujours
+l'identifiant réellement retourné par `/dispatch/next`. Le dernier run isolé a
+mesuré 100% de service jusqu'à 20 demandes soumises. La charge de 40 demandes
+est le premier niveau dégradé : service rate à 90% avec des demandes restées
+`PENDING` dans la fenêtre de timeout du test. À 160 demandes, le P95 TTFA atteint
+11 287 ms et dépasse la cible de 5 secondes. Le débit durable maximal observé
+est de 18,45 demandes closes par seconde.
 
 ## Équipe
 - Salmane Sossey

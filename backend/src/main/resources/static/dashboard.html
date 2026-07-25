@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pulsaride V1 Dashboard</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d8dee8;
+      --panel: #ffffff;
+      --page: #f4f7fb;
+      --blue: #1f6feb;
+      --teal: #0f766e;
+      --green: #15803d;
+      --amber: #b45309;
+      --red: #b42318;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    header {
+      background: #102a43;
+      color: white;
+      padding: 18px 24px;
+    }
+
+    header .bar {
+      align-items: center;
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      margin: 0 auto;
+      max-width: 1180px;
+    }
+
+    h1 {
+      font-size: 22px;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    main {
+      display: grid;
+      gap: 18px;
+      margin: 0 auto;
+      max-width: 1180px;
+      padding: 22px 24px 32px;
+    }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    h2 {
+      font-size: 16px;
+      margin: 0 0 14px;
+    }
+
+    .status {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      display: inline-flex;
+      font-size: 13px;
+      gap: 8px;
+      padding: 7px 12px;
+      white-space: nowrap;
+    }
+
+    .dot {
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      height: 9px;
+      width: 9px;
+    }
+
+    .dot.warn {
+      background: #f59e0b;
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      min-height: 96px;
+      padding: 14px;
+    }
+
+    .metric label {
+      color: var(--muted);
+      display: block;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .metric span {
+      color: var(--muted);
+      display: block;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 10px;
+    }
+
+    .flow-row {
+      align-items: center;
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 92px 1fr 54px;
+    }
+
+    .track {
+      background: #eef2f7;
+      border-radius: 999px;
+      height: 14px;
+      overflow: hidden;
+    }
+
+    .fill {
+      background: var(--blue);
+      height: 100%;
+      min-width: 2px;
+    }
+
+    .fill.pending {
+      background: var(--amber);
+    }
+
+    .fill.proposed {
+      background: var(--teal);
+    }
+
+    .fill.closed {
+      background: var(--green);
+    }
+
+    .fill.failed {
+      background: var(--red);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .load-cell {
+      align-items: center;
+      display: grid;
+      gap: 8px;
+      grid-template-columns: 1fr 48px;
+    }
+
+    .load-bar {
+      background: #eef2f7;
+      border-radius: 999px;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .load-bar span {
+      background: var(--teal);
+      display: block;
+      height: 100%;
+    }
+
+    .chip {
+      border-radius: 999px;
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 8px;
+    }
+
+    .AVAILABLE {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .PROPOSED,
+    .BUSY {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .BREAK {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .OFFLINE {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .two-col {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    }
+
+    @media (max-width: 860px) {
+      header .bar,
+      .two-col {
+        display: grid;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      main {
+        padding: 16px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-row {
+        grid-template-columns: 76px 1fr 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <h1>Pulsaride V1 Dashboard</h1>
+      <div class="status"><span class="dot" id="status-dot"></span><span id="status-text">Connecting</span></div>
+    </div>
+  </header>
+  <main>
+    <section>
+      <h2>Live KPIs</h2>
+      <div class="grid">
+        <div class="metric"><label>Total requests</label><strong id="totalRequests">0</strong><span id="assignmentCount">0 assignments</span></div>
+        <div class="metric"><label>Service rate</label><strong id="serviceRatePct">0%</strong><span id="failureRatePct">0% failed</span></div>
+        <div class="metric"><label>P95 TTFA</label><strong id="p95TtfaMs">n/a</strong><span id="avgTtfaMs">avg n/a</span></div>
+        <div class="metric"><label>P95 TTR</label><strong id="p95TtrMs">n/a</strong><span id="giniFairness">Gini 0</span></div>
+      </div>
+    </section>
+
+    <div class="two-col">
+      <section>
+        <h2>Request Flow</h2>
+        <div class="flow" id="requestFlow"></div>
+      </section>
+
+      <section>
+        <h2>Availability By Specialty</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Specialty</th>
+              <th>Available</th>
+              <th>Capacity</th>
+              <th>Avg load</th>
+            </tr>
+          </thead>
+          <tbody id="specialties"></tbody>
+        </table>
+      </section>
+    </div>
+
+    <section>
+      <h2>Professional Load</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Professional</th>
+            <th>Specialty</th>
+            <th>Status</th>
+            <th>Consultations</th>
+            <th>Load</th>
+          </tr>
+        </thead>
+        <tbody id="professionals"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    const fmtPct = (value) => `${Number(value || 0).toFixed(2)}%`;
+    const fmtMs = (value) => value == null ? "n/a" : `${Math.round(value)} ms`;
+
+    async function readJson(path) {
+      const response = await fetch(path, { headers: { "Accept": "application/json" } });
+      if (!response.ok) {
+        throw new Error(`${path} returned ${response.status}`);
+      }
+      return response.json();
+    }
+
+    function setText(id, value) {
+      document.getElementById(id).textContent = value;
+    }
+
+    function renderMetrics(metrics) {
+      setText("totalRequests", metrics.totalRequests);
+      setText("assignmentCount", `${metrics.totalAssignments} assignments`);
+      setText("serviceRatePct", fmtPct(metrics.serviceRatePct));
+      setText("failureRatePct", `${fmtPct(metrics.failureRatePct)} failed`);
+      setText("p95TtfaMs", fmtMs(metrics.p95TtfaMs));
+      setText("avgTtfaMs", `avg ${fmtMs(metrics.avgTtfaMs)}`);
+      setText("p95TtrMs", fmtMs(metrics.p95TtrMs));
+      setText("giniFairness", `Gini ${Number(metrics.giniFairness || 0).toFixed(2)}`);
+
+      const total = Math.max(1, metrics.totalRequests || 0);
+      const rows = [
+        ["Pending", metrics.pendingRequests, "pending"],
+        ["Proposed", metrics.proposedRequests, "proposed"],
+        ["Accepted", metrics.acceptedRequests, ""],
+        ["Closed", metrics.closedRequests, "closed"],
+        ["Failed", metrics.failedRequests, "failed"]
+      ];
+
+      document.getElementById("requestFlow").innerHTML = rows.map(([label, value, cls]) => {
+        const width = Math.round((Number(value || 0) / total) * 100);
+        return `
+          <div class="flow-row">
+            <span>${label}</span>
+            <div class="track"><div class="fill ${cls}" style="width:${width}%"></div></div>
+            <strong>${value || 0}</strong>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderAvailability(availability) {
+      const rows = [...(availability.specialties || [])]
+        .sort((a, b) => a.specialtyTag.localeCompare(b.specialtyTag))
+        .map(item => `
+          <tr>
+            <td>${item.specialtyTag}</td>
+            <td>${item.availableSlots}/${item.totalSlots}</td>
+            <td>${item.availableCapacity}</td>
+            <td>${Number(item.averageLoad || 0).toFixed(2)}</td>
+          </tr>
+        `);
+      document.getElementById("specialties").innerHTML = rows.join("") || `<tr><td colspan="4">No availability data</td></tr>`;
+    }
+
+    function renderProfessionals(professionals) {
+      const rows = [...professionals]
+        .sort((a, b) => b.load - a.load || a.id.localeCompare(b.id))
+        .map(pro => {
+          const loadPct = Math.min(100, Math.round(Number(pro.load || 0) * 100));
+          return `
+            <tr>
+              <td>${pro.name}<br><small>${pro.id}</small></td>
+              <td>${pro.specialtyTag}</td>
+              <td><span class="chip ${pro.status}">${pro.status}</span></td>
+              <td>${pro.consultationsToday}/${pro.quotaMaxPerHour}</td>
+              <td>
+                <div class="load-cell">
+                  <div class="load-bar"><span style="width:${loadPct}%"></span></div>
+                  <strong>${loadPct}%</strong>
+                </div>
+              </td>
+            </tr>
+          `;
+        });
+      document.getElementById("professionals").innerHTML = rows.join("") || `<tr><td colspan="5">No professionals loaded</td></tr>`;
+    }
+
+    async function refresh() {
+      const [metrics, availability, professionals] = await Promise.all([
+        readJson("/metrics/summary"),
+        readJson("/availability"),
+        readJson("/professionals")
+      ]);
+      renderMetrics(metrics);
+      renderAvailability(availability);
+      renderProfessionals(professionals);
+      document.getElementById("status-dot").classList.remove("warn");
+      setText("status-text", `Live - updated ${new Date().toLocaleTimeString()}`);
+    }
+
+    async function loop() {
+      try {
+        await refresh();
+      } catch (error) {
+        document.getElementById("status-dot").classList.add("warn");
+        setText("status-text", error.message);
+      }
+    }
+
+    loop();
+    setInterval(loop, 5000);
+  </script>
+</body>
+</html>

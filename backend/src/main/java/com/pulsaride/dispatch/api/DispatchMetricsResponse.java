@@ -13,8 +13,13 @@ public record DispatchMetricsResponse(
         double serviceRatePct,
         double refusalRatePct,
         double timeoutRatePct,
+        double failureRatePct,
         Double avgTtfaMs,
+        Double p95TtfaMs,
         Double avgTtrMs,
+        Double p95TtrMs,
+        Double avgDegradedReassignmentMs,
+        Double p95DegradedReassignmentMs,
         double giniFairness
 ) {
 }

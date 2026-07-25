@@ -182,6 +182,17 @@
           }
         },
         {
+          "name": "POST /dispatch/next — Dispatcher par priorité",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/dispatch/next?strategy=S3",
+              "query": [{ "key": "strategy", "value": "S3" }]
+            },
+            "description": "Traite la prochaine demande PENDING par priorité : urgencyScore décroissant puis ancienneté"
+          }
+        },
+        {
           "name": "POST /dispatch/{id}/accept — Accepter",
           "request": {
             "method": "POST",

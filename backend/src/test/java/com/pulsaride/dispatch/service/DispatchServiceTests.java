@@ -13,8 +13,10 @@ import com.pulsaride.dispatch.domain.RequestStatus;
 import com.pulsaride.dispatch.matching.DispatchStrategy;
 import com.pulsaride.dispatch.redis.DispatchRedisService;
 import com.pulsaride.dispatch.repository.AssignmentRepository;
+import com.pulsaride.dispatch.repository.DispatchRequestRepository;
 import com.pulsaride.dispatch.repository.ProfessionalRepository;
 import com.pulsaride.dispatch.repository.StateTransitionRepository;
+import java.time.OffsetDateTime;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,6 +36,9 @@ class DispatchServiceTests {
 
     @Autowired
     private AssignmentRepository assignmentRepository;
+
+    @Autowired
+    private DispatchRequestRepository requestRepository;
 
     @Autowired
     private StateTransitionRepository transitionRepository;
@@ -208,7 +213,28 @@ class DispatchServiceTests {
     }
 
     @Test
-    void metricsSummarizeServiceRefusalTimeoutAndFairness() {
+    void s1RotatesAvailableProfessionalsRoundRobin() {
+        professionalRepository.save(professional("pro_alpha", "cardiologie", ProfessionalStatus.AVAILABLE));
+        professionalRepository.save(professional("pro_beta", "cardiologie", ProfessionalStatus.AVAILABLE));
+        professionalRepository.save(professional("pro_gamma", "cardiologie", ProfessionalStatus.AVAILABLE));
+
+        var first = dispatchAndClose("patient_round_robin_1");
+        var second = dispatchAndClose("patient_round_robin_2");
+        var third = dispatchAndClose("patient_round_robin_3");
+
+        assertThat(List.of(
+                first.getAssignedProfessional().getId(),
+                second.getAssignedProfessional().getId(),
+                third.getAssignedProfessional().getId()
+        )).containsExactly("pro_alpha", "pro_beta", "pro_gamma");
+        assertThat(assignmentRepository.findAll().stream()
+                .filter(assignment -> assignment.getStrategy() == DispatchStrategy.S1)
+                .map(assignment -> assignment.getProfessional().getId())
+                .toList()).containsExactly("pro_alpha", "pro_beta", "pro_gamma");
+    }
+
+    @Test
+    void metricsSummarizeLatencyReassignmentRatesAndFairness() {
         professionalRepository.saveAll(List.of(
                 professional("pro_closed", "urgence", ProfessionalStatus.AVAILABLE),
                 professional("pro_refused", "cardiologie", ProfessionalStatus.AVAILABLE),
@@ -222,23 +248,53 @@ class DispatchServiceTests {
         var refused = dispatchService.createAndDispatch(command("patient_refused_metrics", "cardiologie"));
         dispatchService.refuse(refused.getId());
 
+        professionalRepository.save(professional(
+                "pro_refused_retry",
+                "cardiologie",
+                ProfessionalStatus.AVAILABLE
+        ));
+        dispatchService.dispatch(refused.getId(), DispatchStrategy.S2);
+
+        var refusalHistory = assignmentRepository.findByRequestIdOrderByProposedAtDesc(refused.getId());
+        var retriedAssignment = refusalHistory.get(0);
+        var refusedAssignment = refusalHistory.get(1);
+        OffsetDateTime refusedAt = OffsetDateTime.now().minusSeconds(2);
+        refusedAssignment.setProposedAt(refusedAt.minusSeconds(1));
+        refusedAssignment.setRefusedAt(refusedAt);
+        retriedAssignment.setProposedAt(refusedAt.plusNanos(750_000_000));
+        assignmentRepository.saveAll(refusalHistory);
+
         var timedOut = dispatchService.createAndDispatch(command("patient_timeout_metrics", "radiologie"));
         dispatchService.timeout(timedOut.getId());
+
+        closed.setTtfaMs(100L);
+        closed.setTtrMs(1_000L);
+        refused.setTtfaMs(200L);
+        refused.setTtrMs(2_000L);
+        timedOut.setTtfaMs(300L);
+        timedOut.setTtrMs(3_000L);
+        requestRepository.saveAll(List.of(closed, refused, timedOut));
 
         var summary = metricsService.summary();
 
         assertThat(summary.totalRequests()).isEqualTo(3);
-        assertThat(summary.pendingRequests()).isEqualTo(2);
+        assertThat(summary.pendingRequests()).isEqualTo(1);
+        assertThat(summary.proposedRequests()).isEqualTo(1);
         assertThat(summary.closedRequests()).isEqualTo(1);
         assertThat(summary.failedRequests()).isZero();
-        assertThat(summary.totalAssignments()).isEqualTo(3);
+        assertThat(summary.totalAssignments()).isEqualTo(4);
         assertThat(summary.refusedAssignments()).isEqualTo(1);
         assertThat(summary.timedOutAssignments()).isEqualTo(1);
         assertThat(summary.serviceRatePct()).isEqualTo(33.33);
-        assertThat(summary.refusalRatePct()).isEqualTo(33.33);
-        assertThat(summary.timeoutRatePct()).isEqualTo(33.33);
-        assertThat(summary.avgTtfaMs()).isNotNull();
-        assertThat(summary.avgTtrMs()).isNotNull();
+        assertThat(summary.refusalRatePct()).isEqualTo(25.0);
+        assertThat(summary.timeoutRatePct()).isEqualTo(25.0);
+        assertThat(summary.failureRatePct()).isZero();
+        assertThat(summary.avgTtfaMs()).isEqualTo(200.0);
+        assertThat(summary.p95TtfaMs()).isEqualTo(300.0);
+        assertThat(summary.avgTtrMs()).isEqualTo(2_000.0);
+        assertThat(summary.p95TtrMs()).isEqualTo(3_000.0);
+        assertThat(summary.avgDegradedReassignmentMs()).isEqualTo(750.0);
+        assertThat(summary.p95DegradedReassignmentMs()).isEqualTo(750.0);
         assertThat(summary.giniFairness()).isGreaterThan(0.0);
     }
 
@@ -253,6 +309,14 @@ class DispatchServiceTests {
                 specialtyHint,
                 urgencyScore
         );
+    }
+
+    private com.pulsaride.dispatch.domain.DispatchRequest dispatchAndClose(String patientId) {
+        var request = dispatchService.create(command(patientId, "cardiologie"));
+        var proposed = dispatchService.dispatch(request.getId(), DispatchStrategy.S1);
+        dispatchService.accept(proposed.getId());
+        dispatchService.close(proposed.getId());
+        return proposed;
     }
 
     private Professional professional(String id, String specialtyTag, ProfessionalStatus status) {

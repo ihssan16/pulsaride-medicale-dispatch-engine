@@ -99,7 +99,7 @@ def push_requests(requests_data: list, delay: float = 0.5) -> list:
 
 def dispatch_requests(created_requests: list, strategy: str = "S3",
                       accept_rate: float = 0.8, delay: float = 0.3) -> dict:
-    """Dispatche chaque demande et simule accept/refuse."""
+    """Dispatche les demandes via la file prioritaire API, puis simule accept/refuse."""
     results = {
         "dispatched": 0,
         "accepted": 0,
@@ -110,14 +110,10 @@ def dispatch_requests(created_requests: list, strategy: str = "S3",
 
     print(f"\n🚀 Dispatch de {len(created_requests)} demandes (stratégie {strategy})...")
 
-    for i, req in enumerate(created_requests):
-        req_id = req["id"]
-
+    for i in range(len(created_requests)):
         try:
-            # Dispatcher
-            dispatch_url = f"{BASE_URL}/dispatch/{req_id}"
-            if strategy != "S3":
-                dispatch_url += f"?strategy={strategy}"
+            # Dispatcher la prochaine demande prioritaire côté API.
+            dispatch_url = f"{BASE_URL}/dispatch/next?strategy={strategy}"
 
             resp = requests.post(dispatch_url, timeout=5)
 
@@ -126,6 +122,7 @@ def dispatch_requests(created_requests: list, strategy: str = "S3",
                 continue
 
             data = resp.json()
+            req_id = data["id"]
             results["dispatched"] += 1
 
             if data.get("status") == "FAILED" or data.get("assignedProfessionalId") is None:

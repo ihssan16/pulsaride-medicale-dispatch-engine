@@ -1,6 +1,6 @@
 [
   {
-    "id": "8d5f6981-1209-4414-8cb2-75c449fb88ff",
+    "id": "d9406fe0-7431-4765-b5d9-cf6c7e99d36f",
     "patient_id": "patient_001",
     "patient_text": "Mon enfant de 5 ans a de la fièvre à 38.1°C depuis 6 jours.",
     "specialty_hint": "pediatrie",
@@ -11,10 +11,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:03:25.476973"
+    "created_at": "2026-07-15T18:37:11.207063"
   },
   {
-    "id": "8d09a7ba-2f96-44e3-9cf9-539acc6359a6",
+    "id": "14eb808a-5f1c-41b2-97b5-bf314534b46b",
     "patient_id": "patient_002",
     "patient_text": "Mon enfant de 10 ans se plaint d'une douleur à l'oreille depuis ce matin.",
     "specialty_hint": "pediatrie",
@@ -25,10 +25,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:06:25.476973"
+    "created_at": "2026-07-15T18:40:11.207063"
   },
   {
-    "id": "bca40148-d7f8-4b39-95bc-2715b76655de",
+    "id": "1810a435-e5f0-495b-95cb-701a260e0ea9",
     "patient_id": "patient_003",
     "patient_text": "Mon bébé de 9 mois pleure beaucoup, il a le nez qui coule et tousse.",
     "specialty_hint": "pediatrie",
@@ -39,10 +39,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:09:25.476973"
+    "created_at": "2026-07-15T18:43:11.207063"
   },
   {
-    "id": "37e082ce-c79c-401c-b8aa-04de73d1bbf6",
+    "id": "5986b856-0a58-4809-9f0b-def84e835f02",
     "patient_id": "patient_004",
     "patient_text": "J'ai de l'eczéma qui s'aggrave depuis 2 semaines malgré la crème.",
     "specialty_hint": "dermatologie",
@@ -53,10 +53,10 @@
     ],
     "urgency_score": 0,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:12:25.476973"
+    "created_at": "2026-07-15T18:46:11.207063"
   },
   {
-    "id": "799dd794-0bd4-4998-a25c-2b5ac41bc663",
+    "id": "75edcf81-79a1-4a22-85ac-bd6579c18eca",
     "patient_id": "patient_005",
     "patient_text": "J'ai des essoufflements à l'effort depuis 3 semaines.",
     "specialty_hint": "cardiologie",
@@ -67,10 +67,10 @@
     ],
     "urgency_score": 3,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:15:25.476973"
+    "created_at": "2026-07-15T18:49:11.207063"
   },
   {
-    "id": "4b0105cc-4b23-4e17-838a-57865118d1f9",
+    "id": "f8de4ace-7d9d-42c2-9873-600a21a1d951",
     "patient_id": "patient_006",
     "patient_text": "Mon enfant de 2 ans a de la fièvre à 38.4°C depuis 4 jours.",
     "specialty_hint": "pediatrie",
@@ -81,10 +81,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:18:25.476973"
+    "created_at": "2026-07-15T18:52:11.207063"
   },
   {
-    "id": "24630700-f14a-4455-bed7-d0501477eb2d",
+    "id": "04003525-8db1-418b-a0c7-55f4f1df7948",
     "patient_id": "patient_007",
     "patient_text": "Je me sens très anxieux depuis 6 semaines, j'ai du mal à dormir.",
     "specialty_hint": "psychiatrie",
@@ -96,10 +96,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:21:25.476973"
+    "created_at": "2026-07-15T18:55:11.207063"
   },
   {
-    "id": "e6865cf8-cb9a-472f-87a5-47d57b59ead0",
+    "id": "ec9c54a0-c99d-4a9d-a827-ce94311dac4f",
     "patient_id": "patient_008",
     "patient_text": "Mon enfant de 14 ans se plaint d'une douleur à l'oreille depuis ce matin.",
     "specialty_hint": "pediatrie",
@@ -110,10 +110,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:24:25.476973"
+    "created_at": "2026-07-15T18:58:11.207063"
   },
   {
-    "id": "6d984df5-7a8f-4e48-8e03-6fb0bdd37072",
+    "id": "df904779-95d2-4c93-a2ce-aea29695d09f",
     "patient_id": "patient_009",
     "patient_text": "J'ai des plaques rouges qui démangent sur les bras depuis 1 jours.",
     "specialty_hint": "dermatologie",
@@ -124,10 +124,10 @@
     ],
     "urgency_score": 0,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:27:25.476973"
+    "created_at": "2026-07-15T19:01:11.207063"
   },
   {
-    "id": "6afe30a5-f2a6-4c5d-8c26-aecf3ed369bd",
+    "id": "7d880dec-1753-4514-98d4-5b77241fc202",
     "patient_id": "patient_010",
     "patient_text": "Mon bébé de 2 mois pleure beaucoup, il a le nez qui coule et tousse.",
     "specialty_hint": "pediatrie",
@@ -138,10 +138,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:30:25.476973"
+    "created_at": "2026-07-15T19:04:11.207063"
   },
   {
-    "id": "dba17f15-fd79-47c2-80a5-88862e1c3416",
+    "id": "9d8b9ec6-cbf5-4d24-8916-a3278b627d77",
     "patient_id": "patient_011",
     "patient_text": "J'ai des saignements inhabituels, je voudrais un avis médical.",
     "specialty_hint": "gynecologie",
@@ -151,10 +151,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:33:25.476973"
+    "created_at": "2026-07-15T19:07:11.207063"
   },
   {
-    "id": "a92c7cfd-1a72-4bed-937f-24a202204f63",
+    "id": "8af507f8-35bf-4fbd-a426-a952dd30f6de",
     "patient_id": "patient_012",
     "patient_text": "Mon enfant de 3 ans se plaint d'une douleur à l'oreille depuis ce matin.",
     "specialty_hint": "pediatrie",
@@ -165,10 +165,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:36:25.476973"
+    "created_at": "2026-07-15T19:10:11.207063"
   },
   {
-    "id": "20a2f099-9364-4d09-963a-bbfef7f51879",
+    "id": "4ca8d793-3a97-4b1c-9ea0-da2a4d32d765",
     "patient_id": "patient_013",
     "patient_text": "J'ai des essoufflements à l'effort depuis 4 semaines.",
     "specialty_hint": "cardiologie",
@@ -179,10 +179,10 @@
     ],
     "urgency_score": 3,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:39:25.476973"
+    "created_at": "2026-07-15T19:13:11.207063"
   },
   {
-    "id": "b8c8fae8-cdad-43f2-a6bc-65f8756f1af9",
+    "id": "5b9bd00e-1c56-426c-a424-574ac5821b14",
     "patient_id": "patient_014",
     "patient_text": "J'ai un grain de beauté qui a changé de forme et de couleur récemment.",
     "specialty_hint": "dermatologie",
@@ -193,10 +193,10 @@
     ],
     "urgency_score": 0,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:42:25.476973"
+    "created_at": "2026-07-15T19:16:11.207063"
   },
   {
-    "id": "d73ba77b-37de-4459-8544-0719243f2da0",
+    "id": "19d97382-8413-4671-baec-3ef59a62fad2",
     "patient_id": "patient_015",
     "patient_text": "J'ai des maux de tête intenses depuis 4 jours, je me sens épuisé.",
     "specialty_hint": "generaliste",
@@ -208,10 +208,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:45:25.476973"
+    "created_at": "2026-07-15T19:19:11.207063"
   },
   {
-    "id": "ed72f3d9-6691-45df-a6d9-b9eba56d8b86",
+    "id": "9ec98947-efb3-45ef-a287-37d2f874b896",
     "patient_id": "patient_016",
     "patient_text": "J'ai de l'eczéma qui s'aggrave depuis 4 semaines malgré la crème.",
     "specialty_hint": "dermatologie",
@@ -222,10 +222,10 @@
     ],
     "urgency_score": 0,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:48:25.476973"
+    "created_at": "2026-07-15T19:22:11.207063"
   },
   {
-    "id": "ff835ec5-9b73-482b-8f1e-b88a17b4d824",
+    "id": "e644f271-d1f3-481a-b5c5-9cb9fd9bc696",
     "patient_id": "patient_017",
     "patient_text": "J'ai une tension artérielle élevée, je prends des médicaments mais je me sens mal.",
     "specialty_hint": "cardiologie",
@@ -236,10 +236,10 @@
     ],
     "urgency_score": 3,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:51:25.476973"
+    "created_at": "2026-07-15T19:25:11.207063"
   },
   {
-    "id": "11617ef2-6511-4e68-8ab8-a6e3470d3244",
+    "id": "da16c3ad-f4e5-4b3a-94b7-bafd17e1fb61",
     "patient_id": "patient_018",
     "patient_text": "Je me sens très stressé, j'ai besoin d'aide pour gérer mon anxiété.",
     "specialty_hint": "psychiatrie",
@@ -251,10 +251,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:54:25.476973"
+    "created_at": "2026-07-15T19:28:11.207063"
   },
   {
-    "id": "33e1155d-9efb-42d1-93d1-7702a9be54b3",
+    "id": "a2095997-317a-4e11-b036-aee63db169c1",
     "patient_id": "patient_019",
     "patient_text": "J'ai les yeux rouges et irrités depuis 7 jours avec des sécrétions.",
     "specialty_hint": "ophtalmologie",
@@ -265,10 +265,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T10:57:25.476973"
+    "created_at": "2026-07-15T19:31:11.207063"
   },
   {
-    "id": "875ece6a-8f84-43aa-bce6-d13382a7e3d1",
+    "id": "977c00e0-cb41-4439-b566-4c02938a80ac",
     "patient_id": "patient_020",
     "patient_text": "J'ai des essoufflements à l'effort depuis 5 semaines.",
     "specialty_hint": "cardiologie",
@@ -279,10 +279,10 @@
     ],
     "urgency_score": 3,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:00:25.476973"
+    "created_at": "2026-07-15T19:34:11.207063"
   },
   {
-    "id": "7f3452b8-bf83-4873-a165-f729064e653b",
+    "id": "be52bb85-424c-4a4f-9d61-6d3119fa92a7",
     "patient_id": "patient_021",
     "patient_text": "Je me sens très anxieux depuis 6 semaines, j'ai du mal à dormir.",
     "specialty_hint": "psychiatrie",
@@ -294,10 +294,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:03:25.476973"
+    "created_at": "2026-07-15T19:37:11.207063"
   },
   {
-    "id": "14a9d95b-879b-4a9d-89d9-de6c64af56a8",
+    "id": "66e5a8c2-1290-441b-a408-89e1d1ea271a",
     "patient_id": "patient_022",
     "patient_text": "J'ai des crises d'angoisse depuis 1 jours, je ne sais plus quoi faire.",
     "specialty_hint": "psychiatrie",
@@ -309,10 +309,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:06:25.476973"
+    "created_at": "2026-07-15T19:40:11.207063"
   },
   {
-    "id": "15df73c5-906e-469e-9d53-15755fdb3382",
+    "id": "74e7ba42-d6be-43f3-8776-339eecb643b6",
     "patient_id": "patient_023",
     "patient_text": "J'ai des maux de tête intenses depuis 5 jours, je me sens épuisé.",
     "specialty_hint": "generaliste",
@@ -324,10 +324,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:09:25.476973"
+    "created_at": "2026-07-15T19:43:11.207063"
   },
   {
-    "id": "42c4bfc8-5e14-4c72-9bdc-90884f4361a5",
+    "id": "c6b54157-0bc7-4510-a7b6-d4a5db37e6aa",
     "patient_id": "patient_024",
     "patient_text": "Je traverses une période de dépression, je n'arrive plus à travailler.",
     "specialty_hint": "psychiatrie",
@@ -339,10 +339,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:12:25.476973"
+    "created_at": "2026-07-15T19:46:11.207063"
   },
   {
-    "id": "01bb5ca2-9763-4281-b738-0701fb665137",
+    "id": "aefe2f54-377e-44c7-991f-5c1fb4ca5dc7",
     "patient_id": "patient_025",
     "patient_text": "Je me sens très fatigué depuis 3 semaines, je dors mal et je manque d'énergie.",
     "specialty_hint": "generaliste",
@@ -354,10 +354,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:15:25.476973"
+    "created_at": "2026-07-15T19:49:11.207063"
   },
   {
-    "id": "1b65bd83-3991-4668-ba3d-5fbb94dd0a5c",
+    "id": "2842f1eb-6d44-4a3d-b5e6-e1d7c8ce2cf0",
     "patient_id": "patient_026",
     "patient_text": "Je traverses une période de dépression, je n'arrive plus à travailler.",
     "specialty_hint": "psychiatrie",
@@ -369,10 +369,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:18:25.476973"
+    "created_at": "2026-07-15T19:52:11.207063"
   },
   {
-    "id": "9f044013-18ba-4324-bf93-f6f3862d1c0c",
+    "id": "2ba875e7-694a-4863-8f7c-0ab8850611a1",
     "patient_id": "patient_027",
     "patient_text": "Mon fils de 2 ans vomit depuis 7 jours et refuse de manger.",
     "specialty_hint": "pediatrie",
@@ -383,10 +383,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:21:25.476973"
+    "created_at": "2026-07-15T19:55:11.207063"
   },
   {
-    "id": "dec23e04-adbb-467d-ad3f-cd442a598b0c",
+    "id": "b5664309-82aa-4edb-a688-cd23dd742e52",
     "patient_id": "patient_028",
     "patient_text": "Je ressens une douleur dans la poitrine légère depuis 6 jours.",
     "specialty_hint": "cardiologie",
@@ -397,10 +397,10 @@
     ],
     "urgency_score": 3,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:24:25.476973"
+    "created_at": "2026-07-15T19:58:11.207063"
   },
   {
-    "id": "21e29eca-9327-417f-a66c-3883ec6d353d",
+    "id": "ce64dfd6-271d-46a9-a6e2-754ed3617d87",
     "patient_id": "patient_029",
     "patient_text": "Je me sens très stressé, j'ai besoin d'aide pour gérer mon anxiété.",
     "specialty_hint": "psychiatrie",
@@ -412,10 +412,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:27:25.476973"
+    "created_at": "2026-07-15T20:01:11.207063"
   },
   {
-    "id": "9f0bf02c-169a-4af1-8284-04c75ccd171d",
+    "id": "06f85577-2dc8-417b-a579-a1e33b250faf",
     "patient_id": "patient_030",
     "patient_text": "Je me sens très stressé, j'ai besoin d'aide pour gérer mon anxiété.",
     "specialty_hint": "psychiatrie",
@@ -427,10 +427,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:30:25.476973"
+    "created_at": "2026-07-15T20:04:11.207063"
   },
   {
-    "id": "84441294-127c-4669-bb26-e2868a4ee40a",
+    "id": "dd0c56ad-4ad0-4a50-8664-9438fca23c22",
     "patient_id": "patient_031",
     "patient_text": "J'ai les yeux rouges et irrités depuis 2 jours avec des sécrétions.",
     "specialty_hint": "ophtalmologie",
@@ -441,10 +441,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:33:25.476973"
+    "created_at": "2026-07-15T20:07:11.207063"
   },
   {
-    "id": "756f3373-88af-4bcd-808f-964c1671c819",
+    "id": "4da191b7-b582-4d88-a605-b78622e50c97",
     "patient_id": "patient_032",
     "patient_text": "J'ai une éruption cutanée sur le visage qui s'étend depuis hier.",
     "specialty_hint": "dermatologie",
@@ -455,10 +455,10 @@
     ],
     "urgency_score": 0,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:36:25.476973"
+    "created_at": "2026-07-15T20:10:11.207063"
   },
   {
-    "id": "ac271e4e-7537-4b76-8dae-2e42ab79cc3e",
+    "id": "84fc68df-51b3-42b8-8906-a166eeb82d9d",
     "patient_id": "patient_033",
     "patient_text": "J'ai des plaques rouges qui démangent sur les bras depuis 1 jours.",
     "specialty_hint": "dermatologie",
@@ -469,10 +469,10 @@
     ],
     "urgency_score": 0,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:39:25.476973"
+    "created_at": "2026-07-15T20:13:11.207063"
   },
   {
-    "id": "b868932f-97e5-4d31-aac1-0a95bd837586",
+    "id": "b71c7b09-ea18-439f-83ea-e24c5306e85f",
     "patient_id": "patient_034",
     "patient_text": "J'ai un grain de beauté qui a changé de forme et de couleur récemment.",
     "specialty_hint": "dermatologie",
@@ -483,10 +483,10 @@
     ],
     "urgency_score": 0,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:42:25.476973"
+    "created_at": "2026-07-15T20:16:11.207063"
   },
   {
-    "id": "c064850e-c09d-460d-a10e-eff16f6869e5",
+    "id": "3147dac7-c1a4-4ac3-8ad0-6351057af1cd",
     "patient_id": "patient_035",
     "patient_text": "J'ai les yeux rouges et irrités depuis 7 jours avec des sécrétions.",
     "specialty_hint": "ophtalmologie",
@@ -497,10 +497,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:45:25.476973"
+    "created_at": "2026-07-15T20:19:11.207063"
   },
   {
-    "id": "4a445dad-832c-49f4-bdb4-895b56efba12",
+    "id": "705a86e6-7b1e-4b3c-8e1f-0107ed2d3972",
     "patient_id": "patient_036",
     "patient_text": "Mon enfant de 7 ans a de la fièvre à 38.4°C depuis 6 jours.",
     "specialty_hint": "pediatrie",
@@ -511,10 +511,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:48:25.476973"
+    "created_at": "2026-07-15T20:22:11.207063"
   },
   {
-    "id": "e546f388-3322-4aa6-99cc-eda322c5fafd",
+    "id": "6752d360-2011-4cbf-b13f-9d3ab4e57fff",
     "patient_id": "patient_037",
     "patient_text": "J'ai un orgelet douloureux depuis 1 jours qui grossit.",
     "specialty_hint": "ophtalmologie",
@@ -525,10 +525,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:51:25.476973"
+    "created_at": "2026-07-15T20:25:11.207063"
   },
   {
-    "id": "e8898ef0-b084-4885-b260-eb4616c0fdb8",
+    "id": "e5592132-2be7-42ac-86e6-bdc5db0d6fde",
     "patient_id": "patient_038",
     "patient_text": "J'ai des douleurs dans le dos depuis 6 jours, j'ai du mal à marcher.",
     "specialty_hint": "generaliste",
@@ -540,10 +540,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:54:25.476973"
+    "created_at": "2026-07-15T20:28:11.207063"
   },
   {
-    "id": "783d7d13-0f90-4914-8ab1-72c4bfb45d0c",
+    "id": "50c33aa4-1c9c-4bad-afd4-d9f9d944ea4e",
     "patient_id": "patient_039",
     "patient_text": "J'ai une éruption cutanée sur le visage qui s'étend depuis hier.",
     "specialty_hint": "dermatologie",
@@ -554,10 +554,10 @@
     ],
     "urgency_score": 0,
     "status": "PENDING",
-    "created_at": "2026-07-15T11:57:25.476973"
+    "created_at": "2026-07-15T20:31:11.207063"
   },
   {
-    "id": "c49dedc0-9dea-4884-82c9-7040f1e9e5b1",
+    "id": "f6dce0fa-ee31-4077-ab35-73682cf5d2e2",
     "patient_id": "patient_040",
     "patient_text": "J'ai une tension artérielle élevée, je prends des médicaments mais je me sens mal.",
     "specialty_hint": "cardiologie",
@@ -568,10 +568,10 @@
     ],
     "urgency_score": 3,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:00:25.476973"
+    "created_at": "2026-07-15T20:34:11.207063"
   },
   {
-    "id": "22a6e33e-1062-48b9-ac47-0b5235d22639",
+    "id": "7ae09674-2d1b-48f8-b3c5-2ba5e182ef65",
     "patient_id": "patient_041",
     "patient_text": "J'ai un orgelet douloureux depuis 1 jours qui grossit.",
     "specialty_hint": "ophtalmologie",
@@ -582,10 +582,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:03:25.476973"
+    "created_at": "2026-07-15T20:37:11.207063"
   },
   {
-    "id": "692b8f4e-bf64-4826-bb2c-5f533ec7fad8",
+    "id": "e574762c-23b6-4710-9fc6-5cd375974a6c",
     "patient_id": "patient_042",
     "patient_text": "J'ai de la fièvre depuis 7 jours avec des frissons et de la fatigue.",
     "specialty_hint": "generaliste",
@@ -597,10 +597,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:06:25.476973"
+    "created_at": "2026-07-15T20:40:11.207063"
   },
   {
-    "id": "d57c2d83-2b78-409f-9b96-6b5e3da4f24f",
+    "id": "6ba69cdf-58a3-49f5-9d3c-41c28191ec91",
     "patient_id": "patient_043",
     "patient_text": "J'ai une douleur à l'oeil gauche depuis ce matin, je vois flou.",
     "specialty_hint": "ophtalmologie",
@@ -611,10 +611,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:09:25.476973"
+    "created_at": "2026-07-15T20:43:11.207063"
   },
   {
-    "id": "e2586ffb-a0e1-4e1b-8909-992d94e6259c",
+    "id": "04ff01b1-8944-4ca0-be0c-9ef4f33c52b1",
     "patient_id": "patient_044",
     "patient_text": "J'ai des essoufflements à l'effort depuis 1 semaines.",
     "specialty_hint": "cardiologie",
@@ -625,10 +625,10 @@
     ],
     "urgency_score": 3,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:12:25.476973"
+    "created_at": "2026-07-15T20:46:11.207063"
   },
   {
-    "id": "23f3ca4f-62d7-48ad-9dc6-2b62c92388e1",
+    "id": "ba744429-467e-42cb-a09e-f211774c6e53",
     "patient_id": "patient_045",
     "patient_text": "Je me sens très stressé, j'ai besoin d'aide pour gérer mon anxiété.",
     "specialty_hint": "psychiatrie",
@@ -640,10 +640,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:15:25.476973"
+    "created_at": "2026-07-15T20:49:11.207063"
   },
   {
-    "id": "3e4c9f07-29d9-464d-8b70-5e8a7161a3ff",
+    "id": "4a05912d-b4d6-4217-beaf-50c83bac7a26",
     "patient_id": "patient_046",
     "patient_text": "J'ai les yeux rouges et irrités depuis 2 jours avec des sécrétions.",
     "specialty_hint": "ophtalmologie",
@@ -654,10 +654,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:18:25.476973"
+    "created_at": "2026-07-15T20:52:11.207063"
   },
   {
-    "id": "187c9840-57af-4588-8cbc-97eacd171a1d",
+    "id": "8cbb9b6b-a771-4643-b06e-9cb5c2aa68ca",
     "patient_id": "patient_047",
     "patient_text": "J'ai des maux de tête intenses depuis 1 jours, je me sens épuisé.",
     "specialty_hint": "generaliste",
@@ -669,10 +669,10 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:21:25.476973"
+    "created_at": "2026-07-15T20:55:11.207063"
   },
   {
-    "id": "79e0400e-ee27-4bb2-ae65-858dd0ea89da",
+    "id": "e77cd9b7-c780-4493-bc46-83727da87b09",
     "patient_id": "patient_048",
     "patient_text": "J'ai des palpitations depuis 5 jours, mon coeur bat très vite par moments.",
     "specialty_hint": "cardiologie",
@@ -683,10 +683,10 @@
     ],
     "urgency_score": 3,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:24:25.476973"
+    "created_at": "2026-07-15T20:58:11.207063"
   },
   {
-    "id": "78b187d9-0112-4b72-9d53-30dea4e4fb7d",
+    "id": "2f67ba92-04a7-4fb1-b81f-1aac37cbd476",
     "patient_id": "patient_049",
     "patient_text": "Mon bébé de 2 mois pleure beaucoup, il a le nez qui coule et tousse.",
     "specialty_hint": "pediatrie",
@@ -697,10 +697,10 @@
     ],
     "urgency_score": 2,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:27:25.476973"
+    "created_at": "2026-07-15T21:01:11.207063"
   },
   {
-    "id": "39d47e5f-d50c-4143-8412-e299b7055d65",
+    "id": "e95c3bc2-d998-4e40-9cd1-199422aecaf3",
     "patient_id": "patient_050",
     "patient_text": "Je me sens très fatigué depuis 1 semaines, je dors mal et je manque d'énergie.",
     "specialty_hint": "generaliste",
@@ -712,6 +712,6 @@
     ],
     "urgency_score": 1,
     "status": "PENDING",
-    "created_at": "2026-07-15T12:30:25.476973"
+    "created_at": "2026-07-15T21:04:11.207063"
   }
 ]
