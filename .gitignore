@@ -150,3 +150,14 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 backend/target/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Data files générés
+simulator/data/*.json
+evaluator/reports/*.json
+evaluator/reports/*.txt
