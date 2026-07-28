@@ -43,6 +43,15 @@ python3 -m pip install -r evaluator/requirements.txt
 
 Ce script génère les données de simulation, lance les scénarios Python, compile le backend Spring Boot, puis démarre PostgreSQL, Redis et l'API.
 
+## Branches et CI
+
+- `main` contient la version stable V1.
+- `develop` sert aux prochains travaux, notamment les évolutions IA.
+- GitHub Actions vérifie le backend Spring Boot avec Java 21 et compile les scripts Python du simulateur/evaluateur sur chaque push et pull request vers `main` ou `develop`.
+
+Avant de démarrer une évolution importante, créer un tag de release depuis `main`
+permet de garder un point de retour clair pour la V1.
+
 ### Exécution manuelle
 ```bash
 # Générer les données et métriques de simulation

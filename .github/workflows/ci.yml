@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  backend:
+    name: Backend build and tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Run Spring Boot tests
+        run: mvn --batch-mode clean test
+
+      - name: Build Spring Boot artifact
+        run: mvn --batch-mode -DskipTests package
+
+  python-tools:
+    name: Simulator and evaluator checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: evaluator/requirements.txt
+
+      - name: Install evaluator dependencies
+        run: python -m pip install -r evaluator/requirements.txt
+
+      - name: Check Python scripts compile
+        run: python -m compileall simulator evaluator
