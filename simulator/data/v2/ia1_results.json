@@ -1,0 +1,119 @@
+[
+  {
+    "id": "edbb5af5-9064-423a-b864-788899952874",
+    "patient_id": "v2_ambiguous_010",
+    "free_text": "J'ai mal un peu partout, je suis fatigué.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "inconnu",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "cd5d32a8-6215-4e47-b967-e6f7c4829314",
+    "patient_id": "v2_patient_010",
+    "free_text": "J'ai mal à l'oreille droite depuis 1 jours avec une légère fièvre.",
+    "ground_truth": {
+      "specialty_hint": "orl",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [
+        "mal de l'oreille",
+        "fièvre"
+      ],
+      "duration_days": 1,
+      "severity": 2,
+      "age_group": "adulte",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 81857,
+      "_extraction_ok": true
+    }
+  },
+  {
+    "id": "b6d9bd65-b9d5-457e-b24f-52748a2fc30b",
+    "patient_id": "v2_ambiguous_008",
+    "free_text": "J'ai des symptômes que je n'arrive pas à expliquer.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "inconnu",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 26254,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "aabe3116-5372-4b1f-9a70-f6d63aeacb96",
+    "patient_id": "v2_patient_020",
+    "free_text": "Je me sens épuisé depuis 4 semaines, je dors mal et je n'ai pas d'appétit.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [
+        "fatigue",
+        "mauvaise qualité de sommeil",
+        "perte d'appétit"
+      ],
+      "duration_days": null,
+      "severity": 2,
+      "age_group": "adulte",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 25912,
+      "_extraction_ok": true
+    }
+  },
+  {
+    "id": "916191fc-6412-4f75-bec0-21b43a96e883",
+    "patient_id": "v2_ambiguous_009",
+    "free_text": "Je ne me sens pas bien depuis quelques jours.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "inconnu",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  }
+]
