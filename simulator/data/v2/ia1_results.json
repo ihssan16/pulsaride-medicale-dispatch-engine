@@ -42,7 +42,7 @@
       "severity": 2,
       "age_group": "adulte",
       "specialty_hint": "generaliste",
-      "_latency_ms": 81857,
+      "_latency_ms": 97549,
       "_extraction_ok": true
     }
   },
@@ -64,7 +64,7 @@
       "severity": 1,
       "age_group": "inconnu",
       "specialty_hint": "generaliste",
-      "_latency_ms": 26254,
+      "_latency_ms": 26284,
       "_extraction_ok": false
     }
   },
@@ -90,7 +90,7 @@
       "severity": 2,
       "age_group": "adulte",
       "specialty_hint": "generaliste",
-      "_latency_ms": 25912,
+      "_latency_ms": 26917,
       "_extraction_ok": true
     }
   },
@@ -105,6 +105,1005 @@
       "urgency_score": 0,
       "symptoms": [],
       "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "24c02d8e-6b40-4dce-b74e-a9cff5f83d26",
+    "patient_id": "v2_patient_040",
+    "free_text": "J'ai perdu l'odorat depuis 7 jours suite à un rhume.",
+    "ground_truth": {
+      "specialty_hint": "orl",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "f655555f-bd5b-481b-84b6-9ff45c04d702",
+    "patient_id": "v2_patient_017",
+    "free_text": "J'ai un grain de beauté qui a changé de forme et de couleur depuis 5 semaines.",
+    "ground_truth": {
+      "specialty_hint": "dermatologie",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "18c661d2-a305-4983-ab41-4dcb28ceb4b1",
+    "patient_id": "v2_patient_011",
+    "free_text": "Je traverse une période de dépression, je n'arrive plus à aller travailler.",
+    "ground_truth": {
+      "specialty_hint": "psychiatrie",
+      "age_group": "adulte",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "ffbf3539-699b-4323-84c2-4b05edca2ee6",
+    "patient_id": "v2_patient_033",
+    "free_text": "Je me sens épuisé depuis 2 semaines, je dors mal et je n'ai pas d'appétit.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "19355ce9-edf9-439c-a422-dac54da9276e",
+    "patient_id": "v2_patient_038",
+    "free_text": "Mon enfant de 6 ans a de la fièvre à 37.7°C depuis 2 jours, il tousse beaucoup.",
+    "ground_truth": {
+      "specialty_hint": "pediatrie",
+      "age_group": "enfant",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "34868ce9-b2b2-4ed7-9fb6-99bc459213dc",
+    "patient_id": "v2_patient_024",
+    "free_text": "Je me sens épuisé depuis 1 semaines, je dors mal et je n'ai pas d'appétit.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [
+        "fatigue",
+        "mauvaise qualité de sommeil",
+        "perte d'appétit"
+      ],
+      "duration_days": null,
+      "severity": 2,
+      "age_group": "adulte",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 43862,
+      "_extraction_ok": true
+    }
+  },
+  {
+    "id": "fa875596-1706-474e-9abc-d31c020084e6",
+    "patient_id": "v2_patient_034",
+    "free_text": "Je traverse une période de dépression, je n'arrive plus à aller travailler.",
+    "ground_truth": {
+      "specialty_hint": "psychiatrie",
+      "age_group": "adulte",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [
+        "dépression"
+      ],
+      "duration_days": null,
+      "severity": 2,
+      "age_group": "adulte",
+      "specialty_hint": "psychiatrie",
+      "_latency_ms": 25601,
+      "_extraction_ok": true
+    }
+  },
+  {
+    "id": "413f0ab8-1150-4c15-8392-a4481220ad56",
+    "patient_id": "v2_patient_015",
+    "free_text": "J'ai une douleur dans la poitrine qui irradie dans le bras gauche depuis ce matin.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [
+        "douleur dans la poitrine",
+        "irradiation au bras gauche"
+      ],
+      "duration_days": null,
+      "severity": 2,
+      "age_group": "adulte",
+      "specialty_hint": "cardiologie",
+      "_latency_ms": 37510,
+      "_extraction_ok": true
+    }
+  },
+  {
+    "id": "8801b234-bb8b-4db0-acc4-7d8a05d80bfb",
+    "patient_id": "v2_patient_039",
+    "free_text": "Je me sens très stressé, j'ai des pensées négatives que je n'arrive pas à contrôler.",
+    "ground_truth": {
+      "specialty_hint": "psychiatrie",
+      "age_group": "adulte",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "921cbb16-8235-4ea4-9af6-2103aa703535",
+    "patient_id": "v2_patient_019",
+    "free_text": "J'ai du mal à respirer à l'effort depuis 5 semaines, je me fatigue vite.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "abbce325-c6da-4cbc-92ca-55d99029a4f5",
+    "patient_id": "v2_patient_023",
+    "free_text": "J'ai très mal à la gorge depuis 4 jours, j'ai du mal à avaler ma salive.",
+    "ground_truth": {
+      "specialty_hint": "orl",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "26e1b8a7-df71-4f2e-8908-fd62d382f611",
+    "patient_id": "v2_patient_031",
+    "free_text": "Mon enfant de 12 ans a de la fièvre à 38.7°C depuis 1 jours, il tousse beaucoup.",
+    "ground_truth": {
+      "specialty_hint": "pediatrie",
+      "age_group": "enfant",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "549e1257-8763-4c70-8a9b-29b089ebcdae",
+    "patient_id": "v2_ambiguous_003",
+    "free_text": "J'ai mal un peu partout, je suis fatigué.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "inconnu",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "c0efd218-3b81-4c02-b2e3-dec6c129ef8a",
+    "patient_id": "v2_patient_032",
+    "free_text": "Mon cœur bat très vite par moments depuis 5 jours, j'ai des palpitations.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "a837f407-7dd1-4e54-b3a2-95cf5faf722e",
+    "patient_id": "v2_patient_036",
+    "free_text": "Mon bébé de 1 mois pleure sans arrêt, il a le nez bouché et de la fièvre.",
+    "ground_truth": {
+      "specialty_hint": "pediatrie",
+      "age_group": "enfant",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "dce4e3d1-9431-4b24-8944-7678f57caace",
+    "patient_id": "v2_ambiguous_002",
+    "free_text": "J'ai mal un peu partout, je suis fatigué.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "inconnu",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "04c60175-5f58-493d-a97b-49c15a1adf1f",
+    "patient_id": "v2_patient_014",
+    "free_text": "Je me sens très anxieux depuis 5 semaines, j'ai du mal à dormir.",
+    "ground_truth": {
+      "specialty_hint": "psychiatrie",
+      "age_group": "adulte",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "e2c75104-2cc2-4112-9d52-1d86c2f6c9e3",
+    "patient_id": "v2_patient_006",
+    "free_text": "Ma fille de 12 ans a mal à la gorge depuis 3 jours et refuse de manger.",
+    "ground_truth": {
+      "specialty_hint": "pediatrie",
+      "age_group": "enfant",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "063a0924-6d06-4f9c-ae89-e7d494223c4b",
+    "patient_id": "v2_patient_008",
+    "free_text": "Je me sens épuisé depuis 6 semaines, je dors mal et je n'ai pas d'appétit.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "df97b8d8-762f-4f05-b2d4-9a794a357576",
+    "patient_id": "v2_patient_025",
+    "free_text": "J'ai mal à l'oreille droite depuis 3 jours avec une légère fièvre.",
+    "ground_truth": {
+      "specialty_hint": "orl",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "a7703bfa-bb33-40c1-8ce7-47a69c757b80",
+    "patient_id": "v2_patient_003",
+    "free_text": "J'ai perdu l'odorat depuis 2 jours suite à un rhume.",
+    "ground_truth": {
+      "specialty_hint": "orl",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "5bc8aa72-b87f-490e-9b6f-94158570a571",
+    "patient_id": "v2_patient_001",
+    "free_text": "Je me sens très anxieux depuis 2 semaines, j'ai du mal à dormir.",
+    "ground_truth": {
+      "specialty_hint": "psychiatrie",
+      "age_group": "adulte",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "5a043e76-26cb-466c-9230-380388c3bc95",
+    "patient_id": "v2_patient_027",
+    "free_text": "J'ai une sinusite douloureuse depuis 7 jours avec beaucoup de mucus jaune.",
+    "ground_truth": {
+      "specialty_hint": "orl",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "510bc708-a4f3-443b-843c-20ee8f992bf6",
+    "patient_id": "v2_patient_037",
+    "free_text": "J'ai des douleurs dans la poitrine depuis 1 jours, surtout quand je monte les escaliers.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "2052d49e-103a-4643-838c-420cec804056",
+    "patient_id": "v2_patient_021",
+    "free_text": "Mon cœur bat très vite par moments depuis 7 jours, j'ai des palpitations.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "88d1fe19-9bae-45b6-841d-d4d2763f183a",
+    "patient_id": "v2_patient_002",
+    "free_text": "J'ai des douleurs dans la poitrine depuis 5 jours, surtout quand je monte les escaliers.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "79ae1508-e4e8-46fd-88c5-7c31dfc0c0ce",
+    "patient_id": "v2_ambiguous_006",
+    "free_text": "Je suis pas bien depuis quelque temps.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "inconnu",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "1c86caba-ee56-4b0b-b86f-3fdda12c64dc",
+    "patient_id": "v2_ambiguous_001",
+    "free_text": "J'ai des douleurs mais je ne sais pas exactement où.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "inconnu",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "fcea530e-958a-43a4-a398-9a1c48d04749",
+    "patient_id": "v2_patient_005",
+    "free_text": "Je dors très mal depuis 5 semaines, je me réveille plusieurs fois par nuit.",
+    "ground_truth": {
+      "specialty_hint": "psychiatrie",
+      "age_group": "adulte",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "51e75ba9-2893-46cf-884d-9f76321b57be",
+    "patient_id": "v2_ambiguous_005",
+    "free_text": "Quelque chose ne va pas, j'ai besoin d'un avis médical.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "inconnu",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "43794b05-25f2-48fe-b66b-81f5993d1e5a",
+    "patient_id": "v2_patient_030",
+    "free_text": "Mon bébé de 5 mois pleure sans arrêt, il a le nez bouché et de la fièvre.",
+    "ground_truth": {
+      "specialty_hint": "pediatrie",
+      "age_group": "enfant",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "ced57d18-e6b6-4499-bc7e-5cbf68a7132d",
+    "patient_id": "v2_patient_018",
+    "free_text": "J'ai une douleur dans la poitrine qui irradie dans le bras gauche depuis ce matin.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "c7e94269-cc65-4c82-ad47-932970e8289a",
+    "patient_id": "v2_patient_012",
+    "free_text": "Mon fils de 5 ans a des boutons rouges partout sur le corps depuis hier.",
+    "ground_truth": {
+      "specialty_hint": "pediatrie",
+      "age_group": "enfant",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "7a8aa237-dae8-4634-ad87-13bd3f2ba928",
+    "patient_id": "v2_patient_028",
+    "free_text": "Je me sens épuisé depuis 3 semaines, je dors mal et je n'ai pas d'appétit.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "c7636aa6-16f6-4a9c-9844-a2599c6e43b6",
+    "patient_id": "v2_patient_009",
+    "free_text": "J'ai très mal à la gorge depuis 3 jours, j'ai du mal à avaler ma salive.",
+    "ground_truth": {
+      "specialty_hint": "orl",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "ea7111bc-9570-46b5-9105-425a7a3884c7",
+    "patient_id": "v2_patient_029",
+    "free_text": "J'ai des vertiges et des bourdonnements dans les oreilles depuis 4 jours.",
+    "ground_truth": {
+      "specialty_hint": "orl",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "67f5170c-ab64-46e1-93c4-4d2cc0559082",
+    "patient_id": "v2_patient_035",
+    "free_text": "J'ai des douleurs dans le dos depuis 2 jours, j'ai du mal à marcher.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "ef1148f3-fb17-4163-be83-98429bdd7c76",
+    "patient_id": "v2_ambiguous_004",
+    "free_text": "Je suis pas bien depuis quelque temps.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "inconnu",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "5b01864a-5f81-408a-b692-780d65afaa6c",
+    "patient_id": "v2_patient_013",
+    "free_text": "J'ai du mal à respirer à l'effort depuis 3 semaines, je me fatigue vite.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "fc0f87a6-a260-4792-bbce-e4f768556159",
+    "patient_id": "v2_patient_016",
+    "free_text": "J'ai du mal à respirer à l'effort depuis 1 semaines, je me fatigue vite.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "db9b0ee7-31f0-409d-bc96-0c9cdbe1a95a",
+    "patient_id": "v2_patient_007",
+    "free_text": "J'ai du mal à respirer à l'effort depuis 1 semaines, je me fatigue vite.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "52642103-e501-473f-9813-be197d8be497",
+    "patient_id": "v2_patient_022",
+    "free_text": "Ma fille de 11 ans a mal à la gorge depuis 6 jours et refuse de manger.",
+    "ground_truth": {
+      "specialty_hint": "pediatrie",
+      "age_group": "enfant",
+      "severity": 2,
+      "urgency_score": 2,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "83251b6d-137f-492c-ad7d-1e926c81195e",
+    "patient_id": "v2_ambiguous_007",
+    "free_text": "Je suis pas bien depuis quelque temps.",
+    "ground_truth": {
+      "specialty_hint": "generaliste",
+      "age_group": "inconnu",
+      "severity": 1,
+      "urgency_score": 0,
+      "symptoms": [],
+      "is_ambiguous": true
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "97ce6114-dcfe-48f1-bee4-fd124a44e75a",
+    "patient_id": "v2_patient_026",
+    "free_text": "J'ai une douleur dans la poitrine qui irradie dans le bras gauche depuis ce matin.",
+    "ground_truth": {
+      "specialty_hint": "cardiologie",
+      "age_group": "adulte",
+      "severity": 3,
+      "urgency_score": 3,
+      "symptoms": [],
+      "is_ambiguous": false
+    },
+    "ia1_extraction": {
+      "symptoms": [],
+      "duration_days": null,
+      "severity": 1,
+      "age_group": "inconnu",
+      "specialty_hint": "generaliste",
+      "_latency_ms": 0,
+      "_extraction_ok": false
+    }
+  },
+  {
+    "id": "4261f348-eef4-4026-983c-226c38fbb602",
+    "patient_id": "v2_patient_004",
+    "free_text": "J'ai des vertiges et des bourdonnements dans les oreilles depuis 6 jours.",
+    "ground_truth": {
+      "specialty_hint": "orl",
+      "age_group": "adulte",
+      "severity": 1,
+      "urgency_score": 1,
+      "symptoms": [],
+      "is_ambiguous": false
     },
     "ia1_extraction": {
       "symptoms": [],
