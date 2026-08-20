@@ -1,0 +1,59 @@
+{
+  "recall_pct": 100.0,
+  "results": [
+    {
+      "case_id": "redflag_001",
+      "expected_min": 3,
+      "actual": 3,
+      "passed": true,
+      "triggered_rules": [
+        "RF001"
+      ]
+    },
+    {
+      "case_id": "redflag_002",
+      "expected_min": 3,
+      "actual": 3,
+      "passed": true,
+      "triggered_rules": [
+        "RF002"
+      ]
+    },
+    {
+      "case_id": "redflag_003",
+      "expected_min": 3,
+      "actual": 3,
+      "passed": true,
+      "triggered_rules": [
+        "RF003"
+      ]
+    },
+    {
+      "case_id": "redflag_004",
+      "expected_min": 3,
+      "actual": 3,
+      "passed": true,
+      "triggered_rules": [
+        "RF004"
+      ]
+    },
+    {
+      "case_id": "redflag_005",
+      "expected_min": 3,
+      "actual": 3,
+      "passed": true,
+      "triggered_rules": [
+        "RF005"
+      ]
+    },
+    {
+      "case_id": "redflag_006",
+      "expected_min": 3,
+      "actual": 3,
+      "passed": true,
+      "triggered_rules": [
+        "RF006"
+      ]
+    }
+  ]
+}
