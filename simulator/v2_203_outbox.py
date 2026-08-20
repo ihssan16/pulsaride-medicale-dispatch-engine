@@ -254,3 +254,80 @@ if __name__ == "__main__":
         print(f"\n✅ Pattern outbox validé — 0 event perdu")
     else:
         print(f"\n⚠️  Vérifier la connexion Kafka")
+
+
+def test_crash_recovery_scenario():
+    """
+    Simule le scénario critique du doc : crash entre le commit DB
+    et l'envoi Kafka. Prouve qu'aucun event n'est perdu.
+
+    Scénario :
+    1. Écrire un résultat de triage (commit DB réussi)
+    2. NE PAS appeler publish_pending_events() — simule un crash du process
+       juste après le commit, avant que le publisher tourne
+    3. Vérifier que l'event existe toujours en base avec published=0
+    4. Simuler le "redémarrage" : appeler publish_pending_events()
+    5. Vérifier que l'event est maintenant publié — aucune perte
+    """
+    print("\n" + "="*60)
+    print("🧪 TEST DE CRASH — V2-203 critère d'acceptation")
+    print("="*60)
+
+    request_id = f"req_crash_test_{uuid.uuid4().hex[:8]}"
+
+    print(f"\n[Étape 1] Écriture métier + outbox pour {request_id}")
+    print("          (simule le service AI Triage juste avant un crash)")
+    event = save_triage_result_with_event(
+        request_id=request_id,
+        free_text="Cas de test crash recovery",
+        urgency_score=2,
+        specialty_hint="generaliste",
+        confidence=0.75,
+        model_version="phi3-mini-v1",
+        rule_version="v2402-r1",
+        requires_review=False,
+    )
+    print(f"          ✅ Commit DB réussi, event {event['eventId'][:8]}... écrit en outbox")
+
+    print(f"\n[Étape 2] 💥 CRASH SIMULÉ — le publisher ne tourne PAS")
+    print("          (aucun appel à publish_pending_events() ici)")
+
+    # Vérification post-crash : l'event doit être en base, non publié
+    conn = get_connection()
+    row = conn.execute(
+        "SELECT * FROM outbox WHERE aggregate_id = ?", (request_id,)
+    ).fetchone()
+    conn.close()
+
+    assert row is not None, "❌ ÉCHEC CRITIQUE : event perdu après crash simulé"
+    assert row["published"] == 0, "❌ ÉCHEC : event marqué publié alors qu'il ne l'est pas"
+
+    print(f"\n[Étape 3] Vérification après crash")
+    print(f"          ✅ Event RETROUVÉ en base : published={row['published']}")
+    print(f"          → Aucune perte de donnée malgré le crash simulé")
+
+    print(f"\n[Étape 4] 🔄 Redémarrage — publisher relancé")
+    result = publish_pending_events()
+
+    conn = get_connection()
+    row_after = conn.execute(
+        "SELECT * FROM outbox WHERE aggregate_id = ?", (request_id,)
+    ).fetchone()
+    conn.close()
+
+    print(f"\n[Étape 5] Vérification finale")
+    if row_after and row_after["published"] == 1:
+        print(f"          ✅ Event maintenant publié (published=1)")
+        print(f"\n{'='*60}")
+        print(f"✅ TEST DE CRASH RÉUSSI — critère d'acceptation V2-203 validé")
+        print(f"   'A crash between database commit and Kafka send' est couvert")
+        print(f"{'='*60}")
+        return True
+    else:
+        print(f"          ❌ Event toujours non publié — vérifier connexion Kafka")
+        return False
+
+
+if __name__ == "__main__" and "--crash-test" in __import__("sys").argv:
+    init_db()
+    test_crash_recovery_scenario()
