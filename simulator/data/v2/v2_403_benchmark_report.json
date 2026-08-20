@@ -1,0 +1,27 @@
+[
+  {
+    "approach": "A_S4_lexical",
+    "n_samples": 14,
+    "specialty_top1_accuracy_pct": 64.3,
+    "urgency_exact_match_pct": 35.7,
+    "avg_latency_ms": 0.0,
+    "p95_latency_ms": 0.2
+  },
+  {
+    "approach": "B_rules_tfidf",
+    "n_samples": 14,
+    "specialty_top1_accuracy_pct": 28.6,
+    "urgency_exact_match_pct": 14.3,
+    "avg_latency_ms": 8.3,
+    "p95_latency_ms": 35.5
+  },
+  {
+    "approach": "C_llm_local_ollama",
+    "n_samples": 50,
+    "specialty_top1_accuracy_pct": null,
+    "urgency_exact_match_pct": 30.0,
+    "avg_latency_ms": 5154,
+    "p95_latency_ms": 37510,
+    "note": "extraction_rate_only_10pct_due_to_ram_crash_see_ADR-003"
+  }
+]
