@@ -1,0 +1,52 @@
+[
+  {
+    "request_id": "v2_patient_022",
+    "final_urgency": 0,
+    "specialty_hint": "generaliste",
+    "confidence": 0.3,
+    "requires_review": true,
+    "safety_override": false,
+    "extraction_ok": false,
+    "event_id": "c5f29966-3b2c-44e1-9b22-6c0c3c915b48"
+  },
+  {
+    "request_id": "v2_patient_019",
+    "final_urgency": 0,
+    "specialty_hint": "generaliste",
+    "confidence": 0.3,
+    "requires_review": true,
+    "safety_override": false,
+    "extraction_ok": false,
+    "event_id": "c77fdf99-9d11-4734-b065-e00b80ec41ab"
+  },
+  {
+    "request_id": "v2_patient_036",
+    "final_urgency": 0,
+    "specialty_hint": "generaliste",
+    "confidence": 0.3,
+    "requires_review": true,
+    "safety_override": false,
+    "extraction_ok": false,
+    "event_id": "a5d04af1-7c20-4ea3-bce4-3adb1a8ad58d"
+  },
+  {
+    "request_id": "v2_patient_018",
+    "final_urgency": 3,
+    "specialty_hint": "generaliste",
+    "confidence": 0.3,
+    "requires_review": true,
+    "safety_override": true,
+    "extraction_ok": false,
+    "event_id": "4d731649-5e8b-4222-8adf-de54211e31b3"
+  },
+  {
+    "request_id": "v2_ambiguous_008",
+    "final_urgency": 0,
+    "specialty_hint": "generaliste",
+    "confidence": 0.3,
+    "requires_review": true,
+    "safety_override": false,
+    "extraction_ok": false,
+    "event_id": "c607c84a-1ee1-4fe6-a0a3-a62b6634b844"
+  }
+]
