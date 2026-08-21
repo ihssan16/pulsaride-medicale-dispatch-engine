@@ -1,0 +1,30 @@
+{
+  "ai_outage": {
+    "scenario": "ai_outage",
+    "based_on": "real_incident_v2_404",
+    "total_cases": 5,
+    "ia1_failures": 5,
+    "safety_net_catches": 1,
+    "requires_review_flagged": 5,
+    "system_stayed_available": true,
+    "safety_net_effective": true,
+    "conclusion": "Le système reste disponible pendant un AI outage total : fallback automatique + safety net red-flag qui rattrape au moins les cas critiques les plus dangereux."
+  },
+  "kafka_restart": {
+    "scenario": "kafka_restart",
+    "kafka_became_healthy_again": true,
+    "wait_time_seconds": 18,
+    "events_pending_before_restart": 1,
+    "events_published_after_restart": 1,
+    "events_lost": 0,
+    "conclusion": "L'outbox découple l'écriture métier de la publication Kafka : un restart du broker ne perd aucun event, le publisher retente simplement une fois Kafka de retour."
+  },
+  "duplicate_events": {
+    "scenario": "duplicate_events",
+    "deliveries_sent": 3,
+    "effects_applied": 1,
+    "duplicates_skipped": 2,
+    "final_projection_rows": 1,
+    "conclusion": "3 livraisons du même eventId produisent exactement 1 effet métier grâce à la contrainte UNIQUE sur processed_events."
+  }
+}
