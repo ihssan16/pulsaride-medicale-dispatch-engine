@@ -53,3 +53,13 @@ jobs:
 
       - name: Check Python scripts compile
         run: python -m compileall simulator evaluator
+
+      - name: Run lightweight V2 checks
+        working-directory: simulator
+        run: |
+          python v2_402_safety_rules.py
+          python v2_203_outbox.py --crash-test
+          python v2_204_idempotent_consumer.py
+          python v2_205_retry_dlt_replay.py
+          python ia3_embeddings_matching.py
+          python v2_403_benchmark.py
