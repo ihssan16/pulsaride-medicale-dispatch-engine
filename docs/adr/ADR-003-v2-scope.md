@@ -1,6 +1,26 @@
-git add docs/adr/ADR-003-v2-scope.md
-git commit -m "docs(v2): add ADR-003 V2 scope and evaluation protocol"
-git push origin develop
+# ADR-003 — Périmètre V2 IA et protocole d'évaluation
+
+**Date :** Août 2026
+**Statut :** Accepté
+**Stories :** V2-101, V2-401, V2-402, V2-403
+
+## Décision
+
+V2 ajoute une couche d'aide au dispatch basée sur du texte libre patient, des
+règles de sécurité déterministes et un matching sémantique léger. Le moteur ne
+fait pas de diagnostic médical : il assiste la priorisation et le classement des
+professionnels, avec des garde-fous explicables.
+
+Le périmètre V2 validé est :
+
+- IA1 : extraction NLP depuis le texte patient.
+- IA2 : calcul d'un score d'urgence.
+- IA3 : matching sémantique entre demande et profils professionnels.
+- V2-402 : règles red-flag déterministes, prioritaires sur le modèle.
+- V2-403 : benchmark comparatif contre les stratégies V1.
+
+Les décisions sont volontairement mesurables : chaque choix IA doit produire un
+résultat, une limite observable et une explication exploitable en soutenance.
 
 ## Résultats obtenus — Run complet (50 entrées, seed=42)
 

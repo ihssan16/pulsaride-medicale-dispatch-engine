@@ -159,5 +159,6 @@ __pycache__/
 
 # Data files générés
 simulator/data/*.json
+simulator/data/**/*.db
 evaluator/reports/*.json
 evaluator/reports/*.txt
