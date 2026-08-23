@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/requests")
+@RequestMapping({"/requests", "/api/v2/requests"})
 public class RequestController {
     private final DispatchRequestRepository repository;
     private final AssignmentRepository assignmentRepository;

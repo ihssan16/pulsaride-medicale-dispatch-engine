@@ -200,6 +200,61 @@ class DispatchApiIntegrationTests {
     }
 
     @Test
+    void apiV2RoutesExposeGatewayCompatibleWorkflow() throws Exception {
+        mockMvc.perform(get("/api/v2/health"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.service").value("pulsaride-dispatch-engine"));
+
+        mockMvc.perform(post("/api/v2/professionals")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new CreateProfessionalRequest(
+                                "api_v2_pro_cardio",
+                                "Dr. API V2 Cardio",
+                                "cardiologie",
+                                9,
+                                "Cardiologie V2",
+                                6,
+                                ProfessionalStatus.AVAILABLE
+                        ))))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value("api_v2_pro_cardio"));
+
+        String response = mockMvc.perform(post("/api/v2/requests")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new CreateDispatchRequest(
+                                "api_v2_patient",
+                                "Douleur thoracique",
+                                "cardiologie",
+                                3
+                        ))))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.status").value("PENDING"))
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        String requestId = objectMapper.readTree(response).get("id").asText();
+
+        mockMvc.perform(post("/api/v2/dispatch/{requestId}", requestId)
+                        .queryParam("strategy", "S2"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("PROPOSED"))
+                .andExpect(jsonPath("$.assignedProfessionalId").value("api_v2_pro_cardio"));
+
+        mockMvc.perform(get("/api/v2/requests/{requestId}", requestId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.assignedProfessionalName").value("Dr. API V2 Cardio"));
+
+        mockMvc.perform(get("/api/v2/availability/specialties/cardiologie"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.reservedSlots").value(1));
+
+        mockMvc.perform(get("/api/v2/metrics/summary"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalRequests").value(1))
+                .andExpect(jsonPath("$.proposedRequests").value(1));
+    }
+
+    @Test
     void availabilityEndpointsReflectProfessionalLifecycle() throws Exception {
         createProfessional("api_pro_cardio_1", "cardiologie");
         createProfessional("api_pro_cardio_2", "cardiologie");

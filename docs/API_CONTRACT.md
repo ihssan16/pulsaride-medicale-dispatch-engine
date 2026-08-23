@@ -2,6 +2,34 @@
 
 Base URL: `http://localhost:8080`
 
+## V2 Gateway Routes
+
+V2 exposes gateway-compatible routes under `/api/v2` while keeping the V1/demo
+routes available. The current implementation routes those paths to the same
+Spring services; this gives the team a stable external contract before the
+remaining services are physically extracted.
+
+| V2 route | Current service |
+| --- | --- |
+| `GET /api/v2/health` | Health |
+| `POST /api/v2/professionals` | Professional/availability setup |
+| `GET /api/v2/professionals` | Professional listing |
+| `PUT /api/v2/professionals/{id}/status` | Professional lifecycle |
+| `POST /api/v2/requests` | Demand/request creation |
+| `GET /api/v2/requests/{id}` | Demand/request read |
+| `GET /api/v2/requests/{id}/assignments` | Assignment history |
+| `GET /api/v2/requests/{id}/transitions` | FSM audit history |
+| `POST /api/v2/dispatch/next?strategy=S4` | Queue-driven dispatch |
+| `POST /api/v2/dispatch/{id}?strategy=S4` | Dispatch a pending request |
+| `POST /api/v2/dispatch/{id}/accept` | Accept proposal |
+| `POST /api/v2/dispatch/{id}/refuse` | Refuse proposal |
+| `POST /api/v2/dispatch/{id}/timeout` | Timeout proposal |
+| `POST /api/v2/dispatch/{id}/close` | Close accepted request |
+| `GET /api/v2/availability` | Availability read model |
+| `GET /api/v2/availability/specialties/{tag}` | Availability by specialty |
+| `GET /api/v2/metrics/summary` | Live dispatch KPIs |
+| `POST /api/v2/ai/triage` | AI triage provider facade |
+
 ## Health
 
 `GET /health`

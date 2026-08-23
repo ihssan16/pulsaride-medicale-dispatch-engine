@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/metrics")
+@RequestMapping({"/metrics", "/api/v2/metrics"})
 public class MetricsController {
     private final MetricsService metricsService;
 

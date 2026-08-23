@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/professionals")
+@RequestMapping({"/professionals", "/api/v2/professionals"})
 public class BriefProfessionalController {
     private final ProfessionalRepository repository;
     private final ProfessionalService service;

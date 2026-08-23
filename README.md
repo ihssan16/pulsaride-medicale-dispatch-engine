@@ -117,6 +117,7 @@ docker compose up --build
 ```bash
 curl http://localhost:8080/health
 curl http://localhost:8080/actuator/health
+curl http://localhost:8080/api/v2/health
 curl http://localhost:8080/professionals
 curl http://localhost:8080/api/dispatch-requests
 ```
@@ -161,6 +162,7 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 
 Les chemins historiques `/api/dispatch-requests` et `/api/professionals` restent aussi disponibles.
 Les chemins `/api/availability` et `/api/availability/specialties/{specialtyTag}` sont également exposés pour rester cohérents avec les anciens endpoints préfixés.
+Les chemins publics V2 sont exposés sous `/api/v2/...` pour préparer le routage API Gateway. Le détail est dans `docs/API_CONTRACT.md`.
 
 ## Service de disponibilité
 

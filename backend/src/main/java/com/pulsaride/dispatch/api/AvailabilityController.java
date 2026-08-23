@@ -13,12 +13,16 @@ public class AvailabilityController {
         this.service = service;
     }
 
-    @GetMapping({"/availability", "/api/availability"})
+    @GetMapping({"/availability", "/api/availability", "/api/v2/availability"})
     public AvailabilitySummaryResponse summary() {
         return service.summary();
     }
 
-    @GetMapping({"/availability/specialties/{specialtyTag}", "/api/availability/specialties/{specialtyTag}"})
+    @GetMapping({
+            "/availability/specialties/{specialtyTag}",
+            "/api/availability/specialties/{specialtyTag}",
+            "/api/v2/availability/specialties/{specialtyTag}"
+    })
     public SpecialtyAvailabilityResponse specialty(@PathVariable String specialtyTag) {
         return service.specialty(specialtyTag);
     }

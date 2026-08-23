@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/dispatch")
+@RequestMapping({"/dispatch", "/api/v2/dispatch"})
 public class BriefDispatchController {
     private final DispatchService service;
 

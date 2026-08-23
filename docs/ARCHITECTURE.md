@@ -7,6 +7,8 @@
 - Transactional outbox: stores V2 lifecycle events in `outbox_events` before Kafka publication.
 - Outbox Kafka publisher: drains unpublished outbox rows and sends each event to its Kafka topic.
 - Triage event consumer: applies `request.triaged.v1` to pending requests and dispatches them with S4.
+- API V2 routing: exposes `/api/v2/...` gateway-compatible routes while keeping
+  existing V1/demo routes alive.
 - Redis: available for real-time coordination and future queue/session features.
 - AI triage provider: local deterministic rules by default, optional Darija Health NLP sidecar, or optional OpenAI provider; every AI provider response is checked by the local safety floor.
 - Python simulator: generates professionals, patient requests, scenarios, run traces, and metrics.
@@ -24,7 +26,10 @@
    the V2 Demand Service boundary.
 8. Dispatch writes proposal, accept, refusal, timeout, and close events to the
    same outbox so Kafka can publish a complete request lifecycle.
-9. When enabled, Dispatch consumes `request.triaged.v1`, updates the pending
+9. External clients can call `/api/v2/...` routes. In this V2 step, those
+   routes are aliases to the same Spring services so the contract can stabilize
+   before full service extraction.
+10. When enabled, Dispatch consumes `request.triaged.v1`, updates the pending
    request priority/specialty, and dispatches it with S4.
 
 ## Dispatch Strategy V1
