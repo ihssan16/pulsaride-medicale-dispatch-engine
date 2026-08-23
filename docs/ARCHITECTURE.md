@@ -6,7 +6,8 @@
 - PostgreSQL: stores professionals and dispatch requests.
 - Transactional outbox: stores V2 lifecycle events in `outbox_events` before Kafka publication.
 - Outbox Kafka publisher: drains unpublished outbox rows and sends each event to its Kafka topic.
-- Triage event consumer: applies `request.triaged.v1` to pending requests and dispatches them with S4.
+- Triage event consumer: deduplicates `request.triaged.v1` by `eventId`, applies it to pending requests, and dispatches them with S4.
+- Processed events table: stores consumed Kafka `eventId` values and outcomes so duplicate deliveries are safe.
 - API V2 routing: exposes `/api/v2/...` gateway-compatible routes while keeping
   existing V1/demo routes alive.
 - Analytics read model: combines metrics, availability, professional load, and
@@ -32,7 +33,9 @@
    routes are aliases to the same Spring services so the contract can stabilize
    before full service extraction.
 10. When enabled, Dispatch consumes `request.triaged.v1`, updates the pending
-   request priority/specialty, and dispatches it with S4.
+   request priority/specialty, and dispatches it with S4. Consumed `eventId`
+   values are written to `processed_events`; duplicates are skipped before
+   dispatch can run twice.
 
 ## Dispatch Strategy V1
 
@@ -58,5 +61,7 @@ This means V2 can be built incrementally:
    call between services.
 4. The V2 analytics endpoint exposes the current dispatch state and Kafka/outbox
    backlog in one read model for dashboard and demo usage.
-5. Retry, DLT, and replay can consume those events without changing
+5. Idempotent consumers protect the dispatch flow against duplicate Kafka
+   deliveries by storing handled `eventId` values.
+6. Retry, DLT, and replay can consume those events without changing
    the core dispatch transaction.

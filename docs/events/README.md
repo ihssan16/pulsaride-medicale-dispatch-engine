@@ -78,10 +78,18 @@ and `specialtyHint` from the AI payload, records an audit transition, and
 dispatches the request with `S4` so the proposal lifecycle continues through
 the same outbox/Kafka flow.
 
+The Dispatch consumer records handled Kafka envelopes in the `processed_events`
+table using the envelope `eventId` as the primary key. A duplicate
+`request.triaged.v1` delivery is skipped before Dispatch is called again, so
+the same AI triage event cannot reserve a second slot or create a second
+proposal.
+
 If a triage event references a request that does not exist in the local
-Dispatch database, the consumer logs a warning and skips it. This prevents
-simulator-only or stale events from blocking the Kafka consumer group; real
-retry/DLT handling remains the V2-205 responsibility.
+Dispatch database, the consumer logs a warning, records the event outcome as
+`SKIPPED_UNKNOWN_REQUEST`, and skips it. This prevents simulator-only or stale
+events from blocking the Kafka consumer group. Unexpected handler failures are
+not recorded as processed, so Kafka can retry them; retry/DLT routing remains
+the V2-205 responsibility.
 
 ## Validation
 

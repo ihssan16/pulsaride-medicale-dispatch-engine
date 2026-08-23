@@ -2,7 +2,7 @@ package com.pulsaride.dispatch.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.persistence.EntityNotFoundException;
+import com.pulsaride.dispatch.repository.DispatchRequestRepository;
 import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,11 +17,20 @@ public class RequestTriagedEventConsumer {
     private static final String EVENT_TYPE = "request.triaged.v1";
 
     private final DispatchService dispatchService;
+    private final DispatchRequestRepository requestRepository;
     private final ObjectMapper objectMapper;
+    private final ProcessedEventService processedEventService;
 
-    public RequestTriagedEventConsumer(DispatchService dispatchService, ObjectMapper objectMapper) {
+    public RequestTriagedEventConsumer(
+            DispatchService dispatchService,
+            DispatchRequestRepository requestRepository,
+            ObjectMapper objectMapper,
+            ProcessedEventService processedEventService
+    ) {
         this.dispatchService = dispatchService;
+        this.requestRepository = requestRepository;
         this.objectMapper = objectMapper;
+        this.processedEventService = processedEventService;
     }
 
     @KafkaListener(
@@ -33,16 +42,22 @@ public class RequestTriagedEventConsumer {
         if (event == null) {
             return;
         }
-        try {
+        if (!requestRepository.existsById(event.requestId())) {
+            processedEventService.processOnce(event.eventId(), event.eventType(), event.aggregateId(), () -> {
+                LOGGER.warn("Skipping triage event for unknown requestId={}", event.requestId());
+                return "SKIPPED_UNKNOWN_REQUEST";
+            });
+            return;
+        }
+        processedEventService.processOnce(event.eventId(), event.eventType(), event.aggregateId(), () -> {
             dispatchService.applyTriageAndDispatch(
                     event.requestId(),
                     event.urgencyScore(),
                     event.specialtyHint(),
                     event.summary()
             );
-        } catch (EntityNotFoundException ex) {
-            LOGGER.warn("Skipping triage event for unknown requestId={}", event.requestId());
-        }
+            return "PROCESSED";
+        });
     }
 
     private TriageEvent parse(String message) {
@@ -58,13 +73,25 @@ public class RequestTriagedEventConsumer {
             if (!payload.isObject()) {
                 throw new IllegalArgumentException("request.triaged.v1 missing payload object");
             }
+            String eventId = requiredText(envelope, "eventId");
+            String aggregateId = requiredText(envelope, "aggregateId");
             String requestId = requiredText(payload, "requestId");
             int urgencyScore = payload.path("urgencyScore").asInt();
             String specialtyHint = requiredText(payload, "specialtyHint");
             double confidence = payload.path("confidence").asDouble();
             String modelVersion = requiredText(payload, "modelVersion");
             boolean requiresReview = payload.path("requiresReview").asBoolean();
-            return new TriageEvent(requestId, urgencyScore, specialtyHint, confidence, modelVersion, requiresReview);
+            return new TriageEvent(
+                    eventId,
+                    eventType,
+                    aggregateId,
+                    requestId,
+                    urgencyScore,
+                    specialtyHint,
+                    confidence,
+                    modelVersion,
+                    requiresReview
+            );
         } catch (IOException ex) {
             throw new IllegalArgumentException("Invalid request.triaged.v1 JSON", ex);
         }
@@ -78,6 +105,9 @@ public class RequestTriagedEventConsumer {
     }
 
     private record TriageEvent(
+            String eventId,
+            String eventType,
+            String aggregateId,
             String requestId,
             int urgencyScore,
             String specialtyHint,

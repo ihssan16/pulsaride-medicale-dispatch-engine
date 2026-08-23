@@ -93,7 +93,21 @@ limité :
 - enregistrer une transition d'audit indiquant le modèle/confiance ;
 - lancer le dispatch avec `S4` pour produire ensuite `dispatch.proposed.v1`.
 
-## Prochaines étapes (V2-204, V2-205)
+## Déduplication consumer (V2-204)
 
-- V2-204 : déduplication consumer par eventId (constraint unique)
-- V2-205 : retry + DLT + script de replay opérateur
+Dispatch persiste les envelopes consommées dans `processed_events`, avec
+`eventId` comme clé primaire. Le consumer réserve d'abord cet `eventId` dans la
+même transaction, puis exécute le handler. Si le même message Kafka est livré
+une deuxième fois, il est ignoré avant d'appeler le dispatch.
+
+Outcomes enregistrés :
+
+- `PROCESSED` : triage appliqué et dispatch lancé ;
+- `SKIPPED_UNKNOWN_REQUEST` : demande absente localement, message non bloquant.
+
+Si le handler échoue de façon inattendue, la transaction est rollbackée :
+l'`eventId` n'est pas marqué comme traité et Kafka peut retenter.
+
+## Prochaine étape (V2-205)
+
+- retry + DLT + script de replay opérateur.
