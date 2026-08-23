@@ -157,8 +157,10 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 - `GET /requests/{requestId}/assignments`
 - `GET /requests/{requestId}/transitions`
 - `GET /metrics/summary`
+- `GET /api/v2/analytics/summary`
 - `POST /ai/triage` — triage texte libre en mode `mock`, Darija Health NLP ou OpenAI avec plancher de sécurité local
 - `GET /dashboard.html`
+- `GET /dashboard-v2.html`
 
 Les chemins historiques `/api/dispatch-requests` et `/api/professionals` restent aussi disponibles.
 Les chemins `/api/availability` et `/api/availability/specialties/{specialtyTag}` sont également exposés pour rester cohérents avec les anciens endpoints préfixés.
@@ -237,6 +239,12 @@ Graphiques et rapport complet disponibles dans `docs/evaluation/`.
 Le dashboard V1 est disponible dans le navigateur :
 ```bash
 xdg-open http://localhost:8080/dashboard.html
+```
+
+Le dashboard V2 ajoute la lecture analytics combinee avec l'etat de publication
+des events Kafka/outbox :
+```bash
+xdg-open http://localhost:8080/dashboard-v2.html
 ```
 Il rafraîchit automatiquement les KPIs, le flux des demandes, la disponibilité
 par spécialité et la charge par professionnel.

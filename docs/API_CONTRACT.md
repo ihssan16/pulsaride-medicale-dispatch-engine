@@ -28,6 +28,7 @@ remaining services are physically extracted.
 | `GET /api/v2/availability` | Availability read model |
 | `GET /api/v2/availability/specialties/{tag}` | Availability by specialty |
 | `GET /api/v2/metrics/summary` | Live dispatch KPIs |
+| `GET /api/v2/analytics/summary` | Combined V2 analytics read model |
 | `POST /api/v2/ai/triage` | AI triage provider facade |
 
 ## Health
@@ -198,6 +199,61 @@ persisted refusal/timeout timestamp and the next proposal for the same request. 
 Returns the lightweight V1 dashboard served by Spring Boot. It polls `/metrics/summary`,
 `/availability`, and `/professionals` every 5 seconds to show KPIs, request flow,
 availability by specialty, and load per professional.
+
+`GET /dashboard-v2.html`
+
+Returns the V2 analytics dashboard. It polls `/api/v2/analytics/summary`, which combines:
+
+- live dispatch KPIs;
+- availability by specialty;
+- professional load;
+- outbox/Kafka publication counts and recent events.
+
+`GET /api/v2/analytics/summary`
+
+Response shape:
+```json
+{
+  "generatedAt": "2026-08-23T12:00:00Z",
+  "metrics": {
+    "totalRequests": 10,
+    "serviceRatePct": 90.0,
+    "p95TtfaMs": 1200.0
+  },
+  "availability": {
+    "totalSlots": 5,
+    "availableSlots": 3
+  },
+  "events": {
+    "totalEvents": 20,
+    "publishedEvents": 18,
+    "unpublishedEvents": 2,
+    "eventTypes": [
+      {
+        "eventType": "dispatch.proposed.v1",
+        "total": 5,
+        "published": 5,
+        "unpublished": 0
+      }
+    ],
+    "recentEvents": [
+      {
+        "eventType": "request.created.v1",
+        "aggregateId": "request-id",
+        "published": true
+      }
+    ]
+  },
+  "professionalLoads": [
+    {
+      "id": "pro_demo",
+      "specialtyTag": "cardiologie",
+      "status": "AVAILABLE",
+      "load": 0.17
+    }
+  ]
+}
+```
 
 ## AI Triage
 

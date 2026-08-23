@@ -9,6 +9,8 @@
 - Triage event consumer: applies `request.triaged.v1` to pending requests and dispatches them with S4.
 - API V2 routing: exposes `/api/v2/...` gateway-compatible routes while keeping
   existing V1/demo routes alive.
+- Analytics read model: combines metrics, availability, professional load, and
+  outbox publication state for `/api/v2/analytics/summary` and `dashboard-v2.html`.
 - Redis: available for real-time coordination and future queue/session features.
 - AI triage provider: local deterministic rules by default, optional Darija Health NLP sidecar, or optional OpenAI provider; every AI provider response is checked by the local safety floor.
 - Python simulator: generates professionals, patient requests, scenarios, run traces, and metrics.
@@ -54,5 +56,7 @@ This means V2 can be built incrementally:
 2. The Kafka publisher drains unpublished rows when enabled.
 3. Dispatch can consume AI triage events without requiring a synchronous API
    call between services.
-4. Analytics, retry, DLT, and replay can consume those events without changing
+4. The V2 analytics endpoint exposes the current dispatch state and Kafka/outbox
+   backlog in one read model for dashboard and demo usage.
+5. Retry, DLT, and replay can consume those events without changing
    the core dispatch transaction.

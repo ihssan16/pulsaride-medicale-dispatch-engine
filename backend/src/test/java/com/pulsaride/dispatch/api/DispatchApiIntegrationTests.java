@@ -252,6 +252,18 @@ class DispatchApiIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.totalRequests").value(1))
                 .andExpect(jsonPath("$.proposedRequests").value(1));
+
+        mockMvc.perform(get("/api/v2/analytics/summary"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.metrics.totalRequests").value(1))
+                .andExpect(jsonPath("$.availability.reservedSlots").value(1))
+                .andExpect(jsonPath("$.events.totalEvents").value(2))
+                .andExpect(jsonPath("$.events.publishedEvents").value(0))
+                .andExpect(jsonPath("$.events.unpublishedEvents").value(2))
+                .andExpect(jsonPath("$.events.eventTypes[0].eventType").value("dispatch.proposed.v1"))
+                .andExpect(jsonPath("$.events.eventTypes[1].eventType").value("request.created.v1"))
+                .andExpect(jsonPath("$.professionalLoads", hasSize(1)))
+                .andExpect(jsonPath("$.professionalLoads[0].id").value("api_v2_pro_cardio"));
     }
 
     @Test
