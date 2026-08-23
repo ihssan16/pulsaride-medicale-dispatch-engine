@@ -55,12 +55,15 @@ the demo depend on a paid external API.
 `AI_PROVIDER=mock` or `AI_MODE=mock` uses local deterministic rules only.
 
 `AI_PROVIDER=external`, `AI_PROVIDER=darija`, or `AI_MODE=external` calls the
-Darija Health NLP FastAPI service at `AI_EXTERNAL_URL`.
+Darija Health NLP FastAPI service at `AI_EXTERNAL_URL`, then applies the local
+deterministic safety floor.
 
 `AI_PROVIDER=openai` or `AI_MODE=openai` calls the OpenAI Responses API. The
 Spring Boot service asks for structured JSON and then applies the local
-deterministic safety floor. This means an LLM can enrich extraction, but it
-cannot lower an urgent red-flag below the local rules.
+deterministic safety floor.
+
+This means an AI provider can enrich extraction, but it cannot lower an urgent
+red-flag below the local rules.
 
 ## Secret scanning
 

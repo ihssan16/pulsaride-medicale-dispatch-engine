@@ -68,6 +68,51 @@ class AiTriageServiceTests {
     }
 
     @Test
+    void externalModeAppliesSafetyFloorToDarijaChestAndBreathingTerms() throws Exception {
+        HttpServer server = HttpServer.create(new InetSocketAddress(0), 0);
+        server.createContext("/predict", exchange -> {
+            byte[] responseBody = """
+                    {
+                      "predicted_specialty": "Cardiology",
+                      "specialty_confidence": 0.98,
+                      "urgency": "unknown",
+                      "urgency_reason": "No clear urgency signal was detected.",
+                      "symptoms": []
+                    }
+                    """.getBytes(StandardCharsets.UTF_8);
+            exchange.getResponseHeaders().add("Content-Type", "application/json");
+            exchange.sendResponseHeaders(200, responseBody.length);
+            exchange.getResponseBody().write(responseBody);
+            exchange.close();
+        });
+        server.start();
+
+        try {
+            int port = server.getAddress().getPort();
+            AiTriageService service = new AiTriageService(
+                    "external",
+                    "http://localhost:" + port,
+                    false,
+                    "https://api.openai.com/v1",
+                    "",
+                    "gpt-4o-mini",
+                    objectMapper
+            );
+
+            var response = service.triage("kanhess b douleur f sdri w ma9aderch ntnefess");
+
+            assertThat(response.mode()).isEqualTo("external+safety-floor");
+            assertThat(response.sourceModel()).isEqualTo("darija-health-nlp");
+            assertThat(response.specialtyHint()).isEqualTo("cardiologie");
+            assertThat(response.urgencyScore()).isEqualTo(3);
+            assertThat(response.severity()).isEqualTo(3);
+            assertThat(response.confidence()).isEqualTo(0.98);
+        } finally {
+            server.stop(0);
+        }
+    }
+
+    @Test
     void externalModeFallsBackToLocalRulesWhenConfigured() throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(0), 0);
         server.createContext("/predict", exchange -> {

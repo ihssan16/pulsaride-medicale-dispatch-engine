@@ -38,7 +38,8 @@ Le endpoint Pulsaride `/ai/triage` accepte désormais trois familles de modes :
 
 - `AI_PROVIDER=mock` ou `AI_MODE=mock` : règles locales déterministes, utilisables sans modèle.
 - `AI_PROVIDER=external|darija` ou `AI_MODE=external` : appel HTTP vers Darija Health NLP `/predict`, avec
-  conversion des spécialités et urgences vers les tags internes Pulsaride.
+  conversion des spécialités et urgences vers les tags internes Pulsaride, puis
+  application du plancher de sécurité local.
 - `AI_PROVIDER=openai` ou `AI_MODE=openai` : appel OpenAI Responses API avec
   sortie JSON structurée, puis application du plancher de sécurité local pour
   empêcher une sous-estimation des red flags.

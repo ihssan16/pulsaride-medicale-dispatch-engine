@@ -94,9 +94,10 @@ Gestion des clés et fournisseurs IA : `docs/SECRETS_AND_AI_PROVIDERS.md`.
 
 ### Lancer avec OpenAI optionnel
 
-OpenAI est disponible comme provider expérimental. Il ne remplace pas les règles
-locales : après la réponse OpenAI, Pulsaride applique toujours un plancher de
-sécurité déterministe pour les signaux critiques.
+OpenAI est disponible comme provider expérimental. Comme pour Darija Health NLP,
+il ne remplace pas les règles locales : après la réponse du provider IA,
+Pulsaride applique toujours un plancher de sécurité déterministe pour les
+signaux critiques.
 
 Dans `.env`, renseigner une clé rotatée :
 

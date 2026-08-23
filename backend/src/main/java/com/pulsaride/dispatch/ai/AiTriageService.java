@@ -100,7 +100,7 @@ public class AiTriageService {
         String normalized = normalize(text);
         String ageGroup = containsAny(normalized, "enfant", "fils", "fille", "bebe") ? "enfant" : "adulte";
 
-        return new TriageResponse(
+        TriageResponse providerResponse = new TriageResponse(
                 symptoms,
                 extractDurationDays(normalized),
                 urgencyScore,
@@ -112,6 +112,7 @@ public class AiTriageService {
                 prediction.urgency_reason(),
                 "darija-health-nlp"
         );
+        return applySafetyFloor(text, providerResponse, "external");
     }
 
     private String readResponseBody(HttpURLConnection connection, int statusCode) throws IOException {
@@ -233,20 +234,36 @@ public class AiTriageService {
     }
 
     private TriageResponse applySafetyFloor(String text, OpenAiTriagePayload prediction) {
-        TriageResponse safetyFloor = triageWithRules(text, "openai-safety-floor");
-        int urgency = Math.max(clampUrgency(prediction.urgencyScore()), safetyFloor.urgencyScore());
-        int severity = Math.max(clampUrgency(prediction.severity()), safetyFloor.severity());
-        boolean safetyFloorRaisedUrgency = urgency > clampUrgency(prediction.urgencyScore());
-        List<String> symptoms = prediction.symptoms() == null || prediction.symptoms().isEmpty()
+        TriageResponse providerResponse = new TriageResponse(
+                prediction.symptoms(),
+                prediction.durationDays(),
+                clampUrgency(prediction.severity()),
+                prediction.ageGroup(),
+                prediction.specialtyHint(),
+                clampUrgency(prediction.urgencyScore()),
+                "openai",
+                prediction.confidence(),
+                prediction.urgencyReason(),
+                "openai:" + openAiModel
+        );
+        return applySafetyFloor(text, providerResponse, "openai");
+    }
+
+    private TriageResponse applySafetyFloor(String text, TriageResponse providerResponse, String providerMode) {
+        TriageResponse safetyFloor = triageWithRules(text, providerMode + "-safety-floor");
+        int urgency = Math.max(providerResponse.urgencyScore(), safetyFloor.urgencyScore());
+        int severity = Math.max(providerResponse.severity(), safetyFloor.severity());
+        boolean safetyFloorRaisedUrgency = urgency > providerResponse.urgencyScore();
+        List<String> symptoms = providerResponse.symptoms() == null || providerResponse.symptoms().isEmpty()
                 ? safetyFloor.symptoms()
-                : prediction.symptoms();
-        String ageGroup = normalizeAgeGroup(prediction.ageGroup(), safetyFloor.ageGroup());
+                : providerResponse.symptoms();
+        String ageGroup = normalizeAgeGroup(providerResponse.ageGroup(), safetyFloor.ageGroup());
         String specialty = safetyFloorRaisedUrgency
                 ? safetyFloor.specialtyHint()
-                : normalizeSpecialty(prediction.specialtyHint(), safetyFloor.specialtyHint());
-        Integer durationDays = prediction.durationDays() == null
+                : normalizeSpecialty(providerResponse.specialtyHint(), safetyFloor.specialtyHint());
+        Integer durationDays = providerResponse.durationDays() == null
                 ? safetyFloor.durationDays()
-                : prediction.durationDays();
+                : providerResponse.durationDays();
 
         return new TriageResponse(
                 symptoms,
@@ -255,10 +272,10 @@ public class AiTriageService {
                 ageGroup,
                 specialty,
                 urgency,
-                safetyFloorRaisedUrgency ? "openai+safety-floor" : "openai",
-                prediction.confidence(),
-                prediction.urgencyReason(),
-                "openai:" + openAiModel
+                safetyFloorRaisedUrgency ? providerMode + "+safety-floor" : providerResponse.mode(),
+                providerResponse.confidence(),
+                providerResponse.urgencyReason(),
+                providerResponse.sourceModel()
         );
     }
 
@@ -272,7 +289,7 @@ public class AiTriageService {
         if (containsAny(normalized, "fievre", "temperature", "38", "39", "40")) {
             symptoms.add("hyperthermie");
         }
-        if (containsAny(normalized, "palpitation", "coeur", "poitrine")) {
+        if (containsAny(normalized, "palpitation", "coeur", "poitrine", "sder", "sdr", "sdri", "9elb")) {
             symptoms.add("symptome_cardiaque");
         }
         if (containsAny(normalized, "bouton", "plaque", "demangeaison", "peau")) {
@@ -305,7 +322,7 @@ public class AiTriageService {
         if ("enfant".equals(ageGroup)) {
             return "pediatrie";
         }
-        if (containsAny(normalized, "palpitation", "coeur", "poitrine", "tension")) {
+        if (containsAny(normalized, "palpitation", "coeur", "poitrine", "tension", "sder", "sdr", "sdri", "9elb")) {
             return "cardiologie";
         }
         if (containsAny(normalized, "peau", "bouton", "plaque", "demangeaison")) {
@@ -321,7 +338,19 @@ public class AiTriageService {
     }
 
     private int inferUrgency(String normalized, String specialty) {
-        if ("cardiologie".equals(specialty) || containsAny(normalized, "poitrine", "essoufflement")) {
+        if ("cardiologie".equals(specialty) || containsAny(
+                normalized,
+                "poitrine",
+                "essoufflement",
+                "sder",
+                "sdr",
+                "sdri",
+                "nefess",
+                "nefs",
+                "ntnefess",
+                "tnfes",
+                "netneffes"
+        )) {
             return 3;
         }
         if ("pediatrie".equals(specialty) || "psychiatrie".equals(specialty)) {

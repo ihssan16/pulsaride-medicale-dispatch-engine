@@ -178,7 +178,7 @@ availability by specialty, and load per professional.
 Provider selection:
 
 - `AI_PROVIDER=mock` or `AI_MODE=mock`: local deterministic rules.
-- `AI_PROVIDER=external|darija` or `AI_MODE=external`: Darija Health NLP sidecar.
+- `AI_PROVIDER=external|darija` or `AI_MODE=external`: Darija Health NLP sidecar plus local safety floor.
 - `AI_PROVIDER=openai` or `AI_MODE=openai`: OpenAI structured extraction plus local safety floor.
 
 Request body:
