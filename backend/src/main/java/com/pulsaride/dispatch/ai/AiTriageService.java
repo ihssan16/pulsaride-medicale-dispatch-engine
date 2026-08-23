@@ -98,7 +98,7 @@ public class AiTriageService {
                 ? List.of("symptome_general")
                 : prediction.symptoms();
         String normalized = normalize(text);
-        String ageGroup = containsAny(normalized, "enfant", "fils", "fille", "bebe") ? "enfant" : "adulte";
+        String ageGroup = inferAgeGroup(normalized);
 
         TriageResponse providerResponse = new TriageResponse(
                 symptoms,
@@ -254,7 +254,9 @@ public class AiTriageService {
         int urgency = Math.max(providerResponse.urgencyScore(), safetyFloor.urgencyScore());
         int severity = Math.max(providerResponse.severity(), safetyFloor.severity());
         boolean safetyFloorRaisedUrgency = urgency > providerResponse.urgencyScore();
-        List<String> symptoms = providerResponse.symptoms() == null || providerResponse.symptoms().isEmpty()
+        List<String> symptoms = providerResponse.symptoms() == null
+                || providerResponse.symptoms().isEmpty()
+                || providerResponse.symptoms().equals(List.of("symptome_general"))
                 ? safetyFloor.symptoms()
                 : providerResponse.symptoms();
         String ageGroup = normalizeAgeGroup(providerResponse.ageGroup(), safetyFloor.ageGroup());
@@ -298,8 +300,14 @@ public class AiTriageService {
         if (containsAny(normalized, "anxieux", "angoisse", "depression", "stress")) {
             symptoms.add("symptome_psy");
         }
+        if (containsAny(normalized, "suicide", "suicidaire", "ma b9itch baghi n3ich", "ma baghich n3ich", "nmout")) {
+            symptoms.add("risque_suicidaire");
+        }
+        if (containsAny(normalized, "intoxication", "empoisonnement", "chrab dawa", "dawa bzzaf", "kayt9aya", "t9aya")) {
+            symptoms.add("intoxication_possible");
+        }
 
-        String ageGroup = containsAny(normalized, "enfant", "fils", "fille", "bebe") ? "enfant" : "adulte";
+        String ageGroup = inferAgeGroup(normalized);
         String specialty = inferSpecialty(normalized, ageGroup);
         int urgency = inferUrgency(normalized, specialty);
         Integer durationDays = extractDurationDays(normalized);
@@ -318,7 +326,19 @@ public class AiTriageService {
         );
     }
 
+    private String inferAgeGroup(String normalized) {
+        return containsAny(normalized, "enfant", "fils", "fille", "bebe", "wldi", "weldi", "bnti", "benti", "tifl")
+                ? "enfant"
+                : "adulte";
+    }
+
     private String inferSpecialty(String normalized, String ageGroup) {
+        if (containsAny(normalized, "intoxication", "empoisonnement", "chrab dawa", "dawa bzzaf", "kayt9aya", "t9aya")) {
+            return "urgence";
+        }
+        if (containsAny(normalized, "suicide", "suicidaire", "ma b9itch baghi n3ich", "ma baghich n3ich", "nmout")) {
+            return "psychiatrie";
+        }
         if ("enfant".equals(ageGroup)) {
             return "pediatrie";
         }
@@ -355,6 +375,22 @@ public class AiTriageService {
     }
 
     private int inferUrgency(String normalized, String specialty) {
+        if (containsAny(
+                normalized,
+                "suicide",
+                "suicidaire",
+                "ma b9itch baghi n3ich",
+                "ma baghich n3ich",
+                "nmout",
+                "intoxication",
+                "empoisonnement",
+                "chrab dawa",
+                "dawa bzzaf",
+                "kayt9aya",
+                "t9aya"
+        )) {
+            return 3;
+        }
         if ("cardiologie".equals(specialty) || containsAny(
                 normalized,
                 "poitrine",
@@ -415,7 +451,7 @@ public class AiTriageService {
             case "pulmonology", "pneumologie" -> "pneumologie";
             case "ent", "orl" -> "orl";
             case "radiology", "radiologie" -> "radiologie";
-            case "emergency", "urgence" -> "urgence";
+            case "emergency", "emergency medicine", "urgence", "medecine d urgence" -> "urgence";
             case "general practice", "generaliste", "general medicine", "medecine generale" -> "generaliste";
             default -> normalized.replace(" ", "_");
         };

@@ -113,6 +113,75 @@ class AiTriageServiceTests {
     }
 
     @Test
+    void localSafetyFloorCatchesDarijaPoisoningAndSuicideRedFlags() {
+        AiTriageService service = new AiTriageService(
+                "mock",
+                "http://localhost:8000",
+                true,
+                "https://api.openai.com/v1",
+                "",
+                "gpt-4o-mini",
+                objectMapper
+        );
+
+        var poisoning = service.triage("wldi chrab dawa bzzaf w kayt9aya");
+        assertThat(poisoning.specialtyHint()).isEqualTo("urgence");
+        assertThat(poisoning.ageGroup()).isEqualTo("enfant");
+        assertThat(poisoning.urgencyScore()).isEqualTo(3);
+        assertThat(poisoning.symptoms()).contains("intoxication_possible");
+
+        var suicideRisk = service.triage("kanfker ndir chi haja f rassi ma b9itch baghi n3ich");
+        assertThat(suicideRisk.specialtyHint()).isEqualTo("psychiatrie");
+        assertThat(suicideRisk.urgencyScore()).isEqualTo(3);
+        assertThat(suicideRisk.symptoms()).contains("risque_suicidaire");
+    }
+
+    @Test
+    void externalModeKeepsLocalDarijaRedFlagDetailsWhenProviderIsGeneric() throws Exception {
+        HttpServer server = HttpServer.create(new InetSocketAddress(0), 0);
+        server.createContext("/predict", exchange -> {
+            byte[] responseBody = """
+                    {
+                      "predicted_specialty": "Emergency Medicine",
+                      "specialty_confidence": 0.58,
+                      "urgency": "unknown",
+                      "urgency_reason": "No clear urgency signal was detected.",
+                      "symptoms": []
+                    }
+                    """.getBytes(StandardCharsets.UTF_8);
+            exchange.getResponseHeaders().add("Content-Type", "application/json");
+            exchange.sendResponseHeaders(200, responseBody.length);
+            exchange.getResponseBody().write(responseBody);
+            exchange.close();
+        });
+        server.start();
+
+        try {
+            int port = server.getAddress().getPort();
+            AiTriageService service = new AiTriageService(
+                    "external",
+                    "http://localhost:" + port,
+                    false,
+                    "https://api.openai.com/v1",
+                    "",
+                    "gpt-4o-mini",
+                    objectMapper
+            );
+
+            var response = service.triage("wldi chrab dawa bzzaf w kayt9aya");
+
+            assertThat(response.mode()).isEqualTo("external+safety-floor");
+            assertThat(response.specialtyHint()).isEqualTo("urgence");
+            assertThat(response.ageGroup()).isEqualTo("enfant");
+            assertThat(response.urgencyScore()).isEqualTo(3);
+            assertThat(response.symptoms()).contains("intoxication_possible");
+            assertThat(response.sourceModel()).isEqualTo("darija-health-nlp");
+        } finally {
+            server.stop(0);
+        }
+    }
+
+    @Test
     void externalModeFallsBackToLocalRulesWhenConfigured() throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(0), 0);
         server.createContext("/predict", exchange -> {
