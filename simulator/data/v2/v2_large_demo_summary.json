@@ -1,0 +1,26 @@
+{
+  "seed": 4242,
+  "generated_at": "2026-08-23T18:25:28.597640+00:00",
+  "total_cases": 840,
+  "case_type_counts": {
+    "clear": 640,
+    "ambiguous": 120,
+    "red_flag": 80
+  },
+  "specialty_counts": {
+    "psychiatrie": 94,
+    "dermatologie": 80,
+    "gynecologie": 80,
+    "ophtalmologie": 80,
+    "generaliste": 200,
+    "pediatrie": 93,
+    "cardiologie": 96,
+    "urgence": 37,
+    "orl": 80
+  },
+  "clear_specialty_baseline_accuracy_pct": 92.7,
+  "red_flag_recall_pct": 100.0,
+  "red_flag_cases": 80,
+  "ambiguous_cases": 120,
+  "note": "Synthetic demonstration corpus. It complements, but does not replace, the smaller frozen regression split."
+}

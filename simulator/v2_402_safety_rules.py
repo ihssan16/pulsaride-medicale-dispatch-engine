@@ -18,7 +18,7 @@ RED_FLAG_RULES = [
     },
     {
         "id": "RF002",
-        "pattern": r"(bébé|nourrisson|enfant).{0,20}\d{1,2}\s*(mois).{0,40}(40|39\.[5-9])",
+        "pattern": r"(bébé|bebe|nourrisson|enfant).{0,20}\d{1,2}\s*(mois).{0,40}(40|39\.[5-9])",
         "min_urgency": 3,
         "reason": "fievre elevee nourrisson"
     },
@@ -36,7 +36,7 @@ RED_FLAG_RULES = [
     },
     {
         "id": "RF005",
-        "pattern": r"(enfant|bébé).{0,20}(avalé|ingéré).{0,20}(médicament|produit)",
+        "pattern": r"(enfant|bébé|bebe).{0,20}(avalé|avale|ingéré|ingere).{0,20}(médicament|medicament|produit)",
         "min_urgency": 3,
         "reason": "intoxication pédiatrique"
     },
