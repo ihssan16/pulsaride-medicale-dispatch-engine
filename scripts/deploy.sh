@@ -1,43 +1,42 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
 echo "================================================="
-echo "PULSARIDE — Script de déploiement V1"
+echo "PULSARIDE - VPS deployment"
 echo "================================================="
 
-# 1. Installer les dépendances
-echo "📦 Installation des dépendances..."
-sudo apt update -q
-sudo apt install -y docker.io git openjdk-21-jdk maven python3-pip
+echo "Installing system dependencies..."
+apt-get update -qq
+apt-get install -y docker.io docker-compose-v2 git curl python3 python3-pip
 
-# 2. Démarrer Docker
-sudo systemctl start docker
-sudo usermod -aG docker $USER
+echo "Starting Docker..."
+systemctl enable --now docker
 
-# 3. Installer les librairies Python
-echo "🐍 Installation des librairies Python..."
-pip3 install requests matplotlib --break-system-packages
+if [ ! -f "$ROOT_DIR/.env" ]; then
+  echo "Creating .env from .env.example..."
+  cp "$ROOT_DIR/.env.example" "$ROOT_DIR/.env"
+fi
 
-# 4. Compiler le backend
-echo "🔨 Compilation du backend..."
-cd backend
-mvn clean package -DskipTests -q
-cd ..
-
-# 5. Lancer Docker Compose
-echo "🚀 Lancement des services..."
+echo "Starting Pulsaride stack..."
+cd "$ROOT_DIR"
 docker compose up --build -d
 
-# 6. Attendre que l'API soit prête
-echo "⏳ Attente démarrage API..."
-sleep 15
+echo "Waiting for the API health check..."
+for attempt in $(seq 1 90); do
+  if curl --fail --silent http://localhost:8080/actuator/health >/dev/null; then
+    echo "Pulsaride is ready."
+    docker compose ps
+    echo ""
+    echo "API:       http://$(hostname -I | awk '{print $1}'):8080"
+    echo "Health:    http://$(hostname -I | awk '{print $1}'):8080/actuator/health"
+    echo "Dashboard: http://$(hostname -I | awk '{print $1}'):8080/dashboard-v2.html"
+    exit 0
+  fi
+  sleep 2
+done
 
-# 7. Vérifier
-echo ""
-echo "✅ Vérification..."
-curl -s http://localhost:8080/health
-echo ""
-echo "================================================="
-echo "🎉 Déploiement terminé !"
-echo "   API disponible sur http://localhost:8080"
-echo "   Health : http://localhost:8080/health"
-echo "   Métriques : http://localhost:8080/metrics/summary"
-echo "================================================="
+echo "The API did not become healthy within 180 seconds." >&2
+docker compose logs --tail=160 api >&2
+exit 1

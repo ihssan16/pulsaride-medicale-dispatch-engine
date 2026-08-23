@@ -39,7 +39,7 @@ services:
       POSTGRES_USER: pulsaride
       POSTGRES_PASSWORD: pulsaride123
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -52,7 +52,7 @@ services:
     image: redis:7-alpine
     container_name: pulsaride-redis
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
     command: redis-server --appendonly yes
     volumes:
       - redis_data:/data
@@ -66,7 +66,7 @@ services:
     image: apache/kafka:3.7.0
     container_name: pulsaride-kafka
     ports:
-      - "9092:9092"
+      - "127.0.0.1:9092:9092"
     environment:
       KAFKA_NODE_ID: 1
       KAFKA_PROCESS_ROLES: broker,controller
@@ -97,7 +97,7 @@ services:
     environment:
       TRANSFORMER_PATH: /app/models/transformer_MARBERT_specialty
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     volumes:
       - ${DARIJA_MODEL_DIR:-../darija-health-nlp/models}:/app/models:ro
     healthcheck:
