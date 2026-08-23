@@ -46,6 +46,9 @@ class AiTriageServiceTests {
                     "external",
                     "http://localhost:" + port,
                     false,
+                    "https://api.openai.com/v1",
+                    "",
+                    "gpt-4o-mini",
                     objectMapper
             );
 
@@ -81,6 +84,9 @@ class AiTriageServiceTests {
                     "external",
                     "http://localhost:" + port,
                     true,
+                    "https://api.openai.com/v1",
+                    "",
+                    "gpt-4o-mini",
                     objectMapper
             );
 
@@ -93,5 +99,85 @@ class AiTriageServiceTests {
         } finally {
             server.stop(0);
         }
+    }
+
+    @Test
+    void openAiModeMapsStructuredOutputAndKeepsSafetyFloor() throws Exception {
+        HttpServer server = HttpServer.create(new InetSocketAddress(0), 0);
+        server.createContext("/responses", exchange -> {
+            byte[] requestBody = exchange.getRequestBody().readAllBytes();
+            String requestJson = new String(requestBody, StandardCharsets.UTF_8);
+            assertThat(exchange.getRequestMethod()).isEqualTo("POST");
+            assertThat(exchange.getRequestHeaders().getFirst("Authorization")).isEqualTo("Bearer test-key");
+            assertThat(requestJson).contains("\"model\":\"test-model\"");
+            assertThat(requestJson).contains("\"json_schema\"");
+            assertThat(requestJson).contains("douleur poitrine");
+
+            byte[] responseBody = """
+                    {
+                      "output": [
+                        {
+                          "type": "message",
+                          "content": [
+                            {
+                              "type": "output_text",
+                              "text": "{\\"symptoms\\":[\\"chest_pain\\"],\\"durationDays\\":2,\\"severity\\":0,\\"ageGroup\\":\\"adulte\\",\\"specialtyHint\\":\\"generaliste\\",\\"urgencyScore\\":0,\\"confidence\\":0.42,\\"urgencyReason\\":\\"Model underestimated this synthetic case.\\"}"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                    """.getBytes(StandardCharsets.UTF_8);
+            exchange.getResponseHeaders().add("Content-Type", "application/json");
+            exchange.sendResponseHeaders(200, responseBody.length);
+            exchange.getResponseBody().write(responseBody);
+            exchange.close();
+        });
+        server.start();
+
+        try {
+            int port = server.getAddress().getPort();
+            AiTriageService service = new AiTriageService(
+                    "openai",
+                    "http://localhost:8000",
+                    false,
+                    "http://localhost:" + port,
+                    "test-key",
+                    "test-model",
+                    objectMapper
+            );
+
+            var response = service.triage("douleur poitrine et essoufflement depuis 2 jours");
+
+            assertThat(response.mode()).isEqualTo("openai+safety-floor");
+            assertThat(response.sourceModel()).isEqualTo("openai:test-model");
+            assertThat(response.specialtyHint()).isEqualTo("cardiologie");
+            assertThat(response.urgencyScore()).isEqualTo(3);
+            assertThat(response.severity()).isEqualTo(3);
+            assertThat(response.confidence()).isEqualTo(0.42);
+            assertThat(response.durationDays()).isEqualTo(2);
+        } finally {
+            server.stop(0);
+        }
+    }
+
+    @Test
+    void openAiModeFallsBackToLocalRulesWhenApiKeyIsMissing() {
+        AiTriageService service = new AiTriageService(
+                "openai",
+                "http://localhost:8000",
+                true,
+                "https://api.openai.com/v1",
+                "",
+                "gpt-4o-mini",
+                objectMapper
+        );
+
+        var response = service.triage("Douleur poitrine et essoufflement depuis 1 jour");
+
+        assertThat(response.mode()).isEqualTo("openai-fallback");
+        assertThat(response.sourceModel()).isEqualTo("pulsaride-rules");
+        assertThat(response.specialtyHint()).isEqualTo("cardiologie");
+        assertThat(response.urgencyScore()).isEqualTo(3);
     }
 }

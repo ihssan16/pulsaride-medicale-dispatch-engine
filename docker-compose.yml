@@ -10,9 +10,12 @@ services:
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
       PULSARIDE_SIMULATOR_DATA_DIR: /data
-      AI_MODE: ${AI_MODE:-mock}
+      AI_MODE: ${AI_PROVIDER:-${AI_MODE:-mock}}
       AI_EXTERNAL_URL: ${AI_EXTERNAL_URL:-http://darija-ai:8000}
       AI_FALLBACK_ENABLED: ${AI_FALLBACK_ENABLED:-true}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.openai.com/v1}
     ports:
       - "8080:8080"
     volumes:

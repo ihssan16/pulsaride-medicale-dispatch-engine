@@ -75,7 +75,7 @@ curl -X POST http://localhost:8000/predict \
 Depuis `pulsaride-medicale-dispatch-engine` :
 
 ```bash
-AI_MODE=external docker compose --profile ai up --build
+AI_PROVIDER=external docker compose --profile ai up --build
 ```
 
 Le profil `ai` ajoute le service `darija-ai`. Sans ce profil, Pulsaride démarre
@@ -84,11 +84,14 @@ comme avant en mode `mock`.
 Variables utiles :
 
 ```text
-AI_MODE=mock|external
+AI_PROVIDER=mock|external|darija|openai
+AI_MODE=mock|external|openai
 AI_EXTERNAL_URL=http://darija-ai:8000
 AI_FALLBACK_ENABLED=true|false
 DARIJA_HEALTH_NLP_DIR=../darija-health-nlp
 DARIJA_MODEL_DIR=../darija-health-nlp/models
+OPENAI_API_KEY=...
+OPENAI_MODEL=gpt-4o-mini
 ```
 
 ## Contrat entre les deux services
@@ -155,12 +158,27 @@ Si `AI_MODE=external` mais que le service FastAPI est indisponible :
 Ce fallback permet de garder les démonstrations V1/V2 exécutables même sans GPU,
 sans RAM suffisante ou sans modèle téléchargé.
 
-## Note OpenAI
+## Provider OpenAI optionnel
 
-Une clé OpenAI peut être utile plus tard pour benchmarker ou ajouter un provider
-IA externe, mais elle ne doit pas remplacer les règles red-flag déterministes.
-Pour la V2 actuelle, la trajectoire recommandée reste Darija Health NLP +
-fallback local. Les clés doivent être stockées dans `.env`, GitHub Secrets ou les
-variables d'environnement du VPS, jamais dans Git.
+OpenAI est maintenant disponible comme provider expérimental :
+
+```bash
+AI_PROVIDER=openai docker compose up --build
+```
+
+Le backend appelle l'API OpenAI Responses et demande une sortie JSON structurée.
+Ensuite, il applique les règles locales comme plancher de sécurité. Exemple :
+si le provider OpenAI retourne `urgencyScore=0` pour une douleur thoracique, les
+règles locales peuvent remonter la réponse à `urgencyScore=3` avec
+`mode=openai+safety-floor`.
+
+La trajectoire recommandée reste :
+
+1. règles red-flag déterministes obligatoires ;
+2. Darija Health NLP pour la valeur locale/multilingue ;
+3. OpenAI pour benchmark, fallback ou comparaison contrôlée.
+
+Les clés doivent être stockées dans `.env`, GitHub Secrets ou les variables
+d'environnement du VPS, jamais dans Git.
 
 Voir `docs/SECRETS_AND_AI_PROVIDERS.md`.

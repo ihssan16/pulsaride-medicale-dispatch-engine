@@ -26,6 +26,9 @@ public class AiTriageService {
 
     private final String mode;
     private final URI externalPredictUri;
+    private final URI openAiResponsesUri;
+    private final String openAiApiKey;
+    private final String openAiModel;
     private final boolean fallbackEnabled;
     private final ObjectMapper objectMapper;
 
@@ -33,25 +36,34 @@ public class AiTriageService {
             @Value("${pulsaride.ai.mode:mock}") String mode,
             @Value("${pulsaride.ai.external-url:http://localhost:8000}") String externalUrl,
             @Value("${pulsaride.ai.fallback-enabled:true}") boolean fallbackEnabled,
+            @Value("${pulsaride.ai.openai.base-url:https://api.openai.com/v1}") String openAiBaseUrl,
+            @Value("${pulsaride.ai.openai.api-key:}") String openAiApiKey,
+            @Value("${pulsaride.ai.openai.model:gpt-4o-mini}") String openAiModel,
             ObjectMapper objectMapper
     ) {
         this.mode = mode;
         this.externalPredictUri = URI.create(stripTrailingSlash(externalUrl) + "/predict");
+        this.openAiResponsesUri = URI.create(stripTrailingSlash(openAiBaseUrl) + "/responses");
+        this.openAiApiKey = openAiApiKey;
+        this.openAiModel = openAiModel;
         this.fallbackEnabled = fallbackEnabled;
         this.objectMapper = objectMapper;
     }
 
     public TriageResponse triage(String text) {
-        if ("external".equalsIgnoreCase(mode)) {
-            try {
+        try {
+            if ("external".equalsIgnoreCase(mode) || "darija".equalsIgnoreCase(mode)) {
                 return triageWithExternalService(text);
-            } catch (IOException | RuntimeException ex) {
-                if (!fallbackEnabled) {
-                    throw new IllegalStateException("External AI triage service is unavailable", ex);
-                }
-                LOGGER.warn("External AI triage failed, using local fallback: {}", ex.getMessage());
-                return triageWithRules(text, "external-fallback");
             }
+            if ("openai".equalsIgnoreCase(mode)) {
+                return triageWithOpenAi(text);
+            }
+        } catch (IOException | RuntimeException ex) {
+            if (!fallbackEnabled) {
+                throw new IllegalStateException("AI triage provider is unavailable", ex);
+            }
+            LOGGER.warn("AI triage provider '{}' failed, using local fallback: {}", mode, ex.getMessage());
+            return triageWithRules(text, mode.toLowerCase(Locale.ROOT) + "-fallback");
         }
         return triageWithRules(text, mode);
     }
@@ -110,6 +122,144 @@ public class AiTriageService {
         try (stream) {
             return new String(stream.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
         }
+    }
+
+    private TriageResponse triageWithOpenAi(String text) throws IOException {
+        if (openAiApiKey == null || openAiApiKey.isBlank()) {
+            throw new IllegalStateException("OPENAI_API_KEY is required when AI_MODE=openai");
+        }
+
+        String requestBody = objectMapper.writeValueAsString(openAiRequestBody(text));
+        byte[] requestBytes = requestBody.getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        HttpURLConnection connection = (HttpURLConnection) openAiResponsesUri.toURL().openConnection();
+        connection.setRequestMethod("POST");
+        connection.setConnectTimeout(3000);
+        connection.setReadTimeout(12000);
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setRequestProperty("Authorization", "Bearer " + openAiApiKey);
+        connection.setFixedLengthStreamingMode(requestBytes.length);
+        connection.setDoOutput(true);
+        try (OutputStream output = connection.getOutputStream()) {
+            output.write(requestBytes);
+        }
+
+        int statusCode = connection.getResponseCode();
+        String responseBody = readResponseBody(connection, statusCode);
+        if (statusCode < 200 || statusCode >= 300) {
+            throw new IllegalStateException("OpenAI triage returned HTTP " + statusCode + ": " + responseBody);
+        }
+
+        String outputText = extractOpenAiOutputText(responseBody);
+        OpenAiTriagePayload prediction = objectMapper.readValue(outputText, OpenAiTriagePayload.class);
+        return applySafetyFloor(text, prediction);
+    }
+
+    private Map<String, Object> openAiRequestBody(String text) {
+        Map<String, Object> schema = Map.of(
+                "type", "object",
+                "additionalProperties", false,
+                "required", List.of(
+                        "symptoms",
+                        "durationDays",
+                        "severity",
+                        "ageGroup",
+                        "specialtyHint",
+                        "urgencyScore",
+                        "confidence",
+                        "urgencyReason"
+                ),
+                "properties", Map.of(
+                        "symptoms", Map.of(
+                                "type", "array",
+                                "items", Map.of("type", "string")
+                        ),
+                        "durationDays", Map.of("type", List.of("integer", "null")),
+                        "severity", Map.of("type", "integer", "minimum", 0, "maximum", 3),
+                        "ageGroup", Map.of("type", "string", "enum", List.of("enfant", "adulte")),
+                        "specialtyHint", Map.of("type", "string"),
+                        "urgencyScore", Map.of("type", "integer", "minimum", 0, "maximum", 3),
+                        "confidence", Map.of("type", "number", "minimum", 0, "maximum", 1),
+                        "urgencyReason", Map.of("type", "string")
+                )
+        );
+
+        String developerPrompt = """
+                You are a medical triage extraction component for an internship dispatch prototype.
+                Extract structured fields from Moroccan Darija, Arabic, French, or mixed patient text.
+                This is not a diagnosis. Use urgencyScore 0..3 where 3 means urgent red-flag.
+                Prefer these normalized specialties when possible: generaliste, cardiologie, dermatologie,
+                gastroenterologie, gynecologie, neurologie, orl, pediatrie, pneumologie, psychiatrie, urgence.
+                """;
+
+        return Map.of(
+                "model", openAiModel,
+                "input", List.of(
+                        Map.of("role", "developer", "content", developerPrompt),
+                        Map.of("role", "user", "content", text)
+                ),
+                "text", Map.of(
+                        "format", Map.of(
+                                "type", "json_schema",
+                                "name", "pulsaride_triage",
+                                "strict", true,
+                                "schema", schema
+                        )
+                )
+        );
+    }
+
+    private String extractOpenAiOutputText(String responseBody) throws IOException {
+        var root = objectMapper.readTree(responseBody);
+        if (root.hasNonNull("output_text")) {
+            return root.get("output_text").asText();
+        }
+
+        var output = root.path("output");
+        if (output.isArray()) {
+            for (var item : output) {
+                var content = item.path("content");
+                if (!content.isArray()) {
+                    continue;
+                }
+                for (var contentItem : content) {
+                    if (contentItem.hasNonNull("text")) {
+                        return contentItem.get("text").asText();
+                    }
+                }
+            }
+        }
+        throw new IllegalStateException("OpenAI response did not contain output text");
+    }
+
+    private TriageResponse applySafetyFloor(String text, OpenAiTriagePayload prediction) {
+        TriageResponse safetyFloor = triageWithRules(text, "openai-safety-floor");
+        int urgency = Math.max(clampUrgency(prediction.urgencyScore()), safetyFloor.urgencyScore());
+        int severity = Math.max(clampUrgency(prediction.severity()), safetyFloor.severity());
+        boolean safetyFloorRaisedUrgency = urgency > clampUrgency(prediction.urgencyScore());
+        List<String> symptoms = prediction.symptoms() == null || prediction.symptoms().isEmpty()
+                ? safetyFloor.symptoms()
+                : prediction.symptoms();
+        String ageGroup = normalizeAgeGroup(prediction.ageGroup(), safetyFloor.ageGroup());
+        String specialty = safetyFloorRaisedUrgency
+                ? safetyFloor.specialtyHint()
+                : normalizeSpecialty(prediction.specialtyHint(), safetyFloor.specialtyHint());
+        Integer durationDays = prediction.durationDays() == null
+                ? safetyFloor.durationDays()
+                : prediction.durationDays();
+
+        return new TriageResponse(
+                symptoms,
+                durationDays,
+                severity,
+                ageGroup,
+                specialty,
+                urgency,
+                safetyFloorRaisedUrgency ? "openai+safety-floor" : "openai",
+                prediction.confidence(),
+                prediction.urgencyReason(),
+                "openai:" + openAiModel
+        );
     }
 
     private TriageResponse triageWithRules(String text, String responseMode) {
@@ -237,6 +387,29 @@ public class AiTriageService {
         };
     }
 
+    private int clampUrgency(Integer value) {
+        if (value == null) {
+            return 0;
+        }
+        return Math.max(0, Math.min(3, value));
+    }
+
+    private String normalizeAgeGroup(String value, String fallback) {
+        if (value == null || value.isBlank()) {
+            return fallback;
+        }
+        String normalized = normalize(value);
+        return "enfant".equals(normalized) ? "enfant" : "adulte";
+    }
+
+    private String normalizeSpecialty(String value, String fallback) {
+        if (value == null || value.isBlank()) {
+            return fallback;
+        }
+        String normalized = mapSpecialty(value);
+        return normalized.isBlank() ? fallback : normalized;
+    }
+
     private String stripTrailingSlash(String value) {
         return value.endsWith("/") ? value.substring(0, value.length() - 1) : value;
     }
@@ -248,6 +421,19 @@ public class AiTriageService {
             String urgency,
             String urgency_reason,
             List<String> symptoms
+    ) {
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    private record OpenAiTriagePayload(
+            List<String> symptoms,
+            Integer durationDays,
+            Integer severity,
+            String ageGroup,
+            String specialtyHint,
+            Integer urgencyScore,
+            Double confidence,
+            String urgencyReason
     ) {
     }
 }

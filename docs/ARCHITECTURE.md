@@ -5,7 +5,7 @@
 - Spring Boot API: exposes dispatch, availability, and persistence-backed state endpoints.
 - PostgreSQL: stores professionals and dispatch requests.
 - Redis: available for real-time coordination and future queue/session features.
-- Darija Health NLP service: optional FastAPI microservice used by V2 AI triage when `AI_MODE=external`.
+- AI triage provider: local deterministic rules by default, optional Darija Health NLP sidecar, or optional OpenAI provider with the local safety floor.
 - Python simulator: generates professionals, patient requests, scenarios, run traces, and metrics.
 - Docker Compose: starts PostgreSQL, Redis, and the API.
 
@@ -16,7 +16,7 @@
 3. Docker Compose starts infrastructure and API.
 4. Flyway creates the database schema.
 5. The API imports simulator seed data when the database is empty.
-6. If the `ai` Compose profile is enabled, Pulsaride calls Darija Health NLP at `/predict` for `/ai/triage`; otherwise it keeps the local deterministic mock/fallback.
+6. `/ai/triage` uses `AI_PROVIDER`/`AI_MODE`: `mock` for local rules, `external`/`darija` for Darija Health NLP, or `openai` for OpenAI structured extraction plus the local safety floor.
 
 ## Dispatch Strategy V1
 

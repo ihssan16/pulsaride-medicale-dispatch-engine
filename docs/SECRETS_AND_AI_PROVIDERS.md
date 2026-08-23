@@ -21,6 +21,10 @@ Then fill `.env` locally. `.env` is ignored by Git.
 Useful variables:
 
 ```text
+AI_PROVIDER=mock
+AI_PROVIDER=external
+AI_PROVIDER=darija
+AI_PROVIDER=openai
 AI_MODE=mock
 AI_MODE=external
 AI_EXTERNAL_URL=http://darija-ai:8000
@@ -28,6 +32,8 @@ AI_FALLBACK_ENABLED=true
 DARIJA_HEALTH_NLP_DIR=../darija-health-nlp
 DARIJA_MODEL_DIR=../darija-health-nlp/models
 OPENAI_API_KEY=replace-me-after-rotation
+OPENAI_MODEL=gpt-4o-mini
+OPENAI_BASE_URL=https://api.openai.com/v1
 ```
 
 ## Current V2 recommendation
@@ -38,11 +44,23 @@ Recommended order:
 
 1. Deterministic red-flag rules remain mandatory.
 2. Darija Health NLP remains the preferred local Moroccan-language triage service.
-3. OpenAI can be used later as an optional benchmark or fallback provider, using
-   a server-side environment variable only.
+3. OpenAI can be used as an optional benchmark or fallback provider, using a
+   server-side environment variable only.
 
 This keeps the project explainable in the internship defense and avoids making
 the demo depend on a paid external API.
+
+## Provider behavior
+
+`AI_PROVIDER=mock` or `AI_MODE=mock` uses local deterministic rules only.
+
+`AI_PROVIDER=external`, `AI_PROVIDER=darija`, or `AI_MODE=external` calls the
+Darija Health NLP FastAPI service at `AI_EXTERNAL_URL`.
+
+`AI_PROVIDER=openai` or `AI_MODE=openai` calls the OpenAI Responses API. The
+Spring Boot service asks for structured JSON and then applies the local
+deterministic safety floor. This means an LLM can enrich extraction, but it
+cannot lower an urgent red-flag below the local rules.
 
 ## Secret scanning
 

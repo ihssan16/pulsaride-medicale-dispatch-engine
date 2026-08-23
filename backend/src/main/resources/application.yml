@@ -31,9 +31,13 @@ management:
 
 pulsaride:
   ai:
-    mode: ${AI_MODE:mock}
+    mode: ${AI_PROVIDER:${AI_MODE:mock}}
     external-url: ${AI_EXTERNAL_URL:http://localhost:8000}
     fallback-enabled: ${AI_FALLBACK_ENABLED:true}
+    openai:
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com/v1}
+      api-key: ${OPENAI_API_KEY:}
+      model: ${OPENAI_MODEL:gpt-4o-mini}
   dispatch:
     proposal-timeout-seconds: ${PULSARIDE_PROPOSAL_TIMEOUT_SECONDS:30}
     timeout-scan-ms: ${PULSARIDE_TIMEOUT_SCAN_MS:5000}

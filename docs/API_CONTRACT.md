@@ -171,9 +171,15 @@ Returns the lightweight V1 dashboard served by Spring Boot. It polls `/metrics/s
 `/availability`, and `/professionals` every 5 seconds to show KPIs, request flow,
 availability by specialty, and load per professional.
 
-## AI Mock Triage
+## AI Triage
 
 `POST /ai/triage`
+
+Provider selection:
+
+- `AI_PROVIDER=mock` or `AI_MODE=mock`: local deterministic rules.
+- `AI_PROVIDER=external|darija` or `AI_MODE=external`: Darija Health NLP sidecar.
+- `AI_PROVIDER=openai` or `AI_MODE=openai`: OpenAI structured extraction plus local safety floor.
 
 Request body:
 ```json
@@ -191,7 +197,10 @@ Response shape:
   "ageGroup": "enfant",
   "specialtyHint": "pediatrie",
   "urgencyScore": 2,
-  "mode": "mock"
+  "mode": "mock",
+  "confidence": null,
+  "urgencyReason": "Local deterministic fallback rules",
+  "sourceModel": "pulsaride-rules"
 }
 ```
 

@@ -34,11 +34,14 @@ Le dossier modèle attendu est `models/transformer_MARBERT_specialty/` dans le
 projet Darija. Il contient notamment `model.safetensors`, `config.json` et les
 fichiers tokenizer. Les poids ne sont pas versionnés dans Git.
 
-Le endpoint Pulsaride `/ai/triage` accepte désormais deux modes :
+Le endpoint Pulsaride `/ai/triage` accepte désormais trois familles de modes :
 
-- `AI_MODE=mock` : règles locales déterministes, utilisables sans modèle.
-- `AI_MODE=external` : appel HTTP vers Darija Health NLP `/predict`, avec
+- `AI_PROVIDER=mock` ou `AI_MODE=mock` : règles locales déterministes, utilisables sans modèle.
+- `AI_PROVIDER=external|darija` ou `AI_MODE=external` : appel HTTP vers Darija Health NLP `/predict`, avec
   conversion des spécialités et urgences vers les tags internes Pulsaride.
+- `AI_PROVIDER=openai` ou `AI_MODE=openai` : appel OpenAI Responses API avec
+  sortie JSON structurée, puis application du plancher de sécurité local pour
+  empêcher une sous-estimation des red flags.
 
 ## Résultats obtenus — Run complet (50 entrées, seed=42)
 

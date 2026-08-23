@@ -86,11 +86,31 @@ tester V2 avec le modèle Darija Health NLP, cloner le projet voisin
 `../darija-health-nlp/models/transformer_MARBERT_specialty/`, puis lancer :
 
 ```bash
-AI_MODE=external docker compose --profile ai up --build
+AI_PROVIDER=external docker compose --profile ai up --build
 ```
 
 Documentation complète : `docs/V2_AI_TRIAGE_DARIJA.md`.
 Gestion des clés et fournisseurs IA : `docs/SECRETS_AND_AI_PROVIDERS.md`.
+
+### Lancer avec OpenAI optionnel
+
+OpenAI est disponible comme provider expérimental. Il ne remplace pas les règles
+locales : après la réponse OpenAI, Pulsaride applique toujours un plancher de
+sécurité déterministe pour les signaux critiques.
+
+Dans `.env`, renseigner une clé rotatée :
+
+```text
+AI_PROVIDER=openai
+OPENAI_API_KEY=...
+OPENAI_MODEL=gpt-4o-mini
+```
+
+Puis lancer :
+
+```bash
+docker compose up --build
+```
 
 ### Vérifier l'API
 ```bash
@@ -135,7 +155,7 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 - `GET /requests/{requestId}/assignments`
 - `GET /requests/{requestId}/transitions`
 - `GET /metrics/summary`
-- `POST /ai/triage` — triage texte libre en mode mock ou via le microservice Darija Health NLP
+- `POST /ai/triage` — triage texte libre en mode `mock`, Darija Health NLP ou OpenAI avec plancher de sécurité local
 - `GET /dashboard.html`
 
 Les chemins historiques `/api/dispatch-requests` et `/api/professionals` restent aussi disponibles.
