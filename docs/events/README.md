@@ -52,9 +52,17 @@ Request creation is now isolated in `DemandService`: it creates the persisted
 writes `request.created.v1`. Dispatch lifecycle events remain owned by
 `DispatchService`.
 
+Request-bound AI triage is isolated in `RequestTriageService`: it runs the
+configured AI provider against the stored request text and writes
+`request.triaged.v1` with `modelVersion`, `confidence`, `ruleVersion`, and
+`requiresReview` metadata. The legacy `/ai/triage` route still exists for
+ad-hoc text prediction, but it does not publish an event because it has no
+request id.
+
 | Event | Written when |
 |---|---|
 | `request.created.v1` | `DemandService` creates a request through `/requests`, `/api/v2/requests`, or the legacy create-and-dispatch endpoint |
+| `request.triaged.v1` | `RequestTriageService` triages a stored request through `/api/v2/requests/{id}/triage` |
 | `dispatch.proposed.v1` | Dispatch reserves a slot and proposes a professional |
 | `dispatch.accepted.v1` | the proposed professional accepts the assignment |
 | `dispatch.refused.v1` | the proposed professional refuses and the request goes back to retry |

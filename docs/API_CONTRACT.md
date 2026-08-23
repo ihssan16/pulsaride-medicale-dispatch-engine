@@ -17,6 +17,7 @@ remaining services are physically extracted.
 | `PUT /api/v2/professionals/{id}/status` | Professional lifecycle |
 | `POST /api/v2/requests` | Demand Service request creation + `request.created.v1` outbox event |
 | `GET /api/v2/requests/{id}` | Demand/request read |
+| `POST /api/v2/requests/{id}/triage` | Request-bound AI triage + `request.triaged.v1` outbox event |
 | `GET /api/v2/requests/{id}/assignments` | Assignment history |
 | `GET /api/v2/requests/{id}/transitions` | FSM audit history |
 | `POST /api/v2/dispatch/next?strategy=S4` | Queue-driven dispatch |
@@ -285,6 +286,28 @@ Response shape:
   "confidence": null,
   "urgencyReason": "Local deterministic fallback rules",
   "sourceModel": "pulsaride-rules"
+}
+```
+
+`POST /api/v2/requests/{id}/triage`
+
+Runs AI triage against the stored request text and writes a durable
+`request.triaged.v1` event to the transactional outbox. The legacy
+`/ai/triage` endpoint only returns a prediction from raw text; this V2 endpoint
+adds the request id required by Kafka consumers.
+
+Response shape is the same as `/ai/triage`. The event payload includes:
+
+```json
+{
+  "requestId": "req_2026_0001",
+  "urgencyScore": 3,
+  "specialtyHint": "cardiologie",
+  "confidence": 1.0,
+  "modelVersion": "pulsaride-rules",
+  "ruleVersion": "v2402-r1",
+  "requiresReview": true,
+  "triggeredRules": ["LOCAL_RULES"]
 }
 ```
 

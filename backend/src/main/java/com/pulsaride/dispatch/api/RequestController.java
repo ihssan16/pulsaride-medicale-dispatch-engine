@@ -4,6 +4,7 @@ import com.pulsaride.dispatch.repository.DispatchRequestRepository;
 import com.pulsaride.dispatch.repository.AssignmentRepository;
 import com.pulsaride.dispatch.repository.StateTransitionRepository;
 import com.pulsaride.dispatch.service.DemandService;
+import com.pulsaride.dispatch.service.RequestTriageService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -23,17 +24,20 @@ public class RequestController {
     private final AssignmentRepository assignmentRepository;
     private final StateTransitionRepository transitionRepository;
     private final DemandService demandService;
+    private final RequestTriageService requestTriageService;
 
     public RequestController(
             DispatchRequestRepository repository,
             AssignmentRepository assignmentRepository,
             StateTransitionRepository transitionRepository,
-            DemandService demandService
+            DemandService demandService,
+            RequestTriageService requestTriageService
     ) {
         this.repository = repository;
         this.assignmentRepository = assignmentRepository;
         this.transitionRepository = transitionRepository;
         this.demandService = demandService;
+        this.requestTriageService = requestTriageService;
     }
 
     @PostMapping
@@ -47,6 +51,11 @@ public class RequestController {
         return repository.findWithAssignmentById(id)
                 .map(DispatchRequestResponse::from)
                 .orElseThrow(() -> new EntityNotFoundException("Request not found: " + id));
+    }
+
+    @PostMapping("/{id}/triage")
+    public TriageResponse triage(@PathVariable String id) {
+        return requestTriageService.triageAndPublish(id);
     }
 
     @GetMapping("/{id}/assignments")

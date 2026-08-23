@@ -7,9 +7,11 @@ import com.pulsaride.dispatch.domain.DispatchRequest;
 import com.pulsaride.dispatch.domain.OutboxEvent;
 import com.pulsaride.dispatch.domain.Professional;
 import com.pulsaride.dispatch.matching.DispatchStrategy;
+import com.pulsaride.dispatch.api.TriageResponse;
 import com.pulsaride.dispatch.repository.OutboxEventRepository;
 import java.time.OffsetDateTime;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
@@ -17,12 +19,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventOutboxService {
     public static final String REQUEST_CREATED = "request.created.v1";
+    public static final String REQUEST_TRIAGED = "request.triaged.v1";
     public static final String DISPATCH_PROPOSED = "dispatch.proposed.v1";
     public static final String DISPATCH_ACCEPTED = "dispatch.accepted.v1";
     public static final String DISPATCH_REFUSED = "dispatch.refused.v1";
     public static final String DISPATCH_TIMED_OUT = "dispatch.timed-out.v1";
     public static final String DISPATCH_CLOSED = "dispatch.closed.v1";
     private static final String DEMAND_PRODUCER = "demand-service";
+    private static final String AI_TRIAGE_PRODUCER = "ai-triage-service";
     private static final String DISPATCH_PRODUCER = "dispatch-service";
 
     private final OutboxEventRepository repository;
@@ -55,6 +59,27 @@ public class EventOutboxService {
         event.setPayloadJson(toJson(payload));
         event.setPublished(false);
         return repository.save(event);
+    }
+
+    public OutboxEvent recordRequestTriaged(
+            DispatchRequest request,
+            TriageResponse triage,
+            String ruleVersion,
+            boolean requiresReview,
+            List<String> triggeredRules
+    ) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("requestId", request.getId());
+        payload.put("urgencyScore", triage.urgencyScore());
+        payload.put("specialtyHint", triage.specialtyHint());
+        payload.put("confidence", triage.confidence() == null ? 1.0 : triage.confidence());
+        payload.put("modelVersion", modelVersion(triage));
+        payload.put("ruleVersion", ruleVersion);
+        payload.put("requiresReview", requiresReview);
+        if (triggeredRules != null && !triggeredRules.isEmpty()) {
+            payload.put("triggeredRules", triggeredRules);
+        }
+        return saveEvent(REQUEST_TRIAGED, request.getId(), AI_TRIAGE_PRODUCER, OffsetDateTime.now(), payload);
     }
 
     public OutboxEvent recordDispatchProposed(
@@ -164,6 +189,16 @@ public class EventOutboxService {
         event.setPayloadJson(toJson(payload));
         event.setPublished(false);
         return repository.save(event);
+    }
+
+    private String modelVersion(TriageResponse triage) {
+        if (triage.sourceModel() != null && !triage.sourceModel().isBlank()) {
+            return triage.sourceModel();
+        }
+        if (triage.mode() != null && !triage.mode().isBlank()) {
+            return triage.mode();
+        }
+        return "unknown";
     }
 
     private String toJson(Map<String, Object> payload) {

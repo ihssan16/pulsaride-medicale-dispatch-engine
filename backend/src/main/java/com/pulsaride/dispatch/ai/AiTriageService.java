@@ -289,7 +289,7 @@ public class AiTriageService {
         if (containsAny(normalized, "fievre", "temperature", "38", "39", "40")) {
             symptoms.add("hyperthermie");
         }
-        if (containsAny(normalized, "palpitation", "coeur", "poitrine", "sder", "sdr", "sdri", "9elb")) {
+        if (containsAny(normalized, "palpitation", "coeur", "poitrine", "thoracique", "essoufflement", "sder", "sdr", "sdri", "9elb")) {
             symptoms.add("symptome_cardiaque");
         }
         if (containsAny(normalized, "bouton", "plaque", "demangeaison", "peau")) {
@@ -322,7 +322,24 @@ public class AiTriageService {
         if ("enfant".equals(ageGroup)) {
             return "pediatrie";
         }
-        if (containsAny(normalized, "palpitation", "coeur", "poitrine", "tension", "sder", "sdr", "sdri", "9elb")) {
+        if (containsAny(
+                normalized,
+                "palpitation",
+                "coeur",
+                "poitrine",
+                "thoracique",
+                "essoufflement",
+                "tension",
+                "sder",
+                "sdr",
+                "sdri",
+                "9elb",
+                "nefess",
+                "nefs",
+                "ntnefess",
+                "tnfes",
+                "netneffes"
+        )) {
             return "cardiologie";
         }
         if (containsAny(normalized, "peau", "bouton", "plaque", "demangeaison")) {

@@ -1,5 +1,6 @@
 package com.pulsaride.dispatch.api;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
@@ -12,6 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pulsaride.dispatch.domain.OutboxEvent;
 import com.pulsaride.dispatch.domain.ProfessionalStatus;
 import com.pulsaride.dispatch.redis.DispatchRedisService;
 import com.pulsaride.dispatch.repository.AssignmentRepository;
@@ -264,6 +266,48 @@ class DispatchApiIntegrationTests {
                 .andExpect(jsonPath("$.events.eventTypes[1].eventType").value("request.created.v1"))
                 .andExpect(jsonPath("$.professionalLoads", hasSize(1)))
                 .andExpect(jsonPath("$.professionalLoads[0].id").value("api_v2_pro_cardio"));
+    }
+
+    @Test
+    void apiV2RequestTriagePublishesRequestTriagedEvent() throws Exception {
+        String response = mockMvc.perform(post("/api/v2/requests")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new CreateDispatchRequest(
+                                "api_v2_patient_triage",
+                                "Douleur thoracique avec essoufflement",
+                                "generaliste",
+                                1
+                        ))))
+                .andExpect(status().isCreated())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        String requestId = objectMapper.readTree(response).get("id").asText();
+
+        mockMvc.perform(post("/api/v2/requests/{requestId}/triage", requestId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.urgencyScore").value(3))
+                .andExpect(jsonPath("$.specialtyHint").value("cardiologie"))
+                .andExpect(jsonPath("$.sourceModel").value("pulsaride-rules"));
+
+        OutboxEvent triagedEvent = outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc(requestId)
+                .stream()
+                .filter(event -> event.getEventType().equals("request.triaged.v1"))
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(triagedEvent.getProducer()).isEqualTo("ai-triage-service");
+        assertThat(triagedEvent.isPublished()).isFalse();
+        assertThat(triagedEvent.getPayloadJson()).contains(
+                "\"requestId\":\"" + requestId + "\"",
+                "\"urgencyScore\":3",
+                "\"specialtyHint\":\"cardiologie\"",
+                "\"confidence\":1.0",
+                "\"modelVersion\":\"pulsaride-rules\"",
+                "\"ruleVersion\":\"v2402-r1\"",
+                "\"requiresReview\":true",
+                "\"triggeredRules\":[\"LOCAL_RULES\"]"
+        );
     }
 
     @Test

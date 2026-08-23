@@ -18,6 +18,8 @@
   outbox publication state for `/api/v2/analytics/summary` and `dashboard-v2.html`.
 - Redis: available for real-time coordination and future queue/session features.
 - AI triage provider: local deterministic rules by default, optional Darija Health NLP sidecar, or optional OpenAI provider; every AI provider response is checked by the local safety floor.
+- Request Triage Service: runs AI triage for a stored request and writes
+  `request.triaged.v1` with confidence/model metadata.
 - Python simulator: generates professionals, patient requests, scenarios, run traces, and metrics.
 - Docker Compose: starts PostgreSQL, Redis, and the API.
 
@@ -37,7 +39,10 @@
 9. External clients can call `/api/v2/...` routes. In this V2 step, those
    routes are service-bound modules inside the same Spring Boot process so the
    contract can stabilize before physical microservice extraction.
-10. When enabled, Dispatch consumes `request.triaged.v1`, updates the pending
+10. Calling `/api/v2/requests/{id}/triage` runs AI triage on the stored request
+   text and writes `request.triaged.v1` to the outbox with model version,
+   confidence, rule version, and review metadata.
+11. When enabled, Dispatch consumes `request.triaged.v1`, updates the pending
    request priority/specialty, and dispatches it with S4. Consumed `eventId`
    values are written to `processed_events`; duplicates are skipped before
    dispatch can run twice.
@@ -62,11 +67,12 @@ This means V2 can be built incrementally:
 
 1. Demand and Dispatch write durable events from separate Spring services first.
 2. The Kafka publisher drains unpublished rows when enabled.
-3. Dispatch can consume AI triage events without requiring a synchronous API
+3. Request Triage writes AI triage events with request ids and model metadata.
+4. Dispatch can consume AI triage events without requiring a synchronous API
    call between services.
-4. The V2 analytics endpoint exposes the current dispatch state and Kafka/outbox
+5. The V2 analytics endpoint exposes the current dispatch state and Kafka/outbox
    backlog in one read model for dashboard and demo usage.
-5. Idempotent consumers protect the dispatch flow against duplicate Kafka
+6. Idempotent consumers protect the dispatch flow against duplicate Kafka
    deliveries by storing handled `eventId` values.
-6. Retry, DLT, and replay handle poisoned or transiently failing Kafka records
+7. Retry, DLT, and replay handle poisoned or transiently failing Kafka records
    without changing the core dispatch transaction.
