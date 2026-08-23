@@ -73,11 +73,19 @@ La table `outbox_events` existe côté Spring Boot et enregistre déjà :
 - `dispatch.closed.v1` lors de la clôture.
 
 Ces lignes restent avec `published=false` tant que le publisher Kafka n'est pas
-branché. C'est volontaire : le contrat et la persistance fiable sont en place
-avant d'ajouter la publication asynchrone.
+activé. En environnement Compose, `PULSARIDE_OUTBOX_PUBLISHER_ENABLED=true`
+active un scheduler Spring Boot qui :
 
-## Prochaines étapes (V2-203, V2-204, V2-205)
+1. lit un batch d'événements non publiés ;
+2. publie chaque enveloppe JSON sur le topic égal à `eventType` ;
+3. utilise `aggregateId` comme clé Kafka ;
+4. marque la ligne `published=true` uniquement après succès Kafka.
 
-- V2-203 : publisher Kafka qui draine `outbox_events`
+En cas d'indisponibilité Kafka, la ligne reste non publiée et sera retentée.
+Les consumers V2 doivent quand même dédupliquer par `eventId`, car un crash
+après envoi Kafka mais avant update SQL peut produire un doublon.
+
+## Prochaines étapes (V2-204, V2-205)
+
 - V2-204 : déduplication consumer par eventId (constraint unique)
 - V2-205 : retry + DLT + script de replay opérateur

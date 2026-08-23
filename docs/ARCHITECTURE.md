@@ -5,6 +5,7 @@
 - Spring Boot API: exposes dispatch, availability, and persistence-backed state endpoints.
 - PostgreSQL: stores professionals and dispatch requests.
 - Transactional outbox: stores V2 lifecycle events in `outbox_events` before Kafka publication.
+- Outbox Kafka publisher: drains unpublished outbox rows and sends each event to its Kafka topic.
 - Redis: available for real-time coordination and future queue/session features.
 - AI triage provider: local deterministic rules by default, optional Darija Health NLP sidecar, or optional OpenAI provider; every AI provider response is checked by the local safety floor.
 - Python simulator: generates professionals, patient requests, scenarios, run traces, and metrics.
@@ -42,6 +43,6 @@ The Spring Boot service now has a transactional outbox table named
 This means V2 can be built incrementally:
 
 1. Demand/Dispatch write durable events first.
-2. A Kafka publisher can drain unpublished outbox rows later.
+2. The Kafka publisher drains unpublished rows when enabled.
 3. Analytics, retry, DLT, and replay can consume those events without changing
    the core dispatch transaction.

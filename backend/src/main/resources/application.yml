@@ -15,6 +15,11 @@ spring:
     redis:
       host: ${SPRING_DATA_REDIS_HOST:localhost}
       port: ${SPRING_DATA_REDIS_PORT:6379}
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 server:
   port: ${SERVER_PORT:8080}
@@ -41,6 +46,11 @@ pulsaride:
   dispatch:
     proposal-timeout-seconds: ${PULSARIDE_PROPOSAL_TIMEOUT_SECONDS:30}
     timeout-scan-ms: ${PULSARIDE_TIMEOUT_SCAN_MS:5000}
+  outbox:
+    publisher:
+      enabled: ${PULSARIDE_OUTBOX_PUBLISHER_ENABLED:false}
+      batch-size: ${PULSARIDE_OUTBOX_PUBLISHER_BATCH_SIZE:50}
+      interval-ms: ${PULSARIDE_OUTBOX_PUBLISHER_INTERVAL_MS:5000}
   seed-data:
     enabled: ${PULSARIDE_SEED_DATA:true}
     simulator-data-dir: ${PULSARIDE_SIMULATOR_DATA_DIR:../simulator/data}

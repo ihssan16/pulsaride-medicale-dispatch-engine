@@ -56,8 +56,21 @@ event without losing the business change.
 | `dispatch.timed-out.v1` | the proposal deadline expires and the request goes back to retry |
 | `dispatch.closed.v1` | an accepted request is closed and TTFA/TTR are finalized |
 
-`published=false` means the event is still waiting for a publisher. The next V2
-slice is to add the Kafka publisher/consumer flow that drains this table.
+`published=false` means the event is still waiting for publication. When
+`PULSARIDE_OUTBOX_PUBLISHER_ENABLED=true`, the Spring Boot scheduler drains
+unpublished rows in order, publishes the full event envelope to Kafka, then
+marks the row as `published=true`.
+
+Kafka routing is intentionally simple:
+
+- topic name = `eventType`
+- message key = `aggregateId`
+- message value = full JSON envelope with the stored payload
+
+If Kafka is unavailable, the row stays unpublished and will be retried by the
+next scheduled run. If Kafka succeeds but the database update fails, the same
+event may be sent again after restart; V2 consumers must therefore deduplicate
+by `eventId`.
 
 ## Validation
 
