@@ -3,6 +3,8 @@
 ## Components
 
 - Spring Boot API: exposes dispatch, availability, and persistence-backed state endpoints.
+- Demand Service: owns request creation, `PENDING` initialization, queueing, and
+  `request.created.v1` outbox publication.
 - PostgreSQL: stores professionals and dispatch requests.
 - Transactional outbox: stores V2 lifecycle events in `outbox_events` before Kafka publication.
 - Outbox Kafka publisher: drains unpublished outbox rows and sends each event to its Kafka topic.
@@ -27,13 +29,14 @@
 4. Flyway creates the database schema.
 5. The API imports simulator seed data when the database is empty.
 6. `/ai/triage` uses `AI_PROVIDER`/`AI_MODE`: `mock` for local rules, `external`/`darija` for Darija Health NLP, or `openai` for OpenAI structured extraction. Darija and OpenAI responses both pass through the local safety floor.
-7. Creating a request writes `request.created.v1` to the transactional outbox as
-   the V2 Demand Service boundary.
+7. Creating a request goes through `DemandService`, which persists the
+   `PENDING` request, records the initial transition, enqueues it, and writes
+   `request.created.v1` to the transactional outbox.
 8. Dispatch writes proposal, accept, refusal, timeout, and close events to the
    same outbox so Kafka can publish a complete request lifecycle.
 9. External clients can call `/api/v2/...` routes. In this V2 step, those
-   routes are aliases to the same Spring services so the contract can stabilize
-   before full service extraction.
+   routes are service-bound modules inside the same Spring Boot process so the
+   contract can stabilize before physical microservice extraction.
 10. When enabled, Dispatch consumes `request.triaged.v1`, updates the pending
    request priority/specialty, and dispatches it with S4. Consumed `eventId`
    values are written to `processed_events`; duplicates are skipped before
@@ -57,7 +60,7 @@ The Spring Boot service now has a transactional outbox table named
 
 This means V2 can be built incrementally:
 
-1. Demand/Dispatch write durable events first.
+1. Demand and Dispatch write durable events from separate Spring services first.
 2. The Kafka publisher drains unpublished rows when enabled.
 3. Dispatch can consume AI triage events without requiring a synchronous API
    call between services.

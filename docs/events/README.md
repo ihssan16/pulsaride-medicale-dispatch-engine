@@ -44,12 +44,17 @@ Kafka message key must be:
 
 The current Spring Boot V2 runtime writes lifecycle events to the
 `outbox_events` table before Kafka publication. The database write and outbox
-event happen in the same transaction, so a future Kafka publisher can send the
-event without losing the business change.
+event happen in the same transaction, so the Kafka publisher can send the event
+without losing the business change.
+
+Request creation is now isolated in `DemandService`: it creates the persisted
+`PENDING` request, records the initial FSM transition, enqueues the request, and
+writes `request.created.v1`. Dispatch lifecycle events remain owned by
+`DispatchService`.
 
 | Event | Written when |
 |---|---|
-| `request.created.v1` | a request is created through `/requests` or the legacy create-and-dispatch endpoint |
+| `request.created.v1` | `DemandService` creates a request through `/requests`, `/api/v2/requests`, or the legacy create-and-dispatch endpoint |
 | `dispatch.proposed.v1` | Dispatch reserves a slot and proposes a professional |
 | `dispatch.accepted.v1` | the proposed professional accepts the assignment |
 | `dispatch.refused.v1` | the proposed professional refuses and the request goes back to retry |

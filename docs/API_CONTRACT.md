@@ -15,7 +15,7 @@ remaining services are physically extracted.
 | `POST /api/v2/professionals` | Professional/availability setup |
 | `GET /api/v2/professionals` | Professional listing |
 | `PUT /api/v2/professionals/{id}/status` | Professional lifecycle |
-| `POST /api/v2/requests` | Demand/request creation |
+| `POST /api/v2/requests` | Demand Service request creation + `request.created.v1` outbox event |
 | `GET /api/v2/requests/{id}` | Demand/request read |
 | `GET /api/v2/requests/{id}/assignments` | Assignment history |
 | `GET /api/v2/requests/{id}/transitions` | FSM audit history |

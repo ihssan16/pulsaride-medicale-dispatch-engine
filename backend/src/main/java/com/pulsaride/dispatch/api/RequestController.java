@@ -3,7 +3,7 @@ package com.pulsaride.dispatch.api;
 import com.pulsaride.dispatch.repository.DispatchRequestRepository;
 import com.pulsaride.dispatch.repository.AssignmentRepository;
 import com.pulsaride.dispatch.repository.StateTransitionRepository;
-import com.pulsaride.dispatch.service.DispatchService;
+import com.pulsaride.dispatch.service.DemandService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -22,24 +22,24 @@ public class RequestController {
     private final DispatchRequestRepository repository;
     private final AssignmentRepository assignmentRepository;
     private final StateTransitionRepository transitionRepository;
-    private final DispatchService service;
+    private final DemandService demandService;
 
     public RequestController(
             DispatchRequestRepository repository,
             AssignmentRepository assignmentRepository,
             StateTransitionRepository transitionRepository,
-            DispatchService service
+            DemandService demandService
     ) {
         this.repository = repository;
         this.assignmentRepository = assignmentRepository;
         this.transitionRepository = transitionRepository;
-        this.service = service;
+        this.demandService = demandService;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public DispatchRequestResponse create(@Valid @RequestBody CreateDispatchRequest command) {
-        return DispatchRequestResponse.from(service.create(command));
+        return DispatchRequestResponse.from(demandService.create(command));
     }
 
     @GetMapping("/{id}")

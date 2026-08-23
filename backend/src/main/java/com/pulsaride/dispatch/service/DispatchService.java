@@ -22,7 +22,6 @@ import jakarta.persistence.EntityNotFoundException;
 import java.time.Duration;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.UUID;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -38,6 +37,7 @@ public class DispatchService {
     private final MatchingService matchingService;
     private final DispatchRedisService redisService;
     private final EventOutboxService eventOutboxService;
+    private final DemandService demandService;
     private final Duration proposalTimeout;
 
     public DispatchService(
@@ -49,6 +49,7 @@ public class DispatchService {
             MatchingService matchingService,
             DispatchRedisService redisService,
             EventOutboxService eventOutboxService,
+            DemandService demandService,
             @Value("${pulsaride.dispatch.proposal-timeout-seconds:30}") long proposalTimeoutSeconds
     ) {
         this.requestRepository = requestRepository;
@@ -59,24 +60,13 @@ public class DispatchService {
         this.matchingService = matchingService;
         this.redisService = redisService;
         this.eventOutboxService = eventOutboxService;
+        this.demandService = demandService;
         this.proposalTimeout = Duration.ofSeconds(proposalTimeoutSeconds);
     }
 
     @Transactional
     public DispatchRequest create(CreateDispatchRequest command) {
-        DispatchRequest request = new DispatchRequest();
-        request.setId(UUID.randomUUID().toString());
-        request.setPatientId(command.patientId());
-        request.setPatientText(command.patientText());
-        request.setSpecialtyHint(command.specialtyHint());
-        request.setUrgencyScore(command.urgencyScore());
-        request.setCreatedAt(OffsetDateTime.now());
-        request.setStatus(RequestStatus.PENDING);
-        DispatchRequest saved = requestRepository.save(request);
-        recordTransition(saved, null, RequestStatus.PENDING, "Request created");
-        eventOutboxService.recordRequestCreated(saved);
-        redisService.enqueue(saved);
-        return saved;
+        return demandService.create(command);
     }
 
     @Transactional
