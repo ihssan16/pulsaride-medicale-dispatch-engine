@@ -1,25 +1,118 @@
 package com.pulsaride.dispatch.ai;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pulsaride.dispatch.api.TriageResponse;
+import java.io.InputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URI;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Value;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AiTriageService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AiTriageService.class);
     private static final Pattern DAYS_PATTERN = Pattern.compile("(\\d+)\\s*(jour|jours|j)");
 
     private final String mode;
+    private final URI externalPredictUri;
+    private final boolean fallbackEnabled;
+    private final ObjectMapper objectMapper;
 
-    public AiTriageService(@Value("${pulsaride.ai.mode:mock}") String mode) {
+    public AiTriageService(
+            @Value("${pulsaride.ai.mode:mock}") String mode,
+            @Value("${pulsaride.ai.external-url:http://localhost:8000}") String externalUrl,
+            @Value("${pulsaride.ai.fallback-enabled:true}") boolean fallbackEnabled,
+            ObjectMapper objectMapper
+    ) {
         this.mode = mode;
+        this.externalPredictUri = URI.create(stripTrailingSlash(externalUrl) + "/predict");
+        this.fallbackEnabled = fallbackEnabled;
+        this.objectMapper = objectMapper;
     }
 
     public TriageResponse triage(String text) {
+        if ("external".equalsIgnoreCase(mode)) {
+            try {
+                return triageWithExternalService(text);
+            } catch (IOException | RuntimeException ex) {
+                if (!fallbackEnabled) {
+                    throw new IllegalStateException("External AI triage service is unavailable", ex);
+                }
+                LOGGER.warn("External AI triage failed, using local fallback: {}", ex.getMessage());
+                return triageWithRules(text, "external-fallback");
+            }
+        }
+        return triageWithRules(text, mode);
+    }
+
+    private TriageResponse triageWithExternalService(String text) throws IOException {
+        String requestBody = objectMapper.writeValueAsString(Map.of("message", text));
+        byte[] requestBytes = requestBody.getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        HttpURLConnection connection = (HttpURLConnection) externalPredictUri.toURL().openConnection();
+        connection.setRequestMethod("POST");
+        connection.setConnectTimeout(2000);
+        connection.setReadTimeout(5000);
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setFixedLengthStreamingMode(requestBytes.length);
+        connection.setDoOutput(true);
+        try (OutputStream output = connection.getOutputStream()) {
+            output.write(requestBytes);
+        }
+
+        int statusCode = connection.getResponseCode();
+        String responseBody = readResponseBody(connection, statusCode);
+        if (statusCode < 200 || statusCode >= 300) {
+            throw new IllegalStateException(
+                    "External AI triage returned HTTP " + statusCode + ": " + responseBody
+            );
+        }
+
+        DarijaPredictResponse prediction = objectMapper.readValue(responseBody, DarijaPredictResponse.class);
+        int urgencyScore = mapUrgency(prediction.urgency());
+        String specialty = mapSpecialty(prediction.predicted_specialty());
+        List<String> symptoms = prediction.symptoms() == null || prediction.symptoms().isEmpty()
+                ? List.of("symptome_general")
+                : prediction.symptoms();
+        String normalized = normalize(text);
+        String ageGroup = containsAny(normalized, "enfant", "fils", "fille", "bebe") ? "enfant" : "adulte";
+
+        return new TriageResponse(
+                symptoms,
+                extractDurationDays(normalized),
+                urgencyScore,
+                ageGroup,
+                specialty,
+                urgencyScore,
+                "external",
+                prediction.specialty_confidence(),
+                prediction.urgency_reason(),
+                "darija-health-nlp"
+        );
+    }
+
+    private String readResponseBody(HttpURLConnection connection, int statusCode) throws IOException {
+        InputStream stream = statusCode >= 400 ? connection.getErrorStream() : connection.getInputStream();
+        if (stream == null) {
+            return "";
+        }
+        try (stream) {
+            return new String(stream.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+        }
+    }
+
+    private TriageResponse triageWithRules(String text, String responseMode) {
         String normalized = normalize(text);
         List<String> symptoms = new ArrayList<>();
 
@@ -51,7 +144,10 @@ public class AiTriageService {
                 ageGroup,
                 specialty,
                 urgency,
-                mode
+                responseMode,
+                null,
+                "Local deterministic fallback rules",
+                "pulsaride-rules"
         );
     }
 
@@ -104,5 +200,54 @@ public class AiTriageService {
     private String normalize(String text) {
         return Normalizer.normalize(text.toLowerCase(Locale.ROOT), Normalizer.Form.NFD)
                 .replaceAll("\\p{M}", "");
+    }
+
+    private String mapSpecialty(String value) {
+        if (value == null || value.isBlank()) {
+            return "generaliste";
+        }
+        String normalized = normalize(value).replace("-", " ").replace("_", " ").trim();
+        return switch (normalized) {
+            case "cardiology", "cardiologie" -> "cardiologie";
+            case "dermatology", "dermatologie" -> "dermatologie";
+            case "gastroenterology", "gastro enterology", "gastroenterologie" -> "gastroenterologie";
+            case "neurology", "neurologie" -> "neurologie";
+            case "obstetrics and gynecology", "obstetrics gynecology", "gynecology", "gynecologie",
+                    "obstetrique", "obstetrique et gynecologie" -> "gynecologie";
+            case "pediatrics", "paediatrics", "pediatric", "pediatrie" -> "pediatrie";
+            case "psychiatry", "psychiatrie" -> "psychiatrie";
+            case "pulmonology", "pneumologie" -> "pneumologie";
+            case "ent", "orl" -> "orl";
+            case "radiology", "radiologie" -> "radiologie";
+            case "emergency", "urgence" -> "urgence";
+            case "general practice", "generaliste", "general medicine", "medecine generale" -> "generaliste";
+            default -> normalized.replace(" ", "_");
+        };
+    }
+
+    private int mapUrgency(String value) {
+        if (value == null) {
+            return 0;
+        }
+        return switch (normalize(value).trim()) {
+            case "high", "urgent", "emergency" -> 3;
+            case "medium", "moderate" -> 2;
+            case "low" -> 1;
+            default -> 0;
+        };
+    }
+
+    private String stripTrailingSlash(String value) {
+        return value.endsWith("/") ? value.substring(0, value.length() - 1) : value;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    private record DarijaPredictResponse(
+            String predicted_specialty,
+            Double specialty_confidence,
+            String urgency,
+            String urgency_reason,
+            List<String> symptoms
+    ) {
     }
 }

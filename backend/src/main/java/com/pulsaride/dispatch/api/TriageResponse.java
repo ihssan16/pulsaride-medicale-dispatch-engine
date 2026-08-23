@@ -9,6 +9,9 @@ public record TriageResponse(
         String ageGroup,
         String specialtyHint,
         int urgencyScore,
-        String mode
+        String mode,
+        Double confidence,
+        String urgencyReason,
+        String sourceModel
 ) {
 }

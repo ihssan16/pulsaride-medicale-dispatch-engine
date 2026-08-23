@@ -54,6 +54,9 @@ jobs:
       - name: Check Python scripts compile
         run: python -m compileall simulator evaluator
 
+      - name: Check committed files for API secrets
+        run: python scripts/check_no_secrets.py
+
       - name: Run lightweight V2 checks
         working-directory: simulator
         run: |

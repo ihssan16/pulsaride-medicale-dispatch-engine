@@ -10,6 +10,9 @@ services:
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
       PULSARIDE_SIMULATOR_DATA_DIR: /data
+      AI_MODE: ${AI_MODE:-mock}
+      AI_EXTERNAL_URL: ${AI_EXTERNAL_URL:-http://darija-ai:8000}
+      AI_FALLBACK_ENABLED: ${AI_FALLBACK_ENABLED:-true}
     ports:
       - "8080:8080"
     volumes:
@@ -76,6 +79,23 @@ services:
       interval: 10s
       timeout: 10s
       retries: 10
+
+  darija-ai:
+    profiles: ["ai"]
+    build:
+      context: ${DARIJA_HEALTH_NLP_DIR:-../darija-health-nlp}/backend
+    container_name: pulsaride-darija-ai
+    environment:
+      TRANSFORMER_PATH: /app/models/transformer_MARBERT_specialty
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${DARIJA_MODEL_DIR:-../darija-health-nlp/models}:/app/models:ro
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=2)\""]
+      interval: 10s
+      timeout: 5s
+      retries: 12
 
 volumes:
   postgres_data:

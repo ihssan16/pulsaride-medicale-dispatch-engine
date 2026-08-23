@@ -8,6 +8,7 @@ patients et professionnels de santé disponibles.
 - **Temps réel** : Redis 7+
 - **Persistance** : PostgreSQL 15+ avec pgvector
 - **Simulation & Évaluation** : Python
+- **IA V2** : microservice FastAPI Darija Health NLP optionnel
 - **Infrastructure** : Docker Compose
 
 ## Structure du projet
@@ -77,6 +78,20 @@ docker compose up --build
 docker compose ps
 ```
 
+### Lancer avec le service IA Darija
+
+Le mode par défaut reste `mock`, donc l'API fonctionne sans modèle IA. Pour
+tester V2 avec le modèle Darija Health NLP, cloner le projet voisin
+`../darija-health-nlp`, placer le modèle dans
+`../darija-health-nlp/models/transformer_MARBERT_specialty/`, puis lancer :
+
+```bash
+AI_MODE=external docker compose --profile ai up --build
+```
+
+Documentation complète : `docs/V2_AI_TRIAGE_DARIJA.md`.
+Gestion des clés et fournisseurs IA : `docs/SECRETS_AND_AI_PROVIDERS.md`.
+
 ### Vérifier l'API
 ```bash
 curl http://localhost:8080/health
@@ -120,7 +135,7 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 - `GET /requests/{requestId}/assignments`
 - `GET /requests/{requestId}/transitions`
 - `GET /metrics/summary`
-- `POST /ai/triage`
+- `POST /ai/triage` — triage texte libre en mode mock ou via le microservice Darija Health NLP
 - `GET /dashboard.html`
 
 Les chemins historiques `/api/dispatch-requests` et `/api/professionals` restent aussi disponibles.

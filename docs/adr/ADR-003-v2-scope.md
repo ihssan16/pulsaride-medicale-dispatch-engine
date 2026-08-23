@@ -22,6 +22,24 @@ Le périmètre V2 validé est :
 Les décisions sont volontairement mesurables : chaque choix IA doit produire un
 résultat, une limite observable et une explication exploitable en soutenance.
 
+## Mise à jour — Intégration Darija Health NLP
+
+Après revue du projet `darija-health-nlp`, V2 retient une trajectoire plus
+réaliste pour IA1 : exposer le modèle Darija/MARBERT dans un microservice FastAPI
+séparé, puis appeler ce service depuis Spring Boot. Cette option évite de charger
+un modèle lourd dans l'API Java et permet de garder un fallback local lorsque le
+service IA ou le modèle est indisponible.
+
+Le dossier modèle attendu est `models/transformer_MARBERT_specialty/` dans le
+projet Darija. Il contient notamment `model.safetensors`, `config.json` et les
+fichiers tokenizer. Les poids ne sont pas versionnés dans Git.
+
+Le endpoint Pulsaride `/ai/triage` accepte désormais deux modes :
+
+- `AI_MODE=mock` : règles locales déterministes, utilisables sans modèle.
+- `AI_MODE=external` : appel HTTP vers Darija Health NLP `/predict`, avec
+  conversion des spécialités et urgences vers les tags internes Pulsaride.
+
 ## Résultats obtenus — Run complet (50 entrées, seed=42)
 
 ### IA1 — NLP triage (Ollama phi3:mini, local)
