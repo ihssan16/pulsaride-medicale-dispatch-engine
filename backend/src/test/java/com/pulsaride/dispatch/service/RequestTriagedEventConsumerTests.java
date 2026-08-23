@@ -1,10 +1,13 @@
 package com.pulsaride.dispatch.service;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 
 class RequestTriagedEventConsumerTests {
@@ -60,5 +63,31 @@ class RequestTriagedEventConsumerTests {
                 org.mockito.ArgumentMatchers.anyString(),
                 org.mockito.ArgumentMatchers.anyString()
         );
+    }
+
+    @Test
+    void skipsUnknownRequestsWithoutBlockingConsumer() {
+        doThrow(new EntityNotFoundException("Request not found: req_missing"))
+                .when(dispatchService)
+                .applyTriageAndDispatch(
+                        org.mockito.ArgumentMatchers.eq("req_missing"),
+                        org.mockito.ArgumentMatchers.eq(3),
+                        org.mockito.ArgumentMatchers.eq("cardiologie"),
+                        org.mockito.ArgumentMatchers.anyString()
+                );
+
+        assertDoesNotThrow(() -> consumer.onMessage("""
+                {
+                  "eventType": "request.triaged.v1",
+                  "payload": {
+                    "requestId": "req_missing",
+                    "urgencyScore": 3,
+                    "specialtyHint": "cardiologie",
+                    "confidence": 0.91,
+                    "modelVersion": "simulator",
+                    "requiresReview": false
+                  }
+                }
+                """));
     }
 }

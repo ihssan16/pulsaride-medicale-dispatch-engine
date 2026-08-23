@@ -2,6 +2,7 @@ package com.pulsaride.dispatch.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityNotFoundException;
 import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,12 +33,16 @@ public class RequestTriagedEventConsumer {
         if (event == null) {
             return;
         }
-        dispatchService.applyTriageAndDispatch(
-                event.requestId(),
-                event.urgencyScore(),
-                event.specialtyHint(),
-                event.summary()
-        );
+        try {
+            dispatchService.applyTriageAndDispatch(
+                    event.requestId(),
+                    event.urgencyScore(),
+                    event.specialtyHint(),
+                    event.summary()
+            );
+        } catch (EntityNotFoundException ex) {
+            LOGGER.warn("Skipping triage event for unknown requestId={}", event.requestId());
+        }
     }
 
     private TriageEvent parse(String message) {

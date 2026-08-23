@@ -78,6 +78,11 @@ and `specialtyHint` from the AI payload, records an audit transition, and
 dispatches the request with `S4` so the proposal lifecycle continues through
 the same outbox/Kafka flow.
 
+If a triage event references a request that does not exist in the local
+Dispatch database, the consumer logs a warning and skips it. This prevents
+simulator-only or stale events from blocking the Kafka consumer group; real
+retry/DLT handling remains the V2-205 responsibility.
+
 ## Validation
 
 Run locally:
