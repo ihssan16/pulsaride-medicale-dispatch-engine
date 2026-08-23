@@ -20,6 +20,8 @@
 6. `/ai/triage` uses `AI_PROVIDER`/`AI_MODE`: `mock` for local rules, `external`/`darija` for Darija Health NLP, or `openai` for OpenAI structured extraction. Darija and OpenAI responses both pass through the local safety floor.
 7. Creating a request writes `request.created.v1` to the transactional outbox as
    the V2 Demand Service boundary.
+8. Dispatch writes proposal, accept, refusal, timeout, and close events to the
+   same outbox so Kafka can publish a complete request lifecycle.
 
 ## Dispatch Strategy V1
 
@@ -30,3 +32,16 @@ The current backend strategy is intentionally simple and executable:
 3. Fall back to any available professional.
 4. Mark the request as `PROPOSED` or `FAILED`.
 5. Track TTFA/TTR timestamps for evaluation.
+
+## V2 Event Runtime
+
+The Spring Boot service now has a transactional outbox table named
+`outbox_events`. It records the canonical V2 events from
+`docs/events/README.md` while the current local dispatch flow runs normally.
+
+This means V2 can be built incrementally:
+
+1. Demand/Dispatch write durable events first.
+2. A Kafka publisher can drain unpublished outbox rows later.
+3. Analytics, retry, DLT, and replay can consume those events without changing
+   the core dispatch transaction.

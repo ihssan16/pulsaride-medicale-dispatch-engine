@@ -141,6 +141,16 @@ public class DispatchService {
         selected.setStatus(ProfessionalStatus.PROPOSED);
         professionalRepository.save(selected);
         assignmentRepository.save(assignment(request, selected, strategy, proposedAt));
+        int attemptNumber = Math.toIntExact(assignmentRepository.countByRequestId(request.getId()));
+        eventOutboxService.recordDispatchProposed(
+                request,
+                selected,
+                selectedSlot,
+                strategy,
+                proposedAt,
+                proposedAt.plus(proposalTimeout),
+                attemptNumber
+        );
         redisService.syncAvailabilitySlot(selectedSlot);
         redisService.syncProfessional(selected);
         redisService.removeFromQueue(requestId);
@@ -171,6 +181,7 @@ public class DispatchService {
             slotRepository.save(slot);
             redisService.syncAvailabilitySlot(slot);
             redisService.releaseSlotLock(slot.getId());
+            eventOutboxService.recordDispatchAccepted(request, pro, slot, acceptedAt);
         }
         assignmentRepository.findFirstByRequestIdAndOutcomeOrderByProposedAtDesc(
                 requestId,
@@ -199,6 +210,9 @@ public class DispatchService {
         }
         AvailabilitySlot slot = request.getAssignedSlot();
         if (slot != null) {
+            if (pro != null) {
+                eventOutboxService.recordDispatchClosed(request, pro, slot, request.getClosedAt());
+            }
             slot.setStatus(AvailabilitySlotStatus.AVAILABLE);
             slot.setReservedRequestId(null);
             slotRepository.save(slot);
@@ -282,6 +296,14 @@ public class DispatchService {
             }
             assignmentRepository.save(assignment);
         });
+        int attemptNumber = Math.toIntExact(assignmentRepository.countByRequestId(request.getId()));
+        if (pro != null && slot != null) {
+            if (outcome == AssignmentOutcome.REFUSED) {
+                eventOutboxService.recordDispatchRefused(request, pro, slot, now, attemptNumber);
+            } else {
+                eventOutboxService.recordDispatchTimedOut(request, pro, slot, now, attemptNumber, true);
+            }
+        }
 
         request.setAssignedProfessional(null);
         request.setAssignedSlot(null);

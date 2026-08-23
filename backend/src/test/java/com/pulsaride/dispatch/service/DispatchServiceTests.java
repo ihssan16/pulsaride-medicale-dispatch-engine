@@ -84,6 +84,9 @@ class DispatchServiceTests {
         var transitions = transitionRepository.findByRequestIdOrderByOccurredAtAsc(result.getId());
         assertThat(transitions).extracting("toStatus")
                 .containsExactly(RequestStatus.PENDING, RequestStatus.RESERVED, RequestStatus.PROPOSED);
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc(result.getId()))
+                .extracting("eventType")
+                .containsExactly(EventOutboxService.REQUEST_CREATED, EventOutboxService.DISPATCH_PROPOSED);
     }
 
     @Test
@@ -151,6 +154,14 @@ class DispatchServiceTests {
                         RequestStatus.ACCEPTED,
                         RequestStatus.CLOSED
                 );
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc(request.getId()))
+                .extracting("eventType")
+                .containsExactly(
+                        EventOutboxService.REQUEST_CREATED,
+                        EventOutboxService.DISPATCH_PROPOSED,
+                        EventOutboxService.DISPATCH_ACCEPTED,
+                        EventOutboxService.DISPATCH_CLOSED
+                );
     }
 
     @Test
@@ -180,6 +191,14 @@ class DispatchServiceTests {
         assertThat(assignmentRepository.findByRequestIdOrderByProposedAtDesc(request.getId()))
                 .extracting("outcome")
                 .containsExactly(AssignmentOutcome.PROPOSED, AssignmentOutcome.REFUSED);
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc(request.getId()))
+                .extracting("eventType")
+                .containsExactly(
+                        EventOutboxService.REQUEST_CREATED,
+                        EventOutboxService.DISPATCH_PROPOSED,
+                        EventOutboxService.DISPATCH_REFUSED,
+                        EventOutboxService.DISPATCH_PROPOSED
+                );
     }
 
     @Test
@@ -209,6 +228,13 @@ class DispatchServiceTests {
                         RequestStatus.PROPOSED,
                         RequestStatus.FAILED,
                         RequestStatus.PENDING
+                );
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc(request.getId()))
+                .extracting("eventType")
+                .containsExactly(
+                        EventOutboxService.REQUEST_CREATED,
+                        EventOutboxService.DISPATCH_PROPOSED,
+                        EventOutboxService.DISPATCH_TIMED_OUT
                 );
     }
 

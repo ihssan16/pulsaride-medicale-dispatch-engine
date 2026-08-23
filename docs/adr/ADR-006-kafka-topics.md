@@ -61,8 +61,23 @@ Règle de clé opérationnelle :
 - `availability.changed.v1` utilise `professionalId` comme `aggregateId` et clé
   Kafka.
 
+## État runtime Spring Boot
+
+La table `outbox_events` existe côté Spring Boot et enregistre déjà :
+
+- `request.created.v1` lors de la création d'une demande ;
+- `dispatch.proposed.v1` lors d'une proposition ;
+- `dispatch.accepted.v1` lors d'une acceptation ;
+- `dispatch.refused.v1` lors d'un refus ;
+- `dispatch.timed-out.v1` lors d'un timeout ;
+- `dispatch.closed.v1` lors de la clôture.
+
+Ces lignes restent avec `published=false` tant que le publisher Kafka n'est pas
+branché. C'est volontaire : le contrat et la persistance fiable sont en place
+avant d'ajouter la publication asynchrone.
+
 ## Prochaines étapes (V2-203, V2-204, V2-205)
 
-- V2-203 : transactional outbox pour publication fiable depuis Demand/Dispatch
+- V2-203 : publisher Kafka qui draine `outbox_events`
 - V2-204 : déduplication consumer par eventId (constraint unique)
 - V2-205 : retry + DLT + script de replay opérateur

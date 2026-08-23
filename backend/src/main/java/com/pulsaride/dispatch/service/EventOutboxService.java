@@ -2,10 +2,14 @@ package com.pulsaride.dispatch.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pulsaride.dispatch.domain.AvailabilitySlot;
 import com.pulsaride.dispatch.domain.DispatchRequest;
 import com.pulsaride.dispatch.domain.OutboxEvent;
+import com.pulsaride.dispatch.domain.Professional;
+import com.pulsaride.dispatch.matching.DispatchStrategy;
 import com.pulsaride.dispatch.repository.OutboxEventRepository;
 import java.time.OffsetDateTime;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
@@ -13,7 +17,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventOutboxService {
     public static final String REQUEST_CREATED = "request.created.v1";
+    public static final String DISPATCH_PROPOSED = "dispatch.proposed.v1";
+    public static final String DISPATCH_ACCEPTED = "dispatch.accepted.v1";
+    public static final String DISPATCH_REFUSED = "dispatch.refused.v1";
+    public static final String DISPATCH_TIMED_OUT = "dispatch.timed-out.v1";
+    public static final String DISPATCH_CLOSED = "dispatch.closed.v1";
     private static final String DEMAND_PRODUCER = "demand-service";
+    private static final String DISPATCH_PRODUCER = "dispatch-service";
 
     private final OutboxEventRepository repository;
     private final ObjectMapper objectMapper;
@@ -41,6 +51,115 @@ public class EventOutboxService {
         event.setCorrelationId(UUID.randomUUID().toString());
         event.setOccurredAt(occurredAt);
         event.setProducer(DEMAND_PRODUCER);
+        event.setSchemaVersion(1);
+        event.setPayloadJson(toJson(payload));
+        event.setPublished(false);
+        return repository.save(event);
+    }
+
+    public OutboxEvent recordDispatchProposed(
+            DispatchRequest request,
+            Professional professional,
+            AvailabilitySlot slot,
+            DispatchStrategy strategy,
+            OffsetDateTime proposedAt,
+            OffsetDateTime proposalDeadlineAt,
+            int attemptNumber
+    ) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("requestId", request.getId());
+        payload.put("professionalId", professional.getId());
+        payload.put("slotId", slot.getId());
+        payload.put("strategy", strategy.name());
+        payload.put("proposalDeadlineAt", proposalDeadlineAt);
+        payload.put("attemptNumber", attemptNumber);
+        return saveEvent(DISPATCH_PROPOSED, request.getId(), DISPATCH_PRODUCER, proposedAt, payload);
+    }
+
+    public OutboxEvent recordDispatchAccepted(
+            DispatchRequest request,
+            Professional professional,
+            AvailabilitySlot slot,
+            OffsetDateTime acceptedAt
+    ) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("requestId", request.getId());
+        payload.put("professionalId", professional.getId());
+        payload.put("slotId", slot.getId());
+        payload.put("acceptedAt", acceptedAt);
+        return saveEvent(DISPATCH_ACCEPTED, request.getId(), DISPATCH_PRODUCER, acceptedAt, payload);
+    }
+
+    public OutboxEvent recordDispatchRefused(
+            DispatchRequest request,
+            Professional professional,
+            AvailabilitySlot slot,
+            OffsetDateTime refusedAt,
+            int attemptNumber
+    ) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("requestId", request.getId());
+        payload.put("professionalId", professional.getId());
+        payload.put("slotId", slot.getId());
+        payload.put("refusalCode", "MANUAL_REFUSAL");
+        payload.put("refusedAt", refusedAt);
+        payload.put("attemptNumber", attemptNumber);
+        return saveEvent(DISPATCH_REFUSED, request.getId(), DISPATCH_PRODUCER, refusedAt, payload);
+    }
+
+    public OutboxEvent recordDispatchTimedOut(
+            DispatchRequest request,
+            Professional professional,
+            AvailabilitySlot slot,
+            OffsetDateTime timedOutAt,
+            int attemptNumber,
+            boolean nextRetryAllowed
+    ) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("requestId", request.getId());
+        payload.put("professionalId", professional.getId());
+        payload.put("slotId", slot.getId());
+        payload.put("timedOutAt", timedOutAt);
+        payload.put("attemptNumber", attemptNumber);
+        payload.put("nextRetryAllowed", nextRetryAllowed);
+        return saveEvent(DISPATCH_TIMED_OUT, request.getId(), DISPATCH_PRODUCER, timedOutAt, payload);
+    }
+
+    public OutboxEvent recordDispatchClosed(
+            DispatchRequest request,
+            Professional professional,
+            AvailabilitySlot slot,
+            OffsetDateTime closedAt
+    ) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("requestId", request.getId());
+        payload.put("professionalId", professional.getId());
+        payload.put("slotId", slot.getId());
+        payload.put("closedAt", closedAt);
+        payload.put("resolutionStatus", "COMPLETED");
+        if (request.getTtfaMs() != null) {
+            payload.put("ttfaMs", request.getTtfaMs());
+        }
+        if (request.getTtrMs() != null) {
+            payload.put("ttrMs", request.getTtrMs());
+        }
+        return saveEvent(DISPATCH_CLOSED, request.getId(), DISPATCH_PRODUCER, closedAt, payload);
+    }
+
+    private OutboxEvent saveEvent(
+            String eventType,
+            String aggregateId,
+            String producer,
+            OffsetDateTime occurredAt,
+            Map<String, Object> payload
+    ) {
+        OutboxEvent event = new OutboxEvent();
+        event.setEventId(UUID.randomUUID().toString());
+        event.setEventType(eventType);
+        event.setAggregateId(aggregateId);
+        event.setCorrelationId(UUID.randomUUID().toString());
+        event.setOccurredAt(occurredAt == null ? OffsetDateTime.now() : occurredAt);
+        event.setProducer(producer);
         event.setSchemaVersion(1);
         event.setPayloadJson(toJson(payload));
         event.setPublished(false);

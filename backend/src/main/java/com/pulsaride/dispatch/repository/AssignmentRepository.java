@@ -24,5 +24,7 @@ public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
     @Query("select a from Assignment a join fetch a.request order by a.request.id, a.proposedAt")
     List<Assignment> findAllForMetrics();
 
+    long countByRequestId(String requestId);
+
     long countByOutcome(AssignmentOutcome outcome);
 }

@@ -42,11 +42,19 @@ Kafka message key must be:
 
 ## Spring Boot Runtime Status
 
-The current Spring Boot V2 runtime writes `request.created.v1` to the
-`outbox_events` table whenever a request is created through `/requests` or the
-legacy create-and-dispatch endpoint. This is the first Demand Service boundary:
-the database write and outbox event happen in the same transaction, so a future
-Kafka publisher can send the event without losing request creation.
+The current Spring Boot V2 runtime writes lifecycle events to the
+`outbox_events` table before Kafka publication. The database write and outbox
+event happen in the same transaction, so a future Kafka publisher can send the
+event without losing the business change.
+
+| Event | Written when |
+|---|---|
+| `request.created.v1` | a request is created through `/requests` or the legacy create-and-dispatch endpoint |
+| `dispatch.proposed.v1` | Dispatch reserves a slot and proposes a professional |
+| `dispatch.accepted.v1` | the proposed professional accepts the assignment |
+| `dispatch.refused.v1` | the proposed professional refuses and the request goes back to retry |
+| `dispatch.timed-out.v1` | the proposal deadline expires and the request goes back to retry |
+| `dispatch.closed.v1` | an accepted request is closed and TTFA/TTR are finalized |
 
 `published=false` means the event is still waiting for a publisher. The next V2
 slice is to add the Kafka publisher/consumer flow that drains this table.
