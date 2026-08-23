@@ -44,7 +44,7 @@ public class RequestController {
 
     @GetMapping("/{id}")
     public DispatchRequestResponse get(@PathVariable String id) {
-        return repository.findById(id)
+        return repository.findWithAssignmentById(id)
                 .map(DispatchRequestResponse::from)
                 .orElseThrow(() -> new EntityNotFoundException("Request not found: " + id));
     }

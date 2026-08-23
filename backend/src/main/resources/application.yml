@@ -20,6 +20,10 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
 
 server:
   port: ${SERVER_PORT:8080}
@@ -51,6 +55,11 @@ pulsaride:
       enabled: ${PULSARIDE_OUTBOX_PUBLISHER_ENABLED:false}
       batch-size: ${PULSARIDE_OUTBOX_PUBLISHER_BATCH_SIZE:50}
       interval-ms: ${PULSARIDE_OUTBOX_PUBLISHER_INTERVAL_MS:5000}
+  triage:
+    consumer:
+      enabled: ${PULSARIDE_TRIAGE_CONSUMER_ENABLED:false}
+      topic: ${PULSARIDE_TRIAGE_TOPIC:request.triaged.v1}
+      group-id: ${PULSARIDE_TRIAGE_CONSUMER_GROUP:pulsaride-dispatch}
   seed-data:
     enabled: ${PULSARIDE_SEED_DATA:true}
     simulator-data-dir: ${PULSARIDE_SIMULATOR_DATA_DIR:../simulator/data}

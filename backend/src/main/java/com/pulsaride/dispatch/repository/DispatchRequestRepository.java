@@ -5,6 +5,7 @@ import com.pulsaride.dispatch.domain.RequestStatus;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DispatchRequestRepository extends JpaRepository<DispatchRequest, String> {
@@ -12,4 +13,7 @@ public interface DispatchRequestRepository extends JpaRepository<DispatchRequest
     Optional<DispatchRequest> findFirstByStatusOrderByUrgencyScoreDescCreatedAtAsc(RequestStatus status);
     List<DispatchRequest> findByStatusAndProposedAtBefore(RequestStatus status, OffsetDateTime proposedBefore);
     long countByStatus(RequestStatus status);
+
+    @EntityGraph(attributePaths = {"assignedProfessional", "assignedSlot"})
+    Optional<DispatchRequest> findWithAssignmentById(String id);
 }

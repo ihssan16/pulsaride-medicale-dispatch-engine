@@ -272,6 +272,30 @@ class DispatchServiceTests {
     }
 
     @Test
+    void triageEventUpdatesPendingRequestAndDispatchesWithAiCompositeStrategy() {
+        professionalRepository.save(professional("pro_triaged_cardio", "cardiologie", ProfessionalStatus.AVAILABLE));
+        var request = dispatchService.create(command("patient_triaged", "generaliste", 1));
+
+        var triaged = dispatchService.applyTriageAndDispatch(
+                request.getId(),
+                3,
+                "cardiologie",
+                "AI triage applied: model=test-model, confidence=0.9, requiresReview=false"
+        );
+
+        assertThat(triaged.getUrgencyScore()).isEqualTo(3);
+        assertThat(triaged.getSpecialtyHint()).isEqualTo("cardiologie");
+        assertThat(triaged.getStatus()).isEqualTo(RequestStatus.PROPOSED);
+        assertThat(triaged.getAssignedProfessional().getId()).isEqualTo("pro_triaged_cardio");
+        assertThat(assignmentRepository.findByRequestIdOrderByProposedAtDesc(request.getId()))
+                .singleElement()
+                .satisfies(assignment -> assertThat(assignment.getStrategy()).isEqualTo(DispatchStrategy.S4));
+        assertThat(transitionRepository.findByRequestIdOrderByOccurredAtAsc(request.getId()))
+                .extracting("reason")
+                .contains("AI triage applied: model=test-model, confidence=0.9, requiresReview=false");
+    }
+
+    @Test
     void s1RotatesAvailableProfessionalsRoundRobin() {
         professionalRepository.save(professional("pro_alpha", "cardiologie", ProfessionalStatus.AVAILABLE));
         professionalRepository.save(professional("pro_beta", "cardiologie", ProfessionalStatus.AVAILABLE));

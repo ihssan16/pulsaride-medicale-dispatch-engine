@@ -85,6 +85,13 @@ class DispatchApiIntegrationTests {
                 .andExpect(jsonPath("$.assignedProfessionalId").value("api_pro_er"))
                 .andExpect(jsonPath("$.assignedSlotId").value("slot_api_pro_er"));
 
+        mockMvc.perform(get("/requests/{requestId}", requestId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("PROPOSED"))
+                .andExpect(jsonPath("$.assignedProfessionalId").value("api_pro_er"))
+                .andExpect(jsonPath("$.assignedProfessionalName").value("Dr. api_pro_er"))
+                .andExpect(jsonPath("$.assignedSlotId").value("slot_api_pro_er"));
+
         mockMvc.perform(post("/dispatch/{requestId}/accept", requestId))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("ACCEPTED"))

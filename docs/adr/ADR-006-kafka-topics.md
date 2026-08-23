@@ -85,6 +85,14 @@ En cas d'indisponibilité Kafka, la ligne reste non publiée et sera retentée.
 Les consumers V2 doivent quand même dédupliquer par `eventId`, car un crash
 après envoi Kafka mais avant update SQL peut produire un doublon.
 
+Le consumer Dispatch de `request.triaged.v1` est activable via
+`PULSARIDE_TRIAGE_CONSUMER_ENABLED=true`. Son rôle en V2 est volontairement
+limité :
+
+- appliquer `urgencyScore` et `specialtyHint` sur une demande encore `PENDING` ;
+- enregistrer une transition d'audit indiquant le modèle/confiance ;
+- lancer le dispatch avec `S4` pour produire ensuite `dispatch.proposed.v1`.
+
 ## Prochaines étapes (V2-204, V2-205)
 
 - V2-204 : déduplication consumer par eventId (constraint unique)

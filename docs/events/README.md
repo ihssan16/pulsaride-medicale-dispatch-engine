@@ -72,6 +72,12 @@ next scheduled run. If Kafka succeeds but the database update fails, the same
 event may be sent again after restart; V2 consumers must therefore deduplicate
 by `eventId`.
 
+When `PULSARIDE_TRIAGE_CONSUMER_ENABLED=true`, Dispatch consumes
+`request.triaged.v1`. For a still-pending request, it updates `urgencyScore`
+and `specialtyHint` from the AI payload, records an audit transition, and
+dispatches the request with `S4` so the proposal lifecycle continues through
+the same outbox/Kafka flow.
+
 ## Validation
 
 Run locally:

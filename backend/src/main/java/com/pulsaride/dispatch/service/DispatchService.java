@@ -158,6 +158,26 @@ public class DispatchService {
     }
 
     @Transactional
+    public DispatchRequest applyTriageAndDispatch(
+            String requestId,
+            int urgencyScore,
+            String specialtyHint,
+            String triageSummary
+    ) {
+        DispatchRequest request = requestRepository.findById(requestId)
+                .orElseThrow(() -> new EntityNotFoundException("Request not found: " + requestId));
+        if (request.getStatus() != RequestStatus.PENDING) {
+            return request;
+        }
+
+        request.setUrgencyScore(Math.max(0, Math.min(3, urgencyScore)));
+        request.setSpecialtyHint(specialtyHint);
+        recordTransition(request, RequestStatus.PENDING, RequestStatus.PENDING, triageSummary);
+        redisService.enqueue(request);
+        return dispatch(requestId, DispatchStrategy.S4);
+    }
+
+    @Transactional
     public DispatchRequest accept(String requestId) {
         DispatchRequest request = requestRepository.findById(requestId)
                 .orElseThrow(() -> new EntityNotFoundException("Request not found: " + requestId));

@@ -6,6 +6,7 @@
 - PostgreSQL: stores professionals and dispatch requests.
 - Transactional outbox: stores V2 lifecycle events in `outbox_events` before Kafka publication.
 - Outbox Kafka publisher: drains unpublished outbox rows and sends each event to its Kafka topic.
+- Triage event consumer: applies `request.triaged.v1` to pending requests and dispatches them with S4.
 - Redis: available for real-time coordination and future queue/session features.
 - AI triage provider: local deterministic rules by default, optional Darija Health NLP sidecar, or optional OpenAI provider; every AI provider response is checked by the local safety floor.
 - Python simulator: generates professionals, patient requests, scenarios, run traces, and metrics.
@@ -23,6 +24,8 @@
    the V2 Demand Service boundary.
 8. Dispatch writes proposal, accept, refusal, timeout, and close events to the
    same outbox so Kafka can publish a complete request lifecycle.
+9. When enabled, Dispatch consumes `request.triaged.v1`, updates the pending
+   request priority/specialty, and dispatches it with S4.
 
 ## Dispatch Strategy V1
 
@@ -44,5 +47,7 @@ This means V2 can be built incrementally:
 
 1. Demand/Dispatch write durable events first.
 2. The Kafka publisher drains unpublished rows when enabled.
-3. Analytics, retry, DLT, and replay can consume those events without changing
+3. Dispatch can consume AI triage events without requiring a synchronous API
+   call between services.
+4. Analytics, retry, DLT, and replay can consume those events without changing
    the core dispatch transaction.
