@@ -50,6 +50,11 @@ Recommended order:
 This keeps the project explainable in the internship defense and avoids making
 the demo depend on a paid external API.
 
+OpenAI API usage is not free. Every request can generate cost depending on the
+selected model and token usage, so demos should use Darija Health NLP or the
+local mock provider unless the team has explicitly accepted billing and enabled
+project-level spend limits.
+
 ## Provider behavior
 
 `AI_PROVIDER=mock` or `AI_MODE=mock` uses local deterministic rules only.

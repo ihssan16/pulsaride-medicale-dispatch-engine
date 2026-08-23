@@ -97,7 +97,9 @@ Gestion des clés et fournisseurs IA : `docs/SECRETS_AND_AI_PROVIDERS.md`.
 OpenAI est disponible comme provider expérimental. Comme pour Darija Health NLP,
 il ne remplace pas les règles locales : après la réponse du provider IA,
 Pulsaride applique toujours un plancher de sécurité déterministe pour les
-signaux critiques.
+signaux critiques. OpenAI n'est pas gratuit : les appels API peuvent être
+facturés selon le modèle et le nombre de tokens, donc ce mode doit rester
+optionnel avec budget/limites configurés avant une démonstration.
 
 Dans `.env`, renseigner une clé rotatée :
 

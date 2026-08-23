@@ -66,6 +66,26 @@ DARIJA_MODEL_DIR=/opt/darija-health-nlp/models
 docker compose --profile ai up --build -d
 ```
 
+The model directory must contain the runtime files used by the FastAPI service:
+
+```text
+config.json
+model.safetensors
+tokenizer.json
+tokenizer_config.json
+training_args.bin
+```
+
+If the sidecar is healthy but Pulsaride still returns `"mode": "mock"` from
+`/ai/triage`, the API container was started with mock settings. Update `.env`
+to `AI_MODE=external` and recreate the API container.
+
+## Optional OpenAI Provider
+
+OpenAI is supported only as an experimental provider. It is not free: API calls
+can be billed according to model and token usage. Do not enable it on the VPS
+unless billing, budget limits, and key rotation are handled explicitly.
+
 ## Useful Operations
 
 ```bash

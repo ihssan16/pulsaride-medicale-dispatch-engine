@@ -81,6 +81,22 @@ AI_PROVIDER=external docker compose --profile ai up --build
 Le profil `ai` ajoute le service `darija-ai`. Sans ce profil, Pulsaride démarre
 comme avant en mode `mock`.
 
+Si le conteneur `darija-ai` est healthy mais que `/ai/triage` répond encore avec
+`"mode": "mock"`, le modèle Darija n'est pas utilisé par l'API Spring Boot. Dans
+ce cas, vérifier `.env` et redémarrer l'API :
+
+```bash
+AI_MODE=external
+AI_EXTERNAL_URL=http://darija-ai:8000
+AI_FALLBACK_ENABLED=true
+
+docker compose --profile ai up -d api
+```
+
+Le service Darija seul peut donc fonctionner correctement pendant que Pulsaride
+reste en mock si `AI_MODE`/`AI_PROVIDER` n'a pas été changé au moment du
+démarrage du conteneur `api`.
+
 Variables utiles :
 
 ```text
@@ -93,6 +109,21 @@ DARIJA_MODEL_DIR=../darija-health-nlp/models
 OPENAI_API_KEY=...
 OPENAI_MODEL=gpt-4o-mini
 ```
+
+Ports locaux optionnels :
+
+```text
+API_HOST_PORT=8080
+POSTGRES_HOST_PORT=5432
+REDIS_HOST_PORT=6379
+KAFKA_HOST_PORT=9092
+DARIJA_AI_HOST_PORT=8000
+```
+
+Ces variables sont utiles si Docker Desktop refuse d'exposer un port déjà occupé
+ou bloqué côté machine hôte. Par exemple, on peut mettre
+`POSTGRES_HOST_PORT=15432` sans changer la connexion interne de l'API, qui reste
+`postgres:5432` dans le réseau Docker.
 
 ## Contrat entre les deux services
 
@@ -171,6 +202,11 @@ Ensuite, il applique les règles locales comme plancher de sécurité. Exemple :
 si le provider OpenAI retourne `urgencyScore=0` pour une douleur thoracique, les
 règles locales peuvent remonter la réponse à `urgencyScore=3` avec
 `mode=openai+safety-floor`.
+
+Important : OpenAI n'est pas gratuit. Chaque appel API peut être facturé selon
+le modèle choisi et la consommation de tokens. Pour ce projet, OpenAI doit rester
+un provider optionnel de benchmark/fallback, avec clé côté serveur, budget limité
+et aucune dépendance obligatoire pour la soutenance.
 
 La trajectoire recommandée reste :
 
