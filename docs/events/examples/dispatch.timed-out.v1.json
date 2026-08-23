@@ -1,0 +1,17 @@
+{
+  "eventId": "77777777-7777-4777-8777-777777777777",
+  "eventType": "dispatch.timed-out.v1",
+  "aggregateId": "req_2026_0004",
+  "correlationId": "dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+  "occurredAt": "2026-08-23T10:05:40Z",
+  "producer": "dispatch-service",
+  "schemaVersion": 1,
+  "payload": {
+    "requestId": "req_2026_0004",
+    "professionalId": "pro_pedia_01",
+    "slotId": "slot_pro_pedia_01_1000",
+    "timedOutAt": "2026-08-23T10:05:40Z",
+    "attemptNumber": 2,
+    "nextRetryAllowed": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsaride.local/events/dispatch.accepted.v1.payload.schema.json",
+  "title": "dispatch.accepted.v1 payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["requestId", "professionalId", "slotId", "acceptedAt"],
+  "properties": {
+    "requestId": { "type": "string", "minLength": 1 },
+    "professionalId": { "type": "string", "minLength": 1 },
+    "slotId": { "type": "string", "minLength": 1 },
+    "acceptedAt": { "type": "string", "format": "date-time" }
+  }
+}

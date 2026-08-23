@@ -1,0 +1,17 @@
+{
+  "eventId": "66666666-6666-4666-8666-666666666666",
+  "eventType": "dispatch.refused.v1",
+  "aggregateId": "req_2026_0003",
+  "correlationId": "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+  "occurredAt": "2026-08-23T10:03:21Z",
+  "producer": "dispatch-service",
+  "schemaVersion": 1,
+  "payload": {
+    "requestId": "req_2026_0003",
+    "professionalId": "pro_orl_02",
+    "slotId": "slot_pro_orl_02_1000",
+    "refusalCode": "BUSY",
+    "refusedAt": "2026-08-23T10:03:21Z",
+    "attemptNumber": 1
+  }
+}

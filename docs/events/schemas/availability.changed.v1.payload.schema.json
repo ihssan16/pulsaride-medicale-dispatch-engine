@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsaride.local/events/availability.changed.v1.payload.schema.json",
+  "title": "availability.changed.v1 payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["professionalId", "slotId", "previousStatus", "newStatus", "changedAt"],
+  "properties": {
+    "professionalId": { "type": "string", "minLength": 1 },
+    "slotId": { "type": "string", "minLength": 1 },
+    "previousStatus": {
+      "type": "string",
+      "enum": ["AVAILABLE", "RESERVED", "BUSY", "BREAK", "OFFLINE"]
+    },
+    "newStatus": {
+      "type": "string",
+      "enum": ["AVAILABLE", "RESERVED", "BUSY", "BREAK", "OFFLINE"]
+    },
+    "changedAt": { "type": "string", "format": "date-time" },
+    "reason": { "type": "string" }
+  }
+}

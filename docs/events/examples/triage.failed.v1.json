@@ -1,0 +1,17 @@
+{
+  "eventId": "33333333-3333-4333-8333-333333333333",
+  "eventType": "triage.failed.v1",
+  "aggregateId": "req_2026_0002",
+  "correlationId": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+  "occurredAt": "2026-08-23T10:02:30Z",
+  "producer": "ai-triage-service",
+  "schemaVersion": 1,
+  "payload": {
+    "requestId": "req_2026_0002",
+    "failureCode": "AI_TIMEOUT",
+    "fallbackUrgencyScore": 1,
+    "fallbackSpecialtyHint": "generaliste",
+    "requiresReview": true,
+    "errorMessage": "Ollama request exceeded timeout"
+  }
+}

@@ -171,9 +171,15 @@ def scenario_duplicate_events() -> dict:
         "eventId": str(uuid.uuid4()),
         "eventType": "request.triaged.v1",
         "aggregateId": request_id,
+        "correlationId": str(uuid.uuid4()),
+        "occurredAt": datetime.now(timezone.utc).isoformat(),
+        "producer": "ai-triage-service",
+        "schemaVersion": 1,
         "payload": {
             "requestId": request_id, "urgencyScore": 2,
-            "specialtyHint": "pediatrie"
+            "specialtyHint": "pediatrie", "confidence": 0.87,
+            "modelVersion": "phi3-mini-v1", "ruleVersion": "v2402-r1",
+            "requiresReview": False
         }
     }
 

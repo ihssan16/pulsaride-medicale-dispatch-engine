@@ -1,0 +1,15 @@
+{
+  "eventId": "55555555-5555-4555-8555-555555555555",
+  "eventType": "dispatch.accepted.v1",
+  "aggregateId": "req_2026_0001",
+  "correlationId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "occurredAt": "2026-08-23T10:00:18Z",
+  "producer": "dispatch-service",
+  "schemaVersion": 1,
+  "payload": {
+    "requestId": "req_2026_0001",
+    "professionalId": "pro_cardio_01",
+    "slotId": "slot_pro_cardio_01_1000",
+    "acceptedAt": "2026-08-23T10:00:18Z"
+  }
+}

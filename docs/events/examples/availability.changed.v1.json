@@ -1,0 +1,17 @@
+{
+  "eventId": "99999999-9999-4999-8999-999999999999",
+  "eventType": "availability.changed.v1",
+  "aggregateId": "pro_cardio_01",
+  "correlationId": "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+  "occurredAt": "2026-08-23T10:19:02Z",
+  "producer": "availability-service",
+  "schemaVersion": 1,
+  "payload": {
+    "professionalId": "pro_cardio_01",
+    "slotId": "slot_pro_cardio_01_1000",
+    "previousStatus": "BUSY",
+    "newStatus": "AVAILABLE",
+    "changedAt": "2026-08-23T10:19:02Z",
+    "reason": "request_closed"
+  }
+}

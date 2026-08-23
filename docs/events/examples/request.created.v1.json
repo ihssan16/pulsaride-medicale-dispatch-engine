@@ -1,0 +1,17 @@
+{
+  "eventId": "11111111-1111-4111-8111-111111111111",
+  "eventType": "request.created.v1",
+  "aggregateId": "req_2026_0001",
+  "correlationId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "occurredAt": "2026-08-23T10:00:00Z",
+  "producer": "demand-service",
+  "schemaVersion": 1,
+  "payload": {
+    "requestId": "req_2026_0001",
+    "patientId": "patient_042",
+    "freeText": "Douleur thoracique avec respiration difficile",
+    "specialtyHint": "cardiologie",
+    "initialUrgencyScore": 2,
+    "createdAt": "2026-08-23T10:00:00Z"
+  }
+}

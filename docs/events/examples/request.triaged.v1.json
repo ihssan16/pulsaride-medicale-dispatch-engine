@@ -1,0 +1,19 @@
+{
+  "eventId": "22222222-2222-4222-8222-222222222222",
+  "eventType": "request.triaged.v1",
+  "aggregateId": "req_2026_0001",
+  "correlationId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "occurredAt": "2026-08-23T10:00:04Z",
+  "producer": "ai-triage-service",
+  "schemaVersion": 1,
+  "payload": {
+    "requestId": "req_2026_0001",
+    "urgencyScore": 3,
+    "specialtyHint": "cardiologie",
+    "confidence": 0.82,
+    "modelVersion": "phi3-mini-q4-v1",
+    "ruleVersion": "v2402-r1",
+    "requiresReview": true,
+    "triggeredRules": ["RF001"]
+  }
+}
