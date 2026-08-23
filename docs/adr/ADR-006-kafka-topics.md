@@ -108,6 +108,28 @@ Outcomes enregistrés :
 Si le handler échoue de façon inattendue, la transaction est rollbackée :
 l'`eventId` n'est pas marqué comme traité et Kafka peut retenter.
 
-## Prochaine étape (V2-205)
+## Retry, DLT et replay (V2-205)
 
-- retry + DLT + script de replay opérateur.
+Le runtime Spring Boot définit un `DefaultErrorHandler` Kafka explicite :
+
+- erreurs non déterministes : retry avec `FixedBackOff` ;
+- erreurs de payload/enveloppe invalides (`IllegalArgumentException`) : envoi
+  direct en DLT, car retenter ne corrigera pas le message ;
+- topic DLT : `<topic>.dlt` ;
+- partition DLT : `0`, car les DLT sont single-partition.
+
+Paramètres d'environnement :
+
+- `PULSARIDE_KAFKA_RETRY_INTERVAL_MS` : délai entre retries, défaut `1000` ms ;
+- `PULSARIDE_KAFKA_RETRY_MAX_ATTEMPTS` : retries après la première livraison,
+  défaut `3`.
+
+Replay manuel local :
+
+```bash
+MAX_MESSAGES=10 scripts/replay_dlt.sh request.triaged.v1
+```
+
+Le replay republie les records de `request.triaged.v1.dlt` vers
+`request.triaged.v1`. La déduplication par `eventId` reste active pendant le
+replay, donc un événement déjà consommé ne relance pas le dispatch.

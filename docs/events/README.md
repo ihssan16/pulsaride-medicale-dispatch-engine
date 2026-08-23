@@ -88,8 +88,32 @@ If a triage event references a request that does not exist in the local
 Dispatch database, the consumer logs a warning, records the event outcome as
 `SKIPPED_UNKNOWN_REQUEST`, and skips it. This prevents simulator-only or stale
 events from blocking the Kafka consumer group. Unexpected handler failures are
-not recorded as processed, so Kafka can retry them; retry/DLT routing remains
-the V2-205 responsibility.
+not recorded as processed, so Kafka can retry them.
+
+## Retry, DLT, Replay
+
+V2-205 adds explicit listener retry and DLT routing for Kafka consumers.
+
+- Retry interval: `PULSARIDE_KAFKA_RETRY_INTERVAL_MS` (default `1000` ms)
+- Retry attempts after the first delivery: `PULSARIDE_KAFKA_RETRY_MAX_ATTEMPTS`
+  (default `3`)
+- DLT topic naming: `<source-topic>.dlt`
+- DLT partition: always `0`, because DLT topics are single-partition
+
+Malformed JSON or invalid envelopes raise `IllegalArgumentException` and are
+sent directly to DLT because retrying cannot repair the payload. Unexpected
+handler failures are retried first, then sent to DLT if the attempts are
+exhausted.
+
+Manual replay from a local Compose stack:
+
+```bash
+MAX_MESSAGES=10 scripts/replay_dlt.sh request.triaged.v1
+```
+
+The script reads keyed records from `request.triaged.v1.dlt` and republishes
+them to `request.triaged.v1`. Consumers still deduplicate by `eventId`, so
+replaying an already processed event is safe.
 
 ## Validation
 

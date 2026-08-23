@@ -60,6 +60,10 @@ pulsaride:
       enabled: ${PULSARIDE_TRIAGE_CONSUMER_ENABLED:false}
       topic: ${PULSARIDE_TRIAGE_TOPIC:request.triaged.v1}
       group-id: ${PULSARIDE_TRIAGE_CONSUMER_GROUP:pulsaride-dispatch}
+  kafka:
+    retry:
+      interval-ms: ${PULSARIDE_KAFKA_RETRY_INTERVAL_MS:1000}
+      max-attempts: ${PULSARIDE_KAFKA_RETRY_MAX_ATTEMPTS:3}
   seed-data:
     enabled: ${PULSARIDE_SEED_DATA:true}
     simulator-data-dir: ${PULSARIDE_SIMULATOR_DATA_DIR:../simulator/data}

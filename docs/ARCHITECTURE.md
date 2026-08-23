@@ -8,6 +8,8 @@
 - Outbox Kafka publisher: drains unpublished outbox rows and sends each event to its Kafka topic.
 - Triage event consumer: deduplicates `request.triaged.v1` by `eventId`, applies it to pending requests, and dispatches them with S4.
 - Processed events table: stores consumed Kafka `eventId` values and outcomes so duplicate deliveries are safe.
+- Kafka retry/DLT layer: retries unexpected consumer failures, routes invalid
+  events to `<topic>.dlt`, and supports manual replay through `scripts/replay_dlt.sh`.
 - API V2 routing: exposes `/api/v2/...` gateway-compatible routes while keeping
   existing V1/demo routes alive.
 - Analytics read model: combines metrics, availability, professional load, and
@@ -63,5 +65,5 @@ This means V2 can be built incrementally:
    backlog in one read model for dashboard and demo usage.
 5. Idempotent consumers protect the dispatch flow against duplicate Kafka
    deliveries by storing handled `eventId` values.
-6. Retry, DLT, and replay can consume those events without changing
-   the core dispatch transaction.
+6. Retry, DLT, and replay handle poisoned or transiently failing Kafka records
+   without changing the core dispatch transaction.

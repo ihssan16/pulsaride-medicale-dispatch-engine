@@ -12,6 +12,9 @@ spring:
     redis:
       host: localhost
       port: 6379
+  kafka:
+    admin:
+      auto-create: false
 
 pulsaride:
   seed-data:
