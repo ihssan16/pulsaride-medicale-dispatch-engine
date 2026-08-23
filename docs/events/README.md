@@ -40,6 +40,17 @@ Kafka message key must be:
 | `dispatch.closed.v1` | Dispatch Service | Analytics |
 | `availability.changed.v1` | Availability/Dispatch Service | Dispatch, Analytics |
 
+## Spring Boot Runtime Status
+
+The current Spring Boot V2 runtime writes `request.created.v1` to the
+`outbox_events` table whenever a request is created through `/requests` or the
+legacy create-and-dispatch endpoint. This is the first Demand Service boundary:
+the database write and outbox event happen in the same transaction, so a future
+Kafka publisher can send the event without losing request creation.
+
+`published=false` means the event is still waiting for a publisher. The next V2
+slice is to add the Kafka publisher/consumer flow that drains this table.
+
 ## Validation
 
 Run locally:

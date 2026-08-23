@@ -17,6 +17,7 @@ import com.pulsaride.dispatch.redis.DispatchRedisService;
 import com.pulsaride.dispatch.repository.AssignmentRepository;
 import com.pulsaride.dispatch.repository.AvailabilitySlotRepository;
 import com.pulsaride.dispatch.repository.DispatchRequestRepository;
+import com.pulsaride.dispatch.repository.OutboxEventRepository;
 import com.pulsaride.dispatch.repository.ProfessionalRepository;
 import com.pulsaride.dispatch.repository.StateTransitionRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,6 +48,9 @@ class DispatchApiIntegrationTests {
     private DispatchRequestRepository requestRepository;
 
     @Autowired
+    private OutboxEventRepository outboxEventRepository;
+
+    @Autowired
     private ProfessionalRepository professionalRepository;
 
     @Autowired
@@ -59,6 +63,7 @@ class DispatchApiIntegrationTests {
     void setUp() {
         assignmentRepository.deleteAll();
         transitionRepository.deleteAll();
+        outboxEventRepository.deleteAll();
         requestRepository.deleteAll();
         slotRepository.deleteAll();
         professionalRepository.deleteAll();

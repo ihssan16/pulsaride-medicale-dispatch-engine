@@ -14,6 +14,7 @@ import com.pulsaride.dispatch.matching.DispatchStrategy;
 import com.pulsaride.dispatch.redis.DispatchRedisService;
 import com.pulsaride.dispatch.repository.AssignmentRepository;
 import com.pulsaride.dispatch.repository.DispatchRequestRepository;
+import com.pulsaride.dispatch.repository.OutboxEventRepository;
 import com.pulsaride.dispatch.repository.ProfessionalRepository;
 import com.pulsaride.dispatch.repository.StateTransitionRepository;
 import java.time.OffsetDateTime;
@@ -39,6 +40,9 @@ class DispatchServiceTests {
 
     @Autowired
     private DispatchRequestRepository requestRepository;
+
+    @Autowired
+    private OutboxEventRepository outboxEventRepository;
 
     @Autowired
     private StateTransitionRepository transitionRepository;
@@ -80,6 +84,35 @@ class DispatchServiceTests {
         var transitions = transitionRepository.findByRequestIdOrderByOccurredAtAsc(result.getId());
         assertThat(transitions).extracting("toStatus")
                 .containsExactly(RequestStatus.PENDING, RequestStatus.RESERVED, RequestStatus.PROPOSED);
+    }
+
+    @Test
+    void createWritesRequestCreatedEventToOutbox() throws Exception {
+        var created = dispatchService.create(new CreateDispatchRequest(
+                "patient_outbox",
+                "Douleur thoracique avec respiration difficile",
+                "cardiologie",
+                3
+        ));
+
+        var event = outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc(created.getId())
+                .stream()
+                .filter(candidate -> candidate.getEventType().equals(EventOutboxService.REQUEST_CREATED))
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(event.getProducer()).isEqualTo("demand-service");
+        assertThat(event.getSchemaVersion()).isEqualTo(1);
+        assertThat(event.isPublished()).isFalse();
+        assertThat(event.getCorrelationId()).isNotBlank();
+        assertThat(event.getOccurredAt()).isEqualTo(created.getCreatedAt());
+        assertThat(event.getPayloadJson()).contains(
+                "\"requestId\":\"" + created.getId() + "\"",
+                "\"patientId\":\"patient_outbox\"",
+                "\"freeText\":\"Douleur thoracique avec respiration difficile\"",
+                "\"specialtyHint\":\"cardiologie\"",
+                "\"initialUrgencyScore\":3"
+        );
     }
 
     @Test

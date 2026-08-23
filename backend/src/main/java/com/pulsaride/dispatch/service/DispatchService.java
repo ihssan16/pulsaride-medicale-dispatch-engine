@@ -37,6 +37,7 @@ public class DispatchService {
     private final StateTransitionRepository transitionRepository;
     private final MatchingService matchingService;
     private final DispatchRedisService redisService;
+    private final EventOutboxService eventOutboxService;
     private final Duration proposalTimeout;
 
     public DispatchService(
@@ -47,6 +48,7 @@ public class DispatchService {
             StateTransitionRepository transitionRepository,
             MatchingService matchingService,
             DispatchRedisService redisService,
+            EventOutboxService eventOutboxService,
             @Value("${pulsaride.dispatch.proposal-timeout-seconds:30}") long proposalTimeoutSeconds
     ) {
         this.requestRepository = requestRepository;
@@ -56,6 +58,7 @@ public class DispatchService {
         this.transitionRepository = transitionRepository;
         this.matchingService = matchingService;
         this.redisService = redisService;
+        this.eventOutboxService = eventOutboxService;
         this.proposalTimeout = Duration.ofSeconds(proposalTimeoutSeconds);
     }
 
@@ -71,6 +74,7 @@ public class DispatchService {
         request.setStatus(RequestStatus.PENDING);
         DispatchRequest saved = requestRepository.save(request);
         recordTransition(saved, null, RequestStatus.PENDING, "Request created");
+        eventOutboxService.recordRequestCreated(saved);
         redisService.enqueue(saved);
         return saved;
     }
