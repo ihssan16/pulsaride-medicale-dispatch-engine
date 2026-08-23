@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class EventOutboxService {
     public static final String REQUEST_CREATED = "request.created.v1";
     public static final String REQUEST_TRIAGED = "request.triaged.v1";
+    public static final String TRIAGE_FAILED = "triage.failed.v1";
     public static final String DISPATCH_PROPOSED = "dispatch.proposed.v1";
     public static final String DISPATCH_ACCEPTED = "dispatch.accepted.v1";
     public static final String DISPATCH_REFUSED = "dispatch.refused.v1";
@@ -83,6 +84,26 @@ public class EventOutboxService {
             payload.put("triggeredRules", triggeredRules);
         }
         return saveEvent(REQUEST_TRIAGED, request.getId(), AI_TRIAGE_PRODUCER, OffsetDateTime.now(), payload);
+    }
+
+    public OutboxEvent recordTriageFailed(
+            DispatchRequest request,
+            String failureCode,
+            int fallbackUrgencyScore,
+            String fallbackSpecialtyHint,
+            boolean requiresReview,
+            String errorMessage
+    ) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("requestId", request.getId());
+        payload.put("failureCode", failureCode);
+        payload.put("fallbackUrgencyScore", fallbackUrgencyScore);
+        payload.put("fallbackSpecialtyHint", fallbackSpecialtyHint);
+        payload.put("requiresReview", requiresReview);
+        if (errorMessage != null && !errorMessage.isBlank()) {
+            payload.put("errorMessage", errorMessage);
+        }
+        return saveEvent(TRIAGE_FAILED, request.getId(), AI_TRIAGE_PRODUCER, OffsetDateTime.now(), payload);
     }
 
     public OutboxEvent recordAvailabilityChanged(

@@ -66,6 +66,8 @@ Règle de clé opérationnelle :
 La table `outbox_events` existe côté Spring Boot et enregistre déjà :
 
 - `request.created.v1` lors de la création d'une demande ;
+- `request.triaged.v1` après triage IA manuel ou automatique ;
+- `triage.failed.v1` si le worker IA ne peut pas produire de triage exploitable ;
 - `dispatch.proposed.v1` lors d'une proposition ;
 - `dispatch.accepted.v1` lors d'une acceptation ;
 - `dispatch.refused.v1` lors d'un refus ;
@@ -93,6 +95,17 @@ limité :
 - enregistrer une transition d'audit indiquant le modèle/confiance ;
 - lancer le dispatch avec `S4` pour produire ensuite `dispatch.proposed.v1`.
 
+Le worker AI Triage de `request.created.v1` est activable via
+`PULSARIDE_TRIAGE_WORKER_ENABLED=true`. Il consomme les demandes créées,
+déduplique par `eventId`, puis publie :
+
+- `request.triaged.v1` si le provider IA ou le fallback local répond ;
+- `triage.failed.v1` si le provider échoue sans fallback récupérable.
+
+`triage.failed.v1` n'est pas traité comme une erreur Kafka technique : c'est un
+résultat métier auditable avec `requiresReview=true`. Les erreurs d'enveloppe ou
+de consumer restent, elles, gérées par retry/DLT.
+
 ## Déduplication consumer (V2-204)
 
 Dispatch persiste les envelopes consommées dans `processed_events`, avec
@@ -103,6 +116,8 @@ une deuxième fois, il est ignoré avant d'appeler le dispatch.
 Outcomes enregistrés :
 
 - `PROCESSED` : triage appliqué et dispatch lancé ;
+- `TRIAGED` : demande créée consommée et event `request.triaged.v1` publié ;
+- `TRIAGE_FAILED` : demande créée consommée et event `triage.failed.v1` publié ;
 - `SKIPPED_UNKNOWN_REQUEST` : demande absente localement, message non bloquant.
 
 Si le handler échoue de façon inattendue, la transaction est rollbackée :

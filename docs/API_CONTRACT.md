@@ -316,6 +316,28 @@ Response shape is the same as `/ai/triage`. The event payload includes:
 }
 ```
 
+In the full Compose/VPS V2 stack this route is not the only way to triage.
+When `PULSARIDE_TRIAGE_WORKER_ENABLED=true`, Spring Boot also consumes
+`request.created.v1` and automatically runs the same request-bound triage flow.
+That worker records:
+
+- `request.triaged.v1` when the provider or local fallback returns a valid triage.
+- `triage.failed.v1` when the provider fails and fallback is disabled or cannot recover.
+
+The failure event keeps the request visible to analytics instead of silently
+dropping the AI step:
+
+```json
+{
+  "requestId": "req_2026_0002",
+  "failureCode": "AI_UNAVAILABLE",
+  "fallbackUrgencyScore": 1,
+  "fallbackSpecialtyHint": "generaliste",
+  "requiresReview": true,
+  "errorMessage": "External AI triage returned HTTP 503: unavailable"
+}
+```
+
 `POST /api/dispatch-requests/{id}/accept`
 
 Marks a proposed request as accepted and marks the assigned professional as busy.

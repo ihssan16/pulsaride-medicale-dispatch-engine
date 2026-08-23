@@ -44,6 +44,51 @@ public class KafkaRetryConfig {
     }
 
     @Bean
+    public NewTopic requestCreatedTopic() {
+        return lifecycleTopic("request.created.v1");
+    }
+
+    @Bean
+    public NewTopic requestTriagedTopic() {
+        return lifecycleTopic("request.triaged.v1");
+    }
+
+    @Bean
+    public NewTopic triageFailedTopic() {
+        return lifecycleTopic("triage.failed.v1");
+    }
+
+    @Bean
+    public NewTopic dispatchProposedTopic() {
+        return lifecycleTopic("dispatch.proposed.v1");
+    }
+
+    @Bean
+    public NewTopic dispatchAcceptedTopic() {
+        return lifecycleTopic("dispatch.accepted.v1");
+    }
+
+    @Bean
+    public NewTopic dispatchRefusedTopic() {
+        return lifecycleTopic("dispatch.refused.v1");
+    }
+
+    @Bean
+    public NewTopic dispatchTimedOutTopic() {
+        return lifecycleTopic("dispatch.timed-out.v1");
+    }
+
+    @Bean
+    public NewTopic dispatchClosedTopic() {
+        return lifecycleTopic("dispatch.closed.v1");
+    }
+
+    @Bean
+    public NewTopic availabilityChangedTopic() {
+        return lifecycleTopic("availability.changed.v1");
+    }
+
+    @Bean
     public NewTopic requestCreatedDltTopic() {
         return dltTopic("request.created.v1.dlt");
     }
@@ -56,6 +101,13 @@ public class KafkaRetryConfig {
     @Bean
     public NewTopic dispatchProposedDltTopic() {
         return dltTopic("dispatch.proposed.v1.dlt");
+    }
+
+    private NewTopic lifecycleTopic(String name) {
+        return TopicBuilder.name(name)
+                .partitions(3)
+                .replicas(1)
+                .build();
     }
 
     private NewTopic dltTopic(String name) {

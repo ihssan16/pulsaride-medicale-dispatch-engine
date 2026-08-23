@@ -56,6 +56,10 @@ pulsaride:
       batch-size: ${PULSARIDE_OUTBOX_PUBLISHER_BATCH_SIZE:50}
       interval-ms: ${PULSARIDE_OUTBOX_PUBLISHER_INTERVAL_MS:5000}
   triage:
+    worker:
+      enabled: ${PULSARIDE_TRIAGE_WORKER_ENABLED:false}
+      topic: ${PULSARIDE_REQUEST_CREATED_TOPIC:request.created.v1}
+      group-id: ${PULSARIDE_TRIAGE_WORKER_GROUP:pulsaride-ai-triage}
     consumer:
       enabled: ${PULSARIDE_TRIAGE_CONSUMER_ENABLED:false}
       topic: ${PULSARIDE_TRIAGE_TOPIC:request.triaged.v1}

@@ -59,6 +59,13 @@ configured AI provider against the stored request text and writes
 ad-hoc text prediction, but it does not publish an event because it has no
 request id.
 
+When `PULSARIDE_TRIAGE_WORKER_ENABLED=true`, the AI worker consumes
+`request.created.v1` and calls the same request-bound triage service
+automatically. A successful run writes `request.triaged.v1`. If the provider
+fails and fallback cannot recover, the worker writes `triage.failed.v1` with a
+fallback urgency/specialty copied from the original request and
+`requiresReview=true`.
+
 Availability changes are also evented. `ProfessionalService` writes
 `availability.changed.v1` when a professional is created or manually moved
 between statuses. `DispatchService` writes the same event when a selected slot
@@ -68,7 +75,8 @@ refusal/timeout.
 | Event | Written when |
 |---|---|
 | `request.created.v1` | `DemandService` creates a request through `/requests`, `/api/v2/requests`, or the legacy create-and-dispatch endpoint |
-| `request.triaged.v1` | `RequestTriageService` triages a stored request through `/api/v2/requests/{id}/triage` |
+| `request.triaged.v1` | `RequestTriageService` triages a stored request through `/api/v2/requests/{id}/triage` or the automatic `request.created.v1` worker |
+| `triage.failed.v1` | the automatic AI worker cannot produce a valid triage and records the deterministic fallback fields for review |
 | `dispatch.proposed.v1` | Dispatch reserves a slot and proposes a professional |
 | `dispatch.accepted.v1` | the proposed professional accepts the assignment |
 | `dispatch.refused.v1` | the proposed professional refuses and the request goes back to retry |
@@ -97,6 +105,11 @@ When `PULSARIDE_TRIAGE_CONSUMER_ENABLED=true`, Dispatch consumes
 and `specialtyHint` from the AI payload, records an audit transition, and
 dispatches the request with `S4` so the proposal lifecycle continues through
 the same outbox/Kafka flow.
+
+When `PULSARIDE_TRIAGE_WORKER_ENABLED=true`, AI Triage consumes
+`request.created.v1` with the group `pulsaride-ai-triage`. The worker records
+the incoming `eventId` in `processed_events` before calling the provider, so a
+duplicate `request.created.v1` cannot publish a second triage result.
 
 The Dispatch consumer records handled Kafka envelopes in the `processed_events`
 table using the envelope `eventId` as the primary key. A duplicate

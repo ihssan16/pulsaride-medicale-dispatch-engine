@@ -6,6 +6,7 @@ import com.pulsaride.dispatch.domain.DispatchRequest;
 import com.pulsaride.dispatch.repository.DispatchRequestRepository;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Locale;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,10 +31,38 @@ public class RequestTriageService {
 
     @Transactional
     public TriageResponse triageAndPublish(String requestId) {
-        DispatchRequest request = requestRepository.findById(requestId)
-                .orElseThrow(() -> new EntityNotFoundException("Request not found: " + requestId));
-
+        DispatchRequest request = findRequest(requestId);
         TriageResponse triage = aiTriageService.triage(request.getPatientText());
+        publishTriaged(request, triage);
+        return triage;
+    }
+
+    @Transactional
+    public String triageAndPublishOutcome(String requestId) {
+        DispatchRequest request = findRequest(requestId);
+        try {
+            TriageResponse triage = aiTriageService.triage(request.getPatientText());
+            publishTriaged(request, triage);
+            return "TRIAGED";
+        } catch (RuntimeException ex) {
+            eventOutboxService.recordTriageFailed(
+                    request,
+                    failureCode(ex),
+                    request.getUrgencyScore(),
+                    fallbackSpecialtyHint(request),
+                    true,
+                    safeErrorMessage(ex)
+            );
+            return "TRIAGE_FAILED";
+        }
+    }
+
+    private DispatchRequest findRequest(String requestId) {
+        return requestRepository.findById(requestId)
+                .orElseThrow(() -> new EntityNotFoundException("Request not found: " + requestId));
+    }
+
+    private void publishTriaged(DispatchRequest request, TriageResponse triage) {
         eventOutboxService.recordRequestTriaged(
                 request,
                 triage,
@@ -41,7 +70,6 @@ public class RequestTriageService {
                 requiresReview(triage),
                 triggeredRules(triage)
         );
-        return triage;
     }
 
     private boolean requiresReview(TriageResponse triage) {
@@ -58,5 +86,33 @@ public class RequestTriageService {
             return List.of("LOCAL_RULES");
         }
         return List.of();
+    }
+
+    private String fallbackSpecialtyHint(DispatchRequest request) {
+        if (request.getSpecialtyHint() == null || request.getSpecialtyHint().isBlank()) {
+            return "generaliste";
+        }
+        return request.getSpecialtyHint();
+    }
+
+    private String failureCode(RuntimeException ex) {
+        String message = safeErrorMessage(ex).toLowerCase(Locale.ROOT);
+        if (message.contains("timeout") || message.contains("timed out")) {
+            return "AI_TIMEOUT";
+        }
+        if (message.contains("http") || message.contains("unavailable") || message.contains("connection")) {
+            return "AI_UNAVAILABLE";
+        }
+        if (message.contains("json") || message.contains("model output") || message.contains("schema")) {
+            return "INVALID_MODEL_OUTPUT";
+        }
+        return "PIPELINE_ERROR";
+    }
+
+    private String safeErrorMessage(RuntimeException ex) {
+        if (ex.getMessage() == null || ex.getMessage().isBlank()) {
+            return ex.getClass().getSimpleName();
+        }
+        return ex.getMessage();
     }
 }

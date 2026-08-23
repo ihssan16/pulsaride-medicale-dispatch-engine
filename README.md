@@ -159,12 +159,31 @@ curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
 - `GET /metrics/summary`
 - `GET /api/v2/analytics/summary`
 - `POST /ai/triage` — triage texte libre en mode `mock`, Darija Health NLP ou OpenAI avec plancher de sécurité local
+- `POST /api/v2/requests/{id}/triage` — triage IA d'une demande stockée et publication `request.triaged.v1`
 - `GET /dashboard.html`
 - `GET /dashboard-v2.html`
 
 Les chemins historiques `/api/dispatch-requests` et `/api/professionals` restent aussi disponibles.
 Les chemins `/api/availability` et `/api/availability/specialties/{specialtyTag}` sont également exposés pour rester cohérents avec les anciens endpoints préfixés.
 Les chemins publics V2 sont exposés sous `/api/v2/...` pour préparer le routage API Gateway. Le détail est dans `docs/API_CONTRACT.md`.
+
+## Pipeline V2 event-driven
+
+En mode Docker Compose, le flux V2 complet est activé :
+
+1. `DemandService` crée une demande `PENDING` et écrit `request.created.v1`.
+2. L'outbox publie l'event dans Kafka.
+3. Le worker IA consomme `request.created.v1` et produit soit `request.triaged.v1`, soit `triage.failed.v1` si le provider IA échoue sans fallback.
+4. Le consumer Dispatch consomme `request.triaged.v1`, applique les champs IA, puis lance le dispatch avec la stratégie `S4`.
+5. Les events `dispatch.*` et `availability.changed.v1` alimentent le suivi analytics/dashboard.
+
+Flags utiles :
+
+```bash
+PULSARIDE_OUTBOX_PUBLISHER_ENABLED=true
+PULSARIDE_TRIAGE_WORKER_ENABLED=true
+PULSARIDE_TRIAGE_CONSUMER_ENABLED=true
+```
 
 ## Service de disponibilité
 
