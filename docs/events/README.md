@@ -59,6 +59,12 @@ configured AI provider against the stored request text and writes
 ad-hoc text prediction, but it does not publish an event because it has no
 request id.
 
+Availability changes are also evented. `ProfessionalService` writes
+`availability.changed.v1` when a professional is created or manually moved
+between statuses. `DispatchService` writes the same event when a selected slot
+is reserved, accepted as busy, released after close, or moved to break after a
+refusal/timeout.
+
 | Event | Written when |
 |---|---|
 | `request.created.v1` | `DemandService` creates a request through `/requests`, `/api/v2/requests`, or the legacy create-and-dispatch endpoint |
@@ -68,6 +74,7 @@ request id.
 | `dispatch.refused.v1` | the proposed professional refuses and the request goes back to retry |
 | `dispatch.timed-out.v1` | the proposal deadline expires and the request goes back to retry |
 | `dispatch.closed.v1` | an accepted request is closed and TTFA/TTR are finalized |
+| `availability.changed.v1` | a professional/slot capacity status changes |
 
 `published=false` means the event is still waiting for publication. When
 `PULSARIDE_OUTBOX_PUBLISHER_ENABLED=true`, the Spring Boot scheduler drains

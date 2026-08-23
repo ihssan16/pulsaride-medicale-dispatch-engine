@@ -259,11 +259,13 @@ class DispatchApiIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.metrics.totalRequests").value(1))
                 .andExpect(jsonPath("$.availability.reservedSlots").value(1))
-                .andExpect(jsonPath("$.events.totalEvents").value(2))
+                .andExpect(jsonPath("$.events.totalEvents").value(4))
                 .andExpect(jsonPath("$.events.publishedEvents").value(0))
-                .andExpect(jsonPath("$.events.unpublishedEvents").value(2))
-                .andExpect(jsonPath("$.events.eventTypes[0].eventType").value("dispatch.proposed.v1"))
-                .andExpect(jsonPath("$.events.eventTypes[1].eventType").value("request.created.v1"))
+                .andExpect(jsonPath("$.events.unpublishedEvents").value(4))
+                .andExpect(jsonPath("$.events.eventTypes[0].eventType").value("availability.changed.v1"))
+                .andExpect(jsonPath("$.events.eventTypes[0].total").value(2))
+                .andExpect(jsonPath("$.events.eventTypes[1].eventType").value("dispatch.proposed.v1"))
+                .andExpect(jsonPath("$.events.eventTypes[2].eventType").value("request.created.v1"))
                 .andExpect(jsonPath("$.professionalLoads", hasSize(1)))
                 .andExpect(jsonPath("$.professionalLoads[0].id").value("api_v2_pro_cardio"));
     }
@@ -338,6 +340,13 @@ class DispatchApiIntegrationTests {
                 .andExpect(jsonPath("$.totalSlots").value(1))
                 .andExpect(jsonPath("$.offlineSlots").value(1))
                 .andExpect(jsonPath("$.availableCapacity").value(0));
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc("api_pro_er"))
+                .extracting("payloadJson")
+                .anySatisfy(payload -> assertThat((String) payload).contains(
+                        "\"previousStatus\":\"AVAILABLE\"",
+                        "\"newStatus\":\"OFFLINE\"",
+                        "\"reason\":\"professional_status_updated\""
+                ));
 
         mockMvc.perform(post("/dispatch/{requestId}", requestId)
                         .queryParam("strategy", "S2"))

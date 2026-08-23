@@ -17,6 +17,8 @@
 - Analytics read model: combines metrics, availability, professional load, and
   outbox publication state for `/api/v2/analytics/summary` and `dashboard-v2.html`.
 - Redis: available for real-time coordination and future queue/session features.
+- Availability events: professional lifecycle changes and dispatch slot state
+  changes write `availability.changed.v1` to the transactional outbox.
 - AI triage provider: local deterministic rules by default, optional Darija Health NLP sidecar, or optional OpenAI provider; every AI provider response is checked by the local safety floor.
 - Request Triage Service: runs AI triage for a stored request and writes
   `request.triaged.v1` with confidence/model metadata.
@@ -36,13 +38,16 @@
    `request.created.v1` to the transactional outbox.
 8. Dispatch writes proposal, accept, refusal, timeout, and close events to the
    same outbox so Kafka can publish a complete request lifecycle.
-9. External clients can call `/api/v2/...` routes. In this V2 step, those
+9. Availability state changes also write `availability.changed.v1`, including
+   professional creation/status updates and slot transitions such as
+   `AVAILABLE -> RESERVED`, `RESERVED -> BUSY`, and `BUSY -> AVAILABLE`.
+10. External clients can call `/api/v2/...` routes. In this V2 step, those
    routes are service-bound modules inside the same Spring Boot process so the
    contract can stabilize before physical microservice extraction.
-10. Calling `/api/v2/requests/{id}/triage` runs AI triage on the stored request
+11. Calling `/api/v2/requests/{id}/triage` runs AI triage on the stored request
    text and writes `request.triaged.v1` to the outbox with model version,
    confidence, rule version, and review metadata.
-11. When enabled, Dispatch consumes `request.triaged.v1`, updates the pending
+12. When enabled, Dispatch consumes `request.triaged.v1`, updates the pending
    request priority/specialty, and dispatches it with S4. Consumed `eventId`
    values are written to `processed_events`; duplicates are skipped before
    dispatch can run twice.
@@ -68,11 +73,13 @@ This means V2 can be built incrementally:
 1. Demand and Dispatch write durable events from separate Spring services first.
 2. The Kafka publisher drains unpublished rows when enabled.
 3. Request Triage writes AI triage events with request ids and model metadata.
-4. Dispatch can consume AI triage events without requiring a synchronous API
+4. Availability writes capacity-change events so downstream analytics and
+   dispatch services can rebuild slot status from the event stream.
+5. Dispatch can consume AI triage events without requiring a synchronous API
    call between services.
-5. The V2 analytics endpoint exposes the current dispatch state and Kafka/outbox
+6. The V2 analytics endpoint exposes the current dispatch state and Kafka/outbox
    backlog in one read model for dashboard and demo usage.
-6. Idempotent consumers protect the dispatch flow against duplicate Kafka
+7. Idempotent consumers protect the dispatch flow against duplicate Kafka
    deliveries by storing handled `eventId` values.
-7. Retry, DLT, and replay handle poisoned or transiently failing Kafka records
+8. Retry, DLT, and replay handle poisoned or transiently failing Kafka records
    without changing the core dispatch transaction.

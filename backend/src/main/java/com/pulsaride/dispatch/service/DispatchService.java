@@ -125,9 +125,11 @@ public class DispatchService {
             request.setTtfaMs(Duration.between(request.getCreatedAt(), proposedAt).toMillis());
         }
 
+        AvailabilitySlotStatus previousSlotStatus = selectedSlot.getStatus();
         selectedSlot.setStatus(AvailabilitySlotStatus.RESERVED);
         selectedSlot.setReservedRequestId(request.getId());
         slotRepository.save(selectedSlot);
+        recordAvailabilityChanged(selectedSlot, previousSlotStatus, AvailabilitySlotStatus.RESERVED, proposedAt, "dispatch_reserved");
         selected.setStatus(ProfessionalStatus.PROPOSED);
         professionalRepository.save(selected);
         assignmentRepository.save(assignment(request, selected, strategy, proposedAt));
@@ -186,9 +188,11 @@ public class DispatchService {
         professionalRepository.save(pro);
         AvailabilitySlot slot = request.getAssignedSlot();
         if (slot != null) {
+            AvailabilitySlotStatus previousSlotStatus = slot.getStatus();
             slot.setStatus(AvailabilitySlotStatus.BUSY);
             slot.setReservedRequestId(request.getId());
             slotRepository.save(slot);
+            recordAvailabilityChanged(slot, previousSlotStatus, AvailabilitySlotStatus.BUSY, acceptedAt, "dispatch_accepted");
             redisService.syncAvailabilitySlot(slot);
             redisService.releaseSlotLock(slot.getId());
             eventOutboxService.recordDispatchAccepted(request, pro, slot, acceptedAt);
@@ -223,9 +227,11 @@ public class DispatchService {
             if (pro != null) {
                 eventOutboxService.recordDispatchClosed(request, pro, slot, request.getClosedAt());
             }
+            AvailabilitySlotStatus previousSlotStatus = slot.getStatus();
             slot.setStatus(AvailabilitySlotStatus.AVAILABLE);
             slot.setReservedRequestId(null);
             slotRepository.save(slot);
+            recordAvailabilityChanged(slot, previousSlotStatus, AvailabilitySlotStatus.AVAILABLE, request.getClosedAt(), "dispatch_closed");
             request.setAssignedSlot(null);
             redisService.syncAvailabilitySlot(slot);
             redisService.releaseSlotLock(slot.getId());
@@ -287,9 +293,11 @@ public class DispatchService {
             redisService.syncProfessional(pro);
         }
         if (slot != null) {
+            AvailabilitySlotStatus previousSlotStatus = slot.getStatus();
             slot.setStatus(AvailabilitySlotStatus.BREAK);
             slot.setReservedRequestId(null);
             slotRepository.save(slot);
+            recordAvailabilityChanged(slot, previousSlotStatus, AvailabilitySlotStatus.BREAK, now, availabilityRecycleReason(outcome));
             redisService.syncAvailabilitySlot(slot);
             redisService.releaseSlotLock(slot.getId());
         }
@@ -358,5 +366,21 @@ public class DispatchService {
         transition.setReason(reason);
         transition.setOccurredAt(OffsetDateTime.now());
         transitionRepository.save(transition);
+    }
+
+    private void recordAvailabilityChanged(
+            AvailabilitySlot slot,
+            AvailabilitySlotStatus previousStatus,
+            AvailabilitySlotStatus newStatus,
+            OffsetDateTime changedAt,
+            String reason
+    ) {
+        if (previousStatus != newStatus) {
+            eventOutboxService.recordAvailabilityChanged(slot, previousStatus, newStatus, changedAt, reason);
+        }
+    }
+
+    private String availabilityRecycleReason(AssignmentOutcome outcome) {
+        return outcome == AssignmentOutcome.REFUSED ? "dispatch_refused" : "dispatch_timed_out";
     }
 }

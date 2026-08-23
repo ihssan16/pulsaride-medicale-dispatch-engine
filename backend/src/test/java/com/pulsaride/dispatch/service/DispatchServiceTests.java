@@ -87,6 +87,19 @@ class DispatchServiceTests {
         assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc(result.getId()))
                 .extracting("eventType")
                 .containsExactly(EventOutboxService.REQUEST_CREATED, EventOutboxService.DISPATCH_PROPOSED);
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc("pro_cardio"))
+                .singleElement()
+                .satisfies(event -> {
+                    assertThat(event.getEventType()).isEqualTo(EventOutboxService.AVAILABILITY_CHANGED);
+                    assertThat(event.getProducer()).isEqualTo("availability-service");
+                    assertThat(event.getPayloadJson()).contains(
+                            "\"professionalId\":\"pro_cardio\"",
+                            "\"slotId\":\"slot_pro_cardio\"",
+                            "\"previousStatus\":\"AVAILABLE\"",
+                            "\"newStatus\":\"RESERVED\"",
+                            "\"reason\":\"dispatch_reserved\""
+                    );
+                });
     }
 
     @Test
@@ -162,6 +175,25 @@ class DispatchServiceTests {
                         EventOutboxService.DISPATCH_ACCEPTED,
                         EventOutboxService.DISPATCH_CLOSED
                 );
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc("pro_er"))
+                .extracting("eventType")
+                .containsExactly(
+                        EventOutboxService.AVAILABILITY_CHANGED,
+                        EventOutboxService.AVAILABILITY_CHANGED,
+                        EventOutboxService.AVAILABILITY_CHANGED
+                );
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc("pro_er"))
+                .extracting("payloadJson")
+                .anySatisfy(payload -> assertThat((String) payload).contains(
+                        "\"previousStatus\":\"RESERVED\"",
+                        "\"newStatus\":\"BUSY\"",
+                        "\"reason\":\"dispatch_accepted\""
+                ))
+                .anySatisfy(payload -> assertThat((String) payload).contains(
+                        "\"previousStatus\":\"BUSY\"",
+                        "\"newStatus\":\"AVAILABLE\"",
+                        "\"reason\":\"dispatch_closed\""
+                ));
     }
 
     @Test
@@ -199,6 +231,13 @@ class DispatchServiceTests {
                         EventOutboxService.DISPATCH_REFUSED,
                         EventOutboxService.DISPATCH_PROPOSED
                 );
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc(firstProfessionalId))
+                .extracting("payloadJson")
+                .anySatisfy(payload -> assertThat((String) payload).contains(
+                        "\"previousStatus\":\"RESERVED\"",
+                        "\"newStatus\":\"BREAK\"",
+                        "\"reason\":\"dispatch_refused\""
+                ));
     }
 
     @Test
@@ -236,6 +275,13 @@ class DispatchServiceTests {
                         EventOutboxService.DISPATCH_PROPOSED,
                         EventOutboxService.DISPATCH_TIMED_OUT
                 );
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc("pro_timeout"))
+                .extracting("payloadJson")
+                .anySatisfy(payload -> assertThat((String) payload).contains(
+                        "\"previousStatus\":\"RESERVED\"",
+                        "\"newStatus\":\"BREAK\"",
+                        "\"reason\":\"dispatch_timed_out\""
+                ));
     }
 
     @Test

@@ -212,6 +212,11 @@ Returns the V2 analytics dashboard. It polls `/api/v2/analytics/summary`, which 
 
 `GET /api/v2/analytics/summary`
 
+Availability changes are part of the V2 event stream. Professional
+creation/status changes and dispatch slot transitions write
+`availability.changed.v1` into the transactional outbox, so analytics can show
+both request lifecycle events and capacity changes.
+
 Response shape:
 ```json
 {

@@ -3,6 +3,7 @@ package com.pulsaride.dispatch.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pulsaride.dispatch.domain.AvailabilitySlot;
+import com.pulsaride.dispatch.domain.AvailabilitySlotStatus;
 import com.pulsaride.dispatch.domain.DispatchRequest;
 import com.pulsaride.dispatch.domain.OutboxEvent;
 import com.pulsaride.dispatch.domain.Professional;
@@ -25,9 +26,11 @@ public class EventOutboxService {
     public static final String DISPATCH_REFUSED = "dispatch.refused.v1";
     public static final String DISPATCH_TIMED_OUT = "dispatch.timed-out.v1";
     public static final String DISPATCH_CLOSED = "dispatch.closed.v1";
+    public static final String AVAILABILITY_CHANGED = "availability.changed.v1";
     private static final String DEMAND_PRODUCER = "demand-service";
     private static final String AI_TRIAGE_PRODUCER = "ai-triage-service";
     private static final String DISPATCH_PRODUCER = "dispatch-service";
+    private static final String AVAILABILITY_PRODUCER = "availability-service";
 
     private final OutboxEventRepository repository;
     private final ObjectMapper objectMapper;
@@ -80,6 +83,29 @@ public class EventOutboxService {
             payload.put("triggeredRules", triggeredRules);
         }
         return saveEvent(REQUEST_TRIAGED, request.getId(), AI_TRIAGE_PRODUCER, OffsetDateTime.now(), payload);
+    }
+
+    public OutboxEvent recordAvailabilityChanged(
+            AvailabilitySlot slot,
+            AvailabilitySlotStatus previousStatus,
+            AvailabilitySlotStatus newStatus,
+            OffsetDateTime changedAt,
+            String reason
+    ) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("professionalId", slot.getProfessional().getId());
+        payload.put("slotId", slot.getId());
+        payload.put("previousStatus", previousStatus.name());
+        payload.put("newStatus", newStatus.name());
+        payload.put("changedAt", changedAt);
+        payload.put("reason", reason);
+        return saveEvent(
+                AVAILABILITY_CHANGED,
+                slot.getProfessional().getId(),
+                AVAILABILITY_PRODUCER,
+                changedAt,
+                payload
+        );
     }
 
     public OutboxEvent recordDispatchProposed(
