@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsaride.local/events/event-envelope.schema.json",
+  "title": "Pulsaride V2 Event Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "eventType",
+    "aggregateId",
+    "correlationId",
+    "occurredAt",
+    "producer",
+    "schemaVersion",
+    "payload"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "request.created.v1",
+        "request.triaged.v1",
+        "triage.failed.v1",
+        "dispatch.proposed.v1",
+        "dispatch.accepted.v1",
+        "dispatch.refused.v1",
+        "dispatch.timed-out.v1",
+        "dispatch.closed.v1",
+        "availability.changed.v1"
+      ]
+    },
+    "aggregateId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "correlationId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "occurredAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "producer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}

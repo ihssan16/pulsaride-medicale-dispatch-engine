@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsaride.local/events/dispatch.closed.v1.payload.schema.json",
+  "title": "dispatch.closed.v1 payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["requestId", "professionalId", "slotId", "closedAt", "resolutionStatus"],
+  "properties": {
+    "requestId": { "type": "string", "minLength": 1 },
+    "professionalId": { "type": "string", "minLength": 1 },
+    "slotId": { "type": "string", "minLength": 1 },
+    "closedAt": { "type": "string", "format": "date-time" },
+    "resolutionStatus": {
+      "type": "string",
+      "enum": ["COMPLETED", "FAILED", "CANCELLED"]
+    },
+    "ttfaMs": { "type": "integer", "minimum": 0 },
+    "ttrMs": { "type": "integer", "minimum": 0 }
+  }
+}

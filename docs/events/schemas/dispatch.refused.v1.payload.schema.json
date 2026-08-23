@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsaride.local/events/dispatch.refused.v1.payload.schema.json",
+  "title": "dispatch.refused.v1 payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["requestId", "professionalId", "slotId", "refusalCode", "refusedAt", "attemptNumber"],
+  "properties": {
+    "requestId": { "type": "string", "minLength": 1 },
+    "professionalId": { "type": "string", "minLength": 1 },
+    "slotId": { "type": "string", "minLength": 1 },
+    "refusalCode": {
+      "type": "string",
+      "enum": ["BUSY", "NOT_QUALIFIED", "OFFLINE", "MANUAL_REFUSAL", "OTHER"]
+    },
+    "refusedAt": { "type": "string", "format": "date-time" },
+    "attemptNumber": { "type": "integer", "minimum": 1 }
+  }
+}

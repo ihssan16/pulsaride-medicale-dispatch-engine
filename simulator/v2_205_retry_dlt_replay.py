@@ -155,11 +155,24 @@ def test_retry_dlt_replay_scenario():
         fail_count["n"] += 1
         raise ValueError(f"Erreur métier simulée (appel #{fail_count['n']})")
 
+    bad_request_id = f"req_dlt_test_{uuid.uuid4().hex[:8]}"
     event_bad = {
         "eventId": str(uuid.uuid4()),
         "eventType": "request.triaged.v1",
-        "aggregateId": f"req_dlt_test_{uuid.uuid4().hex[:8]}",
-        "payload": {"requestId": "req_dlt_test", "urgencyScore": 1, "specialtyHint": "generaliste"}
+        "aggregateId": bad_request_id,
+        "correlationId": str(uuid.uuid4()),
+        "occurredAt": datetime.now(timezone.utc).isoformat(),
+        "producer": "ai-triage-service",
+        "schemaVersion": 1,
+        "payload": {
+            "requestId": bad_request_id,
+            "urgencyScore": 1,
+            "specialtyHint": "generaliste",
+            "confidence": 0.30,
+            "modelVersion": "phi3-mini-v1",
+            "ruleVersion": "v2402-r1",
+            "requiresReview": True
+        }
     }
 
     print(f"\n[Scénario A] Event qui échoue TOUJOURS (bug métier persistant)")
@@ -179,11 +192,24 @@ def test_retry_dlt_replay_scenario():
             raise ConnectionError("Timeout réseau transitoire")
         # 2e tentative : succès
 
+    transient_request_id = f"req_transient_test_{uuid.uuid4().hex[:8]}"
     event_transient = {
         "eventId": str(uuid.uuid4()),
         "eventType": "request.triaged.v1",
-        "aggregateId": f"req_transient_test_{uuid.uuid4().hex[:8]}",
-        "payload": {"requestId": "req_transient_test", "urgencyScore": 2, "specialtyHint": "cardiologie"}
+        "aggregateId": transient_request_id,
+        "correlationId": str(uuid.uuid4()),
+        "occurredAt": datetime.now(timezone.utc).isoformat(),
+        "producer": "ai-triage-service",
+        "schemaVersion": 1,
+        "payload": {
+            "requestId": transient_request_id,
+            "urgencyScore": 2,
+            "specialtyHint": "cardiologie",
+            "confidence": 0.78,
+            "modelVersion": "phi3-mini-v1",
+            "ruleVersion": "v2402-r1",
+            "requiresReview": False
+        }
     }
 
     print(f"\n[Scénario B] Event avec échec TRANSITOIRE (réussit à la 2e tentative)")

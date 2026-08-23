@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsaride.local/events/dispatch.timed-out.v1.payload.schema.json",
+  "title": "dispatch.timed-out.v1 payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["requestId", "professionalId", "slotId", "timedOutAt", "attemptNumber", "nextRetryAllowed"],
+  "properties": {
+    "requestId": { "type": "string", "minLength": 1 },
+    "professionalId": { "type": "string", "minLength": 1 },
+    "slotId": { "type": "string", "minLength": 1 },
+    "timedOutAt": { "type": "string", "format": "date-time" },
+    "attemptNumber": { "type": "integer", "minimum": 1 },
+    "nextRetryAllowed": { "type": "boolean" }
+  }
+}

@@ -63,3 +63,6 @@ jobs:
           python v2_205_retry_dlt_replay.py
           python ia3_embeddings_matching.py
           python v2_403_benchmark.py
+
+      - name: Validate V2 event schemas
+        run: python scripts/validate_event_schemas.py

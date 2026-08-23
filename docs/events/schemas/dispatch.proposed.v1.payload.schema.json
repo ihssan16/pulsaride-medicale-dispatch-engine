@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsaride.local/events/dispatch.proposed.v1.payload.schema.json",
+  "title": "dispatch.proposed.v1 payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["requestId", "professionalId", "slotId", "strategy", "proposalDeadlineAt", "attemptNumber"],
+  "properties": {
+    "requestId": { "type": "string", "minLength": 1 },
+    "professionalId": { "type": "string", "minLength": 1 },
+    "slotId": { "type": "string", "minLength": 1 },
+    "strategy": {
+      "type": "string",
+      "enum": ["S1", "S2", "S3", "S4", "S5"]
+    },
+    "proposalDeadlineAt": { "type": "string", "format": "date-time" },
+    "attemptNumber": { "type": "integer", "minimum": 1 },
+    "score": { "type": "number", "minimum": 0 }
+  }
+}

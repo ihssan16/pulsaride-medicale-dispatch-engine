@@ -49,11 +49,20 @@ malgré l'avertissement Kafka sur les collisions de noms de métriques
 - 3 partitions sur les topics lifecycle (ordering garanti par requestId comme clé)
 - 1 partition sur les DLT (pas besoin d'ordering, juste stockage des échecs)
 
-## Prochaines étapes (V2-202, V2-203, V2-204, V2-205)
+## Contrats JSON (V2-202)
 
-- V2-202 : schémas JSON de l'enveloppe d'event (eventId, aggregateId,
-  correlationId, occurredAt, producer, schemaVersion, payload) — à faire
-  avec Dev B avant de coder le premier producer
+Les schémas JSON de l'enveloppe d'event et des payloads par topic sont
+versionnés dans `docs/events/schemas/`. Des exemples valides sont fournis dans
+`docs/events/examples/` et validés par `scripts/validate_event_schemas.py`.
+
+Règle de clé opérationnelle :
+- les événements de cycle demande/dispatch utilisent `requestId` comme
+  `aggregateId` et clé Kafka ;
+- `availability.changed.v1` utilise `professionalId` comme `aggregateId` et clé
+  Kafka.
+
+## Prochaines étapes (V2-203, V2-204, V2-205)
+
 - V2-203 : transactional outbox pour publication fiable depuis Demand/Dispatch
 - V2-204 : déduplication consumer par eventId (constraint unique)
 - V2-205 : retry + DLT + script de replay opérateur
