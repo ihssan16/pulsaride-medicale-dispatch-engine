@@ -66,10 +66,10 @@ cd ..
 # Compiler et tester le backend
 cd backend
 mvn clean test
-mvn package
 cd ..
 
 # Lancer PostgreSQL + Redis + API
+# L'image API compile le backend Spring Boot dans Docker.
 docker compose up --build
 ```
 
