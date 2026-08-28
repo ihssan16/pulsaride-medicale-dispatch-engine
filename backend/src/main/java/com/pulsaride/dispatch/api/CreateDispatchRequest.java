@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 public record CreateDispatchRequest(
         @NotBlank String patientId,
         @NotBlank String patientText,
-        @NotBlank String specialtyHint,
-        @Min(0) @Max(3) int urgencyScore
+        String specialtyHint,
+        @Min(0) @Max(3) Integer urgencyScore
 ) {
 }

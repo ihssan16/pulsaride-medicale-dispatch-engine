@@ -64,4 +64,34 @@ class DemandServiceTests {
                 });
         verify(redisService).enqueue(created);
     }
+
+    @Test
+    void automaticallyTriagesRequestWhenSpecialtyOrUrgencyIsMissing() {
+        var created = demandService.create(new CreateDispatchRequest(
+                "patient_auto_triage",
+                "Douleur thoracique avec essoufflement",
+                null,
+                null
+        ));
+
+        assertThat(created.getStatus()).isEqualTo(RequestStatus.PENDING);
+        assertThat(created.getSpecialtyHint()).isEqualTo("cardiologie");
+        assertThat(created.getUrgencyScore()).isEqualTo(3);
+        assertThat(transitionRepository.findByRequestIdOrderByOccurredAtAsc(created.getId()))
+                .hasSize(2)
+                .anySatisfy(transition -> assertThat(transition.getReason())
+                        .isEqualTo("Automatic AI triage applied during request creation"));
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc(created.getId()))
+                .hasSize(2)
+                .anySatisfy(event -> {
+                    assertThat(event.getEventType()).isEqualTo(EventOutboxService.REQUEST_TRIAGED);
+                    assertThat(event.getProducer()).isEqualTo("ai-triage-service");
+                    assertThat(event.getPayloadJson()).contains(
+                            "\"urgencyScore\":3",
+                            "\"specialtyHint\":\"cardiologie\"",
+                            "\"triggeredRules\":[\"LOCAL_RULES\"]"
+                    );
+                });
+        verify(redisService).enqueue(created);
+    }
 }

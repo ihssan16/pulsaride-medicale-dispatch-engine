@@ -15,7 +15,7 @@ remaining services are physically extracted.
 | `POST /api/v2/professionals` | Professional/availability setup |
 | `GET /api/v2/professionals` | Professional listing |
 | `PUT /api/v2/professionals/{id}/status` | Professional lifecycle |
-| `POST /api/v2/requests` | Demand Service request creation + `request.created.v1` outbox event |
+| `POST /api/v2/requests` | Demand Service request creation + optional automatic AI triage + outbox events |
 | `GET /api/v2/requests/{id}` | Demand/request read |
 | `POST /api/v2/requests/{id}/triage` | Request-bound AI triage + `request.triaged.v1` outbox event |
 | `GET /api/v2/requests/{id}/assignments` | Assignment history |
@@ -120,6 +120,20 @@ Historical aliases:
 `POST /requests`
 
 Request body:
+```json
+{
+  "patientId": "patient_demo",
+  "patientText": "wldi chrab dawa bzzaf w kayt9aya"
+}
+```
+
+When `specialtyHint` or `urgencyScore` is missing, the backend automatically
+runs AI triage, stores the inferred values, writes `request.created.v1`, and
+writes `request.triaged.v1`. This is the recommended live-demo path.
+
+You can still provide explicit triage fields when you want to bypass automatic
+triage during controlled tests:
+
 ```json
 {
   "patientId": "patient_demo",

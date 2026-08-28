@@ -313,6 +313,36 @@ class DispatchApiIntegrationTests {
     }
 
     @Test
+    void apiV2RequestCreationAutomaticallyTriagesWhenOnlyPatientTextIsProvided() throws Exception {
+        String response = mockMvc.perform(post("/api/v2/requests")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                  "patientId": "api_v2_patient_auto_triage",
+                                  "patientText": "wldi chrab dawa bzzaf w kayt9aya"
+                                }
+                                """))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.status").value("PENDING"))
+                .andExpect(jsonPath("$.specialtyHint").value("urgence"))
+                .andExpect(jsonPath("$.urgencyScore").value(3))
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        String requestId = objectMapper.readTree(response).get("id").asText();
+
+        assertThat(outboxEventRepository.findByAggregateIdOrderByOccurredAtAsc(requestId))
+                .hasSize(2)
+                .anySatisfy(event -> {
+                    assertThat(event.getEventType()).isEqualTo("request.triaged.v1");
+                    assertThat(event.getPayloadJson()).contains(
+                            "\"specialtyHint\":\"urgence\"",
+                            "\"urgencyScore\":3"
+                    );
+                });
+    }
+
+    @Test
     void availabilityEndpointsReflectProfessionalLifecycle() throws Exception {
         createProfessional("api_pro_cardio_1", "cardiologie");
         createProfessional("api_pro_cardio_2", "cardiologie");

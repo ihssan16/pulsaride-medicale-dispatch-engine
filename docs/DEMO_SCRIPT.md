@@ -54,9 +54,7 @@ REQUEST_ID=$(curl -s -X POST http://localhost:8080/requests \
   -H "Content-Type: application/json" \
   -d '{
     "patientId": "patient_demo",
-    "patientText": "Mon enfant a de la fièvre depuis 3 jours, 38.5°C.",
-    "specialtyHint": "pediatrie",
-    "urgencyScore": 2
+    "patientText": "wldi chrab dawa bzzaf w kayt9aya"
   }' | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')
 
 echo "Request ID: $REQUEST_ID"

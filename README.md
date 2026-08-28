@@ -130,13 +130,15 @@ REQUEST_ID=$(curl -s -X POST http://localhost:8080/requests \
   -H "Content-Type: application/json" \
   -d '{
     "patientId": "patient_demo",
-    "patientText": "J ai des palpitations depuis deux jours.",
-    "specialtyHint": "cardiologie",
-    "urgencyScore": 3
+    "patientText": "wldi chrab dawa bzzaf w kayt9aya"
   }' | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')
 
-curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S3"
+curl -X POST "http://localhost:8080/dispatch/${REQUEST_ID}?strategy=S4"
 ```
+
+If `specialtyHint` or `urgencyScore` is omitted, the backend runs AI triage
+automatically before queueing the request. You can still provide those fields
+explicitly for deterministic strategy tests.
 
 ## Endpoints principaux
 - `GET /health`
