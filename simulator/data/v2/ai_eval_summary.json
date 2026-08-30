@@ -1,6 +1,6 @@
 {
   "baseUrl": "http://169.58.220.149:8080",
-  "generatedAt": "2026-08-30T12:16:54Z",
+  "generatedAt": "2026-08-30T13:13:14Z",
   "provenance": [
     {
       "dataset": "darija_holdout",
@@ -80,30 +80,30 @@
     "apiSuccessRatePct": 100.0
   },
   "latencyMs": {
-    "avg": 241.4,
-    "p50": 199.28,
-    "p95": 584.43,
-    "p99": 988.09,
-    "max": 1267.78
+    "avg": 249.49,
+    "p50": 200.07,
+    "p95": 603.04,
+    "p99": 960.56,
+    "max": 1913.32
   },
   "specialty": {
     "overall": {
-      "n": 1188,
-      "accuracy_pct": 52.53,
-      "macro_f1_pct": 44.81,
-      "weighted_f1_pct": 55.42,
+      "n": 1134,
+      "accuracy_pct": 55.82,
+      "macro_f1_pct": 47.87,
+      "weighted_f1_pct": 58.08,
       "per_label": {
         "cardiologie": {
-          "precision_pct": 82.79,
-          "recall_pct": 78.91,
-          "f1_pct": 80.8,
-          "support": 128
+          "precision_pct": 82.26,
+          "recall_pct": 82.26,
+          "f1_pct": 82.26,
+          "support": 124
         },
         "dermatologie": {
-          "precision_pct": 71.43,
-          "recall_pct": 26.32,
-          "f1_pct": 38.46,
-          "support": 95
+          "precision_pct": 34.48,
+          "recall_pct": 12.2,
+          "f1_pct": 18.02,
+          "support": 82
         },
         "gastroenterologie": {
           "precision_pct": 0.0,
@@ -112,22 +112,22 @@
           "support": 0
         },
         "generaliste": {
-          "precision_pct": 29.36,
-          "recall_pct": 31.22,
-          "f1_pct": 30.26,
-          "support": 221
+          "precision_pct": 37.23,
+          "recall_pct": 32.11,
+          "f1_pct": 34.48,
+          "support": 218
         },
         "gynecologie": {
-          "precision_pct": 92.59,
-          "recall_pct": 39.68,
-          "f1_pct": 55.56,
-          "support": 126
+          "precision_pct": 94.44,
+          "recall_pct": 40.8,
+          "f1_pct": 56.98,
+          "support": 125
         },
         "neurologie": {
-          "precision_pct": 29.41,
-          "recall_pct": 78.95,
-          "f1_pct": 42.86,
-          "support": 19
+          "precision_pct": 90.91,
+          "recall_pct": 66.67,
+          "f1_pct": 76.92,
+          "support": 15
         },
         "ophtalmologie": {
           "precision_pct": 94.03,
@@ -136,73 +136,67 @@
           "support": 126
         },
         "orl": {
-          "precision_pct": 76.92,
-          "recall_pct": 18.02,
-          "f1_pct": 29.2,
-          "support": 111
+          "precision_pct": 75.0,
+          "recall_pct": 24.14,
+          "f1_pct": 36.52,
+          "support": 87
         },
         "pediatrie": {
-          "precision_pct": 56.91,
-          "recall_pct": 72.3,
-          "f1_pct": 63.69,
-          "support": 148
+          "precision_pct": 61.97,
+          "recall_pct": 90.41,
+          "f1_pct": 73.54,
+          "support": 146
         },
         "pneumologie": {
-          "precision_pct": 7.94,
+          "precision_pct": 7.14,
           "recall_pct": 83.33,
-          "f1_pct": 14.49,
+          "f1_pct": 13.16,
           "support": 6
         },
         "psychiatrie": {
-          "precision_pct": 100.0,
-          "recall_pct": 83.93,
-          "f1_pct": 91.26,
-          "support": 168
+          "precision_pct": 99.3,
+          "recall_pct": 85.45,
+          "f1_pct": 91.86,
+          "support": 165
         },
         "urgence": {
-          "precision_pct": 15.82,
+          "precision_pct": 15.56,
           "recall_pct": 70.0,
-          "f1_pct": 25.81,
+          "f1_pct": 25.45,
           "support": 40
         }
       }
     },
     "byDataset": {
       "external_hf_arabic": {
-        "n": 162,
-        "accuracy_pct": 51.23,
-        "macro_f1_pct": 36.91,
-        "weighted_f1_pct": 60.68,
+        "n": 141,
+        "accuracy_pct": 50.35,
+        "macro_f1_pct": 36.96,
+        "weighted_f1_pct": 60.41,
         "per_label": {
           "cardiologie": {
             "precision_pct": 100.0,
-            "recall_pct": 28.57,
-            "f1_pct": 44.44,
+            "recall_pct": 42.86,
+            "f1_pct": 60.0,
             "support": 7
           },
           "dermatologie": {
-            "precision_pct": 60.87,
-            "recall_pct": 70.0,
-            "f1_pct": 65.12,
-            "support": 20
-          },
-          "gastroenterologie": {
             "precision_pct": 0.0,
             "recall_pct": 0.0,
             "f1_pct": 0.0,
-            "support": 0
+            "support": 8
           },
           "generaliste": {
             "precision_pct": 100.0,
-            "recall_pct": 7.69,
-            "f1_pct": 14.29,
-            "support": 13
+            "recall_pct": 10.0,
+            "f1_pct": 18.18,
+            "support": 10
           },
           "gynecologie": {
             "precision_pct": 100.0,
-            "recall_pct": 26.92,
-            "f1_pct": 42.42,
-            "support": 26
+            "recall_pct": 32.0,
+            "f1_pct": 48.48,
+            "support": 25
           },
           "neurologie": {
             "precision_pct": 0.0,
@@ -217,16 +211,16 @@
             "support": 14
           },
           "orl": {
-            "precision_pct": 75.0,
+            "precision_pct": 60.0,
             "recall_pct": 30.0,
-            "f1_pct": 42.86,
+            "f1_pct": 40.0,
             "support": 10
           },
           "pediatrie": {
             "precision_pct": 90.0,
-            "recall_pct": 42.86,
-            "f1_pct": 58.06,
-            "support": 21
+            "recall_pct": 47.37,
+            "f1_pct": 62.07,
+            "support": 19
           },
           "pneumologie": {
             "precision_pct": 0.0,
@@ -235,10 +229,10 @@
             "support": 0
           },
           "psychiatrie": {
-            "precision_pct": 100.0,
-            "recall_pct": 70.83,
-            "f1_pct": 82.93,
-            "support": 48
+            "precision_pct": 97.14,
+            "recall_pct": 75.56,
+            "f1_pct": 85.0,
+            "support": 45
           },
           "urgence": {
             "precision_pct": 0.0,
@@ -249,40 +243,40 @@
         }
       },
       "external_hf_darija": {
-        "n": 203,
-        "accuracy_pct": 86.21,
-        "macro_f1_pct": 79.9,
-        "weighted_f1_pct": 85.36,
+        "n": 193,
+        "accuracy_pct": 89.12,
+        "macro_f1_pct": 76.51,
+        "weighted_f1_pct": 88.72,
         "per_label": {
           "cardiologie": {
-            "precision_pct": 100.0,
-            "recall_pct": 80.0,
-            "f1_pct": 88.89,
-            "support": 25
+            "precision_pct": 95.24,
+            "recall_pct": 95.24,
+            "f1_pct": 95.24,
+            "support": 21
           },
           "dermatologie": {
-            "precision_pct": 91.67,
-            "recall_pct": 91.67,
-            "f1_pct": 91.67,
-            "support": 12
+            "precision_pct": 90.91,
+            "recall_pct": 90.91,
+            "f1_pct": 90.91,
+            "support": 11
           },
           "generaliste": {
-            "precision_pct": 50.0,
-            "recall_pct": 12.5,
-            "f1_pct": 20.0,
+            "precision_pct": 100.0,
+            "recall_pct": 25.0,
+            "f1_pct": 40.0,
             "support": 8
           },
           "gynecologie": {
-            "precision_pct": 83.33,
+            "precision_pct": 86.96,
             "recall_pct": 100.0,
-            "f1_pct": 90.91,
+            "f1_pct": 93.02,
             "support": 20
           },
           "neurologie": {
-            "precision_pct": 65.22,
-            "recall_pct": 78.95,
-            "f1_pct": 71.43,
-            "support": 19
+            "precision_pct": 100.0,
+            "recall_pct": 66.67,
+            "f1_pct": 80.0,
+            "support": 15
           },
           "ophtalmologie": {
             "precision_pct": 91.43,
@@ -291,15 +285,15 @@
             "support": 32
           },
           "orl": {
-            "precision_pct": 77.27,
-            "recall_pct": 80.95,
-            "f1_pct": 79.07,
-            "support": 21
+            "precision_pct": 78.26,
+            "recall_pct": 90.0,
+            "f1_pct": 83.72,
+            "support": 20
           },
           "pediatrie": {
-            "precision_pct": 87.88,
-            "recall_pct": 85.29,
-            "f1_pct": 86.57,
+            "precision_pct": 88.24,
+            "recall_pct": 88.24,
+            "f1_pct": 88.24,
             "support": 34
           },
           "pneumologie": {
@@ -313,14 +307,20 @@
             "recall_pct": 96.15,
             "f1_pct": 98.04,
             "support": 26
+          },
+          "urgence": {
+            "precision_pct": 0.0,
+            "recall_pct": 0.0,
+            "f1_pct": 0.0,
+            "support": 0
           }
         }
       },
       "pulsaride_synthetic": {
-        "n": 823,
-        "accuracy_pct": 44.47,
-        "macro_f1_pct": 33.67,
-        "weighted_f1_pct": 43.22,
+        "n": 800,
+        "accuracy_pct": 48.75,
+        "macro_f1_pct": 38.72,
+        "weighted_f1_pct": 46.93,
         "per_label": {
           "cardiologie": {
             "precision_pct": 79.0,
@@ -341,9 +341,9 @@
             "support": 0
           },
           "generaliste": {
-            "precision_pct": 28.88,
+            "precision_pct": 36.22,
             "recall_pct": 33.5,
-            "f1_pct": 31.02,
+            "f1_pct": 34.81,
             "support": 200
           },
           "gynecologie": {
@@ -351,12 +351,6 @@
             "recall_pct": 28.75,
             "f1_pct": 44.66,
             "support": 80
-          },
-          "neurologie": {
-            "precision_pct": 0.0,
-            "recall_pct": 0.0,
-            "f1_pct": 0.0,
-            "support": 0
           },
           "ophtalmologie": {
             "precision_pct": 100.0,
@@ -368,12 +362,12 @@
             "precision_pct": 0.0,
             "recall_pct": 0.0,
             "f1_pct": 0.0,
-            "support": 80
+            "support": 57
           },
           "pediatrie": {
-            "precision_pct": 47.59,
-            "recall_pct": 74.19,
-            "f1_pct": 57.98,
+            "precision_pct": 55.03,
+            "recall_pct": 100.0,
+            "f1_pct": 70.99,
             "support": 93
           },
           "psychiatrie": {
@@ -395,17 +389,12 @@
       {
         "expected": "generaliste",
         "predicted": "urgence",
-        "count": 107
+        "count": 109
       },
       {
         "expected": "dermatologie",
         "predicted": "pediatrie",
         "count": 48
-      },
-      {
-        "expected": "orl",
-        "predicted": "generaliste",
-        "count": 41
       },
       {
         "expected": "ophtalmologie",
@@ -428,24 +417,24 @@
         "count": 26
       },
       {
-        "expected": "pediatrie",
-        "predicted": "generaliste",
-        "count": 25
-      },
-      {
-        "expected": "orl",
-        "predicted": "neurologie",
-        "count": 21
-      },
-      {
         "expected": "gynecologie",
         "predicted": "urgence",
-        "count": 21
+        "count": 22
       },
       {
         "expected": "orl",
         "predicted": "urgence",
         "count": 21
+      },
+      {
+        "expected": "orl",
+        "predicted": "dermatologie",
+        "count": 18
+      },
+      {
+        "expected": "orl",
+        "predicted": "generaliste",
+        "count": 18
       },
       {
         "expected": "cardiologie",
@@ -465,6 +454,11 @@
       {
         "expected": "psychiatrie",
         "predicted": "pneumologie",
+        "count": 12
+      },
+      {
+        "expected": "psychiatrie",
+        "predicted": "cardiologie",
         "count": 12
       }
     ]

@@ -19,25 +19,25 @@ This evaluation measures the integrated Pulsaride endpoint `POST /ai/triage`, in
 ## Summary Metrics
 
 - API success rate: **100.0%** (1386/1386).
-- Specialty accuracy: **52.53%** on 1188 labelled cases.
-- Specialty macro F1: **44.81%**.
-- Specialty weighted F1: **55.42%**.
+- Specialty accuracy: **55.82%** on 1134 labelled cases.
+- Specialty macro F1: **47.87%**.
+- Specialty weighted F1: **58.08%**.
 - Urgency exact match: **39.7%** on 1146 labelled cases.
 - Red-flag recall: **100.0%** (86/86, target >= 90%).
-- Latency avg/P50/P95/P99: **241.4 / 199.28 / 584.43 / 988.09 ms**.
+- Latency avg/P50/P95/P99: **249.49 / 200.07 / 603.04 / 960.56 ms**.
 
 ## Top Specialty Confusions
 
-- Expected `generaliste`, predicted `urgence`: 107 cases.
+- Expected `generaliste`, predicted `urgence`: 109 cases.
 - Expected `dermatologie`, predicted `pediatrie`: 48 cases.
-- Expected `orl`, predicted `generaliste`: 41 cases.
 - Expected `ophtalmologie`, predicted `generaliste`: 34 cases.
 - Expected `gynecologie`, predicted `generaliste`: 34 cases.
 - Expected `ophtalmologie`, predicted `pediatrie`: 28 cases.
 - Expected `generaliste`, predicted `gastroenterologie`: 26 cases.
-- Expected `pediatrie`, predicted `generaliste`: 25 cases.
-- Expected `orl`, predicted `neurologie`: 21 cases.
-- Expected `gynecologie`, predicted `urgence`: 21 cases.
+- Expected `gynecologie`, predicted `urgence`: 22 cases.
+- Expected `orl`, predicted `urgence`: 21 cases.
+- Expected `orl`, predicted `dermatologie`: 18 cases.
+- Expected `orl`, predicted `generaliste`: 18 cases.
 
 ## Interpretation
 
