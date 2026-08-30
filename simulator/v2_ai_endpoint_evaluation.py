@@ -52,6 +52,9 @@ PULSARIDE_SPECIALTIES = {
     "gynecologie",
     "ophtalmologie",
     "urgence",
+    "gastroenterologie",
+    "neurologie",
+    "pneumologie",
 }
 
 SPECIALTY_MAP = {
@@ -61,6 +64,7 @@ SPECIALTY_MAP = {
     "Family Medicine": "generaliste",
     "Cardiology": "cardiologie",
     "Pediatric Medicine": "pediatrie",
+    "pediatric_medicine": "pediatrie",
     "Pediatrics": "pediatrie",
     "Dermatology": "dermatologie",
     "Cosmetic Dermatology": "dermatologie",
@@ -71,9 +75,16 @@ SPECIALTY_MAP = {
     "Obstetrics and Gynecology": "gynecologie",
     "Gynecology": "gynecologie",
     "Ophthalmology": "ophtalmologie",
+    "ophthalmology": "ophtalmologie",
+    "ophthalmologist": "ophtalmologie",
     "Emergency Medicine": "urgence",
     "Pulmonology": "generaliste",
     "Gastroenterology": "generaliste",
+    "gastroenterologie": "gastroenterologie",
+    "Neurology": "neurologie",
+    "neurologie": "neurologie",
+    "Pulmonology": "pneumologie",
+    "pneumologie": "pneumologie",
 }
 
 EXTERNAL_CATEGORY_MAP = {
@@ -416,8 +427,9 @@ def summarize(results: list[dict[str, Any]], provenance: list[dict[str, Any]], b
     for row in ok_results:
         expected = row["expected"]
         prediction = row["prediction"]
-        if expected.get("specialtyHint") and prediction.get("specialtyHint"):
-            pair = (expected["specialtyHint"], prediction["specialtyHint"])
+        predicted_specialty = normalize_specialty(prediction.get("specialtyHint"))
+        if expected.get("specialtyHint") and predicted_specialty:
+            pair = (expected["specialtyHint"], predicted_specialty)
             specialty_pairs_by_dataset[row["dataset"]].append(pair)
             all_specialty_pairs.append(pair)
         if expected.get("urgencyScore") is not None and prediction.get("urgencyScore") is not None:
@@ -499,7 +511,7 @@ def summarize(results: list[dict[str, Any]], provenance: list[dict[str, Any]], b
 
 def plot_confusion(results: list[dict[str, Any]], output: Path) -> None:
     pairs = [
-        (row["expected"]["specialtyHint"], row["prediction"].get("specialtyHint"))
+        (row["expected"]["specialtyHint"], normalize_specialty(row["prediction"].get("specialtyHint")))
         for row in results
         if row["api"]["success"]
         and row["expected"].get("specialtyHint")

@@ -522,10 +522,11 @@ public class AiTriageService {
             case "neurology", "neurologie" -> "neurologie";
             case "obstetrics and gynecology", "obstetrics gynecology", "gynecology", "gynecologie",
                     "obstetrique", "obstetrique et gynecologie" -> "gynecologie";
-            case "pediatrics", "paediatrics", "pediatric", "pediatrie" -> "pediatrie";
+            case "pediatrics", "paediatrics", "pediatric", "pediatric medicine", "pediatrie" -> "pediatrie";
             case "psychiatry", "psychiatrie" -> "psychiatrie";
             case "pulmonology", "pneumologie" -> "pneumologie";
-            case "ent", "orl" -> "orl";
+            case "ent", "otorhinolaryngology", "otolaryngology", "ear nose throat", "orl" -> "orl";
+            case "ophthalmology", "ophthalmologist", "ophtalmology", "ophtalmologie" -> "ophtalmologie";
             case "radiology", "radiologie" -> "radiologie";
             case "emergency", "emergency medicine", "urgence", "medecine d urgence" -> "urgence";
             case "general practice", "generaliste", "general medicine", "medecine generale" -> "generaliste";
