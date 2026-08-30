@@ -41,6 +41,10 @@ EXTERNAL_SOURCE_URL = (
     "https://huggingface.co/datasets/Youssefx64/"
     "Medical-Consultation-Questions-in-Arabic/resolve/main/questions.csv"
 )
+EXTERNAL_DARIJA_ROWS_URL = (
+    "https://datasets-server.huggingface.co/rows?"
+    "dataset=BrainHealthAI/MedQADataDarijaSaad&config=default&split=test"
+)
 
 PULSARIDE_SPECIALTIES = {
     "generaliste",
@@ -110,12 +114,31 @@ EXTERNAL_CATEGORY_MAP = {
     "إسعاف أولي": "urgence",
 }
 
+EXTERNAL_DARIJA_SPECIALTY_MAP = {
+    "طب الأمراض الجلدية": "dermatologie",
+    "طب القلب والشرايين": "cardiologie",
+    "طب الأطفال": "pediatrie",
+    "طب الأعصاب": "neurologie",
+    "طب العيون": "ophtalmologie",
+    "الطب النفسي": "psychiatrie",
+    "الطب الباطني": "generaliste",
+    "الطب العام": "generaliste",
+    "طب الأذن والأنف والحنجرة": "orl",
+    "طب النساء والتوليد": "gynecologie",
+    "طب الأمراض الصدرية": "pneumologie",
+    "طب الجهاز الهضمي": "gastroenterologie",
+}
+
 URGENCY_MAP = {
     "unknown": None,
     "low": 1,
     "medium": 2,
     "high": 3,
     "critical": 3,
+    "faible": 1,
+    "moyen": 2,
+    "haute": 3,
+    "elevee": 3,
 }
 
 
@@ -299,6 +322,72 @@ def load_external_hf(max_cases: int = 240, per_category: int = 20) -> tuple[list
     provenance["usable_cases"] = len(cases)
     provenance["category_counts"] = dict(counts)
     provenance["normalized_output"] = str(external_json.relative_to(ROOT))
+    return cases, provenance
+
+
+def load_external_darija_hf(max_cases: int = 300, per_specialty: int = 35) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    provenance = {
+        "dataset": "external_hf_darija_medqa_test",
+        "repository": "https://huggingface.co/datasets/BrainHealthAI/MedQADataDarijaSaad",
+        "split": "test",
+        "selection": "Mapped supported Pulsaride specialties only; capped per specialty for balance.",
+    }
+
+    cases: list[dict[str, Any]] = []
+    counts: Counter[str] = Counter()
+    scanned = 0
+    total_rows = None
+    offset = 0
+    page_size = 100
+
+    try:
+        while True:
+            url = f"{EXTERNAL_DARIJA_ROWS_URL}&offset={offset}&length={page_size}"
+            with urllib.request.urlopen(url, timeout=30) as response:
+                payload = json.load(response)
+            total_rows = payload.get("num_rows_total", total_rows)
+            rows = payload.get("rows", [])
+            if not rows:
+                break
+            for item in rows:
+                scanned += 1
+                row = item.get("row", {})
+                specialty = (row.get("speciality") or "").strip()
+                expected_specialty = EXTERNAL_DARIJA_SPECIALTY_MAP.get(specialty)
+                if expected_specialty is None or counts[expected_specialty] >= per_specialty:
+                    continue
+                text = (row.get("question") or row.get("context_question") or "").strip()
+                if not text:
+                    continue
+                counts[expected_specialty] += 1
+                cases.append(
+                    make_case(
+                        dataset="external_hf_darija",
+                        source_id=f"test_row_{item.get('row_idx', scanned)}",
+                        text=text,
+                        expected_specialty=expected_specialty,
+                        expected_urgency=normalize_urgency(row.get("urgency")),
+                        language=row.get("language") or "Darija",
+                        case_type="external_darija_test",
+                        source_label="BrainHealthAI/MedQADataDarijaSaad",
+                    )
+                )
+                if len(cases) >= max_cases:
+                    break
+            if len(cases) >= max_cases or (total_rows is not None and offset + page_size >= total_rows):
+                break
+            offset += page_size
+    except Exception as exc:  # pragma: no cover - network failure path
+        provenance["download_error"] = str(exc)
+        return cases, provenance
+
+    external_json = DATA_DIR / "external_darija_medqa_eval.json"
+    external_json.write_text(json.dumps(cases, ensure_ascii=False, indent=2), encoding="utf-8")
+    provenance["scanned_rows"] = scanned
+    provenance["usable_cases"] = len(cases)
+    provenance["specialty_counts"] = dict(counts)
+    provenance["normalized_output"] = str(external_json.relative_to(ROOT))
+    provenance["source_rows_total"] = total_rows
     return cases, provenance
 
 
@@ -510,13 +599,13 @@ def summarize(results: list[dict[str, Any]], provenance: list[dict[str, Any]], b
 
 
 def plot_confusion(results: list[dict[str, Any]], output: Path) -> None:
-    pairs = [
-        (row["expected"]["specialtyHint"], normalize_specialty(row["prediction"].get("specialtyHint")))
-        for row in results
-        if row["api"]["success"]
-        and row["expected"].get("specialtyHint")
-        and row["prediction"].get("specialtyHint")
-    ]
+    pairs = []
+    for row in results:
+        if not row["api"]["success"] or not row["expected"].get("specialtyHint"):
+            continue
+        predicted = normalize_specialty(row["prediction"].get("specialtyHint"))
+        if predicted:
+            pairs.append((row["expected"]["specialtyHint"], predicted))
     labels = sorted({label for pair in pairs for label in pair})
     matrix = [[0 for _ in labels] for _ in labels]
     indexes = {label: index for index, label in enumerate(labels)}
@@ -713,6 +802,8 @@ def main() -> int:
     parser.add_argument("--max-holdout", type=int, default=0, help="0 means all available holdout cases.")
     parser.add_argument("--max-external", type=int, default=240)
     parser.add_argument("--external-per-category", type=int, default=20)
+    parser.add_argument("--max-external-darija", type=int, default=300)
+    parser.add_argument("--external-darija-per-specialty", type=int, default=35)
     parser.add_argument("--max-synthetic", type=int, default=840)
     args = parser.parse_args()
 
@@ -721,11 +812,21 @@ def main() -> int:
 
     holdout, holdout_provenance = load_darija_holdout(args.max_holdout or None)
     external, external_provenance = load_external_hf(args.max_external, args.external_per_category)
+    external_darija, external_darija_provenance = load_external_darija_hf(
+        args.max_external_darija,
+        args.external_darija_per_specialty,
+    )
     red_flags, redflag_provenance = load_red_flags()
     synthetic, synthetic_provenance = load_synthetic(args.max_synthetic or None)
 
-    cases = holdout + external + red_flags + synthetic
-    provenance = [holdout_provenance, external_provenance, redflag_provenance, synthetic_provenance]
+    cases = holdout + external + external_darija + red_flags + synthetic
+    provenance = [
+        holdout_provenance,
+        external_provenance,
+        external_darija_provenance,
+        redflag_provenance,
+        synthetic_provenance,
+    ]
     if not cases:
         print("No evaluation cases found.", file=sys.stderr)
         return 1
@@ -757,7 +858,7 @@ def main() -> int:
     summary = summarize(results, provenance, args.base_url.rstrip("/"))
 
     holdout_results = [row for row in results if row["dataset"].startswith("darija_")]
-    external_results = [row for row in results if row["dataset"] == "external_hf_arabic"]
+    external_results = [row for row in results if row["dataset"].startswith("external_hf_")]
     (DATA_DIR / "ai_eval_holdout_results.json").write_text(
         json.dumps(holdout_results, ensure_ascii=False, indent=2),
         encoding="utf-8",

@@ -1,0 +1,3902 @@
+[
+  {
+    "id": "external_hf_darija:test_row_2",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_2",
+    "text": "عندي جرح فودني. شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_6",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_6",
+    "text": "الريش اللي طاح من الصاروخ دخل فعيني وجعني بزاف",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_7",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_7",
+    "text": "شنو هو العلاج المناسب لمرض الانسداد الشرياني التاجي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_9",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_9",
+    "text": "شنو كيسبب الدموع؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_10",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_10",
+    "text": "بنتي عندها 4 سنين وعندها الغدة الدرقية، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_12",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_12",
+    "text": "كانحس بالملل والمشاعر الأخرى لي كتزعجني.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_15",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_15",
+    "text": "واش نقص البوتاسيوم والكالسيوم كايسبب التشنجات؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_16",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_16",
+    "text": "بغيت علاج للهالات السوداء.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_17",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_17",
+    "text": "عندي بقع كحلين تحت ضفر ليد ومعاهم أوجاع.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_19",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_19",
+    "text": "واش قرعة البريمولوت كتمنع الحمل؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_24",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_24",
+    "text": "شنو الأعراض ديال التهاب المستقيم؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_25",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_25",
+    "text": "شنو هي الآثار الجانبية المعروفة للارتجاع العصبي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_26",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_26",
+    "text": "شنو هي الطرق للدعوة للوعي بالصحة العقلية؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_28",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_28",
+    "text": "شنو هي الأسباب اللي كتخلي الشعر يتباطأ؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_29",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_29",
+    "text": "الضغط العالي كايسبب الدوخة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_30",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_30",
+    "text": "شنو هو علاج الشبكية بعد 10 سنين من التمزق؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_31",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_31",
+    "text": "البنت ديالي عندها خروج أسود ورجلين حمرين.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_32",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_32",
+    "text": "شنو هو التحليل لي كيبين بلي الصفراء طالعة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_33",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_33",
+    "text": "واش البكتيريا البولية كتأثر على الإنجاب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_34",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_34",
+    "text": "عندي وجع فوق الراس مع خدران فاليد اليمنى.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_37",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_37",
+    "text": "عندي شعر جاف ومتقصف، شنو الحل؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_42",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_42",
+    "text": "كيفاش نعتني بجهازي العصبي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_43",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_43",
+    "text": "طهور تورم وانتفاخ فـ ضهري؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_44",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_44",
+    "text": "عيني اليسار كايدمعو. واش هادا مرض؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_45",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_45",
+    "text": "عندي ألم فحلقي ونزيف دموي.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_46",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_46",
+    "text": "كيفاش كنشوفو شحال من واحد كيتهدد بالصمطة فشي جهاز إيكو؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_48",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_48",
+    "text": "عندي حريق فالصدر، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_49",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_49",
+    "text": "كيفاش نتعاملو مع الحنين للدار؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_50",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_50",
+    "text": "عندي وجع فالحناكب وكنحس بالقي ومرتبق. واش هادشي خطير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_53",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_53",
+    "text": "عندي ألم فالصدر.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_54",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_54",
+    "text": "واش الصداع التشنجي مرض مزمن ولا حاد؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_56",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_56",
+    "text": "ما كاينش وضوح للرؤية فالعيون اليمينية؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_57",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_57",
+    "text": "علاش السكر كيزيد ملي الواحد مقلق؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_58",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_58",
+    "text": "شنو هو علاج التهاب الحلق؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_60",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_60",
+    "text": "كنت كنستعمل الأكسليتون وركبت اللقاح، واش هاد الشي طبيعي أنه يسبب نزيف؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_62",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_62",
+    "text": "واش العصب السمبتاوي يقدر يتجدد بعد سنتين؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_64",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_64",
+    "text": "كنضن عندي اضطراب الشخصية الهستيري، واش كاين علاج؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_65",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_65",
+    "text": "ولدي عندو حمى مرتفعة وكيتعصر فكرشو، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_67",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_67",
+    "text": "واش مرض الصرع عندو علاج نهائي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_69",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_69",
+    "text": "عندي الغاز بزاف والانتفاخ والضيق؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_70",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_70",
+    "text": "عندي وجع فالودن.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_71",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_71",
+    "text": "كيفاش كينتقل فيروس سي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_76",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_76",
+    "text": "بنتي ديما عندها سخانة.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_81",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_81",
+    "text": "شنو هو الحل لارتفاع الضغط؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_83",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_83",
+    "text": "كنفكر ننتاحر.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_84",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_84",
+    "text": "عندي غشاوة فالعين اليسرى.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_85",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_85",
+    "text": "عندي زهايمر و ماعرفتش شنو ندير.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_87",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_87",
+    "text": "شنو هو فقدان الشوف المفاجئ؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_88",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_88",
+    "text": "واش كاينين تمارين تخفف ألم الركبة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_89",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_89",
+    "text": "عندي حزاز فالفم والجسم، واش كاين شي علاج؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_90",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_90",
+    "text": "كيفاش نقدر نحيد الشعر نهائيا؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_97",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_97",
+    "text": "واخا مضادات الاكتئاب ما جابو نتيجة.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_99",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_99",
+    "text": "مزيان للحامل تاكل التونة فالاول ديال الشهر؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_101",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_101",
+    "text": "عندي مرض رهاب الجماع، عافاك ساعدني باش نحل المشكل ديالي.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_103",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_103",
+    "text": "واش زيت الخروع كيساعد فكبر الصدر؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_104",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_104",
+    "text": "واحد الدراري عندو سبعة شهور مصاب بسعال بلا سيلان.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_107",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_107",
+    "text": "هاد الدوا كيسبب التهاب الكبد؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_109",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_109",
+    "text": "بغيت علاج للعصب البصري لي ضاع ليا النضر.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_110",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_110",
+    "text": "كيفاش كاينعالج ضعف القلب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_111",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_111",
+    "text": "واش القطوط هوما سبب كورونا؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_114",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_114",
+    "text": "عندي وجع فالصدر و الظهر.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_115",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_115",
+    "text": "عندي جفاف ف عيني، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_116",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_116",
+    "text": "عندي الحمرة فالعين بزاف.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_118",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_118",
+    "text": "عندي نوبات الصرع، والدوا ماخدامش. شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_120",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_120",
+    "text": "كان ديما كا نحس براسي مريضا، خاصة قبل من النعاس.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pneumologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_123",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_123",
+    "text": "كيفاش نحيدو آثار الجروح القديمة من الوجه؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_126",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_126",
+    "text": "ولدي عندو ورم فالجفن ديالو هادي شهراين.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_128",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_128",
+    "text": "شنو هو أحسن علاج لارتجاع المرئ؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_129",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_129",
+    "text": "شنو هي المخاطر ديال العلاج بالتشكيل الكهربائي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_131",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_131",
+    "text": "شنو هو الأفضل للناس اللي دارو عملية القسطرة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_132",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_132",
+    "text": "شنو هي العواقب من معاشرة الراجل لمراتو فوقت الحيض؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_133",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_133",
+    "text": "شحال ديال الوقت كياخد الكبد باش يرجع الخلايا ديالو؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_134",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_134",
+    "text": "واش ارتفاع ضغط الدم الحمضي عندو شي عواقب سلبية؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_135",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_135",
+    "text": "عندي خدران ووخز فنصف جسدي، وكنعاني من الربو.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pneumologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_136",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_136",
+    "text": "كيفاش نقصو الإزعاج ديال الأذن عند الدراري؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_140",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_140",
+    "text": "المص في البطن مع السعال، شنو السبب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_141",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_141",
+    "text": "واش هاد القياس ديال الضغط ديال الدم عادي؟ 130/74.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_144",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_144",
+    "text": "واش كتعاود الرواح من بعد ما تشافات؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_145",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_145",
+    "text": "شنو أحسن كريم لتفتيح الشفاه؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_146",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_146",
+    "text": "بغيت صابون مزيان لحب الشباب، شنو تنصحني؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_147",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_147",
+    "text": "ولدي عندو 8 شهور وكيعاني من أسهال، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_148",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_148",
+    "text": "حرق جانبي الرقبة، درت راديو وما لقيت حتى شي حاجة.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_152",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_152",
+    "text": "ولدي صعيب عليه يعض الماكلة وعندو عشر سنين.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_153",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_153",
+    "text": "عندي 23 عام و كاين عندي مشكل ف اليدين و صعيب نتحرك.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_155",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_155",
+    "text": "كيفاش نمنعو الحمل بلا ما نضربو الصحة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_156",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_156",
+    "text": "شنو هو علاج عرق النسا؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_159",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_159",
+    "text": "عيني كتضرني وفيهم حمرة.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_160",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_160",
+    "text": "عدد ضربات القلب الطبيعي شحال؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_161",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_161",
+    "text": "شنو هي الأعراض الجانبية ديال دوا (ساب) للدراري الصغار؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_166",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_166",
+    "text": "واحد الشخص عندو جلطة فالدماغ، واش مزيان ليه يحرك راسو؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_168",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_168",
+    "text": "كيفاش كايدير مع الشيب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_169",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_169",
+    "text": "كاين شي واحد كيحس بالغيرة من راسو؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_170",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_170",
+    "text": "ابنتي عندها سبعة شهور دابا. فوقتاش يمكن لي نقدم لابنتي البيض؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_171",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_171",
+    "text": "واش يمكن نستخدم مرهم التريسايكلين للأنف؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_172",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_172",
+    "text": "عندي برد والتهاب فالحلق، وداكشي أثر على ريحة الماكلة. شنو هو الحل؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_175",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_175",
+    "text": "شنو هو العلاج ديال البواسير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_176",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_176",
+    "text": "شنو أحسن مضاد حيوي لنزول اللوز؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_178",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_178",
+    "text": "شنو هي العلاجات لكلف؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_179",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_179",
+    "text": "علاقتو مع السرطان ديال الكبدة فالمرحلة المتقدمة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_180",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_180",
+    "text": "عطس بزاف و بدا كيهضر بزاف.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_182",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_182",
+    "text": "واش ممكن يصاب الطفل بالتهاب الحلق عند التسنين؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_184",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_184",
+    "text": "التباين في نبضات القلب.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_186",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_186",
+    "text": "واش العرق كيسبب التهاب اللوزتين؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_187",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_187",
+    "text": "عندي صدري صغير وبغيت نكبره.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_189",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_189",
+    "text": "شنو هو علاج لحب الشباب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_190",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_190",
+    "text": "عندي صعوبة فالتنفس وكنحس براسي عيان.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_191",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_191",
+    "text": "عندي ظباب فالعيون.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_192",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_192",
+    "text": "واش التعرق كيأثر على كمية البول عند الدراري الصغار؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_193",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_193",
+    "text": "شحال كاتخدم الحجامة ف مرض التصلب اللويحي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_194",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_194",
+    "text": "كاينين صداع و كايضرني راصي فالحلق.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_196",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_196",
+    "text": "عندي احمرار فالعين ملي كنستعمل تيليفوني، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_202",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_202",
+    "text": "ولدي عندو 10 سنين و كيتبول بلا ما يحس، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_204",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_204",
+    "text": "شنو هوما الأسباب ديال الرعاف اليومي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_205",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_205",
+    "text": "شحال كياخد الوقت غضروف الأنف باش يتصلح؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_206",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_206",
+    "text": "واش استعمال كريمات الوجه مضر؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_207",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_207",
+    "text": "سلام، واش كاين شي ضرر من دوا بيبي كال لولدي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_208",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_208",
+    "text": "واش كاين شي دوا ديال شيب مبكر؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_209",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_209",
+    "text": "كيفاش نمنع الشيب المبكر؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_210",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_210",
+    "text": "واش متلازمة العيون ديال دوان كتنتقل للولاد؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_211",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_211",
+    "text": "واش كاين شي علامات ديال القولون العصبي فاش كتخرج الدم مع البراز؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_212",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_212",
+    "text": "والدي كيعاني من التهاب فالتنفس، واش كاين مشكل مع الدوا؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pneumologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_213",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_213",
+    "text": "واش الوزن ديال بنتي لي عندها 7 أشهر مزيان؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_214",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_214",
+    "text": "شنو هو الطعام المسموح للأرضع فشهر السابع؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_216",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_216",
+    "text": "عندي تمنميل تحت عيني كيولي كبر مع الوقت.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_218",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_218",
+    "text": "واش كا يضر الكفتة الحمرا و الماكلة الحارة للصحة ديال القلب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_219",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_219",
+    "text": "شنو هو العلاج الجديد لمرض الصرع عند الدراري؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_220",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_220",
+    "text": "عندي مشكل فوجه وكتخرج ليا لعيبات وتقشر.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_221",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_221",
+    "text": "عندي صداع وكندير دوخة. شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_224",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_224",
+    "text": "كيفاش نقدر نبعد على التدخين؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_226",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_226",
+    "text": "واش المرا اللي عندها السمنة تقدر تاكل باراسيتامول؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_227",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_227",
+    "text": "ولدي عندو بلغم وكيتختنق ملي كيحاول ياكل.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_228",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_228",
+    "text": "شنو هو علاج الوسواس الخايب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_232",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_232",
+    "text": "عندي مرض جلدي ما عرفتش سميته من القط.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_233",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_233",
+    "text": "شنو الأضرار اللي كيدير الكحول فالتنظيف؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_234",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_234",
+    "text": "كيفاش نحيد شعر الجسم بلا ماكينة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_236",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_236",
+    "text": "عندي مشكل نزيف الدم من شهرين هادي.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_238",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_238",
+    "text": "الطفل عندو سعال شديد.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_241",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_241",
+    "text": "واش كاين شي علاج لمسامات الوجه؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_242",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_242",
+    "text": "كنت كنستعمل الترمادول يوميا وبغيت نوقف.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_244",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_244",
+    "text": "كيفاش نحيد التخمة من الرضيع لي عندو شهرين؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_245",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_245",
+    "text": "الضغط ما مرتابطش وأنا كناخد الدوا.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_249",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_249",
+    "text": "عندي حكة فالسرة والرية كحلة.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_253",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_253",
+    "text": "شنو هو العلاج اللي كيناسب التهاب الجفن المزمن؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_255",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_255",
+    "text": "شعري كايطيح بزاف، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_256",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_256",
+    "text": "واش التوتر كايجيب الصداع؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_257",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_257",
+    "text": "عندي قشور بيضاء فوجه، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_258",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_258",
+    "text": "واش كاين علاج نهائي لقرنية عاوجة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_265",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_265",
+    "text": "شنو هو اضطراب ما بعد الصدمة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_266",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_266",
+    "text": "علاش طلع ليه الضغط؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_268",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_268",
+    "text": "واش المشروبات الغازية ضارة بالدراري الصغار؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_269",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_269",
+    "text": "كنتخلع ملي كنهضر مع الناس.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_270",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_270",
+    "text": "عندي سرعة فالغضب وكنحس بالوحدة.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_271",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_271",
+    "text": "كانعاني من تعرق فاليدين والرجلين. واش عندك شي حل؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_275",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_275",
+    "text": "ولدي عندو 5 أسابيع وكيعاني من بزاف ديال الأمراض.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_276",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_276",
+    "text": "شنو هي أفضل طريقة للتعامل مع الأطفال لي كيعانيو من اضطرابات القلق؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_282",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_282",
+    "text": "شنو السبب ديال ألم البطن؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_287",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_287",
+    "text": "عندي وجع فالجبهة والعينين.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_288",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_288",
+    "text": "عندي ألم فالقلب وصعوبة فالتنفس. شنو السبب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_289",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_289",
+    "text": "كنت كانعاني من هجمات الخوف. شنو هو السبب الرئيسي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_290",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_290",
+    "text": "واش كينفع الأسبرين فصداع النص؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_292",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_292",
+    "text": "شنو هو العلاج ديال تساقط الشعر المبكر؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_293",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_293",
+    "text": "شنو هو العلاج ديال تورم القضيب عند دري عندو ربعة شهور؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_294",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_294",
+    "text": "كيفاش نعرف واش الأعراض ديالي هي أعراض جلطة الدم؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_295",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_295",
+    "text": "شنو هو السبب ديال الصداع اللي ما كيتسالاش؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_298",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_298",
+    "text": "عندي خز فجنب وذني، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_299",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_299",
+    "text": "عندي صداع فالعصب، شنو السبب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_302",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_302",
+    "text": "عندي رعشة خفيفة ويدي كيتعابرو، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_304",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_304",
+    "text": "واش البرد كيسبب الإسهال؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_306",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_306",
+    "text": "واش كاين شي خيوط فالعين كايبين بلي شي واحد فيه السرطان؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_308",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_308",
+    "text": "كان كياكل الأظافر.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_309",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_309",
+    "text": "عندي دوخة قوية و ما قدرتش نركز على الهاتف هاد الشهر كامل.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_310",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_310",
+    "text": "بنتي عندها مشكل ف الإظافر، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_313",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_313",
+    "text": "كيفاش نقدر نعرف نوع الفطريات ف جسمي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_314",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_314",
+    "text": "شنو هو ضغط الدم الطبيعي ديال الدراري لي عندهم قل من عام؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_315",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_315",
+    "text": "واش رفع الأثقال خطير على الناس اللي عندهم ضغط الدم العالي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_316",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_316",
+    "text": "واش المشاية تقدر تضر رجلين الطفل فالعمر ديال ست شهور؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_318",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_318",
+    "text": "شحال من مرة فالنهار خاصني نستعمل زيت الخروع باش نطوي رموشي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_319",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_319",
+    "text": "عندي وجع فالصدر، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pneumologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_320",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_320",
+    "text": "أنا عندي ضعف فالإنجاب بعد الإجهاض.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_323",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_323",
+    "text": "شنو هي العلاقة بين ارتفاع ضغط الدم و ضربات القلب السريعة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_324",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_324",
+    "text": "أنا كايتحسن لي الضغط ديالي شي مرات.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_326",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_326",
+    "text": "عندي فتق السري، واش نقدر نبقا فيه بزاف حتى نكمل الامتحانات؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_327",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_327",
+    "text": "كيفاش أثرت الرياضة على الصحة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_329",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_329",
+    "text": "واش كاين خطر فاستخدام السيلدينافيد؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_330",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_330",
+    "text": "كيفاش كايعالجو الحول؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_331",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_331",
+    "text": "كيفاش نتغلبو على الاكتئاب العميق؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_335",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_335",
+    "text": "راسي كايوجعني بزاف، خاصني نمشي عند شي طبيب.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_337",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_337",
+    "text": "كيفاش ننقيو الحبوب السودا فالنيف؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_340",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_340",
+    "text": "عندي حب الشباب فوجهي، كيفاش كاينعالجوه؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_343",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_343",
+    "text": "شنو هو الدوا ديال مرض العصب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_345",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_345",
+    "text": "عندي تشقّق ف الجلد وولا حمر، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_346",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_346",
+    "text": "عندي الدرن الرئوي، شفيت من العلاج ولكن كاين عندي تعب.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pneumologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_350",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_350",
+    "text": "ما كاينش شي علاج لفيروس سي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_351",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_351",
+    "text": "عندي وجع ف الجنب ديال الراس، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_352",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_352",
+    "text": "شنو هي التغييرات الغذائية لي نقدر نديرها للصداع؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_353",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_353",
+    "text": "واش العلاقة السرية كتأثر على القلب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_354",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_354",
+    "text": "عندي وجع فالصدر، شنو السبب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_356",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_356",
+    "text": "عندي حصى فالشرج وكنحس بالنزيف، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_357",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_357",
+    "text": "فين كاين المصران فالجسم؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_360",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_360",
+    "text": "شنو هو الهوس الانطوائي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_364",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_364",
+    "text": "الفقر يقدر يأثر على أي طفل.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_365",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_365",
+    "text": "واش ممكن يوقع التهاب فالعصب و تأثر على العضلات؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_366",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_366",
+    "text": "واش الكاسك مضر بالناس اللي عندهم مشاكل فالقلب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_367",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_367",
+    "text": "واش ممكن تتعافى من السل الكامن بعد العلاج؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_368",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_368",
+    "text": "شنو هو الضغط الطبيعي فسن الخمسين؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_370",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_370",
+    "text": "واش هادا تسنين؟ عندو 10 شهور.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_371",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_371",
+    "text": "نبض القلب الطبيعي ديال دري عندو 120 نبضة ف الدقيقة.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_372",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_372",
+    "text": "عندي وجع فالحوض وأنا حاملة، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_376",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_376",
+    "text": "وقتاش يمكن ليا نبدل ليه الرضاعة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_377",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_377",
+    "text": "كيفاش نحيد آثار الحشيش من تحاليل الدم؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_378",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_378",
+    "text": "واش كاين الألم فالتحت ديال الظهر من التهاب المسالك البولية؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_379",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_379",
+    "text": "واش كاين شي تغيير ف شكل المهبل من بعد ما كتكون عندك الجنس الشرجي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_380",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_380",
+    "text": "الإسهال مع الغازات والقيء.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_384",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_384",
+    "text": "كيفاش كتعالج التورم فالعيون؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_387",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_387",
+    "text": "عندي التهاب فقرنية.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_388",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_388",
+    "text": "شنو هو العلاج للأمراض المزمنة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_394",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_394",
+    "text": "واش الدوا ديال باراسيتامول كيعالج البروتينات المهبلية؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_395",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_395",
+    "text": "واش يمكن ليك دير ليا ماماغرافي ديال هاد لمرا لي مريضا؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_396",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_396",
+    "text": "شنو هو السبب و العلاج ديال رعشة اليد عند راجل عندو 66 عام؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_398",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_398",
+    "text": "عندي وجع فالعين اليسرى وكنشوف غير مزيان.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_401",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_401",
+    "text": "إذا كان شي واحد كيشكي من تواتر التبول والعطش، شنو هي الاضطرابات ديال الغدد الصماء لي خاص توضع في الاعتبار؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_404",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_404",
+    "text": "عندي حرقان فالعينين وصدري كيتزاد فيه البكية.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_405",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_405",
+    "text": "حسيت بشي حاجة مفاجئة فوق الحاجب ليسر ووجع خفيف في الصدر.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_406",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_406",
+    "text": "عندي الاكتئاب وبغيت طبيب نفسي.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_413",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_413",
+    "text": "كنعاني من الاكتئاب والروتين.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_415",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_415",
+    "text": "عمرها ست شهور، كيعطيها الرز الأزرق مع الكاس.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_417",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_417",
+    "text": "شنو هو علاج البروتينات المثانة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_422",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_422",
+    "text": "بني سبع شهور، شنو العلاج المناسب ليه؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_423",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_423",
+    "text": "عندي ضعف ف الرؤية و عيني ليمن كتر من ليمن.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_424",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_424",
+    "text": "واش الكلوميبرامين كيتعتبر إدمان؟ كيفاش كيتعالج الإدمان منو؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_425",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_425",
+    "text": "شنو هو مستوى الضغط المنخافض؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_427",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_427",
+    "text": "واش مزيان نستعمل كريم ميبو باش نحيد التاتو؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_429",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_429",
+    "text": "عندي دري عندو ست سنين وتزاد ليه الشلل الكهربائي.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_431",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_431",
+    "text": "شنو هو السبب ديال الصداع المستمر؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_433",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_433",
+    "text": "واش ارتفاع السكر عند الدراري كيجيب الرجفة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_434",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_434",
+    "text": "ولدي عندو شهرين وعندو صبعان مقلوبين فاليمين.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_435",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_435",
+    "text": "السماع صعيب بسباب الشمع فودني.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_437",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_437",
+    "text": "نصائح لمرضى القلب عند الجماع.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_438",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_438",
+    "text": "كاين شي علاج باش نبدا كنبغي الرجال؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_439",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_439",
+    "text": "علاش لون لحم ولدي بني غامق؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_451",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_451",
+    "text": "واش كاين شي مشروبات كتنبه بلا تأثير على القلب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_452",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_452",
+    "text": "بعد ما جاني الحريق والالتهاب فالرجلين، شنو خاصني ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_453",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_453",
+    "text": "كيسيل مني وكيضرني بزاف، شنو هو العلاج؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_458",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_458",
+    "text": "كنحس بالدوخة كل صباح، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_459",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_459",
+    "text": "كانحسّ براسّي بحال إلا كايدخل ليا شي التيار ف عيني.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_460",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_460",
+    "text": "شنو سبب لارتفاع ضغط الدم المفاجئ؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_461",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_461",
+    "text": "عندي التهاب في ظهري و كيوصل للقدم اليمنى. شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_464",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_464",
+    "text": "ولدي عندو 4 سنين و كيوزن 18 كيلو، واش هادشي عادي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_469",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_469",
+    "text": "شنو هو الفرق بين الحساسية والربو؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_470",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_470",
+    "text": "كاين شي علاج للدوران و الدوخة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_471",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_471",
+    "text": "شنو هو علاج ارتفاع ضغط الدم 155/100؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_472",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_472",
+    "text": "الضغط ديالي هو ١٢/العالي والضغط ديال الوطا هو ٩/٨، واش يمكن لي ناخد دوا ديال الضغط؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_475",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_475",
+    "text": "عندي حرق فالهوا، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_477",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_477",
+    "text": "عندي شوية د لخطوط ف عينيا ملي كانشوف.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_483",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_483",
+    "text": "عندي مشكل فالأذنين والغثيان وصعوبة فالتنفس.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pneumologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_488",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_488",
+    "text": "الم كيسبب ألم فالصدر والقولون الطبيعي.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gastroenterologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_489",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_489",
+    "text": "كايديرني صداع بزاف و كايمحي لي النضر.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_493",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_493",
+    "text": "شنو هو علاج التهاب الأذن؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_497",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_497",
+    "text": "كيفاش نحارب القلق الزايد؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_501",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_501",
+    "text": "شنو هي الصدمة العنصرية؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_518",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_518",
+    "text": "شنو خاصني ندير ملي كانسمع شي صوت يخوفني؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_522",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_522",
+    "text": "واش كاين شي دوا لضمر الأعصاب وراثياً؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_529",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_529",
+    "text": "كيفاش تعالج هبوط الجفن عند دري عندو سبع سنين؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_531",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_531",
+    "text": "أنا ديما متوتر وكنفكر بزاف، واش خاصني طبيب نفسي؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_541",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_541",
+    "text": "أنا كنعاني من جفاف فالمهبل، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_542",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_542",
+    "text": "شنو هو الدوا ديال النيرال؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_545",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_545",
+    "text": "عيني كتبان لييا كتنبض بسرعة بعد ما خديت شي دوا سميتو 'أوبتيلون'؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_547",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_547",
+    "text": "عندي التهاب قرني وورم خفيف",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_549",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_549",
+    "text": "عندي ألم حاد فسناني وذني، بالخصوص فالجهة اليمنى.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_551",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_551",
+    "text": "كاين الم فالعيان؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_561",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_561",
+    "text": "عندي صوت فالأذن كيشبه لنبض القلب.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_565",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_565",
+    "text": "عندي قلق وكنت كنستعمل السبرالكس، ولكن رجعت حالتي للوراء.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_568",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_568",
+    "text": "عندي وجع فالبريزة ديالي كي جا و كيمشي",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_572",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_572",
+    "text": "شنو هو أحسن دوا للاكتئاب ما يسببش النعاس؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_574",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_574",
+    "text": "عندي خوف كبير من الجنس. شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_575",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_575",
+    "text": "عندي رجفة فالعين، شنو السبب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_579",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_579",
+    "text": "ولدي عندو الحكة فالعينين من شهرين",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_585",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_585",
+    "text": "واش التهاب العصب الخامس ماعندو علاج غير العملية؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "neurologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_591",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_591",
+    "text": "السلام عليكم، كنعاني من النعاس بزاف ومشاكل نفسية.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_592",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_592",
+    "text": "واش كان عندك القطرة ديال الشهر السابع؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_594",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_594",
+    "text": "عندي احمرار تحت عيني مع حرارة خفيفة. شنو السبب؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_595",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_595",
+    "text": "واش كاين شي دوا ديال منع الحمل؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_602",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_602",
+    "text": "شنو هي أسباب تأخر الحمل؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_609",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_609",
+    "text": "عندي تجويف تحت العين وكيعطيني شكل كبير.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_611",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_611",
+    "text": "شنو هو علاج الماء الأبيض؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_619",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_619",
+    "text": "عندي وجع فالصدر من 3 أيام، شنو ندير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pneumologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_624",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_624",
+    "text": "عندي الدورة الشهرية متأخرة",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_632",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_632",
+    "text": "كاين نزيف من النيف وريحا خايبة.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_634",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_634",
+    "text": "واش الصحة العقلية تسبب تشنجات؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_639",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_639",
+    "text": "عندي ديما مشكل فالعينين، كيبانو ليا صفارين ولا حمرين.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_641",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_641",
+    "text": "فأي شهر كيبدا شعر راس الجنين يطلع؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_642",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_642",
+    "text": "واش الكلوميد كيعطي ألم فالمعدة وغازات؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_665",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_665",
+    "text": "فأي سيمانة كيتدار الربط لعنق الرحم المتسع؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_671",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_671",
+    "text": "عندي مشكل فالبطن كيسبب ليا الحريق.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gastroenterologie",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_672",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_672",
+    "text": "هاكاش معناتو نتائج التحليل صحيحة؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pneumologie",
+      "urgencyScore": 1
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_679",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_679",
+    "text": "عندي صداع فالصدر من بعد ما كيعيا من النعاس.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_681",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_681",
+    "text": "عندي سيلان، كيفاش نقدر نحلو؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_707",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_707",
+    "text": "عندي التهاب فقصبة الهوائية وكحة مع دم خفيف.",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "pneumologie",
+      "urgencyScore": 3
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_740",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_740",
+    "text": "شنو أحسن دوا لطفل عندو سنتين عندو حساسية، جارمينيسين ولا أوفامكس؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": 2
+    }
+  },
+  {
+    "id": "external_hf_darija:test_row_749",
+    "dataset": "external_hf_darija",
+    "source": "BrainHealthAI/MedQADataDarijaSaad",
+    "source_id": "test_row_749",
+    "text": "كيفاش نعرف واش عندي البواسير؟",
+    "language": "Darija",
+    "case_type": "external_darija_test",
+    "expected": {
+      "specialtyHint": "gastroenterologie",
+      "urgencyScore": 2
+    }
+  }
+]

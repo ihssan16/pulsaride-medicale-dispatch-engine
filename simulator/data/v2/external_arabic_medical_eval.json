@@ -1,0 +1,3122 @@
+[
+  {
+    "id": "external_hf_arabic:row_6",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_6",
+    "text": "ما رايكم بهذه الخلطة للتبييض تفتيح بعض الاماكن مثل الركب والخ كركم + حليب او زبادي + ليمونة + عصير بطاطا \r\n( يتم هرس البطاطا واخذ عصيرها )\r\n + عصير...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_8",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_8",
+    "text": "عندي حب شباب حطيت من كريم Cosmo appe glayco cream بس زود الحبوب بالرؤوس \nالبيضة هل كده هو بيصفي تحت البشرة من الحبوب دي بعد كده يعالجها ولا اي وهل...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_9",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_9",
+    "text": "عملت جلسة ازالة شعر بالليز قبل عدة ايام و بعدها أصابني طفح جلدي عبارة عن حبوب بيضاء في الفخذين قرب الخصية مع حكة و احمرار",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_10",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_10",
+    "text": "حبوب بعضه كبير وبعضها صغير وسويت ثلاث عمليات تنظيف خراج صديد مالسبب ظهر الخرجات وعلاجها",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_11",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_11",
+    "text": "اخر دوره شهريه يوم ١٣ / ٧ وعملت اشعه مقطعيه على البطن والحوض يوم ٢/ ٨ هل فيه ضرر على الجنين",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_12",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_12",
+    "text": "يوجد حكة فوق الكاحل عند المفصل مع ظهور حبوب على الجلد",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_13",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_13",
+    "text": "عندي حب شباب حطيت من كريم Cosmo appe glayco cream بس زود الحبوب بالرؤوس البيضة بشكل كبير مع احمرار وتهيج هل كده هو بيصفي تحت البشرة من الحبوب دي بعد...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_14",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_14",
+    "text": "كيس على المبيض اليمين حامل بالشهر الثاني هل فيه خطوره وهل له علاقة بنوع الجنين؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_16",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_16",
+    "text": "مفيش تركيز خالص ...مش قادر اجمع الافكار او اربط المعلومات ..مفيش اي قدرة علي الفهم والاستيعاب والتعلم حاسس ان مخي واقف والموضوع مأثر علي نفسيتي وموقفلي حياتي خالص ...وفي ضباب...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_17",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_17",
+    "text": "حجم الجنين في السونار كان 2.7 مم وبعدها ب 12 يوم صار 8.8 مم انا خايفه لان نموه ابطأ من المعدل طمنوني هل هذا طبيعي. بداية الحمل اخر سونار تقريبا...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_19",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_19",
+    "text": "أعاني من حكة المهبل مع حرقان أثناء البول وبعد العلاقة الجنسية مباشرة وأنا حامل في الشهر الرابع",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_21",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_21",
+    "text": "بعد فترة التبويض مباشرة شعرت بالم فى الثدي وانتفاخ وظل الالم مستمر حتى نزول الدورة الشهرية علما بان الم الثدي كان يحدث قبل الدورة باسبوع فقط ماسبب استمراره ؟وكان هرمون...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_22",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_22",
+    "text": "تاريخ بداية اخر دوره 2025/7/13 وامس عملت تحليل دم رقمي وكانت نسبه الهرمون 2473 كم بيكون عمر الحمل حاليا ومتى بيظهر النبض",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_24",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_24",
+    "text": "قبل يومين من الان ظهرت حبة على المستوى اليد و بعدها بدأت الحبوب تظهر على اليد و الرجل وكذلك احس بوخز على مستوى داخل الفم",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_25",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_25",
+    "text": "الاعراض ظهور طفح جلدي قوي وحمر في جميع الجسم والوجه مع احمرار كالبقع  وحكه شديده اثناء فترة حمل في الشهر 2",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_26",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_26",
+    "text": "حامل في اسبوع ٣٧ و لدي تقلصات هل ممكن استعمل تحاميل جيستافيل400 لمنع ولادة مبكرة لان دكتورتي لديها اجازه لاسبوع و مخطط ولادة قيصرية و من قبل لدي قيصريتين و...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_27",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_27",
+    "text": "اعاني من تساقط شعر اخر سنة و اريد الحفاظ على ما تبقى من شعر( التساقط من اعلى الراس وخط الشعر الامامي) ممكن مساعدة في الاجراءات التي ممكن اتخذها كخط دفاع...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_28",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_28",
+    "text": "وقت التوبيض ينزل دم احمر وبني واسود ويستمر يومين ويكون كميته كثيره مو بس نقاط وفي كتله بيضاء صغيره زي ملمس المويه في بدايه الشفره اليمنى تحت البظر مع حرقان...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_29",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_29",
+    "text": "أعاني منذ فترة من وجود حبوب في منطقة الشرج، وكذلك حبوب صغيرة خارجية على الخطوط المحيطة بالشرج. أرجو من حضرتك التوجيه والتشخيص المناسب للحالة.",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_32",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_32",
+    "text": "انا حامل بالاسبوع الخامس ،، رحت عند الدكتورة ورأت كيس الحمل موجود وعم يعشش ، لكن انا صرلي ٩ ايام متواصلة عم شوف دم ، بدأ بلون بني وبعدها صار...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_33",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_33",
+    "text": "عندي حبوب حمراء بمنطقة الخد وكانها ملتهبه وحبوب حمراء تحت الجلد واثار حبوب وكنت استخدم مضاد حيوي اكل حبوب واستخدمت اكرتين c على وصف الدكتورة وفاد معي",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_34",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_34",
+    "text": "شعري كان طويل وناعم لكنه صار يتقطع وجاف وصار اقصر وكأني قصيت نصفه والتمشيط يقلعه من الجذور ، لأني انتقلت لمكان فيه المياه سيئة بس مفيش لها بديل ، ف...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_38",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_38",
+    "text": "الدورة الشهرية منتظمة لكن بتيجي بألم شديد وبدأ يظهر شعر فى ذقني وعلى بطني وبتجيلي نغزات شديدة فى منطقة الحوض كامله و ساعات كتير بطنى بتوجعني وغازات كتير وبروح الحمام...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_39",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_39",
+    "text": "بيجلي نزيف مهبلي متابع للدوره و بخصوص في فصول الصيف ولا يمكن اخد حبوب منع حمل",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_40",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_40",
+    "text": "هل هذه التي في الصورة فطريات",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_42",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_42",
+    "text": "صورة تقرير السونار المرفقة كانت باليوم العاشر من الدورة و سمك بطانة الرحم ١١.٥  هل يعني هذا انه حدث تخصيب للبويضة؟؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_43",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_43",
+    "text": "قبل الدورة الثانية باسبوع بعد الاجهاض حدث وجع شديد اسفل البطن وتقلصات رحم هل ذلك طبيعي؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_45",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_45",
+    "text": "كعدت الصبح و لقيت الجزء الايمن والايسر و اسفل الذقن ملمسهم خشن او مخملي قبلها بيوم اكلت حلويات و كذا وبعدين نمت ومن كعدت لقياتها كذا",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_47",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_47",
+    "text": "نزلت الدورة قبل موعدها ب ٥ ايام والشهر السابق نزلت قبل ب ٧ ايام وكان فيه الم في الثدي الأيسر اثناء الدورة مع العلم أتناول ثيروكسين ٥٠ وعملت سونار قالوا...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_48",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_48",
+    "text": "ضغطت على الثدي وبعدها بيوم صار تورم في الثدي مع الم خفيف اثناء الضغط عليه شو ممكن تكون المشكلة",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_49",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_49",
+    "text": "من اليوم العاشر بعد الارجاع إلى اليوم ال 12 يوجد لدي نزول دم كان بني وأصبح باليوم ال 12 غزير احمر ؟ هل هاذي تعتبر دوره ؟؟ مع العلم سويت...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_51",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_51",
+    "text": "كيس حميد على المبيض يسبب الألم عند الضغط عليه علما بانه مسبب نزيف الدوره وحجمه 4 سم",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_53",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_53",
+    "text": "استمرت الدوره بعد اخذ ابره مانع الحمل لمده اكثر من 10 ايام وذهبت الى الزياره وقمت باخذ حب مانع حمل لقطع الدوره وانقطعت هل توجد اثار اذا قمت بترك الحب...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_54",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_54",
+    "text": "السلام عليكم أنا استخدمت لاصقات منع الحمل اسبوع رابع إضافي بغرض تأخير الدوره والان اقدر أزيل اللصقه بعد انتهاء الأسبوع الرابع وانتظر الدوره ومتى تنزل إذا أزلتها",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_55",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_55",
+    "text": "انا اكلت  حبوب بروجيلون اليوم السادس من الحبوب البيضا وابي اتركهم هل اذا تركتهن تنزل الدوره ؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_57",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_57",
+    "text": "بطلعلي شعر لونه اسود غامق وقوي بمنظر غريب حول الحلمة وبطلعلي بايدي نقاط حمرا زي راس الدبوس واقل يمكن هيك منثورين باكثر من مكان يعني بس مش مجمعين بمنطقة وحده...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_58",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_58",
+    "text": "عندي تكيس amh 12.7من سنتين عمر الدورة ماجتلي منذ البلوغ الا نقط بني مرة او مرتين كل كام سنة و حاليا متزوجة باخد مكملات للتكيس ومحافظة ع اكل صحي ووزني...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_59",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_59",
+    "text": "عندىى تساقط شعر شديد بدء يعملى فراغات كتيرر وشعرى خف  استخدمت منتجات كفايين وزيوت طبيعية  ولسه شعرى خيف ردو والفراغات بتوسع عاوز حل الحق بيه شعرى عمرى 28 سنة",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_60",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_60",
+    "text": "اعاني منذ اكثر من عام من حبة من الوراء بين الارداف تطلق سائل فيه رائحة كريهة على مدار اليوم المنطقة فيها رطوبة بذلك السائل الكريه وفيها قليلا من الحكة ومنتفخة...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_61",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_61",
+    "text": "اعاني من رجفتي على ابسط شي ارجف بشكل هستري لما اتناقش حتى لو ما كان حاد حتى اكترونيا و لما احد يناديني حتى لو مو مسويه غلط و قلبي تعلى...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_62",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_62",
+    "text": "قبل الزواج لم تكن الدوره الشهريه تأتي شهرياً بل بفارق ٣٠ او ٣٥ يوم تقريبا\r\nوبعد الزواج والولاده تركت المانع فلاحظت تتأخر شهر شهرين  الان انا وزوجي مبتعدين كل شخص...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_64",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_64",
+    "text": "كانت الدورة ٣٠ جولاي ، معي سعال مع بلغم اصفر و احيانا اخضر ، اخطط للحمل و لم استخدم مانع استخدمت بخاخ فونتالين و بخاخ الوقاية Rilast Rapihaler 200/6 من...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_66",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_66",
+    "text": "من ست شهور  الفترة اللي بين الدورتين بيظهر فيها التهابات بيضاء متكتلة وبيبقى فيه هرش ساعات أو إفرازات بيضاء زي اللبن كده وبتنتهي قبل الدورة ب ٥ أيام مثلا وظهر...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_67",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_67",
+    "text": "بقالي دورتين يعني شهرين بعد الاجهاض الدوره بتيجي بتعب شديد والتعب بيحصل قبلها بعشر ايام التعب بيجي بدري لي وبيحصل لي؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_68",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_68",
+    "text": "ظهر على ذراع أخي منذ عدة أيام طفح جلدي على شكل حبوب حمراء بعضها عليه قشرة بيضاء أو جافة، ومعظمها بيحك جدًا.\r\nالحبوب بدأت صغيرة ثم بدأت تنتشر في مناطق...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_69",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_69",
+    "text": "بكلم ناس في دماغي وبعمل قصص اعيش فيها وانا دخله انام الموضوع بدأ معايا من كذا سنة بعد اما زهقت والموضوع بدأ يرهقني ذهنيا بعيش مع ناس في دماغي وأقعد...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_72",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_72",
+    "text": "تكونت مع الوقت كدمة ذات مساحة كبيرة على الساق اليسرى ذات لون أحمر قاتم و حولها نقاط كثيرة صغيرة بنفس اللون مع وجود انتفاخ في القدمين من قبلها",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_73",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_73",
+    "text": "انا في اليوم السابع من ارجاع الأجنة أشعر بانتفاخ في البطن و ألم الدوره هل هذا طبيعي؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_75",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_75",
+    "text": "والدتي تعاني من تعب وخمول والم في جميع أنحاء الجسم تحليل الغدة الدرقية سليم نسبة الحديد ٩ والدي ثري ٦ ماهو العلاج المناسب",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_76",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_76",
+    "text": "دورتي الاخيرة 2/07/2025 وعملت تحليل HCG يوم 24/07/2025 لكن كانت النتيجة سالبة و اعدته يوم 7/08/2025 وكانت  تساوي 143,7 ثم اعدتها يوم 14/08/2025 فوجدتها تساوي 228.7",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_77",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_77",
+    "text": "طفلتي عمرها ٣ سنوات تعاني من التهاب متكرر كل ٣ اسابيع تظهر عليها حرارة مع التهاب بالحلق والفم وتقرحات لون ابيض واحمر على اللسان وفقدان الشهية دائما نفس الاعراض، في...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_78",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_78",
+    "text": "اشعر بصداع خفيف لكنه غريب اشعر بأنني لا ارتاح عندما استلقي منذ فتره طويله وحراره في جسمي ومنها راسي والان نزل مني افرازلونه بني مع الم في المعده خفيف والدوره...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_81",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_81",
+    "text": "السلام عليكم أنا حامل ف الاسبوع السادس من اسبوعين ظهر كيس الحمل وامس ظهر الجنين بس النبض لسه مظهرش حجم الكيس 1.15 وحجم الجنين0.40 الدكتور قالي لازم نعمل تحليل حمل...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_86",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_86",
+    "text": "ظهور حسنات كثيرة بين الفخذين مع اسمرار بينهم وحول المنطقة الحساسة مع العلم اني سمينة ولكن الحسنات ظهرت فجاة او لم الاحظها وظهر الكثير فجاة 12 بين الفخذ الايسر و...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_87",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_87",
+    "text": "أعاني من مرض جلدي بدأ منذ أكثر من شهرين، يتعافى بالكورتيكويد، يظهر أحيانا كبثور صغيرة منفردة وأحيانا بثور صغيرة متجمعة وأحيانا مجموعة حبوب صغيرة مثل لسعة تختفي بعد وقت قصير",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_88",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_88",
+    "text": "ظهرتلي وحمة على البطن لونها احمر ملمسها خشن مش منتظمة بها حكة خفيفة مش دائمة وبعد الحكة احيانا تفرز سائل شفاف هل الوحمة دي طبيعية",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_89",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_89",
+    "text": "دلوقتي انا بصحي من النوم حرارة جسمي بتبقي عالية جدا يعني حتي أما بستخدم الميه بتنزل سخنة بسبب جسمي وبحس أن عاوزة اتقيأ ومش بيبقي ليا نفس الاكل خالص",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_90",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_90",
+    "text": "استنشقت الكلور يوم الاثنين وشعرت بالحرقان في الرقبة خرجت الى الهواء ولكن الحرقان لم يختفي يوم الاربعاء تحسست بإنتفاخ في الغدد اللمفاوية الرقبة \r\nمع بحه حفيفة في الصوت ما هو...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_91",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_91",
+    "text": "السلام عليكم. \r\nاعاني كل صباح عند الاستيقاظ من غثيان، وأثناء لنوم أو بعد الاستيقاظ أشعر ببرودة في جسمي، خاصة في الذراع، مع ان الأجواء حارة، حتى لو أتدفأ لا يزول...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_92",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_92",
+    "text": "مدمن على المواد الاباحية بشكل عميق \r\nتؤثر على عملي \r\nتؤثر على سير حياتي بالشكل الطبيعي\r\nاشاهد مشاهد غير طبيعية وفيها نوع بل انواع من الشذوذ\r\nفما الحل؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_93",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_93",
+    "text": "السلام عليكم تعاطيت حبوب الاكستازي وبعد مرور يوم واحد اصبحت معدتي تؤلمني و اتقيى باستمرار  ماذا افعل من فضلك",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_94",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_94",
+    "text": "من فضلك أنا أخذت حبوب حب الشباب ايزورتنوين ١٠ مجم وعملت الفحوصات قبل ما اخذه وكانت تمام واخذته لمده ٧ شهور كل يوم بعد الغذاء والحبوب قلت كتير أوقف الدواء...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_96",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_96",
+    "text": "أعاني من مشكلة في رموش عيني حيث يوجد عليهما قشرة تسبب تساقط رموشي ذهبت لاخصائية نصحتني باستخدام مرهم ultradex dexamethasone 0.1%  لمدة ٦ ايام مباشرة على رموشي و جفوني مع...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_100",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_100",
+    "text": "اشعر بعدم حب و انتماء لأهلي أو صداقة لأحد اشعر بان المجتمع يغتاب و أهلي ينبذوني هم لا يمزحون معي و يتجنبوني و اشعر باني لست منهم و ان اهلي...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_111",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_111",
+    "text": "أعاني منذ 3 أشهر من صور وأغانٍ عالقة تكرر نفسها قهريًا و تسبب لي فقدان تركيز وثِقَل في الرأس و عدم القدرة على الفهم و التذكر و أخاف دائمًا من...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_113",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_113",
+    "text": "انا سويت تحليل دم و ابي اشوف الفيتامينات و المعادن يلي ناقص الأعراض صداع شقيقه ، تعب و إرهاق ، كسل ، غثيان ، تشويش نظر ، زغلله ، نوم...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_120",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_120",
+    "text": "كنت في الأسبوع السادس من الحمل ولي اسبوعين ونصف من اجهضت و الان احس باعراض تعب خمول واستفراغ والم اسفل البطن ووسط البطن هل ممكن فيه حمل اخر",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_125",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_125",
+    "text": "تاخرت دورتي ٦ ايام واليوم السادس بسافر للسياحه مدة عشر ايام وتجيني اعراض قبل موعد الدوره الم اسفل الظهر و تقلصات يسار البطن والم خفيف مقارب للدوره هل ااجل سفرتي...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_128",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_128",
+    "text": "السلام عليكم بنتي عمرها ٤ سنوات ونص،لاحظت عليها وهي نايمه وسط نومتها يصير لها نفضه سريعه بجسمها وحركات أصابع يدينها ورجليها \r\nونومتها عاديه مفيها حراره",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_129",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_129",
+    "text": "عندي فقر دم الهيموجليين9.5 مخزون الحديد4.2 الحديد20 ترسيب كريات الدم الحمراء 50\r\nاخد حبوب ولا ابر حديد",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_135",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_135",
+    "text": "منذ ان انجبت طفلة و ذلك نحو ١٠ اشهر و انا اعاني من اضطراب نوم ، فانا  احيانا ادخل في النوم و انام حوالي ٤ ساعات او ٣ و احيانا...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_145",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_145",
+    "text": "لماذا كثرة البكاء تؤدي إلى تقيء مباشرة؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_146",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_146",
+    "text": "مريت بعنف اسري من طفولتي بسببها تبولت لا اردي في صف رابع ابتدائي. الضرر كان من أبي اكثر وامي كانت لا تتدخل. الأعراض اللتي حصلت معي من العنف منها عدم...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_151",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_151",
+    "text": "أنا آخر دورة شهرية يوم 16/12/2024 وقتها زوجي رحمه الله عليه كان مسافر وجه يوم 29/12/2024 يعني أول يوم في التبويض دلوقتي أنا حامل في الشهر التامن بس متلغبطه الدكتور...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_154",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_154",
+    "text": "عندما ادخل في نقاش ويحمل طاقة سلبية ، يبدأ جسمي وشفتاي بالارتجاف ولا استطيع ان اسيطر على الارتجاف الا ان احضن نفسي او اتلحف بلحاف سميك \r\nلا اعلم لما يحدث...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_155",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_155",
+    "text": "استنشقت ذبابة حمام صغير وأظنها استقرت في قصبتي الهوائية وأشعر بسعال خفيف هل هناك مخاطر  علي وهل اذهب لطبيب",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_158",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_158",
+    "text": "حامل في التاسع الضغط ١٣٥ على ٨٥ هل يعتبر مرتفع اقدر اولد طبيعي؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_159",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_159",
+    "text": "السلام عليكم انا فتاة عمري ٢٨ عام اصبت  بشكل مفاجئ قبل ٤ اشهر بعدم اتزان في المشي وعدم القدرة على صعود ونزول الدرج حتى وقتنا الحالي اجو منكم المساعدة",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_160",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_160",
+    "text": "ظهور كدمات عشوائية خاصة في الذراع اليسار دوخة وضيق تنفس تعب شديد خاصة عند الاستيقاظ من النوم وخذر مؤقت في الذراع غثيان هذه الأعراض تظهر عند الانفعال الحزن والغضب",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_161",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_161",
+    "text": "العمر25 عام اعانى  من حالة تشنج وغيبوبة وهبوط في ضغط الدم حدثت مرتين إلى الآن .. واحيانا يحدث تلعثم في النطق وعدم تركيز واتزان .. قمت بإجراء عدة تحاليل مثل...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_162",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_162",
+    "text": "لدي سمنه حول الخصر وغمقان الرقبة وشراهة للحلويات كيف اعرف اذا عندي مقاومه انسولين",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_163",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_163",
+    "text": "اعاني من متلازمة جوسكا حديث النفس و تخيل أشخاص و تخيلات كثير كيف اطبق العلاج السلوكي المعرفي على نفسي",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_169",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_169",
+    "text": "عمري ٢٥ سنه بقالي فتره كبيره جدا مش عارفه اتبسط وعندي انعدام شغف وحزن ودايما مجهده ومش قادره اتحرك واكلي ونومي قليلين حاسه اني دايما مش مرتاحه مش حاسه بالحياه...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_178",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_178",
+    "text": "حامل بالاسبوع ٣٧ واعاني من الحساسية والتهاب الجيوب الانفية وحاليا ارتبطت الحساسية مع الصداع النصفي ولا اتحمل الالم طوال النهار هل يمكنني استخدام حبوب كلاريتين10 بدون اضرار ؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_190",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_190",
+    "text": "صداع واحساس بالدوخة عند الوقوف ووجع بالساقين ممتد لاسفل الرجل وهمدان بالجسم واحيانا ووجع بالبطن",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_191",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_191",
+    "text": "أنا فتاة عمري 17 عامًا، وأعاني من التهاب في المسالك البولية منذ 8 سنوات. عندما أقوم بالتحليل، تظهر نتائج إيجابية، وبعد تلقي العلاج بالإبر والفوارات، تعود نتائج التحليل طبيعية. لكن...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_192",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_192",
+    "text": "ابني 9 سنوات أجرى منذ شهر أشعة راديو على رأسه وصدره بسبب صعوبات تنفسية  والآن وصف له طبيب آخر إجراء سكانير من أجل زيادات لحمية في الأنف  ما هي المخاطر...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_193",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_193",
+    "text": "أعاني من الم في الجهة اليمين من جسمي من ٤ ايام ويوميا يزيد بدأ تحت صدري بعدين لخصري وبعدين الكتف والظهر والرقبه وكله حرفيا جهة اليمين لما اتنفس اواتحرك واليوم...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_196",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_196",
+    "text": "عندي ارهاق فظيع وفقدان شغف وعندي خنقة كاتمة على نفسي ورقبتي بتوجعني وكتفي هل دي حالة نفسية انا بعاني من وسواس قهري بقالي سنتين هل ممكن الاعراض دي تكون حالة...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_202",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_202",
+    "text": "مرحبا يادكتور ممكن شرح عن هذه الوصفه وهل فقر دم الي فيها مزمن وما اضراره وكم نسبه النزول ممكن شرح وشكرا",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_203",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_203",
+    "text": "نتيجة تحليل سكر الحمل 50 gm بعد ساعة ظهرت 177 طبيعي ؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_204",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_204",
+    "text": "هل السونار يحتوي علي طفل ام تؤام وما هذا الي في اليمين ظاهر في الاسفل  السونار في اخر الشهر التاني",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_210",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_210",
+    "text": "شاب عمري 15 سنة، عندي أنف لحمي (يعني طرف الأنف عريض وممتلئ بالدهون والغضاريف)، وألاحظ وجود حبوب صغيرة ورؤوس بيضاء في الأنف، مع بقايا آثار قديمة للحبوب (بقع أو ملمس...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_212",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_212",
+    "text": "ظهرت عليا ارتكاريا عملت تحليل cbc لقيت ليمفوسايت 60% ومونوسايت11% ونيتروفيل39% Wbcs 6.5 ما الحل؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_213",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_213",
+    "text": "أعاني من عدم خروج البطن لمده 20 يوما علما انني حامل في الشهر الثالث ما الحل؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_214",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_214",
+    "text": "زوجتي تعاني من تنميل في الشق الايسر من الدماغ - قمنا بعمل صورة مقطعية MRI وطبيب المخ والأعصاب أكد ان لا توجد اي مشاكل في الدماغ ، ولكن اوصى لها...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_218",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_218",
+    "text": "انا ولدت في2023 طفل قيصري وف 2025 حامل والجنين كان نازل الحوض ورحم مفتوح 1سم  واكملت شهري ولم انجب ومشيمه بدات في تكلس ومياه جنين نقصت مع العلم عندي ولاده...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_219",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_219",
+    "text": "عندي وسواس نظافة وطهارة كتير بغسل وملابسي بغيرهم لو بس لمسو اي اشي \r\nبضل تفكيري اني مو نظيفة وانو كل اشي حوالي مو نظيف انا حكيت اشي بسيط من الي...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_221",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_221",
+    "text": "كل ما احلق دقني بالموس بيطلع حبوب وتصبغات في المنطقه الموضحه في الصوره في الجانبين و فيهم اسمرار زايد عن بقيت البشره ومخليه شكلي مش حلو ومسببالي ازمه نفسيه",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_226",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_226",
+    "text": "احس بشعور عدم السعاده ودايم اتضايق مت اي شي واتحسس من اي شي واشيل هم واقلق وعندي خوف شوي م اقدر ارد على احد بالذات اذا كان بالمزح فقدت حس...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_233",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_233",
+    "text": "السلام عليكم \r\nلدي اعراض قولون عصبي واحياناً اسهال واحياناً امساك و خوف وقلق وتفكير زائد ورُهاب واحياناً اكتئاب واريد ترك التدخين لكن لا استطيع \r\nعلماً اني استخدمت دواء (امتريتلين) لمدة...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_236",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_236",
+    "text": "السلام عليكم ورحمة الله وبركاته \r\nاخذت تطعيم السعار 5 جرعات \r\nاخذت جميع الجرعات في عضلة الديلتويد عدا اول جرعة اخذتها بالذراع اسفل عضلة الديلتويد \r\nهل هناك تاثير علي فاعلية اول...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_238",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_238",
+    "text": "وسواس الموت والخوف منه وعدم القدره على رؤية الحياة بشكل ايجابي ورؤية الحياة مخيفة جدًا \r\nوالخوف من الفقد ماذا افعل اصبحت ابكي وصدري ضيق ولا استمتع بيومي",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_239",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_239",
+    "text": "انا حامل في الشهر الرابع عندي وجع متل وجع الولاده وعندي الام بالظهر",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_271",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_271",
+    "text": "اعاني من خمول في الغدة الدرقية فهل ارتفاع هرمون الغدة الدرقية يؤثر على نمو الجنين",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_276",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_276",
+    "text": "بعاني من افكاري الي بتسيطر عليا أنا بخاف جدا بشكل الموت والمرض والشرطه والحبس واي حاجه فيها خطر مخيف وببدا افكر بشكل هستيري مع ان الخطر أصلا مش موجود الافكار...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_279",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_279",
+    "text": "أنا حامل في الاسبوع الخامس روحت لدكتور بعد تحليل الحمل كاتبلي برونتوجيست لبوس وميثيل الفولات وايزكارد 75 للعلم معنديش مشكله ولا اجهاض وده تاني حمل ليا كتبه لأن عمري 33...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_283",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_283",
+    "text": "كلما واجهتني مشكلة صحية، سواء في جسمي أو لدى أحد أفراد عائلتي، أشعر بهلع وخوف شديدين طوال الوقت. لا أستطيع الاستمتاع بأي شيء، وأتوقع دائمًا أن يكون الأمر مرضًا خطيرًا....",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_292",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_292",
+    "text": "عاوزة روتين لبشره جافه مايله للمختله و اغمقت من الشمس و بتاكسد و عندي هالات",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_294",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_294",
+    "text": "حامل في اسبوع 35 لدي الم خفيف ووخز في مكان عمليتي سابقة ما الحل مع علم هذ حملي الثالث و لدي عمليتين قبل! وفي اي اسبوع من حمل يتم عمليه...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_298",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_298",
+    "text": "عادي استخدم زيت اللوز الحلو بدايه حملي وكريم ازاله الشعر فيتا؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_299",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_299",
+    "text": "اشعر أن المجتمع حرمنا من حقنا في الزواج ووضع معاير لا تناسبنا وهو الزواج بعد الجامعة او يمكن هذا يحدث في مجتمعي فقط السيء  لأنني أرى أني أود الزواج مبكراً...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_303",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_303",
+    "text": "ماعرف شلون اصير ناضجة خسرت كثير ناس احبهم بسبب هلشي دائما بوقت الخلاف اذكره بالي سويته عشانه  وهو ينزعج ويعصب وودي يحترمون حدودي واحترم حدودهم تعبت من وضعي وعدم نضجي...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_304",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_304",
+    "text": "ووصف لي الطبيب ديبراليكس ١٠ و بانتولوك ولي الحين ٦ شهور استخدمها ماتحسنت للحين القلق والتوتر بس انه خف شوي و الام متنقله احيان صداع خلف الراس وركبه",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_315",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_315",
+    "text": "اعاني من اكتئاب وصعب اتخطى ماضي وعايشة ع امل كلشي يرجع وماكو فايدة ولا أمل انو يرجع شي وافكر بالانتحار بعض احيانا وأبجي بليل على اشياء مو بيدي",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_321",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_321",
+    "text": "قلق توتو تقلبات مزاج تشتت زهق من الانتظار عندي فرت حركه وتشتت انتباه أشك ان ده adhd بس الوضع زاد مليش خلق اعمل شي ولا جهد ولا طاقه ومش عارف...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_349",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_349",
+    "text": "مرحبا، انا عندي سؤال هل الرهاب الاجتماعي يعتبر من الامراض الصعبة ؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_357",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_357",
+    "text": "كان عندي نزيف من اسبوع واخر دورة كانت 26/5 والان أنا أعاني من الدوخة المستمرة مع اي حركة أو مجهود وراسي تلف وتشويش بالرؤية",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_358",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_358",
+    "text": "انا عندي اعراض تكيس المبايض تمام، قالولي عندي خلل في مقاومه الانسولين فبتالي تاخر الدورة وظهور شعر بمناطق غير مرغوب فيها الخ.. هسا انا ممكن يكون عندي سكري سبب هاد...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_366",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_366",
+    "text": "متزوجة عمرها 25 تعاني من ثنائي القطب منذ اربع اشهر بدأت العلاج بعد اسبوع او عشرة ايام من ظهور اعراض المرض بعد بحوث طويلة وصل لدراسات تقول انه يمكن الحصول...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_371",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_371",
+    "text": "هل ترطيب العين باستخدام قطره isotonic مثل trium free من ثم استخدام  hypotonic مثل vismed والعكس سيؤثر على العين سلبا ، وهل لو تم استخدام قطره  vismed لفترات ستؤثر على...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_376",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_376",
+    "text": "أعاني من قلق وجودي حاد ووسواس فكري حول الموت والعدم، يسبب لي ذعرًا وأعراضًا جسدية (ضيق، مغص، خفقان)، مع فقدان للمعنى وصعوبة في إيقاف التفكير. حالتي الذهنية عميقة جدًا وأحلل...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_389",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_389",
+    "text": "شعري مساميته منخفضة يسبب تقصف و ناشف وأشياء وشعر متطاير ما السبب؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_390",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_390",
+    "text": "هل يمكن فحص الرؤية عشان البس نظارة طبية لأنني اعاني من غباشة بسبب استخدام الموبايل بشكل مفرط وتعطي نتيجة صحيحة؟ ان كنت اعاني من جفاف بالعين علماً لمدة شهرين استخدمت...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_444",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_444",
+    "text": "تعانى المدام و سنها 39 من اعراض جانبية من برشام apexidone و serpass من زيادة وزن و الام العضلات و قصور فى الدرقية و زيادة البرولاكتين مع العلم فترة العلاج...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_471",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_471",
+    "text": "أنا حدث لدي تقليل كبير في كمية السعرات ادى الي نقص الوزن حوالي عشرين كيلو في فترة قليلة بعدها حصل تساقط في الشعر و شكل الشعر بعد فقدان الوزن اخف...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_501",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_501",
+    "text": "طفله عمرها ٤ سنوات ونص بتعانى من سخونه بتروح وترجع بعد استخدام دواء كونتفيفر ان كل ٦ ساعات وبتشتكى من ألم فى الزور والمعده ووجود التهاب شديد باللثه لونها أحمر...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_538",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_538",
+    "text": "عدم لمعان الشعر و التقصف و تساقط الشعر بكثرة ما هو السبب",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_542",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_542",
+    "text": "شعري خشن و جاف جدا و تساقط مستمر  ، علماً باني بغسل شعري كثير + استخدم زيت ميلي و بلسم و كريم .\r\nاحتاج علاج للتنعيم و الترطيب و منع...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_544",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_544",
+    "text": "اصبحت اغضب بسرعة وعلى اشياء تافهة و احيانا اغضب بدون سبب و عندها ابدا بعمل تصرفات غريبة مثل: الصراخ، شد شعري، ضرب راسي، نزع ملابسي، اضحك بلا سبب، ألعق الجدار...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_550",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_550",
+    "text": "لدي حب شباب  واثاره في الخدود والمنطقة تحت الشفتين  وانا استخدم عصارة الاكرتين  تركيز0.02 % مع المرطب والواقي الشمس   وهل استخدم  تركيز 0.05؟ وهل احصل على بشرة صافية وكم المدة",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_638",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_638",
+    "text": "كنت عامله فرد و شعري بقا بيوقع وبقا قصير اووي مقصف و هايش و خشن محتاجه حاجه تكون مفعولها كويس و سريع",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_640",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_640",
+    "text": "انا شاب عمري  24 سنه وانا مدمن على العاده السريه ومشاهدة الأفلام من عمري 11 سنه إلى  الآن ولا أستطيع تركها وكم مرا احاول تركها ولكن ارجع اتحايل على نفسي...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_734",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_734",
+    "text": "دورتي الشهرية منتظمة وتاخرت لمدة اسبوع عملت فحص حمل وكانت نتيجة سلبية ولدي موعد لإبرة مانجارو اليوم اخذ الابرة او انتظر؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_743",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_743",
+    "text": "الدورة تأخرت شهر بعد ما كانت منتظمة ما في أعراض حالياً ما عندي مشاكل صحية بس مريت بتوتر شديد استخدمت أعشاب وكمادات دافية بدون نتيجة",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_755",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_755",
+    "text": "شعر وجهي كثيف وباين ،اذا أزلتو بشفرة خاصة بلوجه بيزيد الشعر او بيكثف او بيطلع خشن متل دقن الشباب مثلاً،بدي نصيحة قبل ما اتهور وبشيلو بلشفرة، وتوضيح لأن كتير عاملي...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_783",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_783",
+    "text": "اخي ٢٦ سنة\r\nيعاني من تفكير سوداوي ونظرة سلبية\r\nسوء ظن متكرر\r\nتصديق لبعض الظنون من خياله\r\nعصبية كبيرة\r\nخالي عنده نفس المشكلة\r\nهذه المشكلة اقرب لاي مرض؟\r\nاتوجه لطبيب...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_803",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_803",
+    "text": "أنا حامل واعاني من قلق سابق قبل الحمل كنت اخذ دواء سبراليكس ولكن قبل الحمل لفتره اختفى القلق تماما عالجته بالتوكل على الله وهل يجب ان اعود لاخذ الادويه لاني...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_818",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_818",
+    "text": "عملت لشعري بروتين وشعري تقطع وتقصف ولم يبقى به شي حتى أنني إستعلت  تركيبات صيدلانية ولكن سبيبة شعري تغيرت تماما بعد البروتين حيث أصبح متقصف وهايش وجاف جاف جدا وقصير...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_822",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_822",
+    "text": "موقف حشيش ومخدرات صارلي 35 يوم وعملت تحليل منزلي اليوم وظهرلي خط واحد والخط الثاني خفيف جدا ويكاد يكون غير مرئي وعندي تحليل بكره فالشغل. فهل تحليلي الي عملته اليوم...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_849",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_849",
+    "text": "سلام عليكم حامل في الاسبوع السادس هل استخدام ماسك لتطويل ونمو الشعر هذه مكونات الماسك",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_863",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_863",
+    "text": "سريريا هل تتراجع الهلوسه والاوهام من مريض الذهان بعد سن الخمسين",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_866",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_866",
+    "text": "اشوغندا KSM-66 (600ملجم)\r\nو أن - أسيتيل - سيستين ( NAC) 1000 ملجم\r\nو  مغنيسيوم جليسينات 200 ملجم\r\nو ل-تيروسين 500 ملجم\r\nهل تساعد الاقلاع عن ادمان الاباحيه !!و هل...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_888",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_888",
+    "text": "قبل ٣ اشهر تقريبا عانيت من الم في اذني ذهبت حينها الى طبيب عام و اخبرني انه يوجد ورم بسيط في الطبله و وصف لي قطره اذن و قال اذا...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_909",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_909",
+    "text": "انا ذهبت  للدكتور قال ان عندي استعداد وراثي وكان عندي صلع من جنب واحد بس باقي الشعر كان سليم  كتبلي مينوكسديل واستخدمت عل الجنبين والجزء الأمامي من الراس الجبهة وكل...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_910",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_910",
+    "text": "فقدان متقدم في مجال رؤيه العين اليمني و انخفاض حاد في الشبكيه شرح مفصل الحاله وتفسير الاشعه المصحوبه وأسباب هذا الفقدان وما الإجراءات الواجب اتخاذها للعلاج وهل الحاله خطيره",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_919",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_919",
+    "text": "زكام .. الم حلق .. حمى خاصة ف القدمين .. الم راس .. الم في الارجل والجسم كامل وتم وصف مضاد كلاموكس وشراب حمى ماسبب رجوع الحمى وكم جرعة دولفين...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_922",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_922",
+    "text": "التزمت مع دواء الروكتان ولكن بعد مدة عاد الحب على وجهي ولكن ليس بكثرة في ما هو افضل دواء يمكن ان اتخلص منه مع العلم اني استخدمت منتجات عناية في...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_927",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_927",
+    "text": "وبشرة وجهي و رقبتي و يدي سمراء من ٥ سنوات اما جسمي ابيض ما هو السبب و ماذا افعل يا دكتور من توصيات",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_929",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_929",
+    "text": "السلام عليكم\r\nأنا  في بداية مرحلة تساقط الشعر بعد الولادة\r\nكيف ممكن أحافظ على شعري في هالمرحلة؟\r\nوهل فيه علاجات أو خطوات تنصح فيها ممكن تخفف أو تقلل من التساقط...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_930",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_930",
+    "text": "السلام عليكم انا عندى ٢٠ سنه اشتريت ديرما رولر..seropipe spray...\r\nبانتوجار  بستخدم ديرما رولر  مرتين فى الاسبوع وseropipe spray مره كل يوم و بانتوجار مرتين كل يوم فى حاجه تانى...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_947",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_947",
+    "text": "كان مكان هذا الأثر الموضح في الصورة حبة للأسف جرحتها فنتج هذا الأثر، لها قرابة الشهرين ، ماذا تنصحوني ان افعل ، و للمعلومة اذا ضغطت عليها و ليس بقوة...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "dermatologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1002",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1002",
+    "text": "طفله عمرها ٦ سنوات كل فتره شهرين او ثلاث تقريبا او اكثر بقليل ترتفع حرارتها تصل لل٣٩ بدون عوارض اخرى \r\nواحيانا مع بلغم او قحه خفيفه \r\nولديها فقدان شهيه",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1011",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1011",
+    "text": "قبل 51 يوم بالضبط عضني كلب فوق حذاء عمل مدعم وملابس عمل لم تلمس اسنانه الجلد ابدا لكن شعرت بالم الظغط على رجلي ذهبت للمشفى قالو اني لا احتاج لقاح...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1039",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1039",
+    "text": "انا اعاني من هالة في العين وفلاشات مصاحبة بصداع وذهبت الي طبيب عيون لم يجد مشكلة فذهبت الي طبيب انف واذن فأخبرني اني اعاني من التهاب جيوب انفية فما سبب...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1055",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1055",
+    "text": "جرثومه الدم و جرثومه المعده شنو الفرق بينهم و شنو فيهم هو الاخطر",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1103",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1103",
+    "text": "لاحظت وجود قوس ابيض في قزحية العين ما هي المشكلة القوس في كلا العينين هل يمكن ان اعرف ما هو السبب",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1104",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1104",
+    "text": "بنتي عمرها 10 سنوات تعاني منذ فتره من الم في عظام صدرها ذهبت الى الطبيب وطلب مني عدة تحليل قمت ب عملها ولاحظت أن كل النسب مرتفعه عن الطبيعي E.S.R...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1106",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1106",
+    "text": "لدي مشكله ظهرت من شهر ونص لما افتح فمي للاكل اسمع صوت احتكاك وبعدها الم قوي مقدر افتح فمي الالم بالجهه اليمنى فقط مع وجود الم في الاذن طنين وفرقعه...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1112",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1112",
+    "text": "عندي ابنتي عمرها 12 عام تعاني من نقص شديد في فيتامين بي 12 مع نسيان وعدم تركيز مع ظهور بعض الشعر الابيض في شعرها دون ان تكون وراثيه من اي...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1116",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1116",
+    "text": "السلام عليكم عندي استفسار لدي اب عنده الصفام الذهاني \r\nواخت عندها الذهان تشخصت مبدئيا لكن الاعراض نفس ابي\r\nهل فيه احتمال للوراثه لاولادي",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1121",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1121",
+    "text": "اعاني من احمرار العين وحكه في الجفون وافرازات العين وانا عامل عملية ليزك مع العلم الحساسيه عندي قبل العمليه تم تشخيص حالتي إلتهاب الملتحمه التحسسي استخدمت قطرات كتير للحساسيه أشعر...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1129",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1129",
+    "text": "عندي بيبي بنت عندها شهر و اربع ايام بقالها اسبوع بتعيط بطريقه هستيريه روحنا لدكتور قال امساك و اداها لبوس جليسرين فضلت زاي ما هي روحنا لدكتور تاني قال مغص...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1131",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1131",
+    "text": "ضغطي واطي واحس بدوخه جامده \r\n100/60 اخذت كوراسور بترفعه ويعد وقت قصير يرجع ينخفض تاني  \r\nالسنه اللي فاتت كان الدكتور كاتبلي ميدودرين ضغطي كان 90/60 و 80/60 احس بدوخه و...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1159",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1159",
+    "text": "أنا أعاني من اكتئاب شديد منذ مدة، احاول تجاوزه بالتمارين وتوعية نفسي بطريقة تفكيري وما إلى ذلك. لكن وضعي اصبح سيئا جدا في الايام الاخيرة. عقلي لا يهدأ واشعر ان...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1160",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1160",
+    "text": "عندي احد الاولاد اصيب بالحول بعد حوالي عام اواعامين من عمره بماذا تنصحني ، علما أن لديه صداع دائماً في الراس وضعف في القراءة  وتاخر في المراحل الدراسية وعدم التركيز...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1168",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1168",
+    "text": "ما سبب تعكر بياضة عدسة العين وتبان غامقه ومدمعه كأن فيها دموع مع ان مفيهاش وبتيجي فيها زي النغزات تسبب الم بسيط وتروح تاني \r\nده في عين واحده مش الاتنين",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1170",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1170",
+    "text": "انا مدمن اباحيه من ثمانية سنوات للاسف واليوم هو ثاني يوم من التعافي وقررت اشاهد بدون ان استمني ولكن لم يكن هناك رغبة جنسيه هل هناك مشكله وكيف اقوي الرغبه...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1176",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1176",
+    "text": "ضغطي واطي وحاسه بدوخه ديماً باخد نقط كوراسور بس بترفعه و تاني يوم يوطي تاني  100/ 60  ومش عارفه امارس حياتي كل فحوصاتي سليمه",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1180",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1180",
+    "text": "انا بعاني من اكتاب ومحاوله انتحار كل ما يصير مشكله بحيب شفره وبجرح ايدي",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1206",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1206",
+    "text": "عندي وجع عند البلع نقط بيضة في الحلق وعلى اللوز، وسخنية، وألم في الاذن بسيط، مع عدم وجود سيلان في الانف جبت:1- زيثرون مصاد حيوي\"500 مجم \"باخد واحدة قبل الغداء...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1217",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1217",
+    "text": "لدى طفلي اعراض بعد شرب الحليب يظهر عليه حبوب صغيره حمراء في الوجه بالرقبه واليدين والساقين وبلغم واستفراغ وتنفس ضيق حليبه نان  أوبتي برو وبعده نان سوبر بريم  ولكن نفس...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1221",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1221",
+    "text": "عملت تحليل انزيمات كبد وكانت النتيجة sgpt 97 sgot 54 ده معناه ايه",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1224",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1224",
+    "text": "عمري ٢٧ سنة، عندي سنة من ولادتي الأولى بالعملية القيصرية ، منذ ذلك الوقت و أنا أعاني من التوتر لأبسط الأشياء و التفكير المفرط و التعرق المستمر لدرجة ان ملابسي...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1240",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1240",
+    "text": "طفل بعمر عام واحد يعاني من احمرار وحبوب في الخدين منذ أسبوع بعد ولادته. أخبرني الطبيب بأنها أكزيما ما هو العلاج المناسب لذلك؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1252",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1252",
+    "text": "لدي التهاب مزمن بالجيوب الأنفية كل ما أرجع للطبيب يكتب مضاد حيوي عشر أيام وبخاخ كورتيزون وادوية حساسية بس يرجع الالتهاب وحاليا مجرد ما اشم ابسط شيء تلتهب الجيوب مع...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1253",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1253",
+    "text": "انا اخذ دواء من يومين كونكور 2.5 ولكن ضغط الدم الفوق لا ينزل عن 135 وكان بالسابق نفس القراءة اليوم هو الثالث لي على الدواء وأشعر بوجع خلف الرأس ودوخه...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1314",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1314",
+    "text": "ما اسباب خروج بول بلون احمر عند طفل بعمر تسعة سنوات؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1335",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1335",
+    "text": "متى يختفي رمع الكاحل عند الرضع للعلم الطفل عمره ثلاثه اشهر ونص الرمع كان يحصل عنده في اي وقت تضقط على اطراف ارجله الان اختفى وبقي الرمع وقت مايكون نايم...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1337",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1337",
+    "text": "ابنى عمره شهرين وجسمه يميل للاصفرار ولكنه يرضع وينام بشكل طبيعي هل هناك خطر عليه وماذا يجب على فعله",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1339",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1339",
+    "text": "اجريت الليزر للشبكية في عيناي وانا نظري ضعيف والبس العدسات الطبية في بداية ال15يوم كنت بخير لكن اليوم عيني اليمنى فيها ضبابية",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1351",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1351",
+    "text": "انا بنتي عمرها سنتين وسبع شهور  شعرها مش  راضي يطول كل الي بعمرها بيربطو قرون الا هي شعرها ما بيربط قرن هسا شو بكون سبب عدم طول الشعر وبدي علاج...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1355",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1355",
+    "text": "تم اعطاء طفل عمروه 5 اشهر و 3 اسابيع حليب رقم 3 بالغلط لمدة اسبوع هل من ضرر؟؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1369",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1369",
+    "text": "لعبت على الموبايل لساعات طويلة وقلة نوم فظهرت أعراض غريبة ببقى زى السكران ومش مصحصح وعدم تركيز وتشتت ذهنى وبصحى من النوم بيبقى الذاكرة ضعيفة وبجمع الكلام بصعوبة  والرؤية مشوشة...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1382",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1382",
+    "text": "اريد ان اعرف ما نوع هذا هل كيس دهني ام شعيرة.\r\nوهل هناك علاج طبيعي له؟ ام انه يجب معالجته بالجراحة وشكرا",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1399",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1399",
+    "text": "توجهت الي الطبيب وقام بتخدير عيني وقال لي أنه أخرج قطعه حديد صغيرة ومتبقي صدا وكتب لي قطره moxiflox وقطره هيالوجراند ومسكن فاستافلام  وخرجت من عنده تمام السؤال هنا أنا...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1407",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1407",
+    "text": "ابني عنده اسهال ثلاث ايام وعملت له تحليل خروج ولم يظهر السبب و رضاعته طبيعي وصناعي يرضع الصناعي قليل الطبيعي اكثر ماسبب الاسهال وايضا لديه قرقره في بطنه",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1413",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1413",
+    "text": "أنا فيني حالة غريبة، اللي هي يجيني خوف آخر الليل بشكل غريب وتوتر وقلق وجسمي يرتجف، وتفكير وتخيلات لانهائية. تعبت، أبغى أعرف وش ذي الحالة، مع إن عندي وسواس الموت....",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1415",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1415",
+    "text": "ولدي فجأه ظهرت عنده اعراض مرض ميلر فيشر  واخذ علاج الاجسام المضاده وتحسن الحمدلله بعد العلاج بس عيونه البؤبؤ مايتحرك والعين والنظر سليم ايش الحل",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1426",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1426",
+    "text": "أعاني من احمرار وإنتفاخ في العين مع سيلان دموع ووخز خفيف وحكة في بعض الأحيان في العين ما السبب من فظلكم",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1433",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1433",
+    "text": "وانا مغلقة عيني علي السرير عقلي يظهر لي اسم شخص معين وانا لا اعرفه .هذا يحدث لي عند النوم فقط ماهذه الحالة وهل هي مرض عقلي",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1448",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1448",
+    "text": "مرحبا ابني عمره 6 سنوات ولديه مرض الدم الفولي والان لديه سخونه يعني حرارة مرتفعة ماذا افعل",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1455",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1455",
+    "text": "السلام عليكم لدي ألم في عيوني أشعر أنهم ساخنين وأشعر لكمة في عيني اليسار وشعور تراكم سائل واحيانا أشعر ضغط في عيوني لكن يذهب ويأتي أتناول لبراكس لا اعلم اذا...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1467",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1467",
+    "text": "عندي طفل عمره خمس سنوات يصعب نطق بعض الحروف مثل الخاء الغين الراء ما الحل؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1473",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1473",
+    "text": "انا رحت للدكتور و اعطاني النظاره الي بتناسبني و حكالي ارجع بعد 6 اشهر و مر تقريباً 6 اشهر و انا مشغوله كثير ما بقدر ارجعلو و مو عارفه اضل...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1494",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1494",
+    "text": "طفله بعمر سنه وشهر طلعت لها حبه من اسبوعين تبكي وقت الاخراج حبة ظهرت قبل اسبوعين فى فتحة الشرج تسببت فى بكاء الطفله وقت الاخراج",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1504",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1504",
+    "text": "لو سمحت انا كشفت عيون في الاصل عشان اعمل نظارة للشاشات وكدا الدكتورة قالتلي عندك جفاف شديد وكتبت على بولي فريش اكسترا ٥ مرات يوميا و مونو دكسين مرة يوميا....",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1533",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1533",
+    "text": "قمت بتدخين المارخوانا منذ ثلاث اشهر تقريبا ولازلت اشعر بعوارضها مثلا شعور مفرط بلاشياء وشعور غريب بالحركة متى تزول؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1542",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1542",
+    "text": "هل ارتفاع صفائح الدم في الجسم يؤثر بشكل سلبي وهل الارتفاع الى 377 طبيعي",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1553",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1553",
+    "text": "أنا أبلغ من العمر ١٠ سنوات أعاني من ألم شديد بذراعي وعدم القدرة على تحريكه والإحساس بأنها كدمة ما الحل؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1580",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1580",
+    "text": "السلام عليكم زوجي عامل لحام اريد معرفة كيف يتم تخفيف تأثير اللحام على عينيه  وماهي الأدوية التي يمكن استخدامها في هذي الحالة",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1598",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1598",
+    "text": "طفلي عمرو شهرين بس وزنو 3 كيلو ونصف\r\nمع العلم اني مولدة بالشهر الثامن قبل اسبوعين من التاسع \r\nهلق هاد شي طبيعي واذا لا كيف فيني اعالج الموضوع \r\nطبعا استخدم...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1615",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1615",
+    "text": "اعاني من التوتر و نوبات الهلع قمت بتخطيط القلب 6 مرات و طلع سليم و حتى تصوير القلب بالأشعة طلع سليم و لكن لازلت اعاني من خفقان القلب من حين...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1622",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1622",
+    "text": "شخص في العائلة كبير في السن، لديه نقص شديد في الرؤية، سؤالي إن كانت الكاتاراكت فهل لإجراء العملية يستوجب تحاليل الدم؟ أم أن راديو العينين وفحوصاتهم تكفي؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1649",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1649",
+    "text": "يوجد الم في الراس فقط وكان المريض يعاني من الكبد المناعي في سنة 2018 وبحمد الله تم شفاءه والحاله مستقره في بعض الايام يشعر بل الم في الراس اريد معرفة...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1652",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1652",
+    "text": "اعمل في مهنة اللحام واتعرض احيانا للضوء. ظهرت هذه النقطة في القزحية",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1662",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1662",
+    "text": "أعاني من جفاف في العين، وفي بعض الأحيان، أشعر بحركة مفاجئة في عيني عند تعرضها للهواء. ما هو سبب هذه الحركة تحديدًا؟ مع العلم أنني أرتدي نظارات مزودة بفلتر وأستخدم...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1694",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1694",
+    "text": "أنا من كم شهر طلعلي كيس دهني فوق عينى فى الجفن و بعدها بحثت عالنت فوصلت للكمادات فحطيت كمادات سخنة عليه و ساح على الجفن كله و بقيت فوق عينى...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1762",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1762",
+    "text": "أنا كنت بشرب حشيش لمدة ١٢ سنة منهم ٥ كان بشكل يومي سجارتان يوميا ومبطل حاليا بقالي ٣٦ يوم وعملت تحليل في المنزل، وكنت عايز أعرف هل سلبي أم إيجابي...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1811",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1811",
+    "text": "أعاني من دمع وغباش واحمرار مش عارفه هي حساسية من الجو ولا التهاب",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "ophtalmologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1899",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1899",
+    "text": "هل ينتقل الشبو عن طريق الجنس الجماع مثلا أقمت علاقة مع شخص مدمن شبو او استخدم مادة الشبو أكثر من مره \r\nهل اذا سويت تحليل مخدرات عن طريق البول يظهر...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1927",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1927",
+    "text": "عندي اعراض صفار عين وجسم وبول غامق وتشتت وعدم القدره على التركيز وشاكه فالكبد وسويت تحاليل هذي",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1932",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1932",
+    "text": "طفلي ذو الثلاثة أشهر ونصف يعاني من احمرار وجفاف وجنتيه.. خرجنا به في الشارع بضع ساعات للتسوق وفور عودتنا بساعة بدأ في نوبة بكاء مستمرة لا اعلم هل احمرار وجنتيه...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1947",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1947",
+    "text": "هل درجة حرارة 37 عند القياس من تحت الإبط طبيعية علما أن الحرارة ثابتة لأكثر من أسبوع وهل الشعور بحرارة عند لمس الجبهة طبيعي",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "generaliste",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1958",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1958",
+    "text": "نتيجة تحليل مخدرات منزلي وهل الجهاز موثوق ومعتمد",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_1971",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_1971",
+    "text": "ادخن منذ عدة سنوات تقريبا 20 سنه ، وأجد صعوبة فالإقلاع، كيف يمكنني ذلك، أرجو مدي بوصفة أو طريقة تسهل و تشجع عن الإقلاع",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2026",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2026",
+    "text": "أعاني من ألم حاد في الحلق يظهر تحديدًا في الصباح عند الاستيقاظ، وأشعر بوصف دقيق كأن سكينًا تجرح حلقي. بالإضافة إلى ذلك، أعاني من انسداد في الأنف وشعور بعدم تحمل...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2029",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2029",
+    "text": "حامل بالاسبوع 24 لدي التهاب اذن خارجية والم لا يطاق مع صوت وانتفاخ حول الاذن اعطاني طبيب klamoks 5ايام وكريم travazol خفت الاعراض وقتها وبعد ايام عادت والالم لا يحتمل...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2037",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2037",
+    "text": "استخدمت دواء الترامادول بجرعة حبة ونصف يوميًا (علماً بأن قوة القرص الواحد هي 37 ملليغرام) لمدة تسعة أشهر لعلاج الانزلاق الغضروفي. توقفت عن تناول الترامادول لمدة شهرين. هل يمكن أن...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2074",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2074",
+    "text": "ابتلع طفلي 10 اشهر عمره القليل من زيت الوجه ماذا افعل هل هذا خطر لا يوجد اعراض لحد الآن",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "urgence",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2101",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2101",
+    "text": "عندي تنقيط انفي خلفي وبعد ما لفيت كل الدكاتره وجربت كل الأدويه قالولي عندك نزول في الجيب الانفي ولكن طلب مني تحليل غدد لعابيه مين ممكن يفحصلي الغدد دكتور انف...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2103",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2103",
+    "text": "الوالدة عمرها 43 تعاني من انخفاض في عدد دقات القلب بعدد ٤٣-٥٠ دقة مما يؤدي الى ضيق في التنفس وخمول في الحركة ، ما هي الاسباب ؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2107",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2107",
+    "text": "لدي ألم فوق جفن العين اليمنى وأحيانا يمتد لاسفلها وجانبها، يزيد مع الركوع أو النوم، ظهر بشكل خفيف قبل ٨ أيام واشتد بعدها، علما ذهبت لطبيب العيون، وأكد لي أن...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2218",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2218",
+    "text": "مرحبا اريد ان اسأل، قمت بدتدخين الشاي بضع مرات قبل ثلاثة اشهر هل يمكن ان يظهر اي شيء في تحليلات الجسم؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2289",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2289",
+    "text": "بدأت الأعراض عند إبني عمره ٧سنوات بألم ثم بدأ الاستفراغ مرافقة لحرارة في الجسم وعزوف عن الطعام وانسداد في الشهية وبعد يوم ظهرت حبوب في الجسم وتهيج جلدي\r\nماذا المرض...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "pediatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2313",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2313",
+    "text": "بديل Amlodipine 5mg من فضلكم علماً اني في الاربعينات من العمر واعاني من ارتفاع ضغط الدم",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2384",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2384",
+    "text": "كنت أتناول وجبة الغداء مع عائلتي، وكان الطبق الرئيسي سمكًا. لم ألاحظ ابتلاع أي شوكة، ولكن فجأة بدأت أشعر بشيء عالق في حلقي. الآن أعاني من ألم شديد وصعوبة كبيرة...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2401",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2401",
+    "text": "أعاني من دوخة وعدم اتزان عند التحرك مجرد الساق أثناء الاستلقاء وعند المشي وغثيان مع وجود طنين متقطع وثقل ووشوشة في الأذن",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2434",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2434",
+    "text": "نوبة رجفان  في الجسم وآلام في القلب ودوار الرأس بشكل مفاجئ مع فقدان للشهية وإرهاق مع غثيان .فما تشخيص حالتي ؟ هل اعاني من شيء عضوي او نفسي وعلاجه",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2484",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2484",
+    "text": "أشعر بضيق وثقل قوي مع دقات القلب متسارعة وبيوم كان لدي ألم في الرأس حاد جداً استمر لمدة ثلاث أيام ولما كنت أمشي بطيء وكانت دقات قلبي متسارعة جدا وضيق...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2512",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2512",
+    "text": "مع تقلبات الأجواء أعاني من ارتفاع درجة الحرارة وزكام وانسداد الأنف٬ هل هناك علاج سريع؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "orl",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2539",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2539",
+    "text": "لدي الم في الذراع و الكتف اليسرى و الم في الظهر خلف القلب يشبه حرقان و الم في الصدر جهة القلب و غثيان و تعب و تأتي الاعراض احيانا متقطعة...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2551",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2551",
+    "text": "عندي اكثر من نبضة هاجره هل هي خطيره وتحتاج تدخل جراحي ام لا؟ مع العلم ان عمري ٣٦ وقد أجريت عملية قلب مفتوح قبل ٣ أعوام لإغلاق فتحه بين الاذينين...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2553",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2553",
+    "text": "أعاني من ارتفاع في نبضات القلب تصل إلى ١٢٠ نبضة في وضع الراحة وأشعر بدوار وسواد على عيني مع العلم ضغط الدم طبيعي والدورة الشهرية متأخرة ٤٠ يوم هل هذا...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2581",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2581",
+    "text": "أعطيت لي أمي حقنه نورا أدرينالين بالخطأ شعرت بالألم في البطن صارت كتيرة نوم ولا تأكل جيدا ما الحل؟",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "urgence",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2614",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2614",
+    "text": "تعرض والدي لنزيف في الدماغ قبل سبعة أشهر. استمر على علاج لضغط الدم، ومنذ شهرين بدأت دقات قلبه تنخفض لتصل إلى حوالي 50 نبضة في الدقيقة. هل هذا الانخفاض طبيعي...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2637",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2637",
+    "text": "انا مدمن على دواء البريغابالين واريد ان اتعالج منه انا في ادمان مدة 5سنين",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "psychiatrie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2647",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2647",
+    "text": "يوجد الم جهة قلبي واحيانا يمتد لليد اليسرى لايزول بالراحة واحيانا اشعر بخفقان اتعب كثيرا عند الطلوع والنزول من الدرج لدي نقص حديد سويت جرعة حديد عبر الوريد وكانه خف...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "cardiologie",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2648",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2648",
+    "text": "ابنتي تناولت جرعة زائدة من من حبوب ريدون ولم يتم اسعافها في وقت مبكر  الا بعد تحلل الدواء في الجسم  حاليا هي المستشفى  الحمد لله جميع التحاليل سليمه ولكن لا...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "urgence",
+      "urgencyScore": null
+    }
+  },
+  {
+    "id": "external_hf_arabic:row_2692",
+    "dataset": "external_hf_arabic",
+    "source": "Youssefx64/Medical-Consultation-Questions-in-Arabic",
+    "source_id": "row_2692",
+    "text": "أنا على وشك الحمل كنت استخدم مانع اللولب لمدة سبع سنوات والآن أزلته ما هي الفيتامينات وحمض الفوليك أسيد الموصى أخذها والحرص عليها علماً أن عندي طفلان عندهم تشوه في...",
+    "language": "arabic",
+    "case_type": "external_clear",
+    "expected": {
+      "specialtyHint": "gynecologie",
+      "urgencyScore": null
+    }
+  }
+]
