@@ -18,7 +18,7 @@ RED_FLAG_RULES = [
     },
     {
         "id": "RF002",
-        "pattern": r"(bébé|bebe|nourrisson|enfant).{0,20}\d{1,2}\s*(mois).{0,40}(40|39\.[5-9])",
+        "pattern": r"(bébé|bebe|nourrisson|enfant).{0,30}\d{1,2}\s*(mois).{0,80}(40|39[\.,][5-9]|fievre|fièvre|temperature).{0,80}(réveille|reveille|réagit|reagit|somnolent|conscience)",
         "min_urgency": 3,
         "reason": "fievre elevee nourrisson"
     },
@@ -30,19 +30,19 @@ RED_FLAG_RULES = [
     },
     {
         "id": "RF004",
-        "pattern": r"(idées noires|envie de mourir|plus capable de continuer|suicid)",
+        "pattern": r"(idées noires|idees noires|envie de mourir|mourir|plus capable de continuer|suicid|ma b9itch baghi n3ich|ma baghich n3ich|nmout)",
         "min_urgency": 3,
         "reason": "risque suicidaire — priorité absolue"
     },
     {
         "id": "RF005",
-        "pattern": r"(enfant|bébé|bebe).{0,20}(avalé|avale|ingéré|ingere).{0,20}(médicament|medicament|produit)",
+        "pattern": r"(enfant|bébé|bebe|wldi|weldi).{0,30}(avalé|avale|avaler|ingéré|ingere|bu|chrab).{0,30}(médicament|medicament|medicaments|dawa|produit)",
         "min_urgency": 3,
         "reason": "intoxication pédiatrique"
     },
     {
         "id": "RF006",
-        "pattern": r"(faiblesse|paralysie).{0,60}(visage|côté).{0,60}parler",
+        "pattern": r"(faiblesse|paralysie).{0,80}(visage|côté|cote|bras|jambe).{0,80}(parler|sourire|bouche)",
         "min_urgency": 3,
         "reason": "suspicion AVC"
     },

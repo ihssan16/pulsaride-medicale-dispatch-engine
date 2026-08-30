@@ -137,6 +137,42 @@ class AiTriageServiceTests {
     }
 
     @Test
+    void localSafetyFloorCatchesFrenchAndAsciiRedFlagVariants() {
+        AiTriageService service = new AiTriageService(
+                "mock",
+                "http://localhost:8000",
+                true,
+                "https://api.openai.com/v1",
+                "",
+                "gpt-4o-mini",
+                objectMapper
+        );
+
+        var infantFever = service.triage("Mon bebe de 9 mois a 40 degres de fievre et ne reagit pas bien.");
+        assertThat(infantFever.urgencyScore()).isEqualTo(3);
+        assertThat(infantFever.specialtyHint()).isEqualTo("pediatrie");
+
+        var respiratoryDistress = service.triage("Je n'arrive plus a respirer correctement depuis ce matin.");
+        assertThat(respiratoryDistress.urgencyScore()).isEqualTo(3);
+        assertThat(respiratoryDistress.specialtyHint()).isEqualTo("cardiologie");
+
+        var suicideRisk = service.triage("J'ai des idees noires et je ne me sens plus capable de continuer.");
+        assertThat(suicideRisk.urgencyScore()).isEqualTo(3);
+        assertThat(suicideRisk.specialtyHint()).isEqualTo("psychiatrie");
+        assertThat(suicideRisk.symptoms()).contains("risque_suicidaire");
+
+        var pediatricIngestion = service.triage("Mon enfant a avale des medicaments il y a quelques minutes.");
+        assertThat(pediatricIngestion.urgencyScore()).isEqualTo(3);
+        assertThat(pediatricIngestion.specialtyHint()).isEqualTo("urgence");
+        assertThat(pediatricIngestion.symptoms()).contains("intoxication_possible");
+
+        var strokeLike = service.triage("J'ai une faiblesse soudaine du cote du visage et je n'arrive plus a parler.");
+        assertThat(strokeLike.urgencyScore()).isEqualTo(3);
+        assertThat(strokeLike.specialtyHint()).isEqualTo("urgence");
+        assertThat(strokeLike.symptoms()).contains("suspicion_avc");
+    }
+
+    @Test
     void externalModeKeepsLocalDarijaRedFlagDetailsWhenProviderIsGeneric() throws Exception {
         HttpServer server = HttpServer.create(new InetSocketAddress(0), 0);
         server.createContext("/predict", exchange -> {

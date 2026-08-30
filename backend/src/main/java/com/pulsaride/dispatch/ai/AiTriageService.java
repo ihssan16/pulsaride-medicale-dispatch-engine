@@ -291,7 +291,7 @@ public class AiTriageService {
         if (containsAny(normalized, "fievre", "temperature", "38", "39", "40")) {
             symptoms.add("hyperthermie");
         }
-        if (containsAny(normalized, "palpitation", "coeur", "poitrine", "thoracique", "essoufflement", "sder", "sdr", "sdri", "9elb")) {
+        if (containsAny(normalized, "palpitation", "coeur", "poitrine", "thoracique", "essoufflement", "respir", "sder", "sdr", "sdri", "9elb")) {
             symptoms.add("symptome_cardiaque");
         }
         if (containsAny(normalized, "bouton", "plaque", "demangeaison", "peau")) {
@@ -300,11 +300,14 @@ public class AiTriageService {
         if (containsAny(normalized, "anxieux", "angoisse", "depression", "stress")) {
             symptoms.add("symptome_psy");
         }
-        if (containsAny(normalized, "suicide", "suicidaire", "ma b9itch baghi n3ich", "ma baghich n3ich", "nmout")) {
+        if (isSuicideRisk(normalized)) {
             symptoms.add("risque_suicidaire");
         }
-        if (containsAny(normalized, "intoxication", "empoisonnement", "chrab dawa", "dawa bzzaf", "kayt9aya", "t9aya")) {
+        if (isMedicationIngestion(normalized)) {
             symptoms.add("intoxication_possible");
+        }
+        if (isStrokeLike(normalized)) {
+            symptoms.add("suspicion_avc");
         }
 
         String ageGroup = inferAgeGroup(normalized);
@@ -333,11 +336,14 @@ public class AiTriageService {
     }
 
     private String inferSpecialty(String normalized, String ageGroup) {
-        if (containsAny(normalized, "intoxication", "empoisonnement", "chrab dawa", "dawa bzzaf", "kayt9aya", "t9aya")) {
+        if (isMedicationIngestion(normalized)) {
             return "urgence";
         }
-        if (containsAny(normalized, "suicide", "suicidaire", "ma b9itch baghi n3ich", "ma baghich n3ich", "nmout")) {
+        if (isSuicideRisk(normalized)) {
             return "psychiatrie";
+        }
+        if (isStrokeLike(normalized)) {
+            return "urgence";
         }
         if ("enfant".equals(ageGroup)) {
             return "pediatrie";
@@ -349,6 +355,7 @@ public class AiTriageService {
                 "poitrine",
                 "thoracique",
                 "essoufflement",
+                "respir",
                 "tension",
                 "sder",
                 "sdr",
@@ -379,22 +386,32 @@ public class AiTriageService {
                 normalized,
                 "suicide",
                 "suicidaire",
+                "idees noires",
+                "mourir",
+                "plus capable de continuer",
                 "ma b9itch baghi n3ich",
                 "ma baghich n3ich",
                 "nmout",
                 "intoxication",
                 "empoisonnement",
+                "avale medicament",
+                "avale des medicaments",
+                "ingere medicament",
                 "chrab dawa",
                 "dawa bzzaf",
                 "kayt9aya",
                 "t9aya"
-        )) {
+        )
+                || isInfantSevereFever(normalized)
+                || isRespiratoryDistress(normalized)
+                || isStrokeLike(normalized)) {
             return 3;
         }
         if ("cardiologie".equals(specialty) || containsAny(
                 normalized,
                 "poitrine",
                 "essoufflement",
+                "respir",
                 "sder",
                 "sdr",
                 "sdri",
@@ -413,6 +430,65 @@ public class AiTriageService {
             return 1;
         }
         return 0;
+    }
+
+    private boolean isInfantSevereFever(String normalized) {
+        return containsAny(normalized, "bebe", "nourrisson")
+                && containsAny(normalized, "mois")
+                && containsAny(normalized, "39", "40", "fievre", "temperature")
+                && containsAny(
+                        normalized,
+                        "ne se reveille",
+                        "se reveille plus",
+                        "ne reagit",
+                        "reagit pas",
+                        "somnolent",
+                        "conscience"
+                );
+    }
+
+    private boolean isRespiratoryDistress(String normalized) {
+        return containsAny(normalized, "respir", "souffle", "nefs", "nefess", "ntnefess", "tnfes", "netneffes")
+                && containsAny(
+                        normalized,
+                        "n'arrive plus",
+                        "n arrive plus",
+                        "arrive plus",
+                        "difficulte",
+                        "difficile",
+                        "detresse",
+                        "ma9aderch",
+                        "m9t3"
+                );
+    }
+
+    private boolean isSuicideRisk(String normalized) {
+        return containsAny(
+                normalized,
+                "suicide",
+                "suicidaire",
+                "idees noires",
+                "envie de mourir",
+                "mourir",
+                "plus capable de continuer",
+                "ma b9itch baghi n3ich",
+                "ma baghich n3ich",
+                "nmout"
+        );
+    }
+
+    private boolean isMedicationIngestion(String normalized) {
+        return containsAny(normalized, "intoxication", "empoisonnement", "chrab dawa", "dawa bzzaf", "kayt9aya", "t9aya")
+                || (containsAny(normalized, "enfant", "bebe", "wldi", "weldi", "fils", "fille")
+                && containsAny(normalized, "avale", "avaler", "ingere", "bu", "chrab")
+                && containsAny(normalized, "medicament", "medicaments", "dawa", "produit"));
+    }
+
+    private boolean isStrokeLike(String normalized) {
+        return containsAny(normalized, "avc")
+                || (containsAny(normalized, "faiblesse", "paralysie")
+                && containsAny(normalized, "visage", "cote", "bras", "jambe")
+                && containsAny(normalized, "parler", "sourire", "bouche"));
     }
 
     private Integer extractDurationDays(String normalized) {
