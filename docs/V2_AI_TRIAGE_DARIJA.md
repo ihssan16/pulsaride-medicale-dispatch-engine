@@ -218,3 +218,34 @@ Les clés doivent être stockées dans `.env`, GitHub Secrets ou les variables
 d'environnement du VPS, jamais dans Git.
 
 Voir `docs/SECRETS_AND_AI_PROVIDERS.md`.
+
+## V2.1 — Amélioration du modèle Darija
+
+Le modèle Darija intégré fonctionne en production VPS, mais ses métriques de
+spécialité restent modestes. La dernière évaluation intégrée Pulsaride donne :
+
+```text
+API success rate: 100%
+Specialty accuracy: 55.82%
+Specialty macro F1: 47.87%
+Red-flag recall: 100%
+P95 latency: ~603 ms
+```
+
+Le repository `darija-health-nlp` contient maintenant un workflow V2.1 pour
+améliorer ce point proprement :
+
+- génération d'un manifest de provenance des splits ;
+- package Kaggle pour entraînement GPU ;
+- entraînement MARBERT avec option `--class-weighted` ;
+- export de `training_manifest.json` et `test_metrics.json` avec le modèle.
+
+La contrainte actuelle est importante : les fichiers complets
+`data/processed/train.csv`, `valid.csv` et `test.csv` ne sont pas présents
+localement. Il faut d'abord restaurer le dataset MedQA-MA brut, reconstruire les
+splits avec seed `42`, puis lancer l'entraînement Kaggle. On ne doit pas
+réentraîner sur le petit fichier `data/sample/sample_medqa_ma.csv`, car ce serait
+une évaluation faible et non défendable.
+
+Le rôle de Kaggle est l'entraînement expérimental GPU. Le rôle du VPS reste
+l'inférence CPU et la démonstration système complète.
